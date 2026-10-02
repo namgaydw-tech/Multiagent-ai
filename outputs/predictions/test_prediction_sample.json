@@ -1,0 +1,88 @@
+{
+  "model_name": "lightgbm_appendicitis",
+  "model_version": "1.0.0",
+  "clinical_domain": "pediatric_appendicitis",
+  "target_classes": [
+    "no appendicitis",
+    "appendicitis"
+  ],
+  "class_probabilities": {
+    "no appendicitis": 0.006538,
+    "appendicitis": 0.993462
+  },
+  "predicted_class": "appendicitis",
+  "calibrated_probability": 1.0,
+  "uncertainty": {
+    "confidence": 1.0,
+    "predictive_entropy": 0.0,
+    "margin": 1.0,
+    "uncertainty_level": "LOW",
+    "entropy_source": "calibrated",
+    "ensemble_std": null,
+    "note": "Entropy/margin describe model uncertainty, not clinical certainty; research prototype — not a clinical confidence statement."
+  },
+  "important_features": [
+    {
+      "feature": "Age",
+      "importance": 96.59737987443805
+    },
+    {
+      "feature": "BMI",
+      "importance": 83.53848051838577
+    },
+    {
+      "feature": "Sex",
+      "importance": 0.0
+    },
+    {
+      "feature": "Height",
+      "importance": 66.35657048225403
+    },
+    {
+      "feature": "Weight",
+      "importance": 29.884070307016373
+    },
+    {
+      "feature": "Alvarado_Score",
+      "importance": 1072.8244300335646
+    },
+    {
+      "feature": "Paedriatic_Appendicitis_Score",
+      "importance": 409.02420634031296
+    },
+    {
+      "feature": "Appendix_on_US",
+      "importance": 11.989699065685272
+    },
+    {
+      "feature": "Appendix_Diameter",
+      "importance": 8341.516841441393
+    },
+    {
+      "feature": "Migratory_Pain",
+      "importance": 0.0
+    },
+    {
+      "feature": "Lower_Right_Abd_Pain",
+      "importance": 0.0
+    },
+    {
+      "feature": "Contralateral_Rebound_Tenderness",
+      "importance": 151.73320031166077
+    },
+    {
+      "feature": "Coughing_Pain",
+      "importance": 5.225549936294556
+    },
+    {
+      "feature": "Nausea",
+      "importance": 13.123517364263535
+    },
+    {
+      "feature": "Loss_of_Appetite",
+      "importance": 6.862227976322174
+    }
+  ],
+  "timestamp": "2026-10-02T15:02:03+00:00",
+  "config_hash": "cb7198448d25"
+}

@@ -1,0 +1,798 @@
+{
+  "generated_utc": "2026-10-02T15:02:07+00:00",
+  "partition": "test (held-out, single use)",
+  "models": {
+    "lightgbm_appendicitis": {
+      "test_metrics": {
+        "n": 117,
+        "threshold": 0.34,
+        "auroc": 0.9716183574879227,
+        "auprc": 0.9815289586439403,
+        "sensitivity": 0.9565217391304348,
+        "specificity": 0.8541666666666666,
+        "ppv": 0.9041095890410958,
+        "npv": 0.9318181818181818,
+        "f1": 0.9295774647887324,
+        "f2": 0.9455587392550143,
+        "balanced_accuracy": 0.9053442028985508,
+        "brier": 0.05894905921742902,
+        "ece": 0.08014489228857735,
+        "confusion_matrix": {
+          "tn": 41,
+          "fp": 7,
+          "fn": 3,
+          "tp": 66
+        }
+      },
+      "test_metrics_raw_probabilities": {
+        "n": 117,
+        "threshold": 0.34,
+        "auroc": 0.9788647342995169,
+        "auprc": 0.9880585730060657,
+        "sensitivity": 0.9565217391304348,
+        "specificity": 0.8541666666666666,
+        "ppv": 0.9041095890410958,
+        "npv": 0.9318181818181818,
+        "f1": 0.9295774647887324,
+        "f2": 0.9455587392550143,
+        "balanced_accuracy": 0.9053442028985508,
+        "brier": 0.05147522080759095,
+        "ece": 0.07352850849086931,
+        "confusion_matrix": {
+          "tn": 41,
+          "fp": 7,
+          "fn": 3,
+          "tp": 66
+        }
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "point": 0.9716183574879227,
+          "lo": 0.937863234256288,
+          "hi": 0.9965447200608077,
+          "n_boot": 2000
+        },
+        "auprc": {
+          "point": 0.9815289586439403,
+          "lo": 0.958990583679818,
+          "hi": 0.9965654902553992,
+          "n_boot": 2000
+        },
+        "sensitivity": {
+          "point": 0.9565217391304348,
+          "lo": 0.9016335719233434,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "specificity": {
+          "point": 0.8541666666666666,
+          "lo": 0.7446684809500247,
+          "hi": 0.9423076923076923,
+          "n_boot": 2000
+        },
+        "ppv": {
+          "point": 0.9041095890410958,
+          "lo": 0.8333333333333334,
+          "hi": 0.9620253164556962,
+          "n_boot": 2000
+        },
+        "npv": {
+          "point": 0.9318181818181818,
+          "lo": 0.85,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "f1": {
+          "point": 0.9295774647887324,
+          "lo": 0.8799858156028368,
+          "hi": 0.9673202614379085,
+          "n_boot": 2000
+        },
+        "f2": {
+          "point": 0.9455587392550143,
+          "lo": 0.898876404494382,
+          "hi": 0.9801549652118912,
+          "n_boot": 2000
+        },
+        "balanced_accuracy": {
+          "point": 0.9053442028985508,
+          "lo": 0.8452210009733939,
+          "hi": 0.9551299133910727,
+          "n_boot": 2000
+        },
+        "brier": {
+          "point": 0.05894905921742902,
+          "lo": 0.02960303448797125,
+          "hi": 0.09553675720374116,
+          "n_boot": 2000
+        },
+        "ece": {
+          "point": 0.08014489228857735,
+          "lo": 0.043687257755369205,
+          "hi": 0.12574792225155335,
+          "n_boot": 2000
+        }
+      },
+      "calibrator": "isotonic",
+      "threshold": 0.34,
+      "best_params": {
+        "subsample": 0.7,
+        "reg_lambda": 0.5,
+        "num_leaves": 31,
+        "n_estimators": 300,
+        "min_split_gain": 0.01,
+        "min_child_samples": 40,
+        "max_depth": 4,
+        "learning_rate": 0.02,
+        "colsample_bytree": 1.0
+      },
+      "val_auprc": 0.9934254049912017
+    },
+    "logistic_regression": {
+      "test_metrics": {
+        "n": 117,
+        "threshold": 0.1,
+        "auroc": 0.947463768115942,
+        "auprc": 0.9629381799715593,
+        "sensitivity": 0.9420289855072463,
+        "specificity": 0.6875,
+        "ppv": 0.8125,
+        "npv": 0.8918918918918919,
+        "f1": 0.87248322147651,
+        "f2": 0.9129213483146067,
+        "balanced_accuracy": 0.8147644927536232,
+        "brier": 0.08315786576147072,
+        "ece": 0.08045395512020403,
+        "confusion_matrix": {
+          "tn": 33,
+          "fp": 15,
+          "fn": 4,
+          "tp": 65
+        }
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "point": 0.947463768115942,
+          "lo": 0.9038951495534473,
+          "hi": 0.9812801932367149,
+          "n_boot": 2000
+        },
+        "auprc": {
+          "point": 0.9629381799715593,
+          "lo": 0.9246927487426141,
+          "hi": 0.9892699862169686,
+          "n_boot": 2000
+        },
+        "sensitivity": {
+          "point": 0.9420289855072463,
+          "lo": 0.8799827586206896,
+          "hi": 0.9864864864864865,
+          "n_boot": 2000
+        },
+        "specificity": {
+          "point": 0.6875,
+          "lo": 0.5581283542039356,
+          "hi": 0.8181818181818182,
+          "n_boot": 2000
+        },
+        "ppv": {
+          "point": 0.8125,
+          "lo": 0.7261863992172211,
+          "hi": 0.8955369257608063,
+          "n_boot": 2000
+        },
+        "npv": {
+          "point": 0.8918918918918919,
+          "lo": 0.7804878048780488,
+          "hi": 0.9743589743589743,
+          "n_boot": 2000
+        },
+        "f1": {
+          "point": 0.87248322147651,
+          "lo": 0.8111380985426787,
+          "hi": 0.9241379310344827,
+          "n_boot": 2000
+        },
+        "f2": {
+          "point": 0.9129213483146067,
+          "lo": 0.858887959348082,
+          "hi": 0.9562841530054644,
+          "n_boot": 2000
+        },
+        "balanced_accuracy": {
+          "point": 0.8147644927536232,
+          "lo": 0.7439563679245282,
+          "hi": 0.8845126254553205,
+          "n_boot": 2000
+        },
+        "brier": {
+          "point": 0.08315786576147072,
+          "lo": 0.04541973465202295,
+          "hi": 0.12659020983649824,
+          "n_boot": 2000
+        },
+        "ece": {
+          "point": 0.08045395512020403,
+          "lo": 0.05263987356399448,
+          "hi": 0.14013663022278106,
+          "n_boot": 2000
+        }
+      },
+      "calibrator": "none",
+      "threshold": 0.1,
+      "best_params": {
+        "clf__C": 1.0
+      },
+      "val_auprc": 0.9763500182402525
+    },
+    "random_forest": {
+      "test_metrics": {
+        "n": 117,
+        "threshold": 0.32,
+        "auroc": 0.9571256038647343,
+        "auprc": 0.9725967609378122,
+        "sensitivity": 0.9710144927536232,
+        "specificity": 0.6458333333333334,
+        "ppv": 0.7976190476190477,
+        "npv": 0.9393939393939394,
+        "f1": 0.8758169934640523,
+        "f2": 0.9305555555555556,
+        "balanced_accuracy": 0.8084239130434783,
+        "brier": 0.09554275094375829,
+        "ece": 0.08878086943131955,
+        "confusion_matrix": {
+          "tn": 31,
+          "fp": 17,
+          "fn": 2,
+          "tp": 67
+        }
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "point": 0.9571256038647343,
+          "lo": 0.9248896710786603,
+          "hi": 0.9838825125708356,
+          "n_boot": 2000
+        },
+        "auprc": {
+          "point": 0.9725967609378122,
+          "lo": 0.9472083747171862,
+          "hi": 0.9899033138797473,
+          "n_boot": 2000
+        },
+        "sensitivity": {
+          "point": 0.9710144927536232,
+          "lo": 0.9242424242424242,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "specificity": {
+          "point": 0.6458333333333334,
+          "lo": 0.5111111111111111,
+          "hi": 0.7777777777777778,
+          "n_boot": 2000
+        },
+        "ppv": {
+          "point": 0.7976190476190477,
+          "lo": 0.7108354470513633,
+          "hi": 0.8800238095238094,
+          "n_boot": 2000
+        },
+        "npv": {
+          "point": 0.9393939393939394,
+          "lo": 0.8461538461538461,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "f1": {
+          "point": 0.8758169934640523,
+          "lo": 0.8153821656050956,
+          "hi": 0.9261744966442953,
+          "n_boot": 2000
+        },
+        "f2": {
+          "point": 0.9305555555555556,
+          "lo": 0.8852420832909073,
+          "hi": 0.962645909188263,
+          "n_boot": 2000
+        },
+        "balanced_accuracy": {
+          "point": 0.8084239130434783,
+          "lo": 0.7371693121693123,
+          "hi": 0.878052689180738,
+          "n_boot": 2000
+        },
+        "brier": {
+          "point": 0.09554275094375829,
+          "lo": 0.07299587102088427,
+          "hi": 0.11857391546095863,
+          "n_boot": 2000
+        },
+        "ece": {
+          "point": 0.08878086943131955,
+          "lo": 0.08418467198513353,
+          "hi": 0.15750880606436,
+          "n_boot": 2000
+        }
+      },
+      "calibrator": "none",
+      "threshold": 0.32,
+      "best_params": {
+        "clf__n_estimators": 600,
+        "clf__min_samples_leaf": 1,
+        "clf__max_depth": 12
+      },
+      "val_auprc": 0.9859415659920947
+    },
+    "hist_gradient_boosting": {
+      "test_metrics": {
+        "n": 117,
+        "threshold": 0.2,
+        "auroc": 0.9728260869565217,
+        "auprc": 0.9845790243799194,
+        "sensitivity": 0.9565217391304348,
+        "specificity": 0.9166666666666666,
+        "ppv": 0.9428571428571428,
+        "npv": 0.9361702127659575,
+        "f1": 0.9496402877697842,
+        "f2": 0.953757225433526,
+        "balanced_accuracy": 0.9365942028985508,
+        "brier": 0.05480235947037124,
+        "ece": 0.06310622764746159,
+        "confusion_matrix": {
+          "tn": 44,
+          "fp": 4,
+          "fn": 3,
+          "tp": 66
+        }
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "point": 0.9728260869565217,
+          "lo": 0.9424363884590775,
+          "hi": 0.9953025217826211,
+          "n_boot": 2000
+        },
+        "auprc": {
+          "point": 0.9845790243799194,
+          "lo": 0.9652504244620541,
+          "hi": 0.9971148989141031,
+          "n_boot": 2000
+        },
+        "sensitivity": {
+          "point": 0.9565217391304348,
+          "lo": 0.9016335719233434,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "specificity": {
+          "point": 0.9166666666666666,
+          "lo": 0.8297872340425532,
+          "hi": 0.9811320754716981,
+          "n_boot": 2000
+        },
+        "ppv": {
+          "point": 0.9428571428571428,
+          "lo": 0.885216203373723,
+          "hi": 0.9864864864864865,
+          "n_boot": 2000
+        },
+        "npv": {
+          "point": 0.9361702127659575,
+          "lo": 0.86,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "f1": {
+          "point": 0.9496402877697842,
+          "lo": 0.9090909090909091,
+          "hi": 0.9813987721250851,
+          "n_boot": 2000
+        },
+        "f2": {
+          "point": 0.953757225433526,
+          "lo": 0.9076628895184136,
+          "hi": 0.9878464954589301,
+          "n_boot": 2000
+        },
+        "balanced_accuracy": {
+          "point": 0.9365942028985508,
+          "lo": 0.8867736401087639,
+          "hi": 0.9782686335403726,
+          "n_boot": 2000
+        },
+        "brier": {
+          "point": 0.05480235947037124,
+          "lo": 0.021800003200283954,
+          "hi": 0.09449190732069838,
+          "n_boot": 2000
+        },
+        "ece": {
+          "point": 0.06310622764746159,
+          "lo": 0.0332584474524162,
+          "hi": 0.10796400166710562,
+          "n_boot": 2000
+        }
+      },
+      "calibrator": "none",
+      "threshold": 0.2,
+      "best_params": {
+        "min_samples_leaf": 20,
+        "max_leaf_nodes": 31,
+        "max_iter": 200,
+        "learning_rate": 0.05,
+        "l2_regularization": 0.0
+      },
+      "val_auprc": 0.9965886660738217
+    },
+    "catboost": {
+      "test_metrics": {
+        "n": 117,
+        "threshold": 0.37,
+        "auroc": 0.9776570048309179,
+        "auprc": 0.9874695394163021,
+        "sensitivity": 0.9420289855072463,
+        "specificity": 0.9375,
+        "ppv": 0.9558823529411765,
+        "npv": 0.9183673469387755,
+        "f1": 0.948905109489051,
+        "f2": 0.9447674418604651,
+        "balanced_accuracy": 0.9397644927536232,
+        "brier": 0.047292469038033844,
+        "ece": 0.06061879227054649,
+        "confusion_matrix": {
+          "tn": 45,
+          "fp": 3,
+          "fn": 4,
+          "tp": 65
+        }
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "point": 0.9776570048309179,
+          "lo": 0.9510850428658911,
+          "hi": 0.9960748792270532,
+          "n_boot": 2000
+        },
+        "auprc": {
+          "point": 0.9874695394163021,
+          "lo": 0.971467105274515,
+          "hi": 0.9975849519864656,
+          "n_boot": 2000
+        },
+        "sensitivity": {
+          "point": 0.9420289855072463,
+          "lo": 0.8787878787878788,
+          "hi": 0.9863013698630136,
+          "n_boot": 2000
+        },
+        "specificity": {
+          "point": 0.9375,
+          "lo": 0.8599285714285714,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "ppv": {
+          "point": 0.9558823529411765,
+          "lo": 0.9,
+          "hi": 1.0,
+          "n_boot": 2000
+        },
+        "npv": {
+          "point": 0.9183673469387755,
+          "lo": 0.8333333333333334,
+          "hi": 0.9807692307692307,
+          "n_boot": 2000
+        },
+        "f1": {
+          "point": 0.948905109489051,
+          "lo": 0.9064691996402878,
+          "hi": 0.9838773681515617,
+          "n_boot": 2000
+        },
+        "f2": {
+          "point": 0.9447674418604651,
+          "lo": 0.89171974522293,
+          "hi": 0.9852941176470589,
+          "n_boot": 2000
+        },
+        "balanced_accuracy": {
+          "point": 0.9397644927536232,
+          "lo": 0.8940076302260035,
+          "hi": 0.9812356658200129,
+          "n_boot": 2000
+        },
+        "brier": {
+          "point": 0.047292469038033844,
+          "lo": 0.02128830230256695,
+          "hi": 0.07999643442381238,
+          "n_boot": 2000
+        },
+        "ece": {
+          "point": 0.06061879227054649,
+          "lo": 0.04325152596933547,
+          "hi": 0.1080124033723652,
+          "n_boot": 2000
+        }
+      },
+      "calibrator": "none",
+      "threshold": 0.37,
+      "best_params": {
+        "iterations": 400,
+        "depth": 4,
+        "learning_rate": 0.03,
+        "l2_leaf_reg": 1.0
+      },
+      "val_auprc": 0.9928225788473404
+    },
+    "lightgbm_no_circular_features": {
+      "test_metrics": {
+        "n": 117,
+        "threshold": 0.34,
+        "auroc": 0.8686594202898551,
+        "auprc": 0.9121224458612424,
+        "sensitivity": 0.8985507246376812,
+        "specificity": 0.6666666666666666,
+        "ppv": 0.7948717948717948,
+        "npv": 0.8205128205128205,
+        "f1": 0.8435374149659864,
+        "f2": 0.8757062146892656,
+        "balanced_accuracy": 0.7826086956521738,
+        "brier": 0.14843819754862078,
+        "ece": 0.07298034121386211,
+        "confusion_matrix": {
+          "tn": 32,
+          "fp": 16,
+          "fn": 7,
+          "tp": 62
+        }
+      },
+      "calibrator": "none (raw probabilities)",
+      "threshold": 0.34,
+      "role": "label-circularity sensitivity analysis"
+    }
+  },
+  "note": "All values computed from actual model outputs; bootstrap CIs use 2000 resamples.",
+  "false_negative_review": {
+    "n_false_negatives": 3,
+    "false_negative_rate": 0.043478260869565216,
+    "cases": [
+      {
+        "row_index": 717,
+        "true_label": "appendicitis",
+        "predicted_probability": 0.0673,
+        "threshold": 0.34,
+        "Age": 15.8986995208761,
+        "Sex": "female",
+        "WBC_Count": 7.6,
+        "CRP": 0.0,
+        "Appendix_Diameter": null,
+        "Alvarado_Score": 6.0,
+        "Paedriatic_Appendicitis_Score": 7.0
+      },
+      {
+        "row_index": 764,
+        "true_label": "appendicitis",
+        "predicted_probability": 0.0,
+        "threshold": 0.34,
+        "Age": 7.99,
+        "Sex": "female",
+        "WBC_Count": 7.0,
+        "CRP": 0.0,
+        "Appendix_Diameter": 5.0,
+        "Alvarado_Score": 5.0,
+        "Paedriatic_Appendicitis_Score": 4.0
+      },
+      {
+        "row_index": 686,
+        "true_label": "appendicitis",
+        "predicted_probability": 0.0,
+        "threshold": 0.34,
+        "Age": 12.3093771389459,
+        "Sex": "female",
+        "WBC_Count": 17.3,
+        "CRP": 4.0,
+        "Appendix_Diameter": null,
+        "Alvarado_Score": 7.0,
+        "Paedriatic_Appendicitis_Score": 8.0
+      }
+    ],
+    "note": "False negatives are the safety-critical error direction for this screen; each case is reviewed against clinical features (research analysis only)."
+  },
+  "subgroups": {
+    "sex_female": {
+      "n": 57,
+      "threshold": 0.34,
+      "auroc": 0.9441687344913151,
+      "auprc": 0.9559888419163297,
+      "sensitivity": 0.9032258064516129,
+      "specificity": 0.8846153846153846,
+      "ppv": 0.9032258064516129,
+      "npv": 0.8846153846153846,
+      "f1": 0.9032258064516129,
+      "f2": 0.9032258064516129,
+      "balanced_accuracy": 0.8939205955334988,
+      "brier": 0.09189625039981662,
+      "ece": 0.11585551055223473,
+      "confusion_matrix": {
+        "tn": 23,
+        "fp": 3,
+        "fn": 3,
+        "tp": 28
+      }
+    },
+    "sex_male": {
+      "n": 60,
+      "threshold": 0.34,
+      "auroc": 0.9982057416267942,
+      "auprc": 0.9980744544287548,
+      "sensitivity": 1.0,
+      "specificity": 0.8181818181818182,
+      "ppv": 0.9047619047619048,
+      "npv": 1.0,
+      "f1": 0.95,
+      "f2": 0.979381443298969,
+      "balanced_accuracy": 0.9090909090909092,
+      "brier": 0.02764922759416081,
+      "ece": 0.05084941563965415,
+      "confusion_matrix": {
+        "tn": 18,
+        "fp": 4,
+        "fn": 0,
+        "tp": 38
+      }
+    },
+    "age_0-1": {
+      "n": 1,
+      "note": "too few events for metrics"
+    },
+    "age_2-5": {
+      "n": 8,
+      "note": "too few events for metrics"
+    },
+    "age_6-12": {
+      "n": 76,
+      "threshold": 0.34,
+      "auroc": 0.9682539682539681,
+      "auprc": 0.9822981824308671,
+      "sensitivity": 0.9591836734693877,
+      "specificity": 0.8148148148148148,
+      "ppv": 0.9038461538461539,
+      "npv": 0.9166666666666666,
+      "f1": 0.9306930693069307,
+      "f2": 0.9475806451612904,
+      "balanced_accuracy": 0.8869992441421013,
+      "brier": 0.05955042044274137,
+      "ece": 0.0796772073529758,
+      "confusion_matrix": {
+        "tn": 22,
+        "fp": 5,
+        "fn": 2,
+        "tp": 47
+      }
+    },
+    "age_13-18": {
+      "n": 32,
+      "threshold": 0.34,
+      "auroc": 0.9803921568627452,
+      "auprc": 0.98,
+      "sensitivity": 0.9333333333333333,
+      "specificity": 0.8823529411764706,
+      "ppv": 0.875,
+      "npv": 0.9375,
+      "f1": 0.9032258064516129,
+      "f2": 0.9210526315789473,
+      "balanced_accuracy": 0.907843137254902,
+      "brier": 0.07236413810110298,
+      "ece": 0.09337972830012664,
+      "confusion_matrix": {
+        "tn": 15,
+        "fp": 2,
+        "fn": 1,
+        "tp": 14
+      }
+    }
+  },
+  "label_circularity_sensitivity": {
+    "circular_features_excluded": [
+      "Alvarado_Score",
+      "Paedriatic_Appendicitis_Score",
+      "Appendix_Diameter"
+    ],
+    "test_metrics": {
+      "n": 117,
+      "threshold": 0.34,
+      "auroc": 0.8686594202898551,
+      "auprc": 0.9121224458612424,
+      "sensitivity": 0.8985507246376812,
+      "specificity": 0.6666666666666666,
+      "ppv": 0.7948717948717948,
+      "npv": 0.8205128205128205,
+      "f1": 0.8435374149659864,
+      "f2": 0.8757062146892656,
+      "balanced_accuracy": 0.7826086956521738,
+      "brier": 0.14843819754862078,
+      "ece": 0.07298034121386211,
+      "confusion_matrix": {
+        "tn": 32,
+        "fp": 16,
+        "fn": 7,
+        "tp": 62
+      }
+    },
+    "note": "Retrained without label-circular features; comparison is descriptive (different feature set, same protocol)."
+  },
+  "split_strategy": "stratified_patient_level",
+  "split_counts": {
+    "train": {
+      "n": 545,
+      "n_positive": 324,
+      "n_negative": 221
+    },
+    "validation": {
+      "n": 118,
+      "n_positive": 70,
+      "n_negative": 48
+    },
+    "test": {
+      "n": 117,
+      "n_positive": 69,
+      "n_negative": 48
+    }
+  },
+  "shap": {
+    "status": "ok",
+    "n_rows": 117,
+    "dependence_plots": [
+      "outputs\\figures\\shap_dependence_Appendix_Diameter.png",
+      "outputs\\figures\\shap_dependence_Ipsilateral_Rebound_Tenderness__missing.png"
+    ],
+    "global_top": [
+      {
+        "feature": "Appendix_Diameter",
+        "mean_abs_shap": 2.4565017221771033
+      },
+      {
+        "feature": "Surrounding_Tissue_Reaction",
+        "mean_abs_shap": 0.4647317449963467
+      },
+      {
+        "feature": "Ipsilateral_Rebound_Tenderness__missing",
+        "mean_abs_shap": 0.3972241207122488
+      },
+      {
+        "feature": "WBC_Count",
+        "mean_abs_shap": 0.36351074724614213
+      },
+      {
+        "feature": "Ipsilateral_Rebound_Tenderness",
+        "mean_abs_shap": 0.3190363596380334
+      },
+      {
+        "feature": "Alvarado_Score",
+        "mean_abs_shap": 0.3152559105685276
+      },
+      {
+        "feature": "Peritonitis",
+        "mean_abs_shap": 0.2972032975240441
+      },
+      {
+        "feature": "CRP",
+        "mean_abs_shap": 0.2408703246878309
+      },
+      {
+        "feature": "Contralateral_Rebound_Tenderness",
+        "mean_abs_shap": 0.16989413469577255
+      },
+      {
+        "feature": "Paedriatic_Appendicitis_Score",
+        "mean_abs_shap": 0.15575076413292688
+      }
+    ]
+  },
+  "manifest_path": "outputs/metadata/regensburg_feature_manifest.json",
+  "config_hash": "cb7198448d25",
+  "elapsed_seconds": 467.7,
+  "completed_utc": "2026-10-02T15:02:07+00:00",
+  "disclaimer": "Research prototype \u2014 not a medical device; test metrics are single-use held-out estimates with bootstrap CIs."
+}

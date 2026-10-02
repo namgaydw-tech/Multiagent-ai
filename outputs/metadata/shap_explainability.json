@@ -1,0 +1,131 @@
+{
+  "method": "shap.TreeExplainer (LightGBM)",
+  "shap_version": "0.52.0",
+  "split": "test",
+  "n_rows_scored": 117,
+  "n_features": 104,
+  "global_importance": [
+    {
+      "feature": "Appendix_Diameter",
+      "mean_abs_shap": 2.4565017221771033
+    },
+    {
+      "feature": "Surrounding_Tissue_Reaction",
+      "mean_abs_shap": 0.4647317449963467
+    },
+    {
+      "feature": "Ipsilateral_Rebound_Tenderness__missing",
+      "mean_abs_shap": 0.3972241207122488
+    },
+    {
+      "feature": "WBC_Count",
+      "mean_abs_shap": 0.36351074724614213
+    },
+    {
+      "feature": "Ipsilateral_Rebound_Tenderness",
+      "mean_abs_shap": 0.3190363596380334
+    },
+    {
+      "feature": "Alvarado_Score",
+      "mean_abs_shap": 0.3152559105685276
+    },
+    {
+      "feature": "Peritonitis",
+      "mean_abs_shap": 0.2972032975240441
+    },
+    {
+      "feature": "CRP",
+      "mean_abs_shap": 0.2408703246878309
+    },
+    {
+      "feature": "Contralateral_Rebound_Tenderness",
+      "mean_abs_shap": 0.16989413469577255
+    },
+    {
+      "feature": "Paedriatic_Appendicitis_Score",
+      "mean_abs_shap": 0.15575076413292688
+    },
+    {
+      "feature": "Thrombocyte_Count",
+      "mean_abs_shap": 0.0924521162512717
+    },
+    {
+      "feature": "Neutrophil_Percentage",
+      "mean_abs_shap": 0.08771879319320015
+    },
+    {
+      "feature": "Hemoglobin",
+      "mean_abs_shap": 0.08579784800700241
+    },
+    {
+      "feature": "Coprostasis__missing",
+      "mean_abs_shap": 0.05584168280763412
+    },
+    {
+      "feature": "Age",
+      "mean_abs_shap": 0.054264161479536714
+    },
+    {
+      "feature": "RBC_Count",
+      "mean_abs_shap": 0.0542285583649495
+    },
+    {
+      "feature": "BMI",
+      "mean_abs_shap": 0.04913152788170515
+    },
+    {
+      "feature": "RDW",
+      "mean_abs_shap": 0.04086528040480772
+    },
+    {
+      "feature": "Body_Temperature",
+      "mean_abs_shap": 0.04012069293817747
+    },
+    {
+      "feature": "Lymph_Nodes_Location__missing",
+      "mean_abs_shap": 0.031085845653788483
+    },
+    {
+      "feature": "Height",
+      "mean_abs_shap": 0.02980269831977574
+    },
+    {
+      "feature": "Appendix_on_US",
+      "mean_abs_shap": 0.027297606408759924
+    },
+    {
+      "feature": "Ketones_in_Urine__missing",
+      "mean_abs_shap": 0.0224198670713727
+    },
+    {
+      "feature": "Weight",
+      "mean_abs_shap": 0.020165473840551583
+    },
+    {
+      "feature": "RBC_in_Urine__missing",
+      "mean_abs_shap": 0.019915595235186708
+    },
+    {
+      "feature": "Coughing_Pain",
+      "mean_abs_shap": 0.009985918223338717
+    },
+    {
+      "feature": "Loss_of_Appetite",
+      "mean_abs_shap": 0.008812112757206792
+    },
+    {
+      "feature": "Target_Sign__missing",
+      "mean_abs_shap": 0.007403550825716447
+    },
+    {
+      "feature": "Free_Fluids",
+      "mean_abs_shap": 0.00723395908547447
+    },
+    {
+      "feature": "Nausea",
+      "mean_abs_shap": 0.0069821889077552254
+    }
+  ],
+  "wording_constraint": "SHAP indicates the feature's contribution to this model prediction, not clinical causation.",
+  "generated_utc": "2026-10-02T15:02:07+00:00"
+}

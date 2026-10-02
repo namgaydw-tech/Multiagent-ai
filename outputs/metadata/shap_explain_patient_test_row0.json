@@ -1,0 +1,80 @@
+{
+  "case_id": "test_row_289",
+  "model_output_scale": "raw LightGBM margin (log-odds-like); contributions sum with base to the model score",
+  "base_value": 1.1984,
+  "disclaimer": "SHAP indicates the feature's contribution to this model prediction, not clinical causation.",
+  "research_only": true,
+  "top_contributors": [
+    {
+      "feature": "Appendix_Diameter",
+      "contribution": 3.83916,
+      "direction": "positive",
+      "value": 10.0,
+      "wording": "Feature Appendix_Diameter contributed positively to this model prediction"
+    },
+    {
+      "feature": "Alvarado_Score",
+      "contribution": 0.2728,
+      "direction": "positive",
+      "value": 7.0,
+      "wording": "Feature Alvarado_Score contributed positively to this model prediction"
+    },
+    {
+      "feature": "Surrounding_Tissue_Reaction",
+      "contribution": -0.26771,
+      "direction": "negative",
+      "value": null,
+      "wording": "Feature Surrounding_Tissue_Reaction contributed negatively to this model prediction"
+    },
+    {
+      "feature": "Ipsilateral_Rebound_Tenderness__missing",
+      "contribution": -0.17919,
+      "direction": "negative",
+      "value": 0.0,
+      "wording": "Feature Ipsilateral_Rebound_Tenderness__missing contributed negatively to this model prediction"
+    },
+    {
+      "feature": "WBC_Count",
+      "contribution": -0.17704,
+      "direction": "negative",
+      "value": 10.9,
+      "wording": "Feature WBC_Count contributed negatively to this model prediction"
+    },
+    {
+      "feature": "CRP",
+      "contribution": 0.16566,
+      "direction": "positive",
+      "value": 20.0,
+      "wording": "Feature CRP contributed positively to this model prediction"
+    },
+    {
+      "feature": "Paedriatic_Appendicitis_Score",
+      "contribution": 0.16421,
+      "direction": "positive",
+      "value": 5.0,
+      "wording": "Feature Paedriatic_Appendicitis_Score contributed positively to this model prediction"
+    },
+    {
+      "feature": "Hemoglobin",
+      "contribution": 0.14105,
+      "direction": "positive",
+      "value": 12.4,
+      "wording": "Feature Hemoglobin contributed positively to this model prediction"
+    },
+    {
+      "feature": "Peritonitis",
+      "contribution": -0.13068,
+      "direction": "negative",
+      "value": "no",
+      "wording": "Feature Peritonitis contributed negatively to this model prediction"
+    },
+    {
+      "feature": "Ipsilateral_Rebound_Tenderness",
+      "contribution": -0.09418,
+      "direction": "negative",
+      "value": "no",
+      "wording": "Feature Ipsilateral_Rebound_Tenderness contributed negatively to this model prediction"
+    }
+  ],
+  "generated_utc": "2026-10-02T15:02:07+00:00"
+}

@@ -1,0 +1,1497 @@
+{
+  "generated_utc": "2026-10-02T14:54:20+00:00",
+  "dataset": "regensburg_pediatric_appendicitis",
+  "dataset_doi": "10.5281/zenodo.7669442",
+  "license": "CC-BY-NC-4.0",
+  "target": "Diagnosis",
+  "config_hash": "cb7198448d25",
+  "n_rows": 782,
+  "n_source_columns": 58,
+  "n_included_features": 52,
+  "n_missing_indicators": 52,
+  "n_excluded_columns": 6,
+  "features": [
+    {
+      "feature": "Age",
+      "type": "numeric",
+      "missing_pct": 0.128,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "Demographic / Other"
+    },
+    {
+      "feature": "BMI",
+      "type": "numeric",
+      "missing_pct": 3.453,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "demographic"
+    },
+    {
+      "feature": "Sex",
+      "type": "categorical",
+      "missing_pct": 0.256,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "female",
+        "male"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "demographic"
+    },
+    {
+      "feature": "Height",
+      "type": "numeric",
+      "missing_pct": 3.325,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "demographic"
+    },
+    {
+      "feature": "Weight",
+      "type": "numeric",
+      "missing_pct": 0.384,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "demographic"
+    },
+    {
+      "feature": "Length_of_Stay",
+      "type": "excluded",
+      "missing_pct": 0.512,
+      "inclusion_status": "excluded",
+      "exclusion_reason": "post-outcome leakage, recorded at discharge (config feature_policy.exclude)",
+      "categories": null,
+      "leakage_risk": "post_outcome",
+      "clinical_group": "workflow"
+    },
+    {
+      "feature": "Management",
+      "type": "excluded",
+      "missing_pct": 0.128,
+      "inclusion_status": "excluded",
+      "exclusion_reason": "co-target, never a predictor (config feature_policy.exclude)",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "demographic"
+    },
+    {
+      "feature": "Severity",
+      "type": "excluded",
+      "missing_pct": 0.128,
+      "inclusion_status": "excluded",
+      "exclusion_reason": "co-target, never a predictor (config feature_policy.exclude)",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "workflow"
+    },
+    {
+      "feature": "Diagnosis_Presumptive",
+      "type": "excluded",
+      "missing_pct": 0.256,
+      "inclusion_status": "excluded",
+      "exclusion_reason": "anchor variable reserved for bias experiments (config feature_policy.exclude)",
+      "categories": null,
+      "leakage_risk": "anchor_variable",
+      "clinical_group": "Diagnosis / Management / Severity"
+    },
+    {
+      "feature": "Diagnosis",
+      "type": "target",
+      "missing_pct": 0.256,
+      "inclusion_status": "excluded",
+      "exclusion_reason": "target column",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "other"
+    },
+    {
+      "feature": "Alvarado_Score",
+      "type": "numeric",
+      "missing_pct": 6.65,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "label_derived",
+      "clinical_group": "Scoring"
+    },
+    {
+      "feature": "Paedriatic_Appendicitis_Score",
+      "type": "numeric",
+      "missing_pct": 6.65,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "label_derived",
+      "clinical_group": "scoring"
+    },
+    {
+      "feature": "Appendix_on_US",
+      "type": "categorical",
+      "missing_pct": 0.639,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Appendix_Diameter",
+      "type": "numeric",
+      "missing_pct": 36.317,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "label_derived",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Migratory_Pain",
+      "type": "categorical",
+      "missing_pct": 1.151,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "symptom"
+    },
+    {
+      "feature": "Lower_Right_Abd_Pain",
+      "type": "categorical",
+      "missing_pct": 1.023,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "symptom"
+    },
+    {
+      "feature": "Contralateral_Rebound_Tenderness",
+      "type": "categorical",
+      "missing_pct": 1.918,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "examination"
+    },
+    {
+      "feature": "Coughing_Pain",
+      "type": "categorical",
+      "missing_pct": 2.046,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "symptom"
+    },
+    {
+      "feature": "Nausea",
+      "type": "categorical",
+      "missing_pct": 1.023,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "symptom"
+    },
+    {
+      "feature": "Loss_of_Appetite",
+      "type": "categorical",
+      "missing_pct": 1.279,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "symptom"
+    },
+    {
+      "feature": "Body_Temperature",
+      "type": "numeric",
+      "missing_pct": 0.895,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "vitals"
+    },
+    {
+      "feature": "WBC_Count",
+      "type": "numeric",
+      "missing_pct": 0.767,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "Laboratory"
+    },
+    {
+      "feature": "Neutrophil_Percentage",
+      "type": "numeric",
+      "missing_pct": 13.171,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "demographic"
+    },
+    {
+      "feature": "Segmented_Neutrophils",
+      "type": "numeric",
+      "missing_pct": 93.095,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "Neutrophilia",
+      "type": "categorical",
+      "missing_pct": 6.394,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "RBC_Count",
+      "type": "numeric",
+      "missing_pct": 2.302,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "Hemoglobin",
+      "type": "numeric",
+      "missing_pct": 2.302,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "RDW",
+      "type": "numeric",
+      "missing_pct": 3.325,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "Thrombocyte_Count",
+      "type": "numeric",
+      "missing_pct": 2.302,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "Ketones_in_Urine",
+      "type": "categorical",
+      "missing_pct": 25.575,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "+",
+        "++",
+        "+++",
+        "no"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "RBC_in_Urine",
+      "type": "categorical",
+      "missing_pct": 26.343,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "+",
+        "++",
+        "+++",
+        "no"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "WBC_in_Urine",
+      "type": "categorical",
+      "missing_pct": 25.448,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "+",
+        "++",
+        "+++",
+        "no"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "CRP",
+      "type": "numeric",
+      "missing_pct": 1.407,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": null,
+      "leakage_risk": "none",
+      "clinical_group": "laboratory"
+    },
+    {
+      "feature": "Dysuria",
+      "type": "categorical",
+      "missing_pct": 3.708,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "symptom"
+    },
+    {
+      "feature": "Stool",
+      "type": "categorical",
+      "missing_pct": 2.174,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "constipation",
+        "constipation, diarrhea",
+        "diarrhea",
+        "normal"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "symptom"
+    },
+    {
+      "feature": "Peritonitis",
+      "type": "categorical",
+      "missing_pct": 1.151,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "generalized",
+        "local",
+        "no"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "Clinical"
+    },
+    {
+      "feature": "Psoas_Sign",
+      "type": "categorical",
+      "missing_pct": 4.731,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "examination"
+    },
+    {
+      "feature": "Ipsilateral_Rebound_Tenderness",
+      "type": "categorical",
+      "missing_pct": 20.844,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "examination"
+    },
+    {
+      "feature": "US_Performed",
+      "type": "categorical",
+      "missing_pct": 0.512,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "process_variable",
+      "clinical_group": "Ultrasound"
+    },
+    {
+      "feature": "US_Number",
+      "type": "excluded",
+      "missing_pct": 2.813,
+      "inclusion_status": "excluded",
+      "exclusion_reason": "identifier (patient/image linkage), not a predictor (config feature_policy.exclude)",
+      "categories": null,
+      "leakage_risk": "process_variable",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Free_Fluids",
+      "type": "categorical",
+      "missing_pct": 8.056,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Appendix_Wall_Layers",
+      "type": "categorical",
+      "missing_pct": 72.123,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "intact",
+        "partially raised",
+        "raised",
+        "upset"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Target_Sign",
+      "type": "categorical",
+      "missing_pct": 82.353,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Appendicolith",
+      "type": "categorical",
+      "missing_pct": 91.176,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "suspected",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Perfusion",
+      "type": "categorical",
+      "missing_pct": 91.944,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "hyperperfused",
+        "hypoperfused",
+        "no",
+        "present"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Perforation",
+      "type": "categorical",
+      "missing_pct": 89.642,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "not excluded",
+        "suspected",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Surrounding_Tissue_Reaction",
+      "type": "categorical",
+      "missing_pct": 67.775,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Appendicular_Abscess",
+      "type": "categorical",
+      "missing_pct": 89.13,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "suspected",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Abscess_Location",
+      "type": "categorical",
+      "missing_pct": 98.338,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "Douglas",
+        "an den M. psoas rechts",
+        "perityphlitisch",
+        "re Mittelbauch",
+        "rechter Mittelbauch",
+        "rechter Unterbauch",
+        "retrovesikal"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Pathological_Lymph_Nodes",
+      "type": "categorical",
+      "missing_pct": 74.041,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Lymph_Nodes_Location",
+      "type": "categorical",
+      "missing_pct": 84.527,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "Ileozökal",
+        "Lymphadenopathie",
+        "MB",
+        "Mesenterial, links inguinal",
+        "Ovarialzysten",
+        "UB",
+        "ileocoecal",
+        "ileocoekal",
+        "ileocöcal",
+        "inguinal",
+        "lokal um die Appendix",
+        "mesenterial",
+        "mesenterial, re UB",
+        "multiple Lokalisationen",
+        "periappendikulär ",
+        "periumbilikal",
+        "re MB",
+        "re UB",
+        "re UB ",
+        "re UB  ",
+        "re UB, ileocoecal",
+        "re UB, periumbilikal",
+        "re UB, re MB",
+        "reUB",
+        "rechter Unter- und Mittelbauch",
+        "rechter Unterbauch"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Bowel_Wall_Thickening",
+      "type": "categorical",
+      "missing_pct": 87.34,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Conglomerate_of_Bowel_Loops",
+      "type": "categorical",
+      "missing_pct": 94.501,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Ileus",
+      "type": "categorical",
+      "missing_pct": 92.327,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Coprostasis",
+      "type": "categorical",
+      "missing_pct": 90.921,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Meteorism",
+      "type": "categorical",
+      "missing_pct": 82.097,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Enteritis",
+      "type": "categorical",
+      "missing_pct": 91.56,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "no",
+        "yes"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Gynecological_Findings",
+      "type": "categorical",
+      "missing_pct": 96.675,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "Ausschluss gyn. Ursache der Beschwerden",
+        "Ausschluss pathologischer Ovarialbefund",
+        "In beiden Ovarien Zysten darstellbar, links Ovar mit regelrechter Perfusion, rechts etwas vergrößert, keine eindeutige Perfusion nachweisbar. Retrovesikal freie Flüssigkeit mit Binnenecho",
+        "Ovarialzyste",
+        "Ovarialzyste ",
+        "Ovarialzyste re.",
+        "Ovarialzysten",
+        "V. a. Ovarialtorsion",
+        "Zyste Uterus",
+        "ja",
+        "kein Anhalt für eine gynäkologische Ursache der Beschwerden",
+        "keine",
+        "kleine Ovarzyste rechts",
+        "unauffällig"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "ultrasound"
+    },
+    {
+      "feature": "Age__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Age"
+    },
+    {
+      "feature": "BMI__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "BMI"
+    },
+    {
+      "feature": "Sex__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Sex"
+    },
+    {
+      "feature": "Height__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Height"
+    },
+    {
+      "feature": "Weight__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Weight"
+    },
+    {
+      "feature": "Alvarado_Score__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Alvarado_Score"
+    },
+    {
+      "feature": "Paedriatic_Appendicitis_Score__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Paedriatic_Appendicitis_Score"
+    },
+    {
+      "feature": "Appendix_on_US__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Appendix_on_US"
+    },
+    {
+      "feature": "Appendix_Diameter__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Appendix_Diameter"
+    },
+    {
+      "feature": "Migratory_Pain__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Migratory_Pain"
+    },
+    {
+      "feature": "Lower_Right_Abd_Pain__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Lower_Right_Abd_Pain"
+    },
+    {
+      "feature": "Contralateral_Rebound_Tenderness__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Contralateral_Rebound_Tenderness"
+    },
+    {
+      "feature": "Coughing_Pain__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Coughing_Pain"
+    },
+    {
+      "feature": "Nausea__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Nausea"
+    },
+    {
+      "feature": "Loss_of_Appetite__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Loss_of_Appetite"
+    },
+    {
+      "feature": "Body_Temperature__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Body_Temperature"
+    },
+    {
+      "feature": "WBC_Count__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "WBC_Count"
+    },
+    {
+      "feature": "Neutrophil_Percentage__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Neutrophil_Percentage"
+    },
+    {
+      "feature": "Segmented_Neutrophils__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Segmented_Neutrophils"
+    },
+    {
+      "feature": "Neutrophilia__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Neutrophilia"
+    },
+    {
+      "feature": "RBC_Count__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "RBC_Count"
+    },
+    {
+      "feature": "Hemoglobin__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Hemoglobin"
+    },
+    {
+      "feature": "RDW__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "RDW"
+    },
+    {
+      "feature": "Thrombocyte_Count__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Thrombocyte_Count"
+    },
+    {
+      "feature": "Ketones_in_Urine__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Ketones_in_Urine"
+    },
+    {
+      "feature": "RBC_in_Urine__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "RBC_in_Urine"
+    },
+    {
+      "feature": "WBC_in_Urine__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "WBC_in_Urine"
+    },
+    {
+      "feature": "CRP__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "CRP"
+    },
+    {
+      "feature": "Dysuria__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Dysuria"
+    },
+    {
+      "feature": "Stool__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Stool"
+    },
+    {
+      "feature": "Peritonitis__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Peritonitis"
+    },
+    {
+      "feature": "Psoas_Sign__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Psoas_Sign"
+    },
+    {
+      "feature": "Ipsilateral_Rebound_Tenderness__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Ipsilateral_Rebound_Tenderness"
+    },
+    {
+      "feature": "US_Performed__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "US_Performed"
+    },
+    {
+      "feature": "Free_Fluids__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Free_Fluids"
+    },
+    {
+      "feature": "Appendix_Wall_Layers__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Appendix_Wall_Layers"
+    },
+    {
+      "feature": "Target_Sign__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Target_Sign"
+    },
+    {
+      "feature": "Appendicolith__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Appendicolith"
+    },
+    {
+      "feature": "Perfusion__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Perfusion"
+    },
+    {
+      "feature": "Perforation__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Perforation"
+    },
+    {
+      "feature": "Surrounding_Tissue_Reaction__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Surrounding_Tissue_Reaction"
+    },
+    {
+      "feature": "Appendicular_Abscess__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Appendicular_Abscess"
+    },
+    {
+      "feature": "Abscess_Location__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Abscess_Location"
+    },
+    {
+      "feature": "Pathological_Lymph_Nodes__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Pathological_Lymph_Nodes"
+    },
+    {
+      "feature": "Lymph_Nodes_Location__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Lymph_Nodes_Location"
+    },
+    {
+      "feature": "Bowel_Wall_Thickening__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Bowel_Wall_Thickening"
+    },
+    {
+      "feature": "Conglomerate_of_Bowel_Loops__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Conglomerate_of_Bowel_Loops"
+    },
+    {
+      "feature": "Ileus__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Ileus"
+    },
+    {
+      "feature": "Coprostasis__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Coprostasis"
+    },
+    {
+      "feature": "Meteorism__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Meteorism"
+    },
+    {
+      "feature": "Enteritis__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Enteritis"
+    },
+    {
+      "feature": "Gynecological_Findings__missing",
+      "type": "missing_indicator",
+      "missing_pct": 0.0,
+      "inclusion_status": "included",
+      "exclusion_reason": "",
+      "categories": [
+        "0",
+        "1"
+      ],
+      "leakage_risk": "none",
+      "clinical_group": "derived_missingness",
+      "derived_from": "Gynecological_Findings"
+    }
+  ],
+  "excluded_summary": {
+    "Length_of_Stay": "post-outcome leakage, recorded at discharge (config feature_policy.exclude)",
+    "Management": "co-target, never a predictor (config feature_policy.exclude)",
+    "Severity": "co-target, never a predictor (config feature_policy.exclude)",
+    "Diagnosis_Presumptive": "anchor variable reserved for bias experiments (config feature_policy.exclude)",
+    "Diagnosis": "target column",
+    "US_Number": "identifier (patient/image linkage), not a predictor (config feature_policy.exclude)"
+  }
+}
