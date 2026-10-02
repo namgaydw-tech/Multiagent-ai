@@ -88,6 +88,7 @@ def run_case(state: CaseState,
              *,
              resume: bool = False,
              persist: bool = True,
+             stage_files: bool = True,
              out_root: Path | None = None) -> CaseState:
     """Execute stages 1–8 for one case and return the fully-populated state.
 
@@ -101,7 +102,11 @@ def run_case(state: CaseState,
     resume:
         reload completed stages from the audit directory instead of re-running.
     persist:
-        write per-stage files and ``audit.json`` (disable for in-memory tests).
+        write ``audit.json`` per case (stopping rule for experiments).
+    stage_files:
+        additionally write the three per-stage JSON files (full transcripts);
+        experiment batches disable this to keep disk usage bounded — the case
+        audit with per-stage hashes/latency is still persisted.
     out_root:
         override ``outputs/audits/`` (used by tests and experiment batches).
     """
@@ -115,14 +120,19 @@ def run_case(state: CaseState,
     if resume:
         restored = _restore(directory, state)
 
-    need_rag = state.rag_enabled and (
-        retriever is None and (4 not in state.completed_stages
-                               or 6 not in state.completed_stages))
+    stages_to_run = (list(state.pipeline_stages) if state.pipeline_stages
+                     else sorted(STAGE_KEYS))
+    need_rag = state.rag_enabled and retriever is None and any(
+        s in stages_to_run and s not in state.completed_stages for s in (4, 6))
     if need_rag:
         retriever = _make_retriever(state)
 
     try:
-        for stage_no, (key, name) in sorted(STAGE_KEYS.items()):
+        for stage_no in stages_to_run:
+            if stage_no not in STAGE_KEYS:
+                raise StageError(state.case_id, stage_no, "unknown_stage",
+                                 ValueError(f"unknown stage number {stage_no}"))
+            key, name = STAGE_KEYS[stage_no]
             if stage_no in state.completed_stages:
                 continue
             runner = STAGE_RUNNERS[stage_no]
@@ -136,7 +146,7 @@ def run_case(state: CaseState,
             state.stage_outputs[key] = result.payload
             state.stage_inputs[key] = result.inputs
             files: dict[str, str] = {}
-            if persist:
+            if persist and stage_files:
                 files = persistence.save_stage(directory, stage_no, key,
                                                result.inputs, result.payload,
                                                {"call": result.call,

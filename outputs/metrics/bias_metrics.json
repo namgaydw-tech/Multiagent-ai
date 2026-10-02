@@ -1,0 +1,5133 @@
+{
+ "meta": {
+  "phase": "anchors",
+  "seed": 20261002,
+  "n_cases": 117,
+  "reps": 3,
+  "partition": "test",
+  "llm_backend": "deterministic (LLM_BACKEND unset — see PHASE3/4 reports)",
+  "generated_utc": "2026-10-02T17:15:54Z",
+  "config_hash": "cb7198448d25",
+  "disclaimer": "Research prototype — not a medical device.",
+  "profiles": [
+   "9_full_with_rag",
+   "2_single_llm",
+   "3_lightgbm_plus_single_llm",
+   "4_lightgbm_self_reflection"
+  ],
+  "anchor_conditions": [
+   "control",
+   "correct_anchor",
+   "incorrect_anchor",
+   "high_confidence_incorrect_anchor",
+   "low_confidence_incorrect_anchor",
+   "model_anchor",
+   "no_model_anchor"
+  ],
+  "ablation_anchor_settings": [
+   "control",
+   "incorrect_anchor"
+  ],
+  "statistics": {
+   "ci_method": "bootstrap",
+   "n_boot": 2000,
+   "alpha": 0.05,
+   "tests": [
+    "mcnemar_exact",
+    "paired_bootstrap_difference"
+   ],
+   "multiple_comparison_correction": "benjamini_hochberg"
+  }
+ },
+ "anchor_experiment": {
+  "profile": "9_full_with_rag",
+  "n_cases": 117,
+  "reps": 3,
+  "conditions": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.028,
+     "n_num": 9,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0125,
+      0.0467
+     ]
+    },
+    "CRR": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "CMR": {
+     "value": 0.2703,
+     "n_num": 30,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.1892,
+      0.3514
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.4017,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "correct_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "HFR": {
+     "value": 0.1111,
+     "n_num": 39,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0798,
+      0.1453
+     ]
+    },
+    "CRR": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "CMR": {
+     "value": 0.2703,
+     "n_num": 30,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.1892,
+      0.3514
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.4017,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "initial_accuracy": {
+     "value": 1.0,
+     "n_num": 351,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.9138,
+     "n_num": 318,
+     "n_den": 348,
+     "n_excluded": 3,
+     "ci95": [
+      0.8822,
+      0.9397
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.4017,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "high_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.9138,
+     "n_num": 318,
+     "n_den": 348,
+     "n_excluded": 3,
+     "ci95": [
+      0.8822,
+      0.9397
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.4017,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "low_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.9138,
+     "n_num": 318,
+     "n_den": 348,
+     "n_excluded": 3,
+     "ci95": [
+      0.8822,
+      0.9397
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.4017,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 1.0,
+     "n_num": 30,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "AOR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.028,
+     "n_num": 9,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0125,
+      0.0467
+     ]
+    },
+    "CRR": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "CMR": {
+     "value": 0.2703,
+     "n_num": 30,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.1892,
+      0.3514
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.4017,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "no_model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.028,
+     "n_num": 9,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0125,
+      0.0467
+     ]
+    },
+    "CRR": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "CMR": {
+     "value": 0.2703,
+     "n_num": 30,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.1892,
+      0.3514
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.4017,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   }
+  }
+ },
+ "single_baselines": {
+  "2_single_llm": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.2,
+     "n_num": 6,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0667,
+      0.3333
+     ]
+    },
+    "HFR": {
+     "value": 0.4019,
+     "n_num": 129,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.3489,
+      0.4579
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.7863,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.5641,
+     "n_num": 198,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.51,
+      0.6154
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "correct_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "HFR": {
+     "value": 0.0085,
+     "n_num": 3,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0199
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1966,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9915,
+     "n_num": 348,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9801,
+      1.0
+     ]
+    },
+    "initial_accuracy": {
+     "value": 1.0,
+     "n_num": 351,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.9744,
+     "n_num": 342,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9573,
+      0.9886
+     ]
+    },
+    "AOR": {
+     "value": 0.0256,
+     "n_num": 9,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0114,
+      0.0427
+     ]
+    },
+    "BCR": {
+     "value": 0.0256,
+     "n_num": 9,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0114,
+      0.0427
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.3932,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 15,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.0256,
+     "n_num": 9,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0114,
+      0.0427
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "high_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 1.0,
+     "n_num": 351,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "AOR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.3932,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 15,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "low_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.8205,
+     "n_num": 288,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.7806,
+      0.8575
+     ]
+    },
+    "AOR": {
+     "value": 0.1795,
+     "n_num": 63,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.1425,
+      0.2194
+     ]
+    },
+    "BCR": {
+     "value": 0.1795,
+     "n_num": 63,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.1425,
+      0.2194
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.3932,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 15,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.1795,
+     "n_num": 63,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.1425,
+      0.2194
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 1.0,
+     "n_num": 30,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "AOR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1624,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "no_model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.2,
+     "n_num": 6,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0667,
+      0.3333
+     ]
+    },
+    "HFR": {
+     "value": 0.4019,
+     "n_num": 129,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.3489,
+      0.4579
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 2.7863,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 8,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.5641,
+     "n_num": 198,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.51,
+      0.6154
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   }
+  },
+  "3_lightgbm_plus_single_llm": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.1,
+     "n_num": 3,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.2333
+     ]
+    },
+    "HFR": {
+     "value": 0.0374,
+     "n_num": 12,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0187,
+      0.0592
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1624,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9231
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "correct_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "HFR": {
+     "value": 0.0256,
+     "n_num": 9,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0114,
+      0.0427
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.2222,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9744,
+     "n_num": 342,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9573,
+      0.9886
+     ]
+    },
+    "initial_accuracy": {
+     "value": 1.0,
+     "n_num": 351,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.5214,
+     "n_num": 183,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4701,
+      0.5755
+     ]
+    },
+    "AOR": {
+     "value": 0.4786,
+     "n_num": 168,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4274,
+      0.5299
+     ]
+    },
+    "BCR": {
+     "value": 0.4701,
+     "n_num": 165,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.416,
+      0.5214
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.7692,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 16,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.4701,
+     "n_num": 165,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.416,
+      0.5214
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "high_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.5641,
+     "n_num": 198,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.51,
+      0.6182
+     ]
+    },
+    "AOR": {
+     "value": 0.4359,
+     "n_num": 153,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.3846,
+      0.49
+     ]
+    },
+    "BCR": {
+     "value": 0.4274,
+     "n_num": 150,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.3732,
+      0.4815
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.7692,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 16,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.4274,
+     "n_num": 150,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.3732,
+      0.4815
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "low_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.3248,
+     "n_num": 114,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.2735,
+      0.3732
+     ]
+    },
+    "AOR": {
+     "value": 0.6752,
+     "n_num": 237,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.6268,
+      0.7265
+     ]
+    },
+    "BCR": {
+     "value": 0.6496,
+     "n_num": 228,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.5983,
+      0.7009
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.7692,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 16,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.6496,
+     "n_num": 228,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.5983,
+      0.7009
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 1.0,
+     "n_num": 30,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "AOR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1624,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "no_model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.1,
+     "n_num": 3,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.2333
+     ]
+    },
+    "HFR": {
+     "value": 0.0374,
+     "n_num": 12,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0187,
+      0.0592
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1624,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9231
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   }
+  },
+  "4_lightgbm_self_reflection": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.1,
+     "n_num": 3,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.2333
+     ]
+    },
+    "HFR": {
+     "value": 0.0561,
+     "n_num": 18,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0312,
+      0.0841
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1624,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8718,
+     "n_num": 306,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8376,
+      0.906
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "correct_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "HFR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0741
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.2222,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9259,
+      0.9715
+     ]
+    },
+    "initial_accuracy": {
+     "value": 1.0,
+     "n_num": 351,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.4872,
+     "n_num": 171,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4359,
+      0.5413
+     ]
+    },
+    "AOR": {
+     "value": 0.5128,
+     "n_num": 180,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4587,
+      0.567
+     ]
+    },
+    "BCR": {
+     "value": 0.5043,
+     "n_num": 177,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4501,
+      0.5584
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.7692,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 16,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.5043,
+     "n_num": 177,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4501,
+      0.5584
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "high_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.547,
+     "n_num": 192,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4929,
+      0.5983
+     ]
+    },
+    "AOR": {
+     "value": 0.453,
+     "n_num": 159,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4017,
+      0.5071
+     ]
+    },
+    "BCR": {
+     "value": 0.4444,
+     "n_num": 156,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.3932,
+      0.4986
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.7692,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 16,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.4444,
+     "n_num": 156,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.3932,
+      0.4986
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "low_confidence_incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.3419,
+     "n_num": 120,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.2906,
+      0.3903
+     ]
+    },
+    "AOR": {
+     "value": 0.6581,
+     "n_num": 231,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.6097,
+      0.7094
+     ]
+    },
+    "BCR": {
+     "value": 0.6325,
+     "n_num": 222,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.5812,
+      0.6838
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.7692,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 16,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Adhäsionen des Colon ascendens",
+      "Bowel obstruction / ileus process",
+      "Bridenileus",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Sepsis mit Begleitappendizitis",
+      "Urinary tract infection / urolithiasis",
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+      "appendicitis",
+      "chronische Appendizitis",
+      "gedeckt perforierte Appendizitis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.6325,
+     "n_num": 222,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.5812,
+      0.6838
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 1.0,
+     "n_num": 30,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "AOR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1624,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "no_model_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.1,
+     "n_num": 3,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.2333
+     ]
+    },
+    "HFR": {
+     "value": 0.0561,
+     "n_num": 18,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0312,
+      0.0841
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "DDR": {
+     "mean_candidates_per_case": 3.1624,
+     "n_cases": 351,
+     "unique_hypotheses_corpus": 9,
+     "corpus_hypotheses": [
+      "Acute appendicitis",
+      "Bowel obstruction / ileus process",
+      "Complicated appendicitis (perforation/abscess)",
+      "Constipation / fecal loading",
+      "Gastroenteritis / enteritis",
+      "Gynecological pathology (ovarian/uterine)",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection / urolithiasis",
+      "no appendicitis"
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8718,
+     "n_num": 306,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8376,
+      0.906
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   }
+  }
+ },
+ "bias_reduction": {
+  "definition": "CBR_single_agent - CBR_multi_agent (config/experiment.yaml)",
+  "cbr_single_2": {
+   "value": 0.9744,
+   "n_num": 114,
+   "n_den": 117,
+   "n_excluded": 0,
+   "ci95": [
+    0.9402,
+    1.0
+   ]
+  },
+  "cbr_single_3": {
+   "value": 0.5214,
+   "n_num": 61,
+   "n_den": 117,
+   "n_excluded": 0,
+   "ci95": [
+    0.4274,
+    0.6154
+   ]
+  },
+  "cbr_multi": {
+   "value": 0.0513,
+   "n_num": 6,
+   "n_den": 117,
+   "n_excluded": 0,
+   "ci95": [
+    0.0171,
+    0.094
+   ]
+  },
+  "paired_diff": {
+   "diff": 0.4701,
+   "ci95": [
+    0.3761,
+    0.5641
+   ],
+   "p_value": 0.0009995,
+   "n_pairs": 117,
+   "n_boot": 2000
+  },
+  "mcnemar": {
+   "b": 55,
+   "c": 0,
+   "n_discordant": 55,
+   "p_value": 5.55112e-17
+  },
+  "secondary_vs_single_2": {
+   "cbr_single": {
+    "value": 0.9744,
+    "n_num": 114,
+    "n_den": 117,
+    "n_excluded": 0,
+    "ci95": [
+     0.9402,
+     1.0
+    ]
+   },
+   "paired_diff_single_minus_multi": {
+    "diff": 0.9231,
+    "ci95": [
+     0.8632,
+     0.9658
+    ],
+    "p_value": 0.0009995,
+    "n_pairs": 117,
+    "n_boot": 2000
+   },
+   "mcnemar": {
+    "b": 108,
+    "c": 0,
+    "n_discordant": 108,
+    "p_value": 6.16298e-33
+   }
+  }
+ },
+ "statistics": {
+  "comparisons": [
+   {
+    "name": "CBR_single3_vs_multi (incorrect anchor)",
+    "test": "mcnemar_exact",
+    "b": 55,
+    "c": 0,
+    "n_discordant": 55,
+    "p_value": 5.55112e-17,
+    "q_value": 1.38778e-16,
+    "rejected_bh": true
+   },
+   {
+    "name": "CBR_single2_vs_multi (incorrect anchor)",
+    "test": "mcnemar_exact",
+    "b": 108,
+    "c": 0,
+    "n_discordant": 108,
+    "p_value": 6.16298e-33,
+    "q_value": 3.08149e-32,
+    "rejected_bh": true
+   },
+   {
+    "name": "CBR high vs low confidence anchor (multi)",
+    "test": "paired_bootstrap",
+    "diff": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "p_value": 1.0,
+    "n_pairs": 117,
+    "n_boot": 2000,
+    "q_value": 1.0,
+    "rejected_bh": false
+   },
+   {
+    "name": "final accuracy control vs incorrect anchor (multi)",
+    "test": "paired_bootstrap",
+    "diff": -0.0256,
+    "ci95": [
+     -0.0598,
+     0.0
+    ],
+    "p_value": 0.102949,
+    "n_pairs": 117,
+    "n_boot": 2000,
+    "q_value": 0.128686,
+    "rejected_bh": false
+   },
+   {
+    "name": "final accuracy full framework vs LightGBM-only (control)",
+    "test": "paired_bootstrap",
+    "diff": -0.0256,
+    "ci95": [
+     -0.0598,
+     0.0
+    ],
+    "p_value": 0.102949,
+    "n_pairs": 117,
+    "n_boot": 2000,
+    "q_value": 0.128686,
+    "rejected_bh": false
+   }
+  ],
+  "benjamini_hochberg": {
+   "q_values": [
+    1.38778e-16,
+    3.08149e-32,
+    1.0,
+    0.128686,
+    0.128686
+   ],
+   "rejected": [
+    true,
+    true,
+    false,
+    false,
+    false
+   ],
+   "alpha": 0.05,
+   "n_tests": 5
+  }
+ },
+ "ablations": {
+  "10_all_see_anchor": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0093,
+     "n_num": 3,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0218
+     ]
+    },
+    "CRR": {
+     "value": 0.9099,
+     "n_num": 303,
+     "n_den": 333,
+     "n_excluded": 18,
+     "ci95": [
+      0.8799,
+      0.9399
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.906,
+     "n_num": 318,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8746,
+      0.9373
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.8684,
+     "n_num": 99,
+     "n_den": 114,
+     "n_excluded": 237,
+     "ci95": [
+      0.807,
+      0.9298
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "11_information_isolated": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0093,
+     "n_num": 3,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0218
+     ]
+    },
+    "CRR": {
+     "value": 0.9099,
+     "n_num": 303,
+     "n_den": 333,
+     "n_excluded": 18,
+     "ci95": [
+      0.8799,
+      0.9399
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.906,
+     "n_num": 318,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8746,
+      0.9373
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.8684,
+     "n_num": 99,
+     "n_den": 114,
+     "n_excluded": 237,
+     "ci95": [
+      0.807,
+      0.9298
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "1_lightgbm_only": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "2_single_llm": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.2,
+     "n_num": 6,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0667,
+      0.3333
+     ]
+    },
+    "HFR": {
+     "value": 0.4019,
+     "n_num": 129,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.3489,
+      0.4579
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.5641,
+     "n_num": 198,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.51,
+      0.6154
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.9744,
+     "n_num": 342,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9573,
+      0.9886
+     ]
+    },
+    "AOR": {
+     "value": 0.0256,
+     "n_num": 9,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0114,
+      0.0427
+     ]
+    },
+    "BCR": {
+     "value": 0.0256,
+     "n_num": 9,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0114,
+      0.0427
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.0256,
+     "n_num": 9,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0114,
+      0.0427
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "3_lightgbm_plus_single_llm": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.1,
+     "n_num": 3,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.2333
+     ]
+    },
+    "HFR": {
+     "value": 0.0374,
+     "n_num": 12,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0187,
+      0.0592
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9231
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.5214,
+     "n_num": 183,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4701,
+      0.5755
+     ]
+    },
+    "AOR": {
+     "value": 0.4786,
+     "n_num": 168,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4274,
+      0.5299
+     ]
+    },
+    "BCR": {
+     "value": 0.4701,
+     "n_num": 165,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.416,
+      0.5214
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.4701,
+     "n_num": 165,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.416,
+      0.5214
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "4_lightgbm_self_reflection": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.1,
+     "n_num": 3,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.2333
+     ]
+    },
+    "HFR": {
+     "value": 0.0561,
+     "n_num": 18,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0312,
+      0.0841
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8718,
+     "n_num": 306,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8376,
+      0.906
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.4872,
+     "n_num": 171,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4359,
+      0.5413
+     ]
+    },
+    "AOR": {
+     "value": 0.5128,
+     "n_num": 180,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4587,
+      0.567
+     ]
+    },
+    "BCR": {
+     "value": 0.5043,
+     "n_num": 177,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4501,
+      0.5584
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.5043,
+     "n_num": 177,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.4501,
+      0.5584
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "5_generic_multi_agent": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "6_proponent_opponent": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0093,
+     "n_num": 3,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0218
+     ]
+    },
+    "CRR": {
+     "value": 0.9099,
+     "n_num": 303,
+     "n_den": 333,
+     "n_excluded": 18,
+     "ci95": [
+      0.8799,
+      0.9399
+     ]
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.906,
+     "n_num": 318,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8746,
+      0.9373
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.8684,
+     "n_num": 99,
+     "n_den": 114,
+     "n_excluded": 237,
+     "ci95": [
+      0.807,
+      0.9298
+     ]
+    },
+    "CMR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "7_full_five_agent": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0093,
+     "n_num": 3,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0218
+     ]
+    },
+    "CRR": {
+     "value": 0.9099,
+     "n_num": 303,
+     "n_den": 333,
+     "n_excluded": 18,
+     "ci95": [
+      0.8799,
+      0.9399
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.906,
+     "n_num": 318,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8746,
+      0.9373
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.8684,
+     "n_num": 99,
+     "n_den": 114,
+     "n_excluded": 237,
+     "ci95": [
+      0.807,
+      0.9298
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "8_full_without_rag": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.0093,
+     "n_num": 3,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0,
+      0.0218
+     ]
+    },
+    "CRR": {
+     "value": 0.9099,
+     "n_num": 303,
+     "n_den": 333,
+     "n_excluded": 18,
+     "ci95": [
+      0.8799,
+      0.9399
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.906,
+     "n_num": 318,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8746,
+      0.9373
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.8684,
+     "n_num": 99,
+     "n_den": 114,
+     "n_excluded": 237,
+     "ci95": [
+      0.807,
+      0.9298
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "9_full_with_rag": {
+   "control": {
+    "n_rows": 351,
+    "CBR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "AOR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "BCR": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 30,
+     "n_excluded": 321,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "HFR": {
+     "value": 0.028,
+     "n_num": 9,
+     "n_den": 321,
+     "n_excluded": 30,
+     "ci95": [
+      0.0125,
+      0.0467
+     ]
+    },
+    "CRR": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "CMR": {
+     "value": 0.2703,
+     "n_num": 30,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.1892,
+      0.3514
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.8889,
+     "n_num": 312,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8547,
+      0.9202
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    }
+   },
+   "incorrect_anchor": {
+    "n_rows": 351,
+    "CBR": {
+     "value": 0.0513,
+     "n_num": 18,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0285,
+      0.0769
+     ]
+    },
+    "AOR": {
+     "value": 0.9487,
+     "n_num": 333,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.9231,
+      0.9715
+     ]
+    },
+    "BCR": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "HFR": {
+     "value": null,
+     "n_num": 0,
+     "n_den": 0,
+     "n_excluded": 351,
+     "ci95": null
+    },
+    "CRR": {
+     "value": 0.9138,
+     "n_num": 318,
+     "n_den": 348,
+     "n_excluded": 3,
+     "ci95": [
+      0.8822,
+      0.9397
+     ]
+    },
+    "CMR": {
+     "value": 0.2973,
+     "n_num": 33,
+     "n_den": 111,
+     "n_excluded": 240,
+     "ci95": [
+      0.2162,
+      0.3874
+     ]
+    },
+    "DR": {
+     "value": 1.0,
+     "n_num": 117,
+     "n_den": 117,
+     "repetitions": [
+      3
+     ],
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "final_accuracy": {
+     "value": 0.9145,
+     "n_num": 321,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.8832,
+      0.943
+     ]
+    },
+    "initial_accuracy": {
+     "value": 0.0,
+     "n_num": 0,
+     "n_den": 351,
+     "n_excluded": 0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  }
+ },
+ "ablation_anchor_setting": "control",
+ "error_analysis": {
+  "n_cases": 117,
+  "tag_counts": {
+   "anchor_followed_error": 6,
+   "anchor_induced_error": 6,
+   "anchor_resisted": 111,
+   "confident_error": 4,
+   "disagreement": 3,
+   "harmful_flip": 3,
+   "high_acuity_missed": 10,
+   "model_fn": 3,
+   "model_fp": 7,
+   "model_tn": 41,
+   "model_tp": 66,
+   "system_fn": 3,
+   "system_fp": 10,
+   "system_tn": 38,
+   "system_tp": 66,
+   "uncertain_error": 9,
+   "unchanged_correct": 104,
+   "unchanged_wrong": 10,
+   "worsened": 3
+  },
+  "rates": {
+   "system_accuracy_control": 0.8889,
+   "model_accuracy": 0.9145,
+   "improved_rate": 0.0,
+   "worsened_rate": 0.0256
+  },
+  "fn_breakdown": {
+   "model_fn": 3,
+   "system_fn_control": 3,
+   "fn_recovered_by_system": 0,
+   "fn_persisted": 3
+  },
+  "fp_breakdown": {
+   "model_fp": 7,
+   "fp_corrected_by_system": 0,
+   "fp_introduced_by_system": 3
+  },
+  "anchor_errors": {
+   "followed": 6,
+   "resisted": 111,
+   "induced_errors": 6
+  }
+ }
+}

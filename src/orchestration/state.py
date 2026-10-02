@@ -129,6 +129,7 @@ class CaseState:
     config_hash: str = ""
     seed: int = 20261002
     ablation: str = "default"
+    pipeline_stages: tuple[int, ...] | None = None  # ablation profiles; None = stages 1-8
     rag_enabled: bool = True
     policy: VisibilityPolicy = field(default_factory=VisibilityPolicy)
     stage_outputs: dict[str, Any] = field(default_factory=dict)

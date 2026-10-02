@@ -78,9 +78,13 @@ def diagnosis_family(label: str) -> str:
 
     The negative class ("no appendicitis" and common multilingual negations) is
     its own family so that appendicitis vs no-appendicitis is always a real
-    difference, never a same-family match.
+    difference, never a same-family match. Missing labels (None/NaN) map to "".
     """
-    low = (label or "").lower()
+    if label is None:
+        return ""
+    if isinstance(label, float) and label != label:  # NaN
+        return ""
+    low = str(label).lower()
     if any(neg in low for neg in _NEGATIVE_APPENDICITIS):
         return "no appendicitis"
     for family, keys in _DX_FAMILIES:
@@ -111,13 +115,18 @@ def extract(record: dict[str, Any],
             cleanser: DataCleanserOutput,
             differential: IndependentDifferentialOutput,
             proponent: ProponentOutput,
-            opponent: OpponentOutput,
-            watchdog: WatchdogOutput,
-            retrieval: EvidenceRetrievalOutput,
+            opponent: OpponentOutput | None,
+            watchdog: WatchdogOutput | None,
+            retrieval: EvidenceRetrievalOutput | None,
             model: dict[str, Any],
             uncertainty: dict[str, Any] | None,
             anchor: dict[str, Any] | None) -> dict[str, Any]:
-    """Deterministic weighted synthesis payload (see module docstring)."""
+    """Deterministic weighted synthesis payload (see module docstring).
+
+    ``opponent``/``watchdog``/``retrieval`` may be ``None`` when an ablation
+    profile does not run that stage — the absence is then recorded in the audit
+    trail and their weighting terms neutralised (never a fabricated result).
+    """
     predicted = str(model.get("predicted_class", ""))
     calibrated = float(model.get("calibrated_probability")
                        or (model.get("class_probabilities") or {}).get(predicted, 0.5))
@@ -129,10 +138,10 @@ def extract(record: dict[str, Any],
     n_missing = len(cleanser.missing_critical_information)
     data_completeness = max(0.0, 1.0 - n_missing / _CRITICAL_FIELDS)
 
-    n_contra = len(opponent.contradictory_evidence)
+    n_contra = len(opponent.contradictory_evidence) if opponent else 0
     alt_leading = (len(differential.supporting_evidence.get(differential.candidate_diagnoses[0], []))
                    if differential.candidate_diagnoses else 0)
-    strongest_alt = opponent.strongest_alternative
+    strongest_alt = opponent.strongest_alternative if opponent else ""
     alt_support = len(differential.supporting_evidence.get(strongest_alt, [])) if strongest_alt in \
         differential.supporting_evidence else alt_leading
     alt_keys = [k for k in differential.supporting_evidence if strongest_alt and strongest_alt[:10] in k]
@@ -140,7 +149,8 @@ def extract(record: dict[str, Any],
         alt_support = len(differential.supporting_evidence[alt_keys[0]])
     contradiction_strength = min(1.0, 0.5 * min(n_contra, 3) / 3
                                  + 0.5 * (alt_support / (alt_support + max(alt_leading, 1))))
-    guideline_support = min(1.0, len(retrieval.retrieved) / 3.0)
+    guideline_support = (min(1.0, len(retrieval.retrieved) / 3.0)
+                         if retrieval is not None else 0.0)
 
     # --- candidate scores (winner takes the primary_working_diagnosis) ---
     # Bounded by construction: model term ≤ 0.70, evidence terms ≤ 0.50.
@@ -155,7 +165,7 @@ def extract(record: dict[str, Any],
     elif strongest_alt:
         scores[strongest_alt] = 0.25 * contradiction_strength + 0.10
     # decisive complication evidence (watchdog HIGH) boosts the surgical candidate
-    if watchdog.risk_level in ("HIGH", "CRITICAL"):
+    if watchdog is not None and watchdog.risk_level in ("HIGH", "CRITICAL"):
         for key in list(scores):
             if "appendicitis" in key.lower():
                 scores[key] += 0.15
@@ -164,7 +174,8 @@ def extract(record: dict[str, Any],
 
     # --- weighted confidence blend (never a copy of model probability) ---
     evidence_agreement = scores[primary] / max(sum(scores.values()), 1e-6)
-    risk_mult = { "LOW": 1.0, "MODERATE": 0.95, "HIGH": 0.88, "CRITICAL": 0.75 }[watchdog.risk_level]
+    risk_mult = (({"LOW": 1.0, "MODERATE": 0.95, "HIGH": 0.88, "CRITICAL": 0.75}
+                   [watchdog.risk_level]) if watchdog is not None else 1.0)
     unc_mult = _UNCERTAINTY_MULT.get((uncertainty or {}).get("uncertainty_level", "MODERATE"), 0.88)
     blend = (0.45 * evidence_agreement
              + 0.25 * model_support
@@ -180,10 +191,11 @@ def extract(record: dict[str, Any],
         "* risk_mult * uncertainty_mult, 0.05, 0.95); "
         f"evidence_agreement={evidence_agreement:.3f}, model_support={model_support:.3f} "
         f"(calibrated), data_completeness={data_completeness:.3f} "
-        f"({n_missing}/{_CRITICAL_FIELDS} critical fields missing), "
+        f"(calc={n_missing}/{_CRITICAL_FIELDS} critical fields missing), "
         f"contradiction_strength={contradiction_strength:.3f}, "
         f"guideline_support={guideline_support:.3f}, risk_mult={risk_mult} "
-        f"({watchdog.risk_level}), uncertainty_mult={unc_mult} "
+        f"({watchdog.risk_level if watchdog else 'stage 5 not run in this condition'}), "
+        f"uncertainty_mult={unc_mult} "
         f"({(uncertainty or {}).get('uncertainty_level', 'MODERATE')}). "
         f"The model probability {calibrated:.3f} is an *input* to model_support, "
         "not the output confidence."
@@ -224,12 +236,16 @@ def extract(record: dict[str, Any],
         f"stage3: proponent defended {proponent.supported_diagnosis!r} "
         f"(p={proponent.model_probability}, acknowledged "
         f"{len(proponent.contradictions_acknowledged)} contradictions)",
-        f"stage4: opponent challenged {opponent.challenged_hypothesis!r} with "
-        f"{n_contra} cited counter-evidences; anchoring_risk={opponent.anchoring_risk}",
-        f"stage5: watchdog risk={watchdog.risk_level}; "
-        f"{len(watchdog.red_flags_present)} red flags present; "
-        f"{len(watchdog.rules_refused)} rules refused (fail-closed)",
-        f"stage6: {len(retrieval.retrieved)} sources retrieved with provenance",
+        f"stage4: " + (f"opponent challenged {opponent.challenged_hypothesis!r} with "
+                        f"{n_contra} cited counter-evidences; "
+                        f"anchoring_risk={opponent.anchoring_risk}" if opponent else
+                        "not run in this condition (cooperative/no-opponent profile)"),
+        f"stage5: " + (f"watchdog risk={watchdog.risk_level}; "
+                        f"{len(watchdog.red_flags_present)} red flags present; "
+                        f"{len(watchdog.rules_refused)} rules refused (fail-closed)"
+                        if watchdog else "not run in this condition (no-watchdog profile)"),
+        f"stage6: " + (f"{len(retrieval.retrieved)} sources retrieved with provenance"
+                        if retrieval else "not run in this condition (no-RAG profile)"),
         f"stage7: weighted blend produced {confidence} ({interpretation.split(' — ')[0]}); "
         f"anchor_present={anchor_present}, anchor_followed={anchor_followed}",
     ]
@@ -239,8 +255,10 @@ def extract(record: dict[str, Any],
         "multi_agent_confidence": confidence,
         "confidence_interpretation": interpretation,
         "critical_differentials": differential.candidate_diagnoses[:4],
-        "urgent_rule_outs": list(watchdog.urgent_rule_out_conditions),
-        "recommended_information_or_tests": list(opponent.disconfirmatory_tests),
+        "urgent_rule_outs": (list(watchdog.urgent_rule_out_conditions)
+                              if watchdog is not None else []),
+        "recommended_information_or_tests": (list(opponent.disconfirmatory_tests)
+                                              if opponent is not None else []),
         "important_missing_data": list(cleanser.missing_critical_information),
         "model_vs_agents_disagreement": disagreement,
         "confirmation_bias_risk_before_debate": before,
@@ -255,15 +273,19 @@ def extract(record: dict[str, Any],
 def run_arbitrator(cleanser: DataCleanserOutput,
                    differential: IndependentDifferentialOutput,
                    proponent: ProponentOutput,
-                   opponent: OpponentOutput,
-                   watchdog: WatchdogOutput,
-                   retrieval: EvidenceRetrievalOutput,
+                   opponent: OpponentOutput | None,
+                   watchdog: WatchdogOutput | None,
+                   retrieval: EvidenceRetrievalOutput | None,
                    model: dict[str, Any],
                    uncertainty: dict[str, Any] | None,
                    anchor: dict[str, Any] | None,
                    record: dict[str, Any],
                    provider: LLMProvider) -> ProviderResult:
-    """Execute Agent 5 (sees everything; weighted synthesis, no voting)."""
+    """Execute Agent 5 (sees everything; weighted synthesis, no voting).
+
+    ``opponent``/``watchdog``/``retrieval`` may be ``None`` when the ablation
+    profile does not run that stage — recorded as such, never fabricated.
+    """
     system = (
         "You are the Pediatric Consultant Arbitrator in a research debate. "
         "Synthesize the stage outputs with explicit evidence weights — never "
@@ -276,9 +298,9 @@ def run_arbitrator(cleanser: DataCleanserOutput,
             f"cleansed_missing={cleanser.missing_critical_information}\n"
             f"differential={differential.model_dump()}\n"
             f"proponent={proponent.model_dump()}\n"
-            f"opponent={opponent.model_dump()}\n"
-            f"watchdog={watchdog.model_dump()}\n"
-            f"retrieval={retrieval.model_dump()}\n"
+            f"opponent={(opponent.model_dump() if opponent else None)}\n"
+            f"watchdog={(watchdog.model_dump() if watchdog else None)}\n"
+            f"retrieval={(retrieval.model_dump() if retrieval else None)}\n"
             f"model_output={model}\n"
             f"uncertainty={uncertainty}\n"
             f"anchor={anchor}\n"

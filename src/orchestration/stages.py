@@ -251,8 +251,11 @@ def run_stage6(state: CaseState, provider: Any, retriever: Any = None) -> StageR
     """Evidence retrieval — deterministic offline RAG with full provenance."""
     t0 = time.perf_counter()
     differential = _typed(state, "independent_differential")
-    watchdog = _typed(state, "watchdog")
-    red_flags = [e.quote for e in watchdog.red_flags_present if e.quote][:2]
+    watchdog = (state.stage_outputs.get("watchdog"))
+    if watchdog is not None and not isinstance(watchdog, BaseModel):
+        watchdog = _typed(state, "watchdog")
+    red_flags = ([e.quote for e in watchdog.red_flags_present if e.quote][:2]
+                 if watchdog is not None else [])
 
     from src.rag.retriever import build_query
     query = build_query(differential.candidate_diagnoses, red_flags)
@@ -298,9 +301,12 @@ def run_stage7(state: CaseState, provider: Any, retriever: Any = None) -> StageR
         cleanser=_typed(state, "data_cleanser"),
         differential=_typed(state, "independent_differential"),
         proponent=_typed(state, "proponent"),
-        opponent=_typed(state, "opponent"),
-        watchdog=_typed(state, "watchdog"),
-        retrieval=_typed(state, "evidence_retrieval"),
+        opponent=(_typed(state, "opponent")
+                  if "opponent" in state.stage_outputs else None),
+        watchdog=(_typed(state, "watchdog")
+                  if "watchdog" in state.stage_outputs else None),
+        retrieval=(_typed(state, "evidence_retrieval")
+                   if "evidence_retrieval" in state.stage_outputs else None),
         model=sl["model_output"],
         uncertainty=sl.get("uncertainty"),
         anchor=sl.get("anchor"),
@@ -330,7 +336,10 @@ def run_stage8(state: CaseState, provider: Any, retriever: Any = None) -> StageR
         anchor=state.anchor,
         ground_truth=sl.get("ground_truth"),
         model_output=state.model_output,
-        opponent=_typed(state, "opponent").model_dump(),
+        opponent=((state.stage_outputs.get("opponent").model_dump()
+                   if isinstance(state.stage_outputs.get("opponent"), BaseModel)
+                   else _typed(state, "opponent").model_dump())
+                  if "opponent" in state.stage_outputs else None),
         arbitrator=_typed(state, "arbitrator").model_dump(),
         proponent=_typed(state, "proponent").model_dump(),
     )

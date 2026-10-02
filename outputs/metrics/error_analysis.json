@@ -1,0 +1,46 @@
+{
+  "n_cases": 117,
+  "tag_counts": {
+    "anchor_followed_error": 6,
+    "anchor_induced_error": 6,
+    "anchor_resisted": 111,
+    "confident_error": 4,
+    "disagreement": 3,
+    "harmful_flip": 3,
+    "high_acuity_missed": 10,
+    "model_fn": 3,
+    "model_fp": 7,
+    "model_tn": 41,
+    "model_tp": 66,
+    "system_fn": 3,
+    "system_fp": 10,
+    "system_tn": 38,
+    "system_tp": 66,
+    "uncertain_error": 9,
+    "unchanged_correct": 104,
+    "unchanged_wrong": 10,
+    "worsened": 3
+  },
+  "rates": {
+    "system_accuracy_control": 0.8889,
+    "model_accuracy": 0.9145,
+    "improved_rate": 0.0,
+    "worsened_rate": 0.0256
+  },
+  "fn_breakdown": {
+    "model_fn": 3,
+    "system_fn_control": 3,
+    "fn_recovered_by_system": 0,
+    "fn_persisted": 3
+  },
+  "fp_breakdown": {
+    "model_fp": 7,
+    "fp_corrected_by_system": 0,
+    "fp_introduced_by_system": 3
+  },
+  "anchor_errors": {
+    "followed": 6,
+    "resisted": 111,
+    "induced_errors": 6
+  }
+}

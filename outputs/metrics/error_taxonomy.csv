@@ -1,0 +1,118 @@
+row_index,ground_truth,model_pred,system_pred_control,system_pred_incorrect_anchor,model_outcome,system_outcome,delta_control,anchor_outcome,uncertainty_level_control,watchdog_risk_control,tags
+0,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+17,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,HIGH,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+19,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+24,no appendicitis,appendicitis,appendicitis,appendicitis,fp,fp,unchanged_wrong,followed,HIGH,LOW,model_fp;system_fp;unchanged_wrong;anchor_followed_error;anchor_induced_error;uncertain_error
+31,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+39,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+50,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,HIGH,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+60,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+61,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+66,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+82,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+88,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+90,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+92,no appendicitis,no appendicitis,Acute appendicitis,no appendicitis,tn,fp,worsened,resisted,MODERATE,MODERATE,model_tn;system_fp;worsened;anchor_resisted;uncertain_error;disagreement;harmful_flip
+99,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+105,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+123,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+124,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+127,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+139,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+148,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,HIGH,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+155,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+161,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+163,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+166,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+169,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+171,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+176,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+177,no appendicitis,appendicitis,appendicitis,appendicitis,fp,fp,unchanged_wrong,followed,HIGH,MODERATE,model_fp;system_fp;unchanged_wrong;anchor_followed_error;anchor_induced_error;uncertain_error
+178,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,MODERATE,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+199,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+203,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+204,no appendicitis,no appendicitis,Acute appendicitis,no appendicitis,tn,fp,worsened,resisted,MODERATE,LOW,model_tn;system_fp;worsened;anchor_resisted;uncertain_error;disagreement;harmful_flip
+215,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+217,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+220,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+229,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+230,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+239,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+242,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+244,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+258,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+274,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+277,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+281,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,MODERATE,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+284,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+285,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+287,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+288,no appendicitis,appendicitis,Acute appendicitis,Acute appendicitis,fp,fp,unchanged_wrong,followed,HIGH,LOW,model_fp;system_fp;unchanged_wrong;anchor_followed_error;anchor_induced_error;uncertain_error
+289,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+291,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+292,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+293,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+304,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,MODERATE,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+324,no appendicitis,appendicitis,appendicitis,appendicitis,fp,fp,unchanged_wrong,followed,HIGH,MODERATE,model_fp;system_fp;unchanged_wrong;anchor_followed_error;anchor_induced_error;uncertain_error
+333,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,MODERATE,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+346,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+367,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+370,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+381,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+386,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+391,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+393,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,HIGH,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+395,no appendicitis,appendicitis,appendicitis,appendicitis,fp,fp,unchanged_wrong,followed,HIGH,MODERATE,model_fp;system_fp;unchanged_wrong;anchor_followed_error;anchor_induced_error;uncertain_error
+396,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+397,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+412,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+422,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+438,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,MODERATE,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted
+440,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+441,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+450,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,MODERATE,model_tn;system_tn;unchanged_correct;anchor_resisted;high_acuity_missed
+452,no appendicitis,no appendicitis,no appendicitis,no appendicitis,tn,tn,unchanged_correct,resisted,LOW,LOW,model_tn;system_tn;unchanged_correct;anchor_resisted
+469,no appendicitis,no appendicitis,Acute appendicitis,no appendicitis,tn,fp,worsened,resisted,MODERATE,LOW,model_tn;system_fp;worsened;anchor_resisted;uncertain_error;disagreement;harmful_flip
+478,no appendicitis,appendicitis,appendicitis,appendicitis,fp,fp,unchanged_wrong,followed,HIGH,MODERATE,model_fp;system_fp;unchanged_wrong;anchor_followed_error;anchor_induced_error;uncertain_error
+502,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+516,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+536,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+540,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+543,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+545,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+556,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+560,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+568,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+569,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,HIGH,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+571,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,HIGH,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+572,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+589,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+593,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+610,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+614,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+631,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+638,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+639,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+647,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+651,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+654,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+657,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+660,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+675,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+677,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+686,appendicitis,no appendicitis,no appendicitis,no appendicitis,fn,fn,unchanged_wrong,resisted,LOW,MODERATE,model_fn;system_fn;unchanged_wrong;anchor_resisted;confident_error;high_acuity_missed
+689,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+690,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+717,appendicitis,no appendicitis,no appendicitis,no appendicitis,fn,fn,unchanged_wrong,resisted,LOW,MODERATE,model_fn;system_fn;unchanged_wrong;anchor_resisted;confident_error
+718,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+723,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+724,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+733,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+738,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+743,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,HIGH,model_tp;system_tp;unchanged_correct;anchor_resisted
+746,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
+750,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+758,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,HIGH,LOW,model_tp;system_tp;unchanged_correct;anchor_resisted
+764,appendicitis,no appendicitis,no appendicitis,no appendicitis,fn,fn,unchanged_wrong,resisted,LOW,LOW,model_fn;system_fn;unchanged_wrong;anchor_resisted;confident_error
+773,no appendicitis,appendicitis,appendicitis,appendicitis,fp,fp,unchanged_wrong,resisted,LOW,MODERATE,model_fp;system_fp;unchanged_wrong;anchor_resisted;confident_error
+776,appendicitis,appendicitis,appendicitis,appendicitis,tp,tp,unchanged_correct,resisted,LOW,MODERATE,model_tp;system_tp;unchanged_correct;anchor_resisted
