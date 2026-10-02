@@ -95,6 +95,39 @@ Datasets are never concatenated; each domain gets its own model behind a shared 
 - No PHI, no restricted data, no paywall/auth bypass, no copyrighted figures as training data.
 - Citations are machine-verified; no invented references; no invented thresholds.
 
+## Research dashboard (frontend)
+
+A dependency-free static dashboard (`dashboard/`) renders the executed audit, dataset inventory,
+verified literature, pipeline/ablation design, agents, and bias-metric definitions. **Bias metric
+values stay empty until experiments actually run — nothing on the page is hand-authored.**
+
+### Run locally
+
+```bash
+# 1. (re)generate the data bundle from repo artifacts
+python dashboard/build_data.py
+
+# 2. serve it (default port 8000)
+python -m http.server 8000 --bind 127.0.0.1 --directory dashboard
+# open http://127.0.0.1:8000/
+```
+
+### Deploy to Vercel
+
+The site is fully static (no CDN, no build step, no server runtime) and pre-built into
+`dashboard/`, so Vercel needs no Python at deploy time:
+
+```bash
+# Option A - CLI
+npx vercel --prod          # vercel.json already points outputDirectory at dashboard/
+
+# Option B - dashboard: import the GitHub repo, framework "Other", output directory "dashboard"
+```
+
+Before every deploy that changes research artifacts, refresh the bundle first:
+`python dashboard/build_data.py` (it also copies linked docs into `dashboard/`).
+Verify with `python -m pytest tests/ -q` (35 tests, incl. dashboard integrity + honesty guards).
+
 ## Repository map
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full layout

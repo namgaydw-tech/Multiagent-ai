@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pediatric DeBias AI — Research Dashboard</title>
+  <meta name="description" content="Research dashboard for an adversarial multi-agent framework measuring confirmation bias in pediatric diagnostic support. Research prototype only." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234cc2ff'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand-row">
+        <span class="logo" aria-hidden="true">◑</span>
+        <div>
+          <h1>Pediatric DeBias AI</h1>
+          <p class="subtitle">Adversarial multi-agent frameworks for mitigating confirmation bias in automated pediatric diagnostics</p>
+        </div>
+        <span class="phase-badge" id="phase-badge">loading…</span>
+      </div>
+      <div class="disclaimer" role="note">
+        <strong>Research prototype.</strong> Not a medical device · not clinically validated · not a
+        replacement for qualified pediatric clinicians · no output may be used for patient care.
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- status cards -->
+    <section class="cards" id="status-cards" aria-label="Project status">
+      <div class="card skeleton"></div><div class="card skeleton"></div>
+      <div class="card skeleton"></div><div class="card skeleton"></div>
+      <div class="card skeleton"></div><div class="card skeleton"></div>
+    </section>
+
+    <!-- dataset audit -->
+    <section id="audit" class="panel">
+      <h2>Dataset audit <span class="tag" id="audit-verdict">—</span></h2>
+      <p class="muted" id="audit-meta"></p>
+
+      <div class="grid-2">
+        <div>
+          <h3>Class balance — <code>Diagnosis</code></h3>
+          <div id="class-balance" class="bars"></div>
+
+          <h3>Age distribution</h3>
+          <div id="age-dist" class="bars"></div>
+        </div>
+        <div>
+          <h3>Missingness (top 12 columns, %)</h3>
+          <div id="missingness" class="bars thin"></div>
+        </div>
+      </div>
+
+      <h3>Leakage &amp; anchor screen</h3>
+      <p class="muted">Univariate AUC per column vs <code>Diagnosis</code> plus documented measurement timing. These columns are excluded or conditional in <code>config/model.yaml</code>.</p>
+      <div class="table-scroll">
+        <table id="flags-table">
+          <thead><tr><th>Column</th><th>Univariate AUC</th><th>Flags</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="grid-2">
+        <div class="callout">
+          <h3>Anchor variable: <code>Diagnosis_Presumptive</code></h3>
+          <ul id="anchor-facts" class="facts"></ul>
+          <p class="muted">Excluded from all baseline predictors — reserved for the anchoring experiments.</p>
+        </div>
+        <div class="callout">
+          <h3>Targets</h3>
+          <div id="targets" class="facts"></div>
+        </div>
+      </div>
+
+      <h3>Known limitations (from the audit)</h3>
+      <ul id="audit-limits" class="facts"></ul>
+    </section>
+
+    <!-- datasets -->
+    <section id="datasets" class="panel">
+      <h2>Datasets <span class="tag">verified sources</span></h2>
+      <div class="table-scroll">
+        <table id="datasets-table">
+          <thead>
+            <tr><th>Dataset</th><th>Source</th><th>DOI</th><th>N</th><th>License</th><th>Phase</th><th>Role</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="muted">Datasets are never concatenated: each disease/domain gets its own model behind one normalized prediction interface.</p>
+    </section>
+
+    <!-- pipeline -->
+    <section id="pipeline" class="panel">
+      <h2>Debiasing pipeline <span class="tag">information isolation</span></h2>
+      <ol class="stages" id="stages"></ol>
+
+      <div class="grid-2">
+        <div>
+          <h3>Anchor-injection conditions</h3>
+          <ul class="conditions" id="conditions"></ul>
+        </div>
+        <div>
+          <h3>Ablation matrix</h3>
+          <ol class="ablations" id="ablations"></ol>
+        </div>
+      </div>
+
+      <h2>Five agents</h2>
+      <div class="agent-grid" id="agents"></div>
+
+      <h2>Bias metrics <span class="tag warn">awaiting experiments</span></h2>
+      <div class="table-scroll">
+        <table id="metrics-table">
+          <thead><tr><th>Code</th><th>Metric</th><th>Definition</th><th>Value</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- literature -->
+    <section id="literature" class="panel">
+      <h2>Literature <span class="tag" id="lit-count">—</span></h2>
+      <p class="muted">Every entry is DOI- or publisher-URL-verified (OpenAlex/Crossref cache in <code>research/_scripts/</code>).</p>
+      <div class="lit-controls">
+        <input id="lit-search" type="search" placeholder="Search title, author, venue…" aria-label="Search literature" />
+        <div class="chips" id="lit-chips" role="tablist" aria-label="Categories"></div>
+      </div>
+      <div class="lit-list" id="lit-list"></div>
+    </section>
+
+    <!-- docs -->
+    <section id="docs" class="panel">
+      <h2>Documentation</h2>
+      <div class="doc-grid" id="doc-links"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p id="generated-at">—</p>
+      <p class="muted">All figures on this page are rendered from <code>dashboard/data/dashboard.json</code>,
+      which is generated from the executed audit and verified inventories — no result on this page is
+      hand-authored. Metrics stay empty until experiments actually run.</p>
+    </div>
+  </footer>
+
+  <div id="error-banner" class="error-banner" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

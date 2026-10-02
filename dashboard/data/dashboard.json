@@ -1,0 +1,1142 @@
+{
+ "generated_utc": "2026-10-02T08:11:09+00:00",
+ "project": {
+  "title": "Mitigating Confirmation Bias in Automated Pediatric Diagnostics via Adversarial Multi-Agent AI Frameworks",
+  "status": "Phase 1 complete — no model trained, no experiment executed",
+  "disclaimer": "Research prototype. Not a medical device. Not clinically validated. Not a replacement for qualified pediatric clinicians.",
+  "phase": 1
+ },
+ "audit": {
+  "verdict": "PASS (conditional)",
+  "dimensions": {
+   "n_rows": 782,
+   "n_cols": 58,
+   "sheets": [
+    "All cases",
+    "Data Summary"
+   ]
+  },
+  "dtypes": {
+   "str": 40,
+   "float64": 18
+  },
+  "missing_cells_pct": 30.88,
+  "missing_cells_total": 14008,
+  "class_balance": {
+   "positive_class": "appendicitis",
+   "n_positive": 463,
+   "n_negative": 317,
+   "prevalence": 0.5936,
+   "imbalance_ratio_neg_pos": 0.685
+  },
+  "targets": {
+   "Diagnosis": {
+    "appendicitis": {
+     "n": 463,
+     "pct": 59.21
+    },
+    "no appendicitis": {
+     "n": 317,
+     "pct": 40.54
+    },
+    "nan": {
+     "n": 2,
+     "pct": 0.26
+    }
+   },
+   "Management": {
+    "conservative": {
+     "n": 483,
+     "pct": 61.76
+    },
+    "primary surgical": {
+     "n": 270,
+     "pct": 34.53
+    },
+    "secondary surgical": {
+     "n": 27,
+     "pct": 3.45
+    },
+    "nan": {
+     "n": 1,
+     "pct": 0.13
+    },
+    "simultaneous appendectomy": {
+     "n": 1,
+     "pct": 0.13
+    }
+   },
+   "Severity": {
+    "uncomplicated": {
+     "n": 662,
+     "pct": 84.65
+    },
+    "complicated": {
+     "n": 119,
+     "pct": 15.22
+    },
+    "nan": {
+     "n": 1,
+     "pct": 0.13
+    }
+   }
+  },
+  "age": {
+   "n": 781,
+   "mean": 11.35,
+   "std": 3.53,
+   "min": 0.0,
+   "q25": 9.2,
+   "median": 11.44,
+   "q75": 14.1,
+   "max": 18.36,
+   "n_missing": 1,
+   "age_bins": {
+    "0-1y (infant/toddler)": 5,
+    "2-5y (preschool)": 64,
+    "6-12y (school age)": 457,
+    "13-18y (adolescent)": 255
+   }
+  },
+  "duplicates": {
+   "exact_duplicate_rows": 0,
+   "duplicate_rows_on_feature_columns": 0
+  },
+  "missingness_top": [
+   {
+    "column": "Abscess_Location",
+    "n_missing": 769,
+    "pct_missing": 98.34
+   },
+   {
+    "column": "Gynecological_Findings",
+    "n_missing": 756,
+    "pct_missing": 96.68
+   },
+   {
+    "column": "Conglomerate_of_Bowel_Loops",
+    "n_missing": 739,
+    "pct_missing": 94.5
+   },
+   {
+    "column": "Segmented_Neutrophils",
+    "n_missing": 728,
+    "pct_missing": 93.09
+   },
+   {
+    "column": "Ileus",
+    "n_missing": 722,
+    "pct_missing": 92.33
+   },
+   {
+    "column": "Perfusion",
+    "n_missing": 719,
+    "pct_missing": 91.94
+   },
+   {
+    "column": "Enteritis",
+    "n_missing": 716,
+    "pct_missing": 91.56
+   },
+   {
+    "column": "Appendicolith",
+    "n_missing": 713,
+    "pct_missing": 91.18
+   },
+   {
+    "column": "Coprostasis",
+    "n_missing": 711,
+    "pct_missing": 90.92
+   },
+   {
+    "column": "Perforation",
+    "n_missing": 701,
+    "pct_missing": 89.64
+   },
+   {
+    "column": "Appendicular_Abscess",
+    "n_missing": 697,
+    "pct_missing": 89.13
+   },
+   {
+    "column": "Bowel_Wall_Thickening",
+    "n_missing": 683,
+    "pct_missing": 87.34
+   }
+  ],
+  "flagged_columns": {
+   "Length_of_Stay": {
+    "univariate_auc_max": 0.7742,
+    "flags": [
+     "POST_OUTCOME: recorded at discharge, after the clinical decision"
+    ]
+   },
+   "Diagnosis_Presumptive": {
+    "univariate_auc_max": 0.6182,
+    "flags": [
+     "ANCHOR_VARIABLE: presumptive diagnosis recorded at admission; intentional bias-injection candidate, excluded from baseline predictors"
+    ]
+   },
+   "Alvarado_Score": {
+    "univariate_auc_max": 0.7421,
+    "flags": [
+     "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+    ]
+   },
+   "Paedriatic_Appendicitis_Score": {
+    "univariate_auc_max": 0.701,
+    "flags": [
+     "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+    ]
+   },
+   "Appendix_Diameter": {
+    "univariate_auc_max": 0.9503,
+    "flags": [
+     "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+    ]
+   },
+   "US_Performed": {
+    "univariate_auc_max": 0.5045,
+    "flags": [
+     "PROCESS_VARIABLE: encodes clinician workflow/suspicion or is an identifier"
+    ]
+   },
+   "US_Number": {
+    "univariate_auc_max": 0.6444,
+    "flags": [
+     "PROCESS_VARIABLE: encodes clinician workflow/suspicion or is an identifier"
+    ]
+   }
+  },
+  "anchor": {
+   "column": "Diagnosis_Presumptive",
+   "n_missing": 2,
+   "top_values": {
+    "appendicitis": 682,
+    "no appendicitis": 78,
+    "chronische Appendizitis": 4,
+    "Gastroenteritis": 3,
+    "nan": 2,
+    "chronische Bauchschmerzen": 2,
+    "Appendizitis, Lymphadenitis mesenterialis": 1,
+    "Appendizitis/ Lymphadenitis mesenterialis": 1,
+    "Ovarialtorsion": 1,
+    "prolongierte Gastroenteritis": 1,
+    "diabetische Ketoazidose, Myokarditis": 1,
+    "Sepsis mit Begleitappendizitis": 1,
+    "Torsion der Adnexe": 1,
+    "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik": 1,
+    "Adhäsionen des Colon ascendens": 1,
+    "Bridenileus": 1,
+    "gedeckt perforierte Appendizitis": 1
+   },
+   "collapsed_distribution": {
+    "appendicitis": 682,
+    "no appendicitis": 78,
+    "other_free_text": 22
+   },
+   "presumptive_vs_final_diagnosis_agreement": 0.6934,
+   "incorrect_anchor_rate_pct": 30.66,
+   "usage": "NOT a baseline predictor; used as experimental preliminary-diagnosis anchor (correct/incorrect anchor conditions)"
+  },
+  "sources": {
+   "uci_id": 938,
+   "uci_url": "https://archive.ics.uci.edu/dataset/938/regensburg+pediatric+appendicitis",
+   "zenodo_doi": "10.5281/zenodo.7669442",
+   "zenodo_url": "https://zenodo.org/records/7669442",
+   "license": "CC-BY-NC-4.0",
+   "audited_file": "data\\raw\\regensburg_pediatric_appendicitis\\app_data.xlsx",
+   "audited_file_bytes": 212771
+  },
+  "limitations": [
+   "Single-centre cohort (Children's Hospital St. Hedwig, Regensburg, 2016-2021); external generalisability unknown.",
+   "Small sample size (n=782) with ~53 features; high risk of overfitting and wide confidence intervals.",
+   "Diagnosis label for conservatively managed patients is partly defined by Alvarado/PAS and appendix diameter -> circularity risk for those columns.",
+   "Many ultrasound findings are >70% missing because they were only recorded when the appendix or a complication was visualised; missingness is informative, not MCAR.",
+   "Free-text German columns (Diagnosis_Presumptive, Lymph_Nodes_Location, Abscess_Location, Gynecological_Findings) require controlled normalisation.",
+   "Ultrasound images (523 MB zip) are optional for the tabular Phase A model and are not downloaded in Phase 1.",
+   "No protected health information expected (de-identified research release), but no independent DPIA/IRB review has been performed in this project."
+  ],
+  "timestamp": "2026-10-02T07:07:16.667368+00:00"
+ },
+ "datasets": [
+  {
+   "Dataset": "Regensburg Pediatric Appendicitis (tabular)",
+   "Source": "UCI Machine Learning Repository / Zenodo",
+   "DOI": "10.5281/zenodo.7669442",
+   "URL": "https://archive.ics.uci.edu/dataset/938/regensburg+pediatric+appendicitis",
+   "Population": "Children 0-18y with suspected appendicitis, Children's Hospital St. Hedwig, Regensburg, Germany, 2016-2021",
+   "N": "782",
+   "Data Type": "Tabular (labs, vitals, examination, scores, ultrasound findings)",
+   "Target": "Diagnosis (appendicitis/no appendicitis); Management; Severity",
+   "License": "CC-BY-NC-4.0 (Zenodo record)",
+   "Access_Status": "Open without registration",
+   "Downloaded_In_Phase1": "Yes",
+   "Suitable": "Yes",
+   "Role": "Primary training (Phase A)",
+   "Notes": "Audit passed with conditions; Diagnosis_Presumptive excluded from baseline predictors and reserved as experimental anchor"
+  },
+  {
+   "Dataset": "Regensburg Pediatric Appendicitis (ultrasound images)",
+   "Source": "Zenodo",
+   "DOI": "10.5281/zenodo.7669442",
+   "URL": "https://zenodo.org/records/7669442",
+   "Population": "Same cohort as tabular",
+   "N": "not counted (US_Pictures.zip = 523034730 bytes)",
+   "Data Type": "BMP ultrasound images (multi-view per patient)",
+   "Target": "linked to Diagnosis/Management/Severity",
+   "License": "CC-BY-NC-4.0",
+   "Access_Status": "Open without registration",
+   "Downloaded_In_Phase1": "No (deferred)",
+   "Suitable": "Yes",
+   "Role": "Secondary imaging experiment / tabular-image fusion",
+   "Notes": "Split must be by patient/US_Number, never by image; associated paper reports 1709 images for 579 patients"
+  },
+  {
+   "Dataset": "Neonatal Sepsis Registry: Time to Antibiotic Dataset",
+   "Source": "Mendeley Data",
+   "DOI": "10.17632/5vdz5cftz7.1",
+   "URL": "https://data.mendeley.com/datasets/5vdz5cftz7/1",
+   "Population": "Neonates evaluated for sepsis at Children's Hospital of Philadelphia (NICU), 2014-2018",
+   "N": "1946",
+   "Data Type": "Tabular (episode-level clinical characteristics; antibiotic timing; outcomes)",
+   "Target": "Sepsis evaluation outcomes; time to antibiotics; mortality",
+   "License": "License field not exposed via public API (verify on landing page before reuse)",
+   "Access_Status": "Open without registration",
+   "Downloaded_In_Phase1": "Yes (file downloaded)",
+   "Suitable": "Yes",
+   "Role": "Separate Phase B experiment (sepsis domain model)",
+   "Notes": "Must NOT be concatenated with appendicitis data; separate pipeline; associated Data in Brief DOI 10.1016/j.dib.2019.104788"
+  },
+  {
+   "Dataset": "Child Pneumonia Dataset (chest X-ray)",
+   "Source": "Mendeley Data",
+   "DOI": "10.17632/3tx8xymdsv.1",
+   "URL": "https://data.mendeley.com/datasets/3tx8xymdsv/1",
+   "Population": "Pediatric chest X-rays (Sirajganj, Bangladesh)",
+   "N": "2926 files listed at v1 (task brief said 282 images)",
+   "Data Type": "JPEG chest X-ray images",
+   "Target": "Pneumonia class labels (per repository description)",
+   "License": "CC BY 4.0 per repository description (verify landing page)",
+   "Access_Status": "Open without registration",
+   "Downloaded_In_Phase1": "No (Phase C)",
+   "Suitable": "Conditional",
+   "Role": "Phase C imaging experiment only",
+   "Notes": "AUDIT FLAG: 2644 of 2926 files use aug_ prefix (pre-augmented) and 279 duplicate filename entries -> severe leakage risk if split naively; patient-level grouping unavailable; license/label schema must be re-verified before use"
+  },
+  {
+   "Dataset": "UCI dataset metadata (machine-readable)",
+   "Source": "UCI Machine Learning Repository API",
+   "DOI": "10.5281/zenodo.7669442",
+   "URL": "https://archive.ics.uci.edu/api/dataset?id=938",
+   "Population": "Metadata for Regensburg cohort",
+   "N": "782 (reported)",
+   "Data Type": "JSON metadata + variable descriptions",
+   "Target": "n/a",
+   "License": "n/a (metadata)",
+   "Access_Status": "Open",
+   "Downloaded_In_Phase1": "Yes (saved to data/manifests)",
+   "Suitable": "n/a",
+   "Role": "Provenance evidence",
+   "Notes": "data/manifests/uci_dataset_938_metadata.json"
+  }
+ ],
+ "literature": {
+  "count": 46,
+  "categories": [
+   "1. Clinical confirmation bias and diagnostic error",
+   "10. Pediatric safety criteria (knowledge sources for the watchdog)",
+   "2. Automation and anchoring bias (human-AI decision making)",
+   "3. Multi-agent and debate-based LLM reasoning",
+   "4. Pediatric machine learning",
+   "5. Explainable AI",
+   "6. Calibration and uncertainty",
+   "7. Clinical AI safety",
+   "8. Medical imaging",
+   "9. Reporting guidelines"
+  ],
+  "entries": [
+   {
+    "title": "The Importance of Cognitive Errors in Diagnosis and Strategies to Minimize Them",
+    "authors": "Pat Croskerry",
+    "year": "2003",
+    "venue": "Academic Medicine",
+    "doi": "10.1097/00001888-200308000-00003",
+    "url": "https://doi.org/10.1097/00001888-200308000-00003",
+    "category": "1. Clinical confirmation bias and diagnostic error",
+    "open_access": "No",
+    "relevance": "Defines the psychological constructs this project operationalises and measures experimentally"
+   },
+   {
+    "title": "Diagnostic Error in Internal Medicine",
+    "authors": "Mark L. Graber; Nancy Franklin; Ruthanna Gordon",
+    "year": "2005",
+    "venue": "Archives of Internal Medicine",
+    "doi": "10.1001/archinte.165.13.1493",
+    "url": "https://doi.org/10.1001/archinte.165.13.1493",
+    "category": "1. Clinical confirmation bias and diagnostic error",
+    "open_access": "No (green OA copies may exist)",
+    "relevance": "Empirical grounding that cognitive bias is a major, addressable source of diagnostic error"
+   },
+   {
+    "title": "The incidence of diagnostic error in medicine",
+    "authors": "Mark L. Graber",
+    "year": "2013",
+    "venue": "BMJ Quality & Safety",
+    "doi": "10.1136/bmjqs-2012-001615",
+    "url": "https://doi.org/10.1136/bmjqs-2012-001615",
+    "category": "1. Clinical confirmation bias and diagnostic error",
+    "open_access": "No",
+    "relevance": "Motivates explicit, auditable measurement of diagnostic (mis)adherence in the multi-agent system"
+   },
+   {
+    "title": "The global burden of diagnostic errors in primary care",
+    "authors": "Hardeep Singh; Gordon D. Schiff; Mark L. Graber; Igho Onakpoya; Matthew Thompson",
+    "year": "2016",
+    "venue": "BMJ Quality & Safety",
+    "doi": "10.1136/bmjqs-2016-005401",
+    "url": "https://doi.org/10.1136/bmjqs-2016-005401",
+    "category": "1. Clinical confirmation bias and diagnostic error",
+    "open_access": "No",
+    "relevance": "Justifies multi-component debiasing (structure + adversarial review) rather than single interventions"
+   },
+   {
+    "title": "Diagnostic Errors in the Emergency Department: A Systematic Review",
+    "authors": "David E. Newman‐Toker; Susan Peterson; Shervin Badihian; Ahmed Hassoon; Najlla Nassery; Donna Parizadeh; Lisa M Wilson; Yuanxi Jia; et al.",
+    "year": "2022",
+    "venue": "AHRQ Evidence Report / Exceptional Papers in Healthcare Quality",
+    "doi": "10.23970/ahrqepccer258",
+    "url": "https://doi.org/10.23970/ahrqepccer258",
+    "category": "1. Clinical confirmation bias and diagnostic error",
+    "open_access": "Yes (public AHRQ report)",
+    "relevance": "Emergency-department context for the watchdog agent's high-acuity rule-out design"
+   },
+   {
+    "title": "Automation bias: a systematic review of frequency, effect mediators, and mitigators",
+    "authors": "Kate S. Goddard; Abdul Roudsari; Jeremy C Wyatt",
+    "year": "2011",
+    "venue": "Journal of the American Medical Informatics Association",
+    "doi": "10.1136/amiajnl-2011-000089",
+    "url": "https://doi.org/10.1136/amiajnl-2011-000089",
+    "category": "2. Automation and anchoring bias (human-AI decision making)",
+    "open_access": "Bronze OA",
+    "relevance": "Directly motivates measuring over-adherence to the classifier prediction (MODEL ANCHOR conditions) and surfacing model confidence to agents"
+   },
+   {
+    "title": "Evidence for Anchoring Bias During Physician Decision-Making",
+    "authors": "Dan P. Ly; Paul G Shekelle; Zirui Song",
+    "year": "2023",
+    "venue": "JAMA Internal Medicine",
+    "doi": "10.1001/jamainternmed.2023.2366",
+    "url": "https://doi.org/10.1001/jamainternmed.2023.2366",
+    "category": "2. Automation and anchoring bias (human-AI decision making)",
+    "open_access": "Green OA",
+    "relevance": "Large-scale quantitative evidence that an initial label distorts downstream diagnostic workup - the exact effect the anchor experiments measure"
+   },
+   {
+    "title": "To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making",
+    "authors": "Zana Buçinca; Maja Barbara Malaya; Krzysztof Z. Gajos",
+    "year": "2021",
+    "venue": "arXiv (also presented at ACM CSCW 2021)",
+    "doi": "10.48550/arXiv.2102.09692",
+    "url": "https://arxiv.org/abs/2102.09692",
+    "category": "2. Automation and anchoring bias (human-AI decision making)",
+    "open_access": "Yes",
+    "relevance": "Justifies the staged information-isolation design (withhold the anchor until independent reasoning) rather than expecting explanations alone to debias"
+   },
+   {
+    "title": "Explanations Can Reduce Overreliance on AI Systems During Decision-Making",
+    "authors": "Helena Vasconcelos; Matthew Jörke; Madeleine Grunde-McLaughlin; Tobias Gerstenberg; Michael S. Bernstein; Ranjay Krishna",
+    "year": "2023",
+    "venue": "Proceedings of the ACM on Human-Computer Interaction (CSCW)",
+    "doi": "10.1145/3579605",
+    "url": "https://doi.org/10.1145/3579605",
+    "category": "2. Automation and anchoring bias (human-AI decision making)",
+    "open_access": "Bronze OA",
+    "relevance": "Supports giving agents evidence-provenance and explicit disconfirmatory evidence rather than bare predictions"
+   },
+   {
+    "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+    "authors": "Yilun Du; Shuang Li; Antonio B. Torralba; Joshua B. Tenenbaum; Igor Mordatch",
+    "year": "2023",
+    "venue": "arXiv",
+    "doi": "10.48550/arXiv.2305.14325",
+    "url": "https://arxiv.org/abs/2305.14325",
+    "category": "3. Multi-agent and debate-based LLM reasoning",
+    "open_access": "Yes",
+    "relevance": "Baseline design (generic multi-agent collaboration) against which the adversarial framework is ablated"
+   },
+   {
+    "title": "Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate",
+    "authors": "Tian Liang; Zhiwei He; Wenxiang Jiao; Xing Wang; Yan Wang; Rui Wang; Yujiu Yang; Shuming Shi; et al.",
+    "year": "2024",
+    "venue": "Proceedings of EMNLP 2024",
+    "doi": "10.18653/v1/2024.emnlp-main.992",
+    "url": "https://doi.org/10.18653/v1/2024.emnlp-main.992",
+    "category": "3. Multi-agent and debate-based LLM reasoning",
+    "open_access": "Yes",
+    "relevance": "Directly supports the Opponent agent and predicts why self-reflection alone (ablation 4) under-corrects anchoring"
+   },
+   {
+    "title": "Debating with More Persuasive LLMs Leads to More Truthful Answers",
+    "authors": "Akbir Khan; Hughes, John; Dan Valentine; Laura Ruis; Kshitij Sachan; Ansh Radhakrishnan; Edward Grefenstette; Samuel R. Bowman; et al.",
+    "year": "2024",
+    "venue": "arXiv (ICML 2024 workshop/related)",
+    "doi": "10.48550/arXiv.2402.06782",
+    "url": "https://arxiv.org/abs/2402.06782",
+    "category": "3. Multi-agent and debate-based LLM reasoning",
+    "open_access": "Yes",
+    "relevance": "Provides the empirical basis for the Arbitrator design (judge sees competing analyses, not the raw anchor)"
+   },
+   {
+    "title": "MedAgents: Large Language Models as Collaborators for Zero-shot Medical Reasoning",
+    "authors": "Xiangru Tang; Anni Zou; Zhuosheng Zhang; Ziming Li; Yilun Zhao; Xingyao Zhang; Arman Cohan; Mark Gerstein",
+    "year": "2024",
+    "venue": "Findings of ACL 2024",
+    "doi": "10.18653/v1/2024.findings-acl.33",
+    "url": "https://doi.org/10.18653/v1/2024.findings-acl.33",
+    "category": "3. Multi-agent and debate-based LLM reasoning",
+    "open_access": "Yes",
+    "relevance": "Template for a cooperative multi-agent baseline; its uniform-information design is exactly what this project ablates"
+   },
+   {
+    "title": "MedChat: A Multi-Agent Framework for Multimodal Diagnosis with Large Language Models",
+    "authors": "Philip R. Liu; Sparsh Bansal; Jimmy Dinh; Aditya Pawar; R. Satishkumar; Shail Desai; Neeraj Gupta; Xin Wang; et al.",
+    "year": "2025",
+    "venue": "IEEE International Conference on Multimedia Processing, Retrieval and Applications (MIPR)",
+    "doi": "10.1109/MIPR67560.2025.00078",
+    "url": "https://doi.org/10.1109/MIPR67560.2025.00078",
+    "category": "3. Multi-agent and debate-based LLM reasoning",
+    "open_access": "No",
+    "relevance": "Evidence that role-specialised multi-agent architectures are being actively proposed in clinical imaging; motivates comparative ablation rather than accepting claims"
+   },
+   {
+    "title": "Interpretable and intervenable ultrasonography-based machine learning models for pediatric appendicitis",
+    "authors": "Ričards Marcinkevičs; Patricia Reis Wolfertstetter; Ugne Klimiene; Kieran Chin-Cheong; Alyssia Paschke; Julia Zerres; Markus Denzinger; David Niederberger; et al.",
+    "year": "2023",
+    "venue": "Medical Image Analysis",
+    "doi": "10.1016/j.media.2023.103042",
+    "url": "https://doi.org/10.1016/j.media.2023.103042",
+    "category": "4. Pediatric machine learning",
+    "open_access": "Hybrid OA",
+    "relevance": "Primary dataset's associated paper; grounds the tabular-vs-image fusion option and the SHAP/concept explanation wording rules"
+   },
+   {
+    "title": "Using Machine Learning to Predict the Diagnosis, Management and Severity of Pediatric Appendicitis",
+    "authors": "Ričards Marcinkevičs; Patricia Reis Wolfertstetter; Sven Matthias Wellmann; Christian Knorr; Julia Elisabeth Vogt",
+    "year": "2021",
+    "venue": "Frontiers in Pediatrics",
+    "doi": "10.3389/fped.2021.662183",
+    "url": "https://doi.org/10.3389/fped.2021.662183",
+    "category": "4. Pediatric machine learning",
+    "open_access": "Yes (CC BY)",
+    "relevance": "Benchmark expectations for tabular LightGBM performance on the primary dataset; shows severity prediction is the harder target"
+   },
+   {
+    "title": "Neonatal sepsis registry: Time to antibiotic dataset",
+    "authors": "Svetlana Ostapenko; Melissa Schmatz; Lakshmi Priya Srinivasan; Okan Umit Elci; Scott L. Weiss; Aaron J. Masino; Marissa Tremoglie; Mary Catherine Harris; et al.",
+    "year": "2019",
+    "venue": "Data in Brief",
+    "doi": "10.1016/j.dib.2019.104788",
+    "url": "https://doi.org/10.1016/j.dib.2019.104788",
+    "category": "4. Pediatric machine learning",
+    "open_access": "Yes (CC BY)",
+    "relevance": "Provenance/citation for the Phase B neonatal-sepsis auxiliary dataset"
+   },
+   {
+    "title": "Prospective Validation of the Pediatric Appendicitis Score",
+    "authors": "Ran D. Goldman; Susan Carter; Derek Stephens; Roula Antoon; William Mounstephen; Jacob C. Langer",
+    "year": "2008",
+    "venue": "The Journal of Pediatrics",
+    "doi": "10.1016/j.jpeds.2008.01.033",
+    "url": "https://doi.org/10.1016/j.jpeds.2008.01.033",
+    "category": "4. Pediatric machine learning",
+    "open_access": "No",
+    "relevance": "Supports treating Alvarado/PAS as clinician-baseline comparators and flags label-circularity risk found in the audit"
+   },
+   {
+    "title": "Pediatric appendicitis score",
+    "authors": "Madan Samuel",
+    "year": "2002",
+    "venue": "Journal of Pediatric Surgery",
+    "doi": "10.1053/jpsu.2002.32893",
+    "url": "https://doi.org/10.1053/jpsu.2002.32893",
+    "category": "4. Pediatric machine learning",
+    "open_access": "No",
+    "relevance": "Explains a dataset feature and provides a rule-based comparator for model+agent outputs"
+   },
+   {
+    "title": "A Unified Approach to Interpreting Model Predictions",
+    "authors": "Scott Lundberg; Su‐In Lee",
+    "year": "2017",
+    "venue": "NeurIPS 2017",
+    "doi": "10.48550/arXiv.1705.07874",
+    "url": "https://arxiv.org/abs/1705.07874",
+    "category": "5. Explainable AI",
+    "open_access": "Yes",
+    "relevance": "Source of the SHAP evidence fed to Proponent/Opponent/Arbitrator, with mandatory non-causal wording"
+   },
+   {
+    "title": "The false hope of current approaches to explainable artificial intelligence in health care",
+    "authors": "Marzyeh Ghassemi; Luke Oakden‐Rayner; Andrew L. Beam",
+    "year": "2021",
+    "venue": "The Lancet Digital Health",
+    "doi": "10.1016/S2589-7500(21)00208-9",
+    "url": "https://doi.org/10.1016/S2589-7500(21)00208-9",
+    "category": "Other / methods",
+    "open_access": "Gold OA",
+    "relevance": "Prevents overclaiming about SHAP in agent prompts and reporting; motivates calibration + validation as primary trust arguments"
+   },
+   {
+    "title": "Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI",
+    "authors": "Alejandro Barredo Arrieta; Natalia Díaz-Rodríguez; Javier Del Ser; Adrien Bennetot; Siham Tabik; Alberto Barbado; Salvador García; Sergio Gil-López; et al.",
+    "year": "2019",
+    "venue": "Information Fusion",
+    "doi": "10.1016/j.inffus.2019.12.012",
+    "url": "https://doi.org/10.1016/j.inffus.2019.12.012",
+    "category": "5. Explainable AI",
+    "open_access": "No",
+    "relevance": "Background for the explainability layer and for calibrating explanation claims in agent prompts"
+   },
+   {
+    "title": "Explainable artificial intelligence (XAI) in deep learning-based medical image analysis",
+    "authors": "Bas H. M. van der Velden; Hugo J. Kuijf; Kenneth G. A. Gilhuijs; Max A. Viergever",
+    "year": "2022",
+    "venue": "Medical Image Analysis",
+    "doi": "10.1016/j.media.2022.102470",
+    "url": "https://doi.org/10.1016/j.media.2022.102470",
+    "category": "5. Explainable AI",
+    "open_access": "No",
+    "relevance": "Guidance for the imaging branch and for wording image explanations in reports"
+   },
+   {
+    "title": "On Calibration of Modern Neural Networks",
+    "authors": "Chuan Guo; Geoff Pleiss; Yu Sun; Kilian Q. Weinberger",
+    "year": "2017",
+    "venue": "ICML 2017 (PMLR vol. 70)",
+    "doi": "10.48550/arXiv.1706.04599",
+    "url": "https://proceedings.mlr.press/v70/guo17a.html",
+    "category": "6. Calibration and uncertainty",
+    "open_access": "Yes",
+    "relevance": "Justifies treating raw model probabilities as uncalibrated and applying Platt/isotonic before agents see them"
+   },
+   {
+    "title": "Calibration: the Achilles heel of predictive analytics",
+    "authors": "Ben Van Calster; David J. McLernon; Maarten van Smeden; Laure Wynants; Ewout Willem Steyerberg (STRATOS topic group)",
+    "year": "2019",
+    "venue": "BMC Medicine",
+    "doi": "10.1186/s12916-019-1466-7",
+    "url": "https://doi.org/10.1186/s12916-019-1466-7",
+    "category": "6. Calibration and uncertainty",
+    "open_access": "Gold OA",
+    "relevance": "Core justification for the project's separation of ML probability, multi-agent confidence, and clinical urgency"
+   },
+   {
+    "title": "Predicting good probabilities with supervised learning",
+    "authors": "Alexandru Niculescu-Mizil; Rich Caruana",
+    "year": "2005",
+    "venue": "KDD 2005",
+    "doi": "10.1145/1102351.1102430",
+    "url": "https://doi.org/10.1145/1102351.1102430",
+    "category": "6. Calibration and uncertainty",
+    "open_access": "No",
+    "relevance": "Selects the calibration candidates (Platt, isotonic) for the LightGBM pipeline and evaluation of ECE/Brier"
+   },
+   {
+    "title": "Artificial intelligence, bias and clinical safety",
+    "authors": "Robert Challen; Joshua C. Denny; Martin Pitt; Luke L. Gompels; Tom Edwards; Krasimira T. Tsaneva-Atanasova",
+    "year": "2019",
+    "venue": "BMJ Quality & Safety",
+    "doi": "10.1136/bmjqs-2018-008370",
+    "url": "https://doi.org/10.1136/bmjqs-2018-008370",
+    "category": "7. Clinical AI safety",
+    "open_access": "No",
+    "relevance": "Frames the safety analysis and the risk taxonomy used in docs/SAFETY.md"
+   },
+   {
+    "title": "High-performance medicine: the convergence of human and artificial intelligence",
+    "authors": "Eric J. Topol",
+    "year": "2018",
+    "venue": "Nature Medicine",
+    "doi": "10.1038/s41591-018-0300-7",
+    "url": "https://doi.org/10.1038/s41591-018-0300-7",
+    "category": "7. Clinical AI safety",
+    "open_access": "No",
+    "relevance": "Human-AI teaming framing for the dashboard and for the 'decision support, not replacement' safety position"
+   },
+   {
+    "title": "Large language models encode clinical knowledge",
+    "authors": "Karan Singhal; Shekoofeh Azizi; Tao Tu; S. Sara Mahdavi; JASON KAI WEI LEE; Hyung Won Chung; Nathan Scales; Ajay Kumar Tanwani; et al.",
+    "year": "2023",
+    "venue": "Nature",
+    "doi": "10.1038/s41586-023-06291-2",
+    "url": "https://doi.org/10.1038/s41586-023-06291-2",
+    "category": "7. Clinical AI safety",
+    "open_access": "Green OA",
+    "relevance": "Sets expectations for LLM capability/limits and adopts its clinician-rating methodology for agent output evaluation"
+   },
+   {
+    "title": "CheXNet: Radiologist-Level Pneumonia Detection on Chest X-Rays with Deep Learning",
+    "authors": "Pranav Rajpurkar; Jeremy Irvin; Kaylie Zhu; Brandon Yang; Hershel Mehta; Tony Duan; Daisy Yi Ding; Aarti Bagul; et al.",
+    "year": "2017",
+    "venue": "arXiv",
+    "doi": "10.48550/arXiv.1711.05225",
+    "url": "https://arxiv.org/abs/1711.05225",
+    "category": "8. Medical imaging",
+    "open_access": "Yes",
+    "relevance": "Reference architecture for the pneumonia imaging branch (transfer learning, not training from scratch)"
+   },
+   {
+    "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+    "authors": "Professor Gary S. Collins; Karel G.M. Moons; Paula Dhiman; Richard D Riley; Andrew L. Beam; Ben Van Calster; Marzyeh Ghassemi; Xiaoxuan Liu; et al.",
+    "year": "2024",
+    "venue": "BMJ",
+    "doi": "10.1136/bmj-2023-078378",
+    "url": "https://doi.org/10.1136/bmj-2023-078378",
+    "category": "9. Reporting guidelines",
+    "open_access": "Hybrid OA",
+    "relevance": "Primary reporting framework for the LightGBM prediction component (docs/REPORTING_CHECKLIST.md)"
+   },
+   {
+    "title": "Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): the TRIPOD statement",
+    "authors": "Professor Gary S. Collins; Johannes B. Reitsma; Douglas G. Altman; Karel G.M. Moons",
+    "year": "2015",
+    "venue": "BMJ",
+    "doi": "10.1136/bmj.g7594",
+    "url": "https://doi.org/10.1136/bmj.g7594",
+    "category": "9. Reporting guidelines",
+    "open_access": "Yes",
+    "relevance": "Baseline reporting discipline for model cards and experiment logs"
+   },
+   {
+    "title": "Reporting guideline for the early-stage clinical evaluation of decision support systems driven by artificial intelligence: DECIDE-AI",
+    "authors": "Baptiste Vasey; Myura Nagendran; Bruce K Campbell; David Andrew Clifton; Professor Gary S. Collins; Spiros Denaxas; Alastair Keith Denniston; Livia Faes; et al.",
+    "year": "2022",
+    "venue": "Nature Medicine",
+    "doi": "10.1038/s41591-022-01772-9",
+    "url": "https://doi.org/10.1038/s41591-022-01772-9",
+    "category": "9. Reporting guidelines",
+    "open_access": "Green OA",
+    "relevance": "Chosen as the future framework if the system ever reaches early-stage clinical evaluation; currently out of scope"
+   },
+   {
+    "title": "Reporting guidelines for clinical trial reports for interventions involving artificial intelligence: the CONSORT-AI extension",
+    "authors": "Xiaoxuan Liu; Samantha Cruz Rivera; David Moher; Melanie Jane Calvert; Alastair Keith Denniston; The SPIRIT-AI and CONSORT-AI Working Group; SPIRIT-AI and CONSORT-AI Steering Group; An-Wen Chan; et al.",
+    "year": "2020",
+    "venue": "Nature Medicine",
+    "doi": "10.1038/s41591-020-1034-x",
+    "url": "https://doi.org/10.1038/s41591-020-1034-x",
+    "category": "9. Reporting guidelines",
+    "open_access": "Hybrid OA",
+    "relevance": "Included for completeness of the reporting-guideline map in docs/REPORTING_CHECKLIST.md"
+   },
+   {
+    "title": "Guidelines for clinical trial protocols for interventions involving artificial intelligence: the SPIRIT-AI extension",
+    "authors": "Samantha Cruz Rivera; Xiaoxuan Liu; An‐Wen Chan; Alastair Keith Denniston; Melanie Jane Calvert; The SPIRIT-AI and CONSORT-AI Working Group; SPIRIT-AI and CONSORT-AI Steering Group; Ara Wardkes Darzi; et al.",
+    "year": "2020",
+    "venue": "Nature Medicine",
+    "doi": "10.1038/s41591-020-1037-7",
+    "url": "https://doi.org/10.1038/s41591-020-1037-7",
+    "category": "9. Reporting guidelines",
+    "open_access": "Hybrid OA",
+    "relevance": "Model-version and analysis-plan items inspire config/version pinning in this repository"
+   },
+   {
+    "title": "The STARD-AI reporting guideline for diagnostic accuracy studies using artificial intelligence",
+    "authors": "Viknesh Sounderajah; Ahmad Guni; Xiaoxuan Liu; Professor Gary S. Collins; Alan Karthikesalingam; Sheraz Rehan Markar; Robert M. Golub; Alastair Keith Denniston; et al.",
+    "year": "2025",
+    "venue": "Nature Medicine",
+    "doi": "10.1038/s41591-025-03953-8",
+    "url": "https://doi.org/10.1038/s41591-025-03953-8",
+    "category": "9. Reporting guidelines",
+    "open_access": "Bronze OA",
+    "relevance": "Primary framework for the diagnostic-accuracy part of the eventual paper (sensitivity/specificity/AUROC of agents)"
+   },
+   {
+    "title": "STARD 2015 guidelines for reporting diagnostic accuracy studies: explanation and elaboration",
+    "authors": "Jérémie F. Cohen; Daniël A. Korevaar; Douglas G. Altman; David E. Bruns; Constantine Gatsonis; Lotty Hooft; Les Irwig; Deborah Levine; et al.",
+    "year": "2016",
+    "venue": "BMJ Open",
+    "doi": "10.1136/bmjopen-2016-012799",
+    "url": "https://doi.org/10.1136/bmjopen-2016-012799",
+    "category": "9. Reporting guidelines",
+    "open_access": "Yes",
+    "relevance": "Used to structure evaluation reporting (index test, reference standard, flow and timing)"
+   },
+   {
+    "title": "The TRIPOD-LLM reporting guideline for studies using large language models",
+    "authors": "Jack Gallifant; Majid Afshar; Saleem Ameen; Yindalon Aphinyanaphongs; Shan Chen; Giovanni Enrico Cacciamani; Dina Demner‐Fushman; Dmitriy Dligach; et al.",
+    "year": "2025",
+    "venue": "Nature Medicine",
+    "doi": "10.1038/s41591-024-03425-5",
+    "url": "https://doi.org/10.1038/s41591-024-03425-5",
+    "category": "9. Reporting guidelines",
+    "open_access": "Bronze OA",
+    "relevance": "Directly governs how this project reports agent prompts, model versions and run-to-run stability"
+   },
+   {
+    "title": "International pediatric sepsis consensus conference: Definitions for sepsis and organ dysfunction in pediatrics*",
+    "authors": "Brahm Goldstein; Brett P. Giroir; Adrienne G. Randolph",
+    "year": "2005",
+    "venue": "Pediatric Critical Care Medicine",
+    "doi": "10.1097/01.pcc.0000149131.72248.e6",
+    "url": "https://doi.org/10.1097/01.pcc.0000149131.72248.e6",
+    "category": "10. Pediatric safety criteria (knowledge sources for the watchdog)",
+    "open_access": "No",
+    "relevance": "Baseline pediatric sepsis rule set in knowledge/sepsis_rules.yaml, superseded by Phoenix where applicable"
+   },
+   {
+    "title": "International Consensus Criteria for Pediatric Sepsis and Septic Shock",
+    "authors": "Luregn Jan Schlapbach; Robert Scott Watson; Lauren R. Sorce; Andrew Charles Argent; Kusum Menon; Mark W. Hall; Samuel Akech; David J. Albers; et al.",
+    "year": "2024",
+    "venue": "JAMA",
+    "doi": "10.1001/jama.2024.0179",
+    "url": "https://doi.org/10.1001/jama.2024.0179",
+    "category": "10. Pediatric safety criteria (knowledge sources for the watchdog)",
+    "open_access": "Green OA",
+    "relevance": "Authoritative, age-aware rule source for the high-acuity watchdog and knowledge/sepsis_rules.yaml"
+   },
+   {
+    "title": "Development and Validation of the Phoenix Criteria for Pediatric Sepsis and Septic Shock",
+    "authors": "Lazaro Nelson Sanchez-Pinto; Tellen D. Bennett; Peter E. DeWitt; Seth Russell; Margaret N. Rebull; Blake Martin; Samuel Akech; David J. Albers; et al.",
+    "year": "2024",
+    "venue": "JAMA",
+    "doi": "10.1001/jama.2024.0196",
+    "url": "https://doi.org/10.1001/jama.2024.0196",
+    "category": "10. Pediatric safety criteria (knowledge sources for the watchdog)",
+    "open_access": "Green OA",
+    "relevance": "Quantitative source for watchdog thresholds; cited in knowledge/source_manifest.json"
+   },
+   {
+    "title": "Diagnosis, Treatment, and Long-Term Management of Kawasaki Disease: A Scientific Statement for Health Professionals From the American Heart Association",
+    "authors": "Brian W. McCrindle; Anne Heitzman Rowley; Jane W. Newburger; Jane C. Burns; Anne F. Bolger; Michael H. Gewitz; Annette Baker; Mary Anne Jackson; et al.",
+    "year": "2017",
+    "venue": "Circulation",
+    "doi": "10.1161/CIR.0000000000000484",
+    "url": "https://doi.org/10.1161/CIR.0000000000000484",
+    "category": "10. Pediatric safety criteria (knowledge sources for the watchdog)",
+    "open_access": "No",
+    "relevance": "Citable criterion for the watchdog's Kawasaki rule (only when fever + compatible findings present)"
+   },
+   {
+    "title": "A practical score for the early diagnosis of acute appendicitis",
+    "authors": "Alfredo Alvarado",
+    "year": "1986",
+    "venue": "Annals of Emergency Medicine",
+    "doi": "10.1016/S0196-0644(86)80993-3",
+    "url": "https://doi.org/10.1016/S0196-0644(86)80993-3",
+    "category": "Other / methods",
+    "open_access": "No",
+    "relevance": "Explains the Alvarado_Score feature and the label-circularity caveat from the audit"
+   },
+   {
+    "title": "Selective Imaging Strategies for the Diagnosis of Appendicitis in Children",
+    "authors": "Barbara M. García Peña; E. Francis Cook; Kenneth D. Mandl",
+    "year": "2004",
+    "venue": "Pediatrics",
+    "doi": "10.1542/peds.113.1.24",
+    "url": "https://doi.org/10.1542/peds.113.1.24",
+    "category": "4. Pediatric machine learning",
+    "open_access": "No",
+    "relevance": "Supports recommending 'information or tests' via the arbitrator rather than defaulting to imaging"
+   },
+   {
+    "title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree",
+    "authors": "Guolin Ke; Qi Meng; Thomas Finley; Taifeng Wang; Wei Chen; Weidong Ma; Qiwei Ye; Tie-Yan Liu",
+    "year": "2017",
+    "venue": "Advances in Neural Information Processing Systems 30 (NeurIPS)",
+    "doi": "(none - proceedings paper)",
+    "url": "https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html",
+    "category": "Other / methods",
+    "open_access": "Yes (open proceedings)",
+    "relevance": "Primary ML algorithm for the tabular prediction layer"
+   },
+   {
+    "title": "Balancing Interpretability and Accuracy: A Comparative Evaluation of Logistic Regression and Machine Learning Approaches for Coronary Heart Disease Risk Prediction in Low-Resource Settings",
+    "authors": "Maurice Wanyonyi; Zakayo Ndiku Morris; Faith Mueni Musyoka; Dominic Makaa Kitavi",
+    "year": "2026",
+    "venue": "IAENG International Journal of Computer Science",
+    "doi": "(none - IAENG journal article)",
+    "url": "https://www.iaeng.org/IJCS/issues_v53/issue_3/IJCS_53_3_19.pdf",
+    "category": "Other / methods",
+    "open_access": "Yes (open full text)",
+    "relevance": "Serves the requested IAENG source category and supports retaining an interpretable baseline alongside LightGBM"
+   }
+  ]
+ },
+ "pipeline": {
+  "stages": [
+   {
+    "n": 1,
+    "id": "data_cleansing",
+    "name": "Data Cleansing (Agent 1)",
+    "purpose": "Objective extraction, missing-data report, red flags. No diagnosis.",
+    "sees_prediction": false
+   },
+   {
+    "n": 2,
+    "id": "independent_differential",
+    "name": "Independent Differential",
+    "purpose": "Opponent forms a differential from raw evidence BEFORE seeing any anchor.",
+    "sees_prediction": false
+   },
+   {
+    "n": 3,
+    "id": "proponent",
+    "name": "Proponent Argument (Agent 2)",
+    "purpose": "Strongest evidence-based case for the classifier's top prediction.",
+    "sees_prediction": true
+   },
+   {
+    "n": 4,
+    "id": "opponent",
+    "name": "Opponent Attack (Agent 3)",
+    "purpose": "Attacks the leading hypothesis citing patient/retrieved evidence only.",
+    "sees_prediction": "after stage 2 (config A–C)"
+   },
+   {
+    "n": 5,
+    "id": "watchdog",
+    "name": "High-Acuity Watchdog (Agent 4)",
+    "purpose": "Rule-first, prediction-blind red-flag screening vs cited pediatric criteria.",
+    "sees_prediction": false
+   },
+   {
+    "n": 6,
+    "id": "retrieval",
+    "name": "Evidence Retrieval (RAG)",
+    "purpose": "Guideline/abstract chunks with provenance (license-aware).",
+    "sees_prediction": "n/a"
+   },
+   {
+    "n": 7,
+    "id": "arbitration",
+    "name": "Arbitration (Agent 5)",
+    "purpose": "Weighted synthesis — explicitly not majority voting; confidence ≠ model probability.",
+    "sees_prediction": true
+   },
+   {
+    "n": 8,
+    "id": "bias_audit",
+    "name": "Bias Audit",
+    "purpose": "CBR / AOR / BCR / HFR / CRR / stability computed and persisted per case.",
+    "sees_prediction": "n/a"
+   }
+  ],
+  "ablations": [
+   {
+    "id": 1,
+    "name": "LightGBM alone",
+    "status": "planned"
+   },
+   {
+    "id": 2,
+    "name": "Single LLM",
+    "status": "planned"
+   },
+   {
+    "id": 3,
+    "name": "LightGBM + single LLM",
+    "status": "planned"
+   },
+   {
+    "id": 4,
+    "name": "LightGBM + self-reflection",
+    "status": "planned"
+   },
+   {
+    "id": 5,
+    "name": "Generic multi-agent (no adversary)",
+    "status": "planned"
+   },
+   {
+    "id": 6,
+    "name": "Proponent / Opponent debate",
+    "status": "planned"
+   },
+   {
+    "id": 7,
+    "name": "Full five-agent framework",
+    "status": "planned"
+   },
+   {
+    "id": 8,
+    "name": "Full framework without RAG",
+    "status": "planned"
+   },
+   {
+    "id": 9,
+    "name": "Full framework with RAG",
+    "status": "planned"
+   },
+   {
+    "id": 10,
+    "name": "All agents see the anchor",
+    "status": "planned"
+   },
+   {
+    "id": 11,
+    "name": "Information-isolated agents",
+    "status": "planned"
+   }
+  ],
+  "conditions": [
+   {
+    "id": "control",
+    "name": "Control",
+    "anchor": "none"
+   },
+   {
+    "id": "correct_anchor",
+    "name": "Correct anchor",
+    "anchor": "preliminary diagnosis (correct)"
+   },
+   {
+    "id": "incorrect_anchor",
+    "name": "Incorrect anchor",
+    "anchor": "preliminary diagnosis (wrong)"
+   },
+   {
+    "id": "high_conf_incorrect",
+    "name": "High-confidence incorrect",
+    "anchor": "assertive wrong diagnosis"
+   },
+   {
+    "id": "low_conf_incorrect",
+    "name": "Low-confidence incorrect",
+    "anchor": "tentative wrong diagnosis"
+   },
+   {
+    "id": "model_anchor",
+    "name": "Model anchor",
+    "anchor": "LightGBM top prediction"
+   },
+   {
+    "id": "no_model_anchor",
+    "name": "No model anchor",
+    "anchor": "hidden until differential complete"
+   }
+  ]
+ },
+ "agents": [
+  {
+   "id": "A1",
+   "name": "Data Cleanser",
+   "sees": "raw patient features only",
+   "output": "structured JSON: demographics, vitals, labs, symptoms, findings, missing critical info, red flags, data-quality warnings",
+   "rule": "Must not diagnose. Must not invent pediatric thresholds."
+  },
+  {
+   "id": "A2",
+   "name": "Proponent",
+   "sees": "patient data + probabilities + SHAP + uncertainty",
+   "output": "supported_diagnosis, model_probability, supporting_evidence, missing_expected_evidence, contradictions_acknowledged, confidence",
+   "rule": "Must acknowledge contradictions; SHAP wording is non-causal."
+  },
+  {
+   "id": "A3",
+   "name": "Opponent / Devil's Advocate",
+   "sees": "stage 2: raw evidence only; stage 4: hypothesis to attack",
+   "output": "challenged_hypothesis, contradictory_evidence, missing_criteria, alternative_diagnoses, strongest_alternative, disconfirmatory_tests, anchoring_risk",
+   "rule": "Every challenge must cite actual evidence; no disagreement for its own sake."
+  },
+  {
+   "id": "A4",
+   "name": "High-Acuity Watchdog",
+   "sees": "patient evidence + cited rules (prediction-blind)",
+   "output": "conditions_considered, red_flags_present/absent, cannot_assess, urgent_rule_outs, risk_level, evidence",
+   "rule": "High sensitivity, evidence-grounded; fail-closed on pending rules."
+  },
+  {
+   "id": "A5",
+   "name": "Pediatric Consultant / Arbitrator",
+   "sees": "everything above + calibration + retrieval",
+   "output": "primary_working_diagnosis, multi_agent_confidence, critical_differentials, urgent_rule_outs, disagreement, bias-risk before/after, audit_trail, disclaimer",
+   "rule": "Not majority voting; confidence must not reuse the model probability."
+  }
+ ],
+ "bias_metrics": [
+  {
+   "code": "CBR",
+   "name": "Confirmation Bias Rate",
+   "formula": "followed incorrect anchor / incorrect-anchor cases"
+  },
+  {
+   "code": "AOR",
+   "name": "Anchor Override Rate",
+   "formula": "rejected incorrect anchor / incorrect-anchor cases"
+  },
+  {
+   "code": "BCR",
+   "name": "Beneficial Correction Rate",
+   "formula": "incorrect initial diagnoses corrected / incorrect initial diagnoses"
+  },
+  {
+   "code": "HFR",
+   "name": "Harmful Flip Rate",
+   "formula": "correct → incorrect after debate / initially correct"
+  },
+  {
+   "code": "CRR",
+   "name": "Contradiction Recovery Rate",
+   "formula": "appropriate revisions on decisive new contradicting evidence / such cases"
+  },
+  {
+   "code": "DDR",
+   "name": "Differential Diversity",
+   "formula": "unique plausible hypotheses before consensus"
+  },
+  {
+   "code": "CMR",
+   "name": "Critical Miss Rate",
+   "formula": "high-acuity targets missed / high-acuity targets present"
+  },
+  {
+   "code": "DR",
+   "name": "Diagnostic Stability",
+   "formula": "identical conclusions across repeated runs"
+  }
+ ],
+ "docs": [
+  {
+   "path": "docs/DATASET_AUDIT.md",
+   "label": "Dataset audit"
+  },
+  {
+   "path": "docs/DATASET_CARD.md",
+   "label": "Dataset card"
+  },
+  {
+   "path": "docs/ARCHITECTURE.md",
+   "label": "Architecture"
+  },
+  {
+   "path": "docs/MODEL_CARD.md",
+   "label": "Model card (planned)"
+  },
+  {
+   "path": "docs/SAFETY.md",
+   "label": "Safety"
+  },
+  {
+   "path": "docs/LIMITATIONS.md",
+   "label": "Limitations"
+  },
+  {
+   "path": "docs/REPRODUCIBILITY.md",
+   "label": "Reproducibility"
+  },
+  {
+   "path": "docs/REPORTING_CHECKLIST.md",
+   "label": "Reporting checklist"
+  },
+  {
+   "path": "research/LITERATURE_REVIEW.md",
+   "label": "Literature review"
+  },
+  {
+   "path": "research/RESEARCH_GAP.md",
+   "label": "Research gap"
+  }
+ ]
+}
