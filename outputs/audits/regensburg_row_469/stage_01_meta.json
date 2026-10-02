@@ -1,0 +1,19 @@
+{
+  "stage": 1,
+  "key": "data_cleanser",
+  "call": {
+    "stage": "1_data_cleansing",
+    "backend": "deterministic",
+    "model_version": "deterministic-rules-v1 (no LLM inference)",
+    "prompt_hash": "5d7f93e1b2c44155d997453d06842eca444a0a8a51dfa3cce6d95aacf65f20ed",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "latency_s": 0.0141,
+    "attempts": 1,
+    "fallback_reason": null,
+    "error": null,
+    "timestamp": "2026-10-02T16:53:13+00:00",
+    "schema_name": "DataCleanserOutput"
+  },
+  "latency_s": 0.0144
+}

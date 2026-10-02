@@ -1,0 +1,19 @@
+{
+  "stage": 8,
+  "key": "bias_audit",
+  "call": {
+    "stage": "8_bias_audit",
+    "backend": "deterministic_compute",
+    "model_version": "deterministic-compute-v1 (no LLM inference)",
+    "prompt_hash": "14e352d53f85da0d153bfc80af109cf75b241a265b4ef1221c43d79fd5bcba41",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "latency_s": 0.0002,
+    "attempts": 1,
+    "fallback_reason": null,
+    "error": null,
+    "timestamp": "2026-10-02T16:53:13+00:00",
+    "schema_name": "BiasAuditOutput"
+  },
+  "latency_s": 0.0002
+}

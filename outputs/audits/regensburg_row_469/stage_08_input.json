@@ -1,0 +1,11 @@
+{
+  "anchor": null,
+  "ground_truth": "no appendicitis",
+  "model_top": "no appendicitis",
+  "visibility": {
+    "sees_prediction": true,
+    "sees_anchor": true,
+    "sees_ground_truth": true
+  },
+  "withheld_from_this_stage": []
+}

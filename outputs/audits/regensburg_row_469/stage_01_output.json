@@ -1,0 +1,49 @@
+{
+  "demographics": {
+    "Age": 4.71184120465435,
+    "Sex": "male",
+    "Height": 108.0,
+    "Weight": 15.5,
+    "BMI": 13.29
+  },
+  "vitals": {
+    "Body_Temperature": 37.4
+  },
+  "laboratory_values": {
+    "WBC_Count": 19.9,
+    "Neutrophil_Percentage": 75.2,
+    "Neutrophilia": "yes",
+    "RBC_Count": 4.89,
+    "Hemoglobin": 12.7,
+    "RDW": 14.9,
+    "Thrombocyte_Count": 437.0,
+    "CRP": 6.0,
+    "Alvarado_Score": 9.0,
+    "Paedriatic_Appendicitis_Score": 6.0
+  },
+  "symptoms": [
+    "Migratory_Pain: no",
+    "Lower_Right_Abd_Pain: yes",
+    "Coughing_Pain: no",
+    "Nausea: yes",
+    "Loss_of_Appetite: yes",
+    "Dysuria: no",
+    "Stool: diarrhea"
+  ],
+  "physical_findings": [
+    "Peritonitis: no",
+    "Psoas_Sign: no",
+    "Ipsilateral_Rebound_Tenderness: no",
+    "Contralateral_Rebound_Tenderness: yes"
+  ],
+  "imaging_findings": [
+    "US_Performed: yes",
+    "Appendix_on_US: no"
+  ],
+  "missing_critical_information": [
+    "Appendix_Diameter"
+  ],
+  "objective_red_flags": [],
+  "data_quality_warnings": [],
+  "diagnoses_made": false
+}

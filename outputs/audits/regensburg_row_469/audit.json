@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "case_id": "regensburg_row_469",
+  "config_hash": "cb7198448d25",
+  "seed": 20261002,
+  "ablation": "default",
+  "rag_enabled": true,
+  "provider_backend": "deterministic",
+  "provider_model_version": "deterministic-rules-v1 (no LLM inference)",
+  "visibility_policy": {
+    "1": {
+      "sees_prediction": false,
+      "sees_anchor": false,
+      "sees_ground_truth": false
+    },
+    "2": {
+      "sees_prediction": false,
+      "sees_anchor": false,
+      "sees_ground_truth": false
+    },
+    "3": {
+      "sees_prediction": true,
+      "sees_anchor": true,
+      "sees_ground_truth": false
+    },
+    "4": {
+      "sees_prediction": true,
+      "sees_anchor": true,
+      "sees_ground_truth": false
+    },
+    "5": {
+      "sees_prediction": false,
+      "sees_anchor": false,
+      "sees_ground_truth": false
+    },
+    "6": {
+      "sees_prediction": false,
+      "sees_anchor": false,
+      "sees_ground_truth": false
+    },
+    "7": {
+      "sees_prediction": true,
+      "sees_anchor": true,
+      "sees_ground_truth": false
+    },
+    "8": {
+      "sees_prediction": true,
+      "sees_anchor": true,
+      "sees_ground_truth": true
+    }
+  },
+  "stage_order": [
+    "1_data_cleansing",
+    "2_independent_differential",
+    "3_proponent",
+    "4_opponent",
+    "5_high_acuity_watchdog",
+    "6_evidence_retrieval",
+    "7_arbitration",
+    "8_bias_audit"
+  ],
+  "completed_stages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "errors": {},
+  "totals": {
+    "latency_s": 0.0822,
+    "tokens": 0,
+    "provider_calls": 8
+  },
+  "started_utc": "2026-10-02T16:53:13+00:00",
+  "completed_utc": "2026-10-02T16:53:13+00:00",
+  "stages": [
+    {
+      "stage": 1,
+      "key": "data_cleanser",
+      "name": "1_data_cleansing",
+      "status": "ok",
+      "backend": "deterministic",
+      "model_version": "deterministic-rules-v1 (no LLM inference)",
+      "prompt_hash": "5d7f93e1b2c44155d997453d06842eca444a0a8a51dfa3cce6d95aacf65f20ed",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0141,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "DataCleanserOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_01_input.json",
+        "output": "stage_01_output.json",
+        "meta": "stage_01_meta.json"
+      }
+    },
+    {
+      "stage": 2,
+      "key": "independent_differential",
+      "name": "2_independent_differential",
+      "status": "ok",
+      "backend": "deterministic",
+      "model_version": "deterministic-rules-v1 (no LLM inference)",
+      "prompt_hash": "436f1e75ba10e4f5bd4f849463e18d85429bd0f79448fe5c1f219cad1c02e16b",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0001,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "IndependentDifferentialOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_02_input.json",
+        "output": "stage_02_output.json",
+        "meta": "stage_02_meta.json"
+      }
+    },
+    {
+      "stage": 3,
+      "key": "proponent",
+      "name": "3_proponent",
+      "status": "ok",
+      "backend": "deterministic",
+      "model_version": "deterministic-rules-v1 (no LLM inference)",
+      "prompt_hash": "bbbbb95ec217edeede05ccc702012ba4ea9836a40a24372bd4b306427dc193fe",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0001,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "ProponentOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_03_input.json",
+        "output": "stage_03_output.json",
+        "meta": "stage_03_meta.json"
+      }
+    },
+    {
+      "stage": 4,
+      "key": "opponent",
+      "name": "4_opponent",
+      "status": "ok",
+      "backend": "deterministic",
+      "model_version": "deterministic-rules-v1 (no LLM inference)",
+      "prompt_hash": "089308ae902676a7170df4022d390197dfbfeb3ce32699ceaf51d70c6d8050e4",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0001,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "OpponentOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_04_input.json",
+        "output": "stage_04_output.json",
+        "meta": "stage_04_meta.json"
+      }
+    },
+    {
+      "stage": 5,
+      "key": "watchdog",
+      "name": "5_high_acuity_watchdog",
+      "status": "ok",
+      "backend": "deterministic",
+      "model_version": "deterministic-rules-v1 (no LLM inference)",
+      "prompt_hash": "195c0048162bd6fda850999283c44d9b0d8078587ef5ac18e2d4bceb02d0f261",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0282,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "WatchdogOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_05_input.json",
+        "output": "stage_05_output.json",
+        "meta": "stage_05_meta.json"
+      }
+    },
+    {
+      "stage": 6,
+      "key": "evidence_retrieval",
+      "name": "6_evidence_retrieval",
+      "status": "ok",
+      "backend": "retrieval_tfidf+fts5",
+      "model_version": "offline-tfidf-v1 (no LLM inference)",
+      "prompt_hash": "b13a09f8dc76038cfa3e100b4b64890ea38d0aa0e0ca13987f72eac559865834",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0007,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "EvidenceRetrievalOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_06_input.json",
+        "output": "stage_06_output.json",
+        "meta": "stage_06_meta.json"
+      }
+    },
+    {
+      "stage": 7,
+      "key": "arbitrator",
+      "name": "7_arbitration",
+      "status": "ok",
+      "backend": "deterministic",
+      "model_version": "deterministic-rules-v1 (no LLM inference)",
+      "prompt_hash": "bbbd5c36c26ff2442ccc14bc22f60f37bbaa06161e1d5df3df97040900325392",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0001,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "ArbitratorOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_07_input.json",
+        "output": "stage_07_output.json",
+        "meta": "stage_07_meta.json"
+      }
+    },
+    {
+      "stage": 8,
+      "key": "bias_audit",
+      "name": "8_bias_audit",
+      "status": "ok",
+      "backend": "deterministic_compute",
+      "model_version": "deterministic-compute-v1 (no LLM inference)",
+      "prompt_hash": "14e352d53f85da0d153bfc80af109cf75b241a265b4ef1221c43d79fd5bcba41",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_s": 0.0002,
+      "attempts": 1,
+      "fallback_reason": null,
+      "error": null,
+      "schema_name": "BiasAuditOutput",
+      "timestamp": "2026-10-02T16:53:13+00:00",
+      "files": {
+        "input": "stage_08_input.json",
+        "output": "stage_08_output.json",
+        "meta": "stage_08_meta.json"
+      }
+    }
+  ],
+  "disclaimer": "Research prototype — not a medical device; audit trail of a bias study, not a clinical record.",
+  "resumed_stages": 0
+}

@@ -1,0 +1,41 @@
+{
+  "candidate_diagnoses": [
+    "Acute appendicitis",
+    "Gastroenteritis / enteritis",
+    "Mesenteric lymphadenitis"
+  ],
+  "supporting_evidence": {
+    "Acute appendicitis": [
+      "Lower_Right_Abd_Pain=yes (localization to right lower quadrant)",
+      "Loss_of_Appetite=yes",
+      "Nausea=yes",
+      "WBC_Count=19.9 (elevated vs typical pediatric reference range)",
+      "CRP=6.0 (elevated inflammatory marker)"
+    ],
+    "Gastroenteritis / enteritis": [
+      "Stool=diarrhea (enteric presentation)",
+      "Nausea=yes"
+    ],
+    "Mesenteric lymphadenitis": [
+      "Loss_of_Appetite=yes"
+    ]
+  },
+  "contradictory_evidence": {
+    "Acute appendicitis": [
+      "Ipsilateral_Rebound_Tenderness=no",
+      "Psoas_Sign=no",
+      "Stool=diarrhea (points toward gastroenteritis)"
+    ],
+    "Gastroenteritis / enteritis": [],
+    "Mesenteric lymphadenitis": []
+  },
+  "uncertainty": "Anchor-blind differential from 8 record-derived evidence statements; 1 critical fields missing; no model prediction, probability, SHAP value or anchor was visible at this stage. Candidates ranked by (supporting − contradictory) evidence counts, not by model output.",
+  "missing_information": [
+    "Appendix_Diameter missing from record",
+    "Respiratory rate (no column in dataset — WHO/IMCI tachypnea rule cannot be assessed)",
+    "Blood pressure (no column in dataset — hypotension rule cannot be assessed)",
+    "SpO2 (no column in dataset — hypoxaemia rule cannot be assessed)",
+    "Heart rate (no column in dataset — tachycardia/bradycardia rules cannot be assessed)"
+  ],
+  "anchor_seen": false
+}

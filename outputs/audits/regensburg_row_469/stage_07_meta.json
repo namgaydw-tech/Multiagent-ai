@@ -1,0 +1,19 @@
+{
+  "stage": 7,
+  "key": "arbitrator",
+  "call": {
+    "stage": "7_arbitration",
+    "backend": "deterministic",
+    "model_version": "deterministic-rules-v1 (no LLM inference)",
+    "prompt_hash": "bbbd5c36c26ff2442ccc14bc22f60f37bbaa06161e1d5df3df97040900325392",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "latency_s": 0.0001,
+    "attempts": 1,
+    "fallback_reason": null,
+    "error": null,
+    "timestamp": "2026-10-02T16:53:13+00:00",
+    "schema_name": "ArbitratorOutput"
+  },
+  "latency_s": 0.0006
+}

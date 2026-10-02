@@ -1,0 +1,69 @@
+{
+  "query": "Acute appendicitis; Gastroenteritis / enteritis; Mesenteric lymphadenitis",
+  "retrieved": [
+    {
+      "title": "Suspected acute appendicitis: diagnosis and management (CG150)",
+      "authors": "National Institute for Health and Care Excellence",
+      "year": "2019",
+      "source": "NICE Guideline",
+      "doi": "",
+      "url": "https://www.nice.org.uk/guidance/cg150",
+      "section": "source manifest",
+      "license": "open (OGL)",
+      "chunk_text": "Suspected acute appendicitis: diagnosis and management (CG150). URL reachable on 2026-10-02 Access: open (OGL). Used by: knowledge/emergency_red_flags.yaml",
+      "score": 1.0,
+      "used_by": [
+        "arbitrator"
+      ]
+    },
+    {
+      "title": "emergency_red_flags.yaml :: red_flags.appendicitis_complication_flags",
+      "authors": "",
+      "year": "2019",
+      "source": "NICE CG150 (suspected acute appendicitis) - danger signs for urgent surgical review; dataset's own ultrasound findings (Perforation, Appendicular_Abscess) serve as record-level triggers",
+      "doi": "",
+      "url": "https://www.nice.org.uk/guidance/cg150",
+      "section": "red_flags.appendicitis_complication_flags",
+      "license": "public guideline summary (see citation)",
+      "chunk_text": "Generalized peritonitis, signs of perforation, palpable abscess/mass, persistent vomiting with systemic illness, or clinical deterioration are urgent surgical red flags that must be escalated rather than watchfully waited on.",
+      "score": 0.761,
+      "used_by": [
+        "arbitrator"
+      ]
+    },
+    {
+      "title": "A practical score for the early diagnosis of acute appendicitis",
+      "authors": "Alfredo Alvarado",
+      "year": "1986",
+      "source": "Annals of Emergency Medicine",
+      "doi": "10.1016/S0196-0644(86)80993-3",
+      "url": "https://doi.org/10.1016/S0196-0644(86)80993-3",
+      "section": "inventory summary",
+      "license": "metadata/abstract summary only — not full text",
+      "chunk_text": "Question: Can a simple weighted score from symptoms, signs and lab findings aid early appendicitis diagnosis? | Method: Derivation of the Alvarado score | Result: Provides the AS score carried in the Regensburg dataset; emphasises migration of pain, RLQ tenderness, leukocytosis | Limitation: Adult-derived (originally adults); paediatric performance variable",
+      "score": 0.761,
+      "used_by": [
+        "arbitrator"
+      ]
+    },
+    {
+      "title": "Regensburg Pediatric Appendicitis Dataset",
+      "authors": "Marcinkevics R; Reis Wolfertstetter P; et al.",
+      "year": "2023",
+      "source": "manifest_entry",
+      "doi": "10.5281/zenodo.7669442",
+      "url": "https://zenodo.org/records/7669442",
+      "section": "source manifest",
+      "license": "",
+      "chunk_text": "Regensburg Pediatric Appendicitis Dataset. Downloaded and audited 2026-10-02 (docs/DATASET_AUDIT.md) Access: . Used by: data/raw/regensburg_pediatric_appendicitis/",
+      "score": 0.4638,
+      "used_by": [
+        "arbitrator"
+      ]
+    }
+  ],
+  "used_by_agents": [
+    "arbitrator"
+  ],
+  "note": "hybrid TF-IDF cosine + FTS5 keyword fusion; every hit carries DOI/URL provenance"
+}

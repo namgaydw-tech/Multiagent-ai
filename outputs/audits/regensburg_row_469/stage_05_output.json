@@ -1,0 +1,42 @@
+{
+  "high_acuity_conditions_considered": [
+    "appendicitis complications (perforation/abscess/peritonitis)",
+    "fever (NICE CG160)",
+    "sepsis (Phoenix 2024 / IPSCC 2005)",
+    "meningococcal disease (NICE CG160)",
+    "IMCI general danger signs",
+    "Kawasaki disease (AHA)",
+    "hypoxaemia, tachypnea, hypotension, tachycardia, bradycardia, severe dehydration"
+  ],
+  "red_flags_present": [],
+  "red_flags_absent": [
+    "generalized peritonitis (Peritonitis=no)",
+    "fever (Body_Temperature=37.4 degC < 38.0)"
+  ],
+  "cannot_assess_due_to_missing_data": [
+    "perforation (Perforation not recorded)",
+    "appendicular abscess (Appendicular_Abscess not recorded)",
+    "non-blanching/petechial rash (no rash field in dataset)",
+    "meningeal signs (no neck-stiffness/photophobia field in dataset)",
+    "IMCI danger signs (no drinking/lethargy/convulsion fields in dataset)",
+    "Kawasaki features (no mucosal/conjunctival/lymphadenopathy fields in dataset)",
+    "hypoxaemia (no SpO2 column in dataset)",
+    "tachypnea/WHO-IMCI fast breathing (no respiratory rate column in dataset)",
+    "bradycardia with poor perfusion (no heart rate column in dataset)",
+    "severe dehydration signs (no lethargy/skin-turgor/drinking fields in dataset)"
+  ],
+  "urgent_rule_out_conditions": [],
+  "risk_level": "LOW",
+  "evidence": [],
+  "prediction_seen": false,
+  "rules_applied": [
+    "appendicitis_complication_flags",
+    "fever",
+    "infection-suspicion gate (watchdog_policy.trigger_evidence_required)"
+  ],
+  "rules_refused": [
+    "hypotension_sbp_by_age (pending_full_text_transcription — fail closed)",
+    "phoenix_sepsis_2024 (component score tables pending transcription — fail closed)",
+    "tachycardia_by_age (pending_full_text_transcription — fail closed)"
+  ]
+}

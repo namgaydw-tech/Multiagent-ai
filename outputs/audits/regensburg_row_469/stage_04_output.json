@@ -1,0 +1,52 @@
+{
+  "challenged_hypothesis": "no appendicitis",
+  "contradictory_evidence": [
+    {
+      "kind": "patient_record",
+      "citation": "column=Ipsilateral_Rebound_Tenderness",
+      "quote": "Ipsilateral_Rebound_Tenderness=no",
+      "relevance": "present record value contradicting 'no appendicitis'"
+    },
+    {
+      "kind": "patient_record",
+      "citation": "column=Psoas_Sign",
+      "quote": "Psoas_Sign=no",
+      "relevance": "present record value contradicting 'no appendicitis'"
+    },
+    {
+      "kind": "patient_record",
+      "citation": "column=Stool",
+      "quote": "Stool=diarrhea (points toward gastroenteritis)",
+      "relevance": "present record value contradicting 'no appendicitis'"
+    },
+    {
+      "kind": "retrieved_source",
+      "citation": "Suspected acute appendicitis: diagnosis and management (CG150)",
+      "quote": "Suspected acute appendicitis: diagnosis and management (CG150). URL reachable on 2026-10-02 Access: open (OGL). Used by: knowledge/emergency_red_flags.yaml",
+      "relevance": "retrieved source considered when challenging the leading hypothesis"
+    },
+    {
+      "kind": "retrieved_source",
+      "citation": "emergency_red_flags.yaml :: red_flags.appendicitis_complication_flags",
+      "quote": "Generalized peritonitis, signs of perforation, palpable abscess/mass, persistent vomiting with systemic illness, or clinical deterioration are urgent surgical red flags that must be escalated rather than watchfully waited on.",
+      "relevance": "retrieved source considered when challenging the leading hypothesis"
+    }
+  ],
+  "missing_criteria": [
+    "Appendix_Diameter — diagnostic criterion unavailable in the record",
+    "Histopathology (reference standard) unavailable pre-operatively"
+  ],
+  "alternative_diagnoses": [
+    "Acute appendicitis",
+    "Gastroenteritis / enteritis",
+    "Mesenteric lymphadenitis"
+  ],
+  "strongest_alternative": "Acute appendicitis",
+  "disconfirmatory_tests": [
+    "Specialist-repeated ultrasound with appendix measurement if the appendix was not measured"
+  ],
+  "anchoring_risk": "HIGH",
+  "reason_for_anchoring_risk": "leading hypothesis has 0 supporting evidence statements while strongest alternative has 5 — challenge is required",
+  "stage_a_completed": true,
+  "anchor_seen_in_stage_a": false
+}

@@ -1,0 +1,57 @@
+{
+  "supported_diagnosis": "no appendicitis",
+  "model_probability": 0.1667,
+  "supporting_evidence": [
+    {
+      "kind": "patient_record",
+      "citation": "column=Lower_Right_Abd_Pain",
+      "quote": "Lower_Right_Abd_Pain=yes",
+      "relevance": "present finding supporting the supported hypothesis"
+    },
+    {
+      "kind": "patient_record",
+      "citation": "column=Loss_of_Appetite",
+      "quote": "Loss_of_Appetite=yes",
+      "relevance": "present finding supporting the supported hypothesis"
+    },
+    {
+      "kind": "patient_record",
+      "citation": "column=Nausea",
+      "quote": "Nausea=yes",
+      "relevance": "present finding supporting the supported hypothesis"
+    },
+    {
+      "kind": "patient_record",
+      "citation": "column=WBC_Count",
+      "quote": "WBC_Count=19.9",
+      "relevance": "elevated white cell count"
+    },
+    {
+      "kind": "patient_record",
+      "citation": "column=CRP",
+      "quote": "CRP=6.0",
+      "relevance": "elevated inflammatory marker"
+    },
+    {
+      "kind": "model",
+      "citation": "lightgbm_appendicitis 1.0.0 SHAP",
+      "quote": "WBC_Count=19.9 — contributed positively (shap=1.052914)",
+      "relevance": "SHAP indicates the feature's contribution to this model prediction, not clinical causation."
+    },
+    {
+      "kind": "model",
+      "citation": "lightgbm_appendicitis 1.0.0 SHAP",
+      "quote": "Contralateral_Rebound_Tenderness=yes — contributed positively (shap=0.415915)",
+      "relevance": "SHAP indicates the feature's contribution to this model prediction, not clinical causation."
+    }
+  ],
+  "missing_expected_evidence": [
+    "Appendix_Diameter missing — expected finding unavailable for the supported hypothesis"
+  ],
+  "contradictions_acknowledged": [
+    "Ipsilateral_Rebound_Tenderness=no: value present in record argues against the supported hypothesis",
+    "Psoas_Sign=no: value present in record argues against the supported hypothesis",
+    "Stool=diarrhea (points toward gastroenteritis): value present in record argues against the supported hypothesis"
+  ],
+  "confidence": 0.1667
+}

@@ -1,0 +1,130 @@
+{
+  "record": {
+    "Age": 4.71184120465435,
+    "BMI": 13.29,
+    "Sex": "male",
+    "Height": 108.0,
+    "Weight": 15.5,
+    "Alvarado_Score": 9.0,
+    "Paedriatic_Appendicitis_Score": 6.0,
+    "Appendix_on_US": "no",
+    "Appendix_Diameter": null,
+    "Migratory_Pain": "no",
+    "Lower_Right_Abd_Pain": "yes",
+    "Contralateral_Rebound_Tenderness": "yes",
+    "Coughing_Pain": "no",
+    "Nausea": "yes",
+    "Loss_of_Appetite": "yes",
+    "Body_Temperature": 37.4,
+    "WBC_Count": 19.9,
+    "Neutrophil_Percentage": 75.2,
+    "Segmented_Neutrophils": null,
+    "Neutrophilia": "yes",
+    "RBC_Count": 4.89,
+    "Hemoglobin": 12.7,
+    "RDW": 14.9,
+    "Thrombocyte_Count": 437.0,
+    "Ketones_in_Urine": null,
+    "RBC_in_Urine": null,
+    "WBC_in_Urine": null,
+    "CRP": 6.0,
+    "Dysuria": "no",
+    "Stool": "diarrhea",
+    "Peritonitis": "no",
+    "Psoas_Sign": "no",
+    "Ipsilateral_Rebound_Tenderness": "no",
+    "US_Performed": "yes",
+    "Free_Fluids": null,
+    "Appendix_Wall_Layers": null,
+    "Target_Sign": null,
+    "Appendicolith": null,
+    "Perfusion": null,
+    "Perforation": null,
+    "Surrounding_Tissue_Reaction": null,
+    "Appendicular_Abscess": null,
+    "Abscess_Location": null,
+    "Pathological_Lymph_Nodes": null,
+    "Lymph_Nodes_Location": null,
+    "Bowel_Wall_Thickening": null,
+    "Conglomerate_of_Bowel_Loops": null,
+    "Ileus": null,
+    "Coprostasis": null,
+    "Meteorism": null,
+    "Enteritis": null,
+    "Gynecological_Findings": null
+  },
+  "leading_hypothesis": "no appendicitis",
+  "leading_hypothesis_source": "model_top",
+  "retrieved_evidence": [
+    {
+      "title": "Suspected acute appendicitis: diagnosis and management (CG150)",
+      "authors": "National Institute for Health and Care Excellence",
+      "year": "2019",
+      "source": "NICE Guideline",
+      "doi": "",
+      "url": "https://www.nice.org.uk/guidance/cg150",
+      "section": "source manifest",
+      "license": "open (OGL)",
+      "chunk_text": "Suspected acute appendicitis: diagnosis and management (CG150). URL reachable on 2026-10-02 Access: open (OGL). Used by: knowledge/emergency_red_flags.yaml",
+      "score": 1.0,
+      "used_by": [
+        "opponent"
+      ]
+    },
+    {
+      "title": "emergency_red_flags.yaml :: red_flags.appendicitis_complication_flags",
+      "authors": "",
+      "year": "2019",
+      "source": "NICE CG150 (suspected acute appendicitis) - danger signs for urgent surgical review; dataset's own ultrasound findings (Perforation, Appendicular_Abscess) serve as record-level triggers",
+      "doi": "",
+      "url": "https://www.nice.org.uk/guidance/cg150",
+      "section": "red_flags.appendicitis_complication_flags",
+      "license": "public guideline summary (see citation)",
+      "chunk_text": "Generalized peritonitis, signs of perforation, palpable abscess/mass, persistent vomiting with systemic illness, or clinical deterioration are urgent surgical red flags that must be escalated rather than watchfully waited on.",
+      "score": 0.8017,
+      "used_by": [
+        "opponent"
+      ]
+    },
+    {
+      "title": "A practical score for the early diagnosis of acute appendicitis",
+      "authors": "Alfredo Alvarado",
+      "year": "1986",
+      "source": "Annals of Emergency Medicine",
+      "doi": "10.1016/S0196-0644(86)80993-3",
+      "url": "https://doi.org/10.1016/S0196-0644(86)80993-3",
+      "section": "inventory summary",
+      "license": "metadata/abstract summary only — not full text",
+      "chunk_text": "Question: Can a simple weighted score from symptoms, signs and lab findings aid early appendicitis diagnosis? | Method: Derivation of the Alvarado score | Result: Provides the AS score carried in the Regensburg dataset; emphasises migration of pain, RLQ tenderness, leukocytosis | Limitation: Adult-derived (originally adults); paediatric performance variable",
+      "score": 0.8017,
+      "used_by": [
+        "opponent"
+      ]
+    },
+    {
+      "title": "Regensburg Pediatric Appendicitis Dataset",
+      "authors": "Marcinkevics R; Reis Wolfertstetter P; et al.",
+      "year": "2023",
+      "source": "manifest_entry",
+      "doi": "10.5281/zenodo.7669442",
+      "url": "https://zenodo.org/records/7669442",
+      "section": "source manifest",
+      "license": "",
+      "chunk_text": "Regensburg Pediatric Appendicitis Dataset. Downloaded and audited 2026-10-02 (docs/DATASET_AUDIT.md) Access: . Used by: data/raw/regensburg_pediatric_appendicitis/",
+      "score": 0.6574,
+      "used_by": [
+        "opponent"
+      ]
+    }
+  ],
+  "retrieval_note": "pre-stage-6 retrieval for the opponent (k=4, query='Acute appendicitis; Gastroenteritis / enteritis; Mesenteric lymphadenitis; no appendicitis')",
+  "stage_a_sees_anchor": false,
+  "visibility": {
+    "sees_prediction": true,
+    "sees_anchor": true,
+    "sees_ground_truth": false
+  },
+  "withheld_from_this_stage": [
+    "ground_truth"
+  ]
+}

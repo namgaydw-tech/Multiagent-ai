@@ -1,0 +1,22 @@
+{
+  "query": "Acute appendicitis; Gastroenteritis / enteritis; Mesenteric lymphadenitis",
+  "candidates": [
+    "Acute appendicitis",
+    "Gastroenteritis / enteritis",
+    "Mesenteric lymphadenitis"
+  ],
+  "red_flags": [],
+  "rag_enabled": true,
+  "visibility": {
+    "sees_prediction": false,
+    "sees_anchor": false,
+    "sees_ground_truth": false
+  },
+  "withheld_from_this_stage": [
+    "anchor",
+    "ground_truth",
+    "model_output",
+    "shap_explain",
+    "uncertainty"
+  ]
+}

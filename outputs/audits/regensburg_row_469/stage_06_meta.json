@@ -1,0 +1,19 @@
+{
+  "stage": 6,
+  "key": "evidence_retrieval",
+  "call": {
+    "stage": "6_evidence_retrieval",
+    "backend": "retrieval_tfidf+fts5",
+    "model_version": "offline-tfidf-v1 (no LLM inference)",
+    "prompt_hash": "b13a09f8dc76038cfa3e100b4b64890ea38d0aa0e0ca13987f72eac559865834",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "latency_s": 0.0007,
+    "attempts": 1,
+    "fallback_reason": null,
+    "error": null,
+    "timestamp": "2026-10-02T16:53:13+00:00",
+    "schema_name": "EvidenceRetrievalOutput"
+  },
+  "latency_s": 0.0007
+}

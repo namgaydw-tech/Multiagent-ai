@@ -1,0 +1,19 @@
+{
+  "stage": 5,
+  "key": "watchdog",
+  "call": {
+    "stage": "5_high_acuity_watchdog",
+    "backend": "deterministic",
+    "model_version": "deterministic-rules-v1 (no LLM inference)",
+    "prompt_hash": "195c0048162bd6fda850999283c44d9b0d8078587ef5ac18e2d4bceb02d0f261",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "latency_s": 0.0282,
+    "attempts": 1,
+    "fallback_reason": null,
+    "error": null,
+    "timestamp": "2026-10-02T16:53:13+00:00",
+    "schema_name": "WatchdogOutput"
+  },
+  "latency_s": 0.0284
+}

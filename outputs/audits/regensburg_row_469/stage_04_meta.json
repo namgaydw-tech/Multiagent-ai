@@ -1,0 +1,19 @@
+{
+  "stage": 4,
+  "key": "opponent",
+  "call": {
+    "stage": "4_opponent",
+    "backend": "deterministic",
+    "model_version": "deterministic-rules-v1 (no LLM inference)",
+    "prompt_hash": "089308ae902676a7170df4022d390197dfbfeb3ce32699ceaf51d70c6d8050e4",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "latency_s": 0.0001,
+    "attempts": 1,
+    "fallback_reason": null,
+    "error": null,
+    "timestamp": "2026-10-02T16:53:13+00:00",
+    "schema_name": "OpponentOutput"
+  },
+  "latency_s": 0.0013
+}

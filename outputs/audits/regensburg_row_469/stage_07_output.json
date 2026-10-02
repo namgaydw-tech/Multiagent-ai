@@ -1,0 +1,33 @@
+{
+  "primary_working_diagnosis": "Acute appendicitis",
+  "multi_agent_confidence": 0.5627,
+  "confidence_interpretation": "moderate — competing explanations remain viable",
+  "critical_differentials": [
+    "Acute appendicitis",
+    "Gastroenteritis / enteritis",
+    "Mesenteric lymphadenitis"
+  ],
+  "urgent_rule_outs": [],
+  "recommended_information_or_tests": [
+    "Specialist-repeated ultrasound with appendix measurement if the appendix was not measured"
+  ],
+  "important_missing_data": [
+    "Appendix_Diameter"
+  ],
+  "model_vs_agents_disagreement": "Yes — model top class 'no appendicitis' differs from weighted working hypothesis 'Acute appendicitis' (contradiction_strength=0.75)",
+  "confirmation_bias_risk_before_debate": "LOW",
+  "confirmation_bias_risk_after_debate": "LOW",
+  "audit_trail": [
+    "stage1: 1 critical fields missing; 0 objective red flags with provenance",
+    "stage2: anchor-blind differential with 3 candidates (anchor_seen=False)",
+    "stage3: proponent defended 'no appendicitis' (p=0.1667, acknowledged 3 contradictions)",
+    "stage4: opponent challenged 'no appendicitis' with 5 cited counter-evidences; anchoring_risk=HIGH",
+    "stage5: watchdog risk=LOW; 0 red flags present; 3 rules refused (fail-closed)",
+    "stage6: 4 sources retrieved with provenance",
+    "stage7: weighted blend produced 0.5627 (moderate); anchor_present=False, anchor_followed=None"
+  ],
+  "research_only_disclaimer": "Research prototype — generated for a bias study; not a medical device, not for clinical use, not a diagnosis.",
+  "confidence_derivation": "multi_agent_confidence = clip((0.45*evidence_agreement + 0.25*model_support + 0.15*data_completeness + 0.10*contradiction_term + 0.05*guideline_support) * risk_mult * uncertainty_mult, 0.05, 0.95); evidence_agreement=0.438, model_support=0.730 (calibrated), data_completeness=0.900 (1/10 critical fields missing), contradiction_strength=0.750, guideline_support=1.000, risk_mult=1.0 (LOW), uncertainty_mult=0.88 (MODERATE). The model probability 0.167 is an *input* to model_support, not the output confidence.",
+  "anchor_present": false,
+  "anchor_followed": null
+}

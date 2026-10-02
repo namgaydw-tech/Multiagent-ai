@@ -23,6 +23,8 @@ outputs/models/
 outputs/figures/
 outputs/audits/*
 !outputs/audits/.gitkeep
+# one complete example audit trail is committed for reviewers (docs/PHASE3_REPORT.md)
+!outputs/audits/regensburg_row_469/
 
 # OS / editor
 .DS_Store

@@ -1,0 +1,231 @@
+{
+  "record": {
+    "Age": 4.71184120465435,
+    "BMI": 13.29,
+    "Sex": "male",
+    "Height": 108.0,
+    "Weight": 15.5,
+    "Alvarado_Score": 9.0,
+    "Paedriatic_Appendicitis_Score": 6.0,
+    "Appendix_on_US": "no",
+    "Appendix_Diameter": null,
+    "Migratory_Pain": "no",
+    "Lower_Right_Abd_Pain": "yes",
+    "Contralateral_Rebound_Tenderness": "yes",
+    "Coughing_Pain": "no",
+    "Nausea": "yes",
+    "Loss_of_Appetite": "yes",
+    "Body_Temperature": 37.4,
+    "WBC_Count": 19.9,
+    "Neutrophil_Percentage": 75.2,
+    "Segmented_Neutrophils": null,
+    "Neutrophilia": "yes",
+    "RBC_Count": 4.89,
+    "Hemoglobin": 12.7,
+    "RDW": 14.9,
+    "Thrombocyte_Count": 437.0,
+    "Ketones_in_Urine": null,
+    "RBC_in_Urine": null,
+    "WBC_in_Urine": null,
+    "CRP": 6.0,
+    "Dysuria": "no",
+    "Stool": "diarrhea",
+    "Peritonitis": "no",
+    "Psoas_Sign": "no",
+    "Ipsilateral_Rebound_Tenderness": "no",
+    "US_Performed": "yes",
+    "Free_Fluids": null,
+    "Appendix_Wall_Layers": null,
+    "Target_Sign": null,
+    "Appendicolith": null,
+    "Perfusion": null,
+    "Perforation": null,
+    "Surrounding_Tissue_Reaction": null,
+    "Appendicular_Abscess": null,
+    "Abscess_Location": null,
+    "Pathological_Lymph_Nodes": null,
+    "Lymph_Nodes_Location": null,
+    "Bowel_Wall_Thickening": null,
+    "Conglomerate_of_Bowel_Loops": null,
+    "Ileus": null,
+    "Coprostasis": null,
+    "Meteorism": null,
+    "Enteritis": null,
+    "Gynecological_Findings": null
+  },
+  "model_output": {
+    "model_name": "lightgbm_appendicitis",
+    "model_version": "1.0.0",
+    "clinical_domain": "pediatric_appendicitis",
+    "target_classes": [
+      "no appendicitis",
+      "appendicitis"
+    ],
+    "class_probabilities": {
+      "no appendicitis": 0.730355,
+      "appendicitis": 0.269645
+    },
+    "predicted_class": "no appendicitis",
+    "calibrated_probability": 0.16666666666666666,
+    "uncertainty": {
+      "confidence": 0.5494,
+      "predictive_entropy": 0.4506,
+      "margin": 0.3467,
+      "uncertainty_level": "MODERATE",
+      "entropy_source": "calibrated",
+      "ensemble_std": null,
+      "note": "Entropy/margin describe model uncertainty, not clinical certainty; research prototype — not a clinical confidence statement."
+    },
+    "important_features": [
+      {
+        "feature": "Appendix_Diameter",
+        "value": null,
+        "importance": 2.529497,
+        "contribution": -2.529497,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "WBC_Count",
+        "value": 19.9,
+        "importance": 1.052914,
+        "contribution": 1.052914,
+        "direction": "positive",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Contralateral_Rebound_Tenderness",
+        "value": "yes",
+        "importance": 0.415915,
+        "contribution": 0.415915,
+        "direction": "positive",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Surrounding_Tissue_Reaction",
+        "value": null,
+        "importance": 0.291313,
+        "contribution": -0.291313,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Peritonitis",
+        "value": "no",
+        "importance": 0.28423,
+        "contribution": -0.28423,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Ipsilateral_Rebound_Tenderness__missing",
+        "value": 0,
+        "importance": 0.279912,
+        "contribution": -0.279912,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Alvarado_Score",
+        "value": 9.0,
+        "importance": 0.257411,
+        "contribution": 0.257411,
+        "direction": "positive",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Ipsilateral_Rebound_Tenderness",
+        "value": "no",
+        "importance": 0.233865,
+        "contribution": -0.233865,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "CRP",
+        "value": 6.0,
+        "importance": 0.190013,
+        "contribution": -0.190013,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Thrombocyte_Count",
+        "value": 437.0,
+        "importance": 0.142756,
+        "contribution": -0.142756,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Hemoglobin",
+        "value": 12.7,
+        "importance": 0.10933,
+        "contribution": 0.10933,
+        "direction": "positive",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "RBC_Count",
+        "value": 4.89,
+        "importance": 0.10807,
+        "contribution": -0.10807,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Neutrophil_Percentage",
+        "value": 75.2,
+        "importance": 0.089805,
+        "contribution": -0.089805,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "RDW",
+        "value": 14.9,
+        "importance": 0.073969,
+        "contribution": 0.073969,
+        "direction": "positive",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      },
+      {
+        "feature": "Age",
+        "value": 4.71184120465435,
+        "importance": 0.057392,
+        "contribution": -0.057392,
+        "direction": "negative",
+        "wording": "SHAP value: this feature contributed to this model prediction; it did not cause the diagnosis."
+      }
+    ],
+    "timestamp": "2026-10-02T16:53:13+00:00",
+    "config_hash": "cb7198448d25"
+  },
+  "uncertainty": {
+    "confidence": 0.5494,
+    "predictive_entropy": 0.4506,
+    "margin": 0.3467,
+    "uncertainty_level": "MODERATE",
+    "entropy_source": "calibrated",
+    "ensemble_std": null,
+    "note": "Entropy/margin describe model uncertainty, not clinical certainty; research prototype — not a clinical confidence statement."
+  },
+  "anchor": null,
+  "prior_stage_keys": [
+    "data_cleanser",
+    "independent_differential",
+    "proponent",
+    "opponent",
+    "watchdog",
+    "evidence_retrieval",
+    "bias_audit"
+  ],
+  "visibility": {
+    "sees_prediction": true,
+    "sees_anchor": true,
+    "sees_ground_truth": false
+  },
+  "withheld_from_this_stage": [
+    "ground_truth"
+  ]
+}
