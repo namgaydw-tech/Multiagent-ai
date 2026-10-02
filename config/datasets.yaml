@@ -1,0 +1,57 @@
+# Dataset registry - one entry per dataset; datasets are never merged across entries.
+
+version: 1
+last_verified: "2026-10-02"
+
+datasets:
+
+  regensburg_pediatric_appendicitis:
+    phase: A
+    status: downloaded_and_audited
+    sources:
+      uci: https://archive.ics.uci.edu/dataset/938/regensburg+pediatric+appendicitis
+      uci_api: https://archive.ics.uci.edu/api/dataset?id=938
+      zenodo: https://zenodo.org/records/7669442
+    doi: 10.5281/zenodo.7669442
+    license: CC-BY-NC-4.0
+    n_patients: 782
+    targets: [Diagnosis, Management, Severity]
+    files:
+      tabular: data/raw/regensburg_pediatric_appendicitis/app_data.xlsx      # 212771 bytes
+      readme: data/raw/regensburg_pediatric_appendicitis/ZENODO_README.md    # 2235 bytes
+      images: not_downloaded (US_Pictures.zip, 523034730 bytes, Zenodo)
+    anchor_variable: Diagnosis_Presumptive
+    audit: docs/DATASET_AUDIT.md
+    card: docs/DATASET_CARD.md
+    model: appendicitis_lightgbm
+
+  neonatal_sepsis_registry:
+    phase: B
+    status: downloaded_audit_pending
+    sources:
+      mendeley: https://data.mendeley.com/datasets/5vdz5cftz7/1
+      api: https://data.mendeley.com/public-api/datasets/5vdz5cftz7
+    doi: 10.17632/5vdz5cftz7.1
+    associated_paper_doi: 10.1016/j.dib.2019.104788
+    license: not_exposed_by_api_confirm_on_landing_page
+    n_rows: 1946
+    files:
+      csv: data/raw/neonatal_sepsis/deid-nicu-sepsis-tta.csv
+      sha256: 54aa1dd81d40ed171282fdcca57de55bc2d8b8a3e2b3eec49d67ba1c1ba4c457
+    model: sepsis_specific_model
+    isolation_rule: "never concatenated with appendicitis rows; independent preprocessing pipeline"
+
+  child_pneumonia_dataset:
+    phase: C
+    status: metadata_only_phase_c_blocked_pending_image_audit
+    sources:
+      mendeley: https://data.mendeley.com/datasets/3tx8xymdsv/1
+    doi: 10.17632/3tx8xymdsv.1
+    license: cc_by_4_0_as_stated_in_brief_reverify_on_landing_page
+    audit_flags:
+      total_files: 2926
+      pre_augmented_files: 2644      # aug_ prefix -> leakage risk under random splits
+      duplicate_filenames: 279
+      patient_grouping_available: false
+    model: pneumonia_vision_model
+    isolation_rule: "labels never mixed with appendicitis targets; transfer learning only"

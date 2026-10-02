@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets / local env
+.env
+
+# Raw data (re-downloadable via data/manifests/download_manifest.json)
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Heavy / regenerable outputs
+outputs/models/
+outputs/figures/
+outputs/audits/*
+!outputs/audits/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# App-internal metadata
+.freebuff/

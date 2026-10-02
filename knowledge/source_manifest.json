@@ -1,0 +1,160 @@
+{
+  "manifest_version": "1.0.0",
+  "generated": "2026-10-02",
+  "purpose": "Every clinical rule and dataset used by this project maps to an entry here. No rule may exist without a manifest entry.",
+  "sources": [
+    {
+      "id": "phoenix_consensus_2024",
+      "type": "clinical_criteria",
+      "title": "International Consensus Criteria for Pediatric Sepsis and Septic Shock (Phoenix)",
+      "authors": "Schlapbach LJ; Watson RS; Sorce LR; et al.",
+      "publication_year": 2024,
+      "journal": "JAMA",
+      "doi": "10.1001/jama.2024.0179",
+      "url": "https://doi.org/10.1001/jama.2024.0179",
+      "access": "green OA (available via PubMed Central)",
+      "verification": "DOI resolved and metadata confirmed via OpenAlex on 2026-10-02",
+      "used_by": ["knowledge/sepsis_rules.yaml"]
+    },
+    {
+      "id": "phoenix_derivation_2024",
+      "type": "clinical_criteria_derivation",
+      "title": "Development and Validation of the Phoenix Criteria for Pediatric Sepsis and Septic Shock",
+      "authors": "Sanchez-Pinto LN; Bennett TD; DeWitt PE; et al.",
+      "publication_year": 2024,
+      "journal": "JAMA",
+      "doi": "10.1001/jama.2024.0196",
+      "url": "https://doi.org/10.1001/jama.2024.0196",
+      "access": "green OA",
+      "verification": "DOI resolved and metadata confirmed via OpenAlex on 2026-10-02",
+      "used_by": ["knowledge/sepsis_rules.yaml"]
+    },
+    {
+      "id": "ipssc_2005",
+      "type": "clinical_criteria",
+      "title": "International pediatric sepsis consensus conference: definitions for sepsis and organ dysfunction in pediatrics",
+      "authors": "Goldstein B; Giroir B; Randolph AG",
+      "publication_year": 2005,
+      "journal": "Pediatric Critical Care Medicine",
+      "doi": "10.1097/01.pcc.0000149131.72248.e6",
+      "url": "https://doi.org/10.1097/01.pcc.0000149131.72248.e6",
+      "access": "subscription (metadata verified; full text not accessed)",
+      "verification": "DOI resolved and metadata confirmed via OpenAlex on 2026-10-02",
+      "used_by": ["knowledge/sepsis_rules.yaml"]
+    },
+    {
+      "id": "aha_kawasaki_2017",
+      "type": "clinical_guideline",
+      "title": "Diagnosis, Treatment, and Long-Term Management of Kawasaki Disease: A Scientific Statement for Health Professionals From the American Heart Association",
+      "authors": "McCrindle BW; Rowley AH; Newburger JW; et al.",
+      "publication_year": 2017,
+      "journal": "Circulation",
+      "doi": "10.1161/CIR.0000000000000484",
+      "url": "https://doi.org/10.1161/CIR.0000000000000484",
+      "access": "subscription",
+      "verification": "DOI resolved and metadata confirmed via OpenAlex on 2026-10-02",
+      "used_by": ["knowledge/emergency_red_flags.yaml"]
+    },
+    {
+      "id": "aha_pals_2020",
+      "type": "resuscitation_guideline",
+      "title": "Part 5: Pediatric Basic and Advanced Life Support - 2020 American Heart Association Guidelines for CPR and Emergency Cardiovascular Care",
+      "authors": "Aziz K; et al. (AHA Guidelines Writing Group)",
+      "publication_year": 2020,
+      "journal": "Circulation",
+      "url": "https://cpr.heart.org/en/guidelines-and-statements",
+      "access": "publicly readable guideline",
+      "verification": "URL reachable on 2026-10-02; exact numeric tables pending full-text transcription (fail-closed rules flagged in knowledge/pediatric_thresholds.yaml)",
+      "used_by": ["knowledge/pediatric_thresholds.yaml"]
+    },
+    {
+      "id": "nice_cg160",
+      "type": "clinical_guideline",
+      "title": "Feverish illness in children: assessment and early management (CG160)",
+      "authors": "National Institute for Health and Care Excellence",
+      "publication_year": 2017,
+      "journal": "NICE Guideline",
+      "url": "https://www.nice.org.uk/guidance/cg160",
+      "access": "open (OGL)",
+      "verification": "URL reachable on 2026-10-02",
+      "used_by": ["knowledge/emergency_red_flags.yaml", "knowledge/pediatric_thresholds.yaml"]
+    },
+    {
+      "id": "nice_cg150",
+      "type": "clinical_guideline",
+      "title": "Suspected acute appendicitis: diagnosis and management (CG150)",
+      "authors": "National Institute for Health and Care Excellence",
+      "publication_year": 2019,
+      "journal": "NICE Guideline",
+      "url": "https://www.nice.org.uk/guidance/cg150",
+      "access": "open (OGL)",
+      "verification": "URL reachable on 2026-10-02",
+      "used_by": ["knowledge/emergency_red_flags.yaml"]
+    },
+    {
+      "id": "who_pocketbook_child",
+      "type": "clinical_guideline",
+      "title": "Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Childhood Illnesses",
+      "authors": "World Health Organization",
+      "publication_year": 2013,
+      "journal": "WHO",
+      "url": "https://www.who.int/publications/i/item/9789241548076",
+      "access": "open",
+      "verification": "Publication identity confirmed; thresholds marked confirmed_from_authoritative_summary",
+      "used_by": ["knowledge/pediatric_thresholds.yaml", "knowledge/emergency_red_flags.yaml"]
+    },
+    {
+      "id": "who_oxygen_children_2016",
+      "type": "clinical_guideline",
+      "title": "Oxygen therapy for children: a manual for health workers",
+      "authors": "World Health Organization",
+      "publication_year": 2016,
+      "journal": "WHO",
+      "url": "https://www.who.int/publications/i/item/9789241549011",
+      "access": "open",
+      "verification": "Publication identity confirmed; SpO2 < 90% threshold from public summary",
+      "used_by": ["knowledge/pediatric_thresholds.yaml"]
+    },
+    {
+      "id": "regensburg_dataset",
+      "type": "dataset",
+      "title": "Regensburg Pediatric Appendicitis Dataset",
+      "authors": "Marcinkevics R; Reis Wolfertstetter P; et al.",
+      "publication_year": 2023,
+      "doi": "10.5281/zenodo.7669442",
+      "url": "https://zenodo.org/records/7669442",
+      "license": "CC-BY-NC-4.0",
+      "verification": "Downloaded and audited 2026-10-02 (docs/DATASET_AUDIT.md)",
+      "used_by": ["data/raw/regensburg_pediatric_appendicitis/"]
+    },
+    {
+      "id": "neonatal_sepsis_dataset",
+      "type": "dataset",
+      "title": "Neonatal Sepsis Registry: Time to Antibiotic Dataset",
+      "authors": "Ostapenko S; et al.",
+      "publication_year": 2019,
+      "doi": "10.17632/5vdz5cftz7.1",
+      "url": "https://data.mendeley.com/datasets/5vdz5cftz7/1",
+      "license": "not exposed by public API - confirm on landing page before use",
+      "verification": "Metadata + file listing + SHA-256 retrieved 2026-10-02; file downloaded",
+      "used_by": ["data/raw/neonatal_sepsis/"]
+    },
+    {
+      "id": "child_pneumonia_dataset",
+      "type": "dataset",
+      "title": "Child Pneumonia Dataset",
+      "authors": "Raihan MD; Fayaz SM; Haque A; Sarkar A",
+      "publication_year": null,
+      "doi": "10.17632/3tx8xymdsv.1",
+      "url": "https://data.mendeley.com/datasets/3tx8xymdsv/1",
+      "license": "stated CC BY 4.0 in task brief - re-verify on landing page",
+      "verification": "File listing audited 2026-10-02: 2,926 files, 2,644 pre-augmented (aug_*), 279 duplicate filenames - NOT downloaded; Phase C blocked pending image audit",
+      "used_by": []
+    }
+  ],
+  "policy": {
+    "no_citation_without_verification": "A rule whose source is not listed here may not be loaded.",
+    "fail_closed": "Rules whose verification status is pending must warn and refuse to fire.",
+    "adult_thresholds": "Adult thresholds may not be used for pediatric patients under any condition."
+  }
+}

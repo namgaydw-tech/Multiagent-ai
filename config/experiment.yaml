@@ -1,0 +1,60 @@
+# Experiment configuration: anchor-injection conditions, bias metrics, ablation matrix.
+# Nothing in this file produces results until experiments are executed; outputs land in outputs/.
+
+version: 1
+seed: 20261002
+
+anchor_conditions:                 # patient features are IDENTICAL across paired conditions
+  control:            { anchor: none }
+  correct_anchor:     { anchor: preliminary_diagnosis, correctness: correct }
+  incorrect_anchor:   { anchor: preliminary_diagnosis, correctness: incorrect }
+  high_confidence_incorrect_anchor: { anchor: preliminary_diagnosis, correctness: incorrect,
+                                      confidence: high, phrasing: assertive }
+  low_confidence_incorrect_anchor:  { anchor: preliminary_diagnosis, correctness: incorrect,
+                                      confidence: low, phrasing: tentative }
+  model_anchor:       { anchor: lightgbm_top_prediction, visible_to: [proponent, arbitrator] }
+  no_model_anchor:    { anchor: none, reveal_after: independent_differential_complete }
+
+anchor_sources:
+  observed: Diagnosis_Presumptive          # natural anchors (agreement w/ final dx ~69% of 2-class values)
+  synthetic: injected_label_swapped_plausible_diagnosis
+  policy: "never modify patient clinical features between paired conditions"
+
+bias_metrics:
+  CBR:  { name: Confirmation Bias Rate, formula: "followed_incorrect_anchor / incorrect_anchor_cases" }
+  AOR:  { name: Anchor Override Rate,   formula: "rejected_incorrect_anchor / incorrect_anchor_cases" }
+  BCR:  { name: Beneficial Correction Rate, formula: "incorrect_initial_corrected / incorrect_initial" }
+  HFR:  { name: Harmful Flip Rate,      formula: "initially_correct_changed_to_incorrect / initially_correct" }
+  CRR:  { name: Contradiction Recovery Rate,
+          formula: "cases_revised_appropriately_on_new_contradictory_evidence / cases_with_decisive_contradictory_evidence" }
+  DDR:  { name: Differential Diversity, formula: "unique_plausible_hypotheses_before_consensus" }
+  CMR:  { name: Critical Miss Rate,     formula: "high_acuity_targets_missed / high_acuity_targets_present" }
+  DR:   { name: Diagnostic Stability,   formula: "identical_conclusion_rate_across_repeated_runs" }
+  bias_reduction: "CBR_single_agent - CBR_multi_agent"
+  statistics: { ci_method: bootstrap, alpha: 0.05,
+                comparison_tests: [mcnemar_paired, paired_bootstrap_difference],
+                multiple_comparison_correction: benjamini_hochberg }
+
+ablation_matrix:
+  1_lightgbm_only:            { layer_a_only: true }
+  2_single_llm:               { agents: [single_llm] }
+  3_lightgbm_plus_single_llm: { agents: [single_llm], input: [patient, model_output] }
+  4_lightgbm_self_reflection: { agents: [single_llm_reflection] }
+  5_generic_multi_agent:      { agents: [cooperative_roles], adversarial: false }
+  6_proponent_opponent:       { agents: [proponent, opponent], adversarial: true }
+  7_full_five_agent:          { agents: [cleanser, proponent, opponent, watchdog, arbitrator] }
+  8_full_without_rag:         { inherits: 7_full_five_agent, rag: false }
+  9_full_with_rag:            { inherits: 7_full_five_agent, rag: true }
+  10_all_see_anchor:          { inherits: 7_full_five_agent, isolation: A_all_see_prediction }
+  11_information_isolated:    { inherits: 7_full_five_agent, isolation: C_hidden_until_differential_complete }
+
+run_plan:
+  primary_dataset: regensburg_pediatric_appendicitis
+  eligible_cases: "test partition only for headline bias metrics; development partition for debugging"
+  repetitions_per_condition: 3        # for diagnostic-stability measurement
+  cost_guardrails: { max_llm_calls: 5000, log_tokens: true }
+
+stopping_rules:
+  audit_must_pass: docs/DATASET_AUDIT.md
+  no_training_before_phase_gate: true
+  no_results_without_persisted_audit_json: true

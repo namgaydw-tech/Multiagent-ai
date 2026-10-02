@@ -1,0 +1,83 @@
+Variable	Variable Group	Variable Name in Data Files	Explanation	Mode & Time of Measurement	Variable Type & Values
+Age, years	Demographic / Other	Age	Obtained from the date of birth	At hospital admission	Continuous
+Sex		Sex	Registered gender	At hospital admission	Binary: female / male
+Height, cm		Height	Patient’s height	At hospital admission	Continuous
+Weight, kg		Weight	Patient's weight	At hospital admission	Continuous
+Body mass index (BMI), kg/m^2		BMI	Measures body fat; patient's weight divided by the square of the height	At hospital admission	Continuous
+Length of stay, days		Length_of_Stay	Length of the stay in the hospital	At discharge	Continuous
+Alvarado score (AS), pts	Scoring	Alvarado_Score	Patient's score according to the scoring system	At hospital admission, after clinical examination and laboratory data	Discrete
+Pediatric appendicitis score (PAS), pts		Pediatric_Appendicitis_Score	Patient's score according to the scoring system	At hospital admission, after clinical examination and laboratory data	Discrete
+Peritonitis/abdominal guarding	Clinical	Peritonitis	Spasm of abdominal wall muscles detected on palpation, usually a result of inflammation	At hospital admission, during clinical examination, or after a few hours of observation, if needed after analgesia	"Categorical:
+· no 
+· localized
+· generalized"
+Migration of pain		Migratory_Pain	Abdominal pain; usually starts in epigastrium and moves to the right lower quadrant	At hospital admission, during clinical examination or anamnesis	Binary: no / yes
+Tenderness in right lower quadrant (RLQ)		Lower_Right_Abd_Pain	Right iliac fossa pain detected on palpation	At hospital admission, during clinical examination	Binary: no / yes
+Contralateral rebound tnderness		Contralateral_Rebound_Tenderness	A state in which pain of the contralateral side (usually, the right lower quadrant) is felt on the release of pressure (usually, in the left lower quadrant) over the abdomen	At hospital admission, during clinical examination	Binary: no / yes
+Ipsilateral rebound tenderness		Ipsilateral_Rebound_Tenderness	A state in which pain of the ipsilateral side is felt on the release of pressure over the abdomen	At hospital admission, during clinical examination	Binary: no / yes
+Cough tenderness		Coughing_Pain	Abdominal pain by forced cough	At hospital admission, during clinical examination	Binary: no / yes
+Psoas sign		Psoas_Sign	Abdominal pain produced by extension of the hip	At hospital admission, during clinical examination	Binary: negative / positive
+Nausea/vomiting		Nausea	Feeling of sickness/ejection of contents from stomach through the mouth	Anamnesis	Binary: no / yes
+Anorexia		Loss_of_Appetite	Loss of appetite	Anamnesis	Binary: no / yes
+Body temperature, °C		Body_Temperature	Measured by a thermometer placed in the rectum or in the auditory canal	At hospital admission or after a few hours of observation	Continuous
+Dysuria		Dysuria	Pain or other difficulty during urination	Anamnesis	Binary: no / yes
+Stool		Stool	Characteristics of bowel movements	Anamnesis	"Categorical:
+· normal
+· diarrhea
+· obstipation"
+White blood cell count (WBC), 10^3/µl	Laboratory	WBC_Count	The number of leucocytes in a unit volume of blood; inflammation parameter	At hospital admission, obtained from a routine hemogram	Continuous
+Red blood cell count (RBC), /pl		RBC_Count	The number of erythrocytes in a unit volume of bood	At hospital admission, obtained from a routine hemogram	Continuous
+Hemoglobin, g/dl		Hemoglobin	Hemoglobin level; a red protein in the red blood cells that contains iron and is responsible for transporting oxygen	At hospital admission, obtained from a routine hemogram	Continuous
+Red cell distribution width (RDW), %		RDW	A blood test that measures the differences in the volume and size of the erythrocytes	At hospital admission, obtained from a routine hemogram	Continuous
+Thrombocyte count, /nl		Thrombocyte_Count	The number of platelets in a unit volume of bood	At hospital admission, obtained from a routine hemogram	Continuous
+Neutrophils, %		Neutrophil_Percentage	Mature WBC in the granulocytic series	At hospital admission, obtained from differential WBC	Continuous
+Neutrophilia, >= 75%		Neutrophilia	Relative neutrophilic leucocytosis, often a result of a bacterial infection	At hospital admission, obtained from differential WBC	Binary: no / yes
+Segmented neutrophils, %		Segmented_Neutrophils	Most mature neutrophilic granulocytes present in circulating blood, increased during an inflammatory disorder	At hospital admission, obtained from differential WBC	Continuous
+C-reactive protein (CRP), mg/l		CRP	Protein produced by the liver, elevated in case of inflammation, infection, or injury	At hospital admission, obtained from blood sample	Continuous
+Ketones in urine		Ketones_in_Urine	Presence of ketone bodies in urine, e.g. in case of anorexia	At hospital admission, obtained from routine urine status	"Categorical:
+· no
+· +
+· ++
+· +++"
+Erythrocytes in urine		RBC_in_Urine	Blood in urine	At hospital admission, obtained from routine urine status	"Categorical:
+· neg: < 5 ery/µl
+· +: approx. 5-10 ery/µl 
+· ++: approx. 25 ery/µl
+· +++: approx. 50 ery/µl"
+White blood cells in urine		WBC_in_Urine	Leucocytes in urine, e.g., in case of infection	At hospital admission, obtained from routine urine status	"Categorical:
+· no
+· +
+· ++
+· +++"
+Performed ultrasound (US)	Ultrasound	US_Performed	If an abdominal ultrasonography was performed or not	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Visibility of appendix		Appendix_on_US	Detectability of the vermiform appendix during sonographic examination	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Appendix diameter, mm		Appendix_Diameter	Maximal outer diameter of the appendix	At hospital admission, after clinical examination, or after a few hours of observation	Continuous
+Free intraperitoneal fluid		Free_Fluids	Free fluids inside the abdomen	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Appendix layer structure		Appendix_Wall_Layers	Distribution and characteristics of appendix layers, e.g., irregular in case of an increasing inflammation	At hospital admission, after clinical examination, or after a few hours of observation	Binary: regular / irregular
+Target sign		Target_Sign	Axial image of appendix with a fluid-filled center surrounded by echogenic mucosa and submucosa and hypoechoic muscularis	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Appendix perfusion		Perfusion	Blood flow to the appendix wall	At hospital admission, after clinical examination, or after a few hours of observation	"Categorical:
+· unremarkable
+· hypoperfused
+· hyperperfused"
+Surrounding tissue reaction		Surrounding_Tissue_Reaction	Inflammation signs in tissue (i.a. in omentum/fat tissue) surrounding appendix	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Pathological lymph nodes		Pathological_Lymph_Nodes	Enlarged and inflamed intra-abdominal lymph nodes	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Location of pathological lymph nodes		Lymph_Node_Location	The location of pathological lymph nodes in the abdomen	At hospital admission, after clinical examination, or after a few hours of observation	Free-form text (in German)
+Thickening of the bowel wall		Bowel_Wall_Thickening	Edema of the intestinal wall, > 2-3 mm for small bowel wall thickening	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Ileus		Ileus	Sonographic signs of paralytic ileus (e.g., dilated intestinal loops, pendulum peristalsis or absence of peristalsis)	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Coprostasis		Coprostasis	Fecal impaction in the colon	At hospital admission, after clinical examination, or after a few hours of observation	Binary: no / yes
+Meteorism		Meteorism	Accumulation of gas in the intestine	At hospital admission. after clinical examination, or after a few hours of observation	Binary: no / yes
+Enteritis		Enteritis	Sonographic features of gastroenteritis, e.g. wall thickening of ileum, increased peristalsis	At hospital admission after clinical examination, or after a few hours of observation	Binary: no / yes
+Appendicolith		Apendicolith	Presence of fecalith in the appendix, e.g. acoustic shadow	At hospital admission after clinical examination, or after a few hours of observation	Binary: no / yes
+Perforation		Perforation	Signs of appendix perforation in US	At hospital admission after clinical examination, or after a few hours of observation	Binary: no / yes
+Appendicular abscess		Appendicular_Abscess	Appendiceal mass	At hospital admission after clinical examination, or after a few hours of observation	Binary: no / yes
+Location of abscess		Abscess_Location	Location of the abcess intraperitoneal	At hospital admission after clinical examination, or after a few hours of observation	Free-form text (in German)
+Conglomerate of bowel loops		Conglomerate_of_Bowel_Loops	Small intestine conglomerate as sign of intraperitoneal inflammation	At hospital admission after clinical examination, or after a few hours of observation	Binary: no / yes
+Gynaecological findings		Gynecological_Findings	Gynaecological abnormalities, e.g. cysts, ovarial torsion	At hospital admission after clinical examination, or after a few hours of observation	Free-form text (in German)
+Ultrasound images			Snapshots from the abdominal ultrasound exams	At hospital admission after clinical examination, or after a few hours of observation	Images in BMP format
+Presumptive diagnosis	Diagnosis / Management / Severity	Diagnosis_Presumptive	Patient's suspected diagnosis	At hospital admission after clinical examination, or after a few hours of observation	Free-form text (in German)
+Diagnosis		Diagnosis	Patient's diagnosis, histologically confirmed for operated patients. Conservatively managed patients were labelled as having appendicitis if they had an AS or PAS of ≥ 4 and an appendix diameter of ≥ 6 mm	At hospital admission after clinical examination, or after a few hours of observation	Binary: no appendicitis / appendicitis
+Management		Management	Management of the patient assigned by a senior pediatric surgeon: operative (appendectomy: laparoscopic, open or conversion) or conservative (without antibiotics). In case of the secondary surgery after prior stay, the patient was labelled as operatively managed.	At hospital admission after clinical examination, or after a few hours of observation; or during follow-up.	"Categorical: 
+· conservative 
+· primary surgical 
+· secondary surgical"
+Severity		Severity	Severity of appendicitis: uncomplicated: subacute/ catharral, fibrosis; phlegmonous or complicated: gangrenous, perforated, abscessed	At hospital admission after clinical examination, or after a few hours of observation; or during follow-up.	Binary: uncomplicated or no appendicitis / complicated appendicitis

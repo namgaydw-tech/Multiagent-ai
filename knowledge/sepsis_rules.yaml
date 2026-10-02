@@ -1,0 +1,52 @@
+# Pediatric sepsis rule set for the High-Acuity Watchdog.
+# MODEL PREDICTION / RULE-BASED ALERT / LLM INTERPRETATION are kept distinct (docs/SAFETY.md).
+# Every rule cites an authoritative pediatric source. Rules marked
+# `pending_full_text_transcription` must be refused (fail-closed) by the rule engine until the
+# exact numeric criteria are transcribed from the cited source.
+
+version: "1.0.0"
+last_reviewed: "2026-10-02"
+
+rule_sets:
+
+  phoenix_sepsis_2024:
+    status: preferred_current_criteria
+    verification:
+      status: pending_full_text_transcription
+      reason: "Component-wise Phoenix SOFA scoring tables (respiratory, cardiovascular, coagulation, neurologic cut-points, age adjustments) must be transcribed verbatim from the source papers before this rule set can score patients."
+      fail_closed: true
+    definition:
+      sepsis: "In a patient with suspected infection, an increase of >= 2 points in the Phoenix SOFA score from baseline is indicative of sepsis."
+      septic_shock: "Sepsis with acute cardiovascular dysfunction as defined in the source paper (fluid-refractory shock and/or requirement for vasoactive support per source definition)."
+    source: "International Consensus (Phoenix) Criteria for Pediatric Sepsis and Septic Shock (Society of Critical Care Medicine Pediatric Sepsis Definition Task Force)"
+    publication_year: 2024
+    citation: "Schlapbach LJ, Watson RS, Sorce LR, et al. International Consensus Criteria for Pediatric Sepsis and Septic Shock (Phoenix). JAMA. 2024. doi:10.1001/jama.2024.0179"
+    doi: "10.1001/jama.2024.0179"
+    derivation_source:
+      description: "Derivation and external validation of the Phoenix score (retrospective cohort, 10 health systems, 3,049,699 development / 581,317 external validation encounters, children < 18 years)."
+      citation: "Sanchez-Pinto LN, Bennett TD, DeWitt PE, et al. Development and Validation of the Phoenix Criteria for Pediatric Sepsis and Septic Shock. JAMA. 2024. doi:10.1001/jama.2024.0196"
+      doi: "10.1001/jama.2024.0196"
+    applicable_age_group: "< 18 years (all pediatric age bands; score components are age-adjusted in the source)"
+
+  ipssc_2005_definitions:
+    status: historical_comparability_only
+    verification:
+      status: confirmed_from_authoritative_summary
+      checked_on: "2026-10-02"
+      note: "SIRS-style definitions below are the widely reproduced IPSCC criteria; still confirm against the original table before clinical-style reporting."
+    definitions:
+      sepsis: "SIRS plus documented or strongly suspected infection."
+      sirs_criteria: "At least two of: (1) temperature > 38 degC or < 36 degC; (2) heart rate > 2 standard deviations above the normal mean for age, or, for infants < 1 year, bradycardia < 10th percentile for age (or at the lower end of normal per source); (3) respiratory rate > 2 SD above normal for age; (4) white blood cell count < 4,000/mm3 or > 15,000/mm3, or > 10% immature (band) neutrophils."
+      severe_sepsis: "Sepsis plus organ dysfunction, hypoperfusion, or hypotension as defined in the source."
+      septic_shock: "Sepsis with hypotension requiring volume and/or vasoactive infusion to maintain perfusion."
+    source: "International Pediatric Sepsis Consensus Conference (IPSCC), Pediatric Critical Care Medicine"
+    publication_year: 2005
+    citation: "Goldstein B, Giroir B, Randolph AG. International pediatric sepsis consensus conference: definitions for sepsis and organ dysfunction in pediatrics. Pediatr Crit Care Med. 2005. doi:10.1097/01.pcc.0000149131.72248.e6"
+    doi: "10.1097/01.pcc.0000149131.72248.e6"
+    applicable_age_group: "0-17 years"
+
+watchdog_policy:
+  trigger_evidence_required: "A sepsis alert requires at least one concrete piece of patient evidence (e.g., suspected infection source, fever or hypothermia, tachycardia, tachypnea, altered mental state, low urine output, lactate/WBC abnormality) from the record; catastrophic conditions must never be fabricated."
+  missing_data: "When lactation-relevant or scoring components are missing, emit cannot_assess_due_to_missing_data instead of a negative finding."
+  age_banding: "SIRS heart-rate and respiratory-rate bands are age-dependent; no age -> do not score (NOT_APPLICABLE_AGE)."
+  precedence: "Phoenix (2024) is the primary criteria; IPSCC 2005 is retained only for historical comparability with older literature."

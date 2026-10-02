@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pediatric-debias-ai"
+version = "0.1.0"
+description = "Research prototype: adversarial multi-agent AI frameworks for mitigating confirmation bias in automated pediatric diagnostics (NOT a medical device)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0 (code); datasets retain their own licenses (primary dataset CC-BY-NC-4.0)" }
+authors = [{ name = "Research prototype maintainers" }]
+keywords = ["clinical-ai", "confirmation-bias", "multi-agent", "pediatrics", "reproducibility"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+  "pandas>=2.0,<3.0",
+  "numpy>=1.26,<3.0",
+  "openpyxl>=3.1",
+  "PyYAML>=6.0",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+ml = ["scikit-learn>=1.4", "lightgbm>=4.3", "xgboost>=2.0", "catboost>=1.2", "shap>=0.45", "matplotlib>=3.8", "scipy>=1.11"]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

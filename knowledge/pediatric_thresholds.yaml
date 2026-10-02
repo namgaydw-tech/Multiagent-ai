@@ -1,0 +1,119 @@
+# Age-aware pediatric thresholds for the rule-based safety layer.
+#
+# GOVERNANCE RULES
+#   * No value in this file may be invented. Every entry carries source, publication_year,
+#     citation, applicable_age_group, units, rule.
+#   * Adult thresholds must never be substituted for pediatric ones. Age-band lookup is mandatory;
+#     if no band matches, the engine must emit `rule_applicability: NOT_APPLICABLE_AGE` instead of
+#     defaulting.
+#   * `verification.status` values:
+#       - confirmed_from_authoritative_summary: transcribed from a public guideline summary the
+#         project has verified during Phase 1.
+#         - pending_full_text_transcription: rule definition is present but exact numeric criteria
+#         must be copied from the cited full text before first use; the engine MUST fail closed
+#         (refuse to fire, raise a warning) while status is pending.
+#   * RULE-BASED SAFETY ALERT is a distinct signal from MODEL PREDICTION and LLM INTERPRETATION.
+
+version: "1.0.0"
+last_reviewed: "2026-10-02"
+review_note: "Phase 1 knowledge scaffold. Pending entries are intentional and fail closed."
+
+thresholds:
+
+  fever:
+    rule: "Measured temperature >= 38.0 degC counts as fever (any route as documented; rectal preferred in infants)."
+    units: "degC"
+    applicable_age_group: "0-17 years (feverish illness guidance focuses on under-5s for escalation rules)"
+    source: "NICE Guideline CG160 - Feverish illness in children (assessment and early management)"
+    publication_year: 2017 (updated 2019)
+    citation: "NICE CG160. Feverish illness in children: assessment and early management. https://www.nice.org.uk/guidance/cg160"
+    url: "https://www.nice.org.uk/guidance/cg160"
+    verification:
+      status: confirmed_from_authoritative_summary
+      checked_on: "2026-10-02"
+
+  tachypnea_who_imci:
+    rule: "Respiratory rate at or above the age band counts as fast breathing (danger sign for pneumonia screening)."
+    units: "breaths_per_minute"
+    applicable_age_group:
+      - { age_min_months: 0, age_max_months: 1, threshold: 60, label: "under 2 months" }
+      - { age_min_months: 2, age_max_months: 11, threshold: 50, label: "2-11 months" }
+      - { age_min_months: 12, age_max_months: 59, threshold: 40, label: "12-59 months" }
+      - { age_min_months: 60, age_max_months: 216, threshold: null, label: "5 years and older: no IMCI band defined here -> NOT_APPLICABLE_AGE for this rule" }
+    source: "WHO / UNICEF - Pocket Book of Hospital Care for Children (IMCI fast-breathing thresholds) and IMCI case management guidelines"
+    publication_year: 2005 (revised 2013)
+    citation: "WHO. Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Childhood Illnesses. Geneva: World Health Organization."
+    url: "https://www.who.int/publications/i/item/9789241548076"
+    verification:
+      status: confirmed_from_authoritative_summary
+      checked_on: "2026-10-02"
+
+  hypoxaemia:
+    rule: "SpO2 < 90% on room air is hypoxaemia and a severe-disease / emergency threshold in children (e.g., severe pneumonia)."
+    units: "percent_SpO2"
+    applicable_age_group: "0-17 years"
+    source: "WHO - WHO guidelines on oxygen therapy for children; IMCI severe pneumonia definition (SpO2 < 90%)"
+    publication_year: 2016 (oxygen therapy guideline); IMCI updated 2013
+    citation: "WHO. Oxygen therapy for children: a manual for health workers. Geneva: World Health Organization, 2016. (SpO2 < 90% threshold for hypoxaemia)"
+    url: "https://www.who.int/publications/i/item/9789241549011"
+    verification:
+      status: confirmed_from_authoritative_summary
+      checked_on: "2026-10-02"
+
+  bradycardia_low_perfusion:
+    rule: "Heart rate < 60 beats/min with signs of poor perfusion despite oxygenation and adequate fluids in an infant or child is a pre-arrest sign requiring immediate escalation."
+    units: "beats_per_minute"
+    applicable_age_group: "infants and children (1 year to puberty framing in the source algorithm); neonates handled by neonatal algorithms"
+    source: "American Heart Association - Paediatric Advanced Life Support (PALS) bradycardia with poor perfusion algorithm"
+    publication_year: 2020
+    citation: "Aziz K, et al. Part 5: Pediatric Basic and Advanced Life Support. 2020 American Heart Association Guidelines for CPR and ECC. Circulation. 2020;142(16_suppl_2):S469-S604."
+    url: "https://cpr.heart.org/en/guidelines-and-statements"
+    verification:
+      status: confirmed_from_authoritative_summary
+      checked_on: "2026-10-02"
+
+  hypotension_sbp_by_age:
+    rule: "Systolic blood pressure below the age-specific threshold indicates possible shock and must trigger urgent reassessment; formula band for 1-10 years: SBP < 70 + 2*age(years) mmHg; above 10 years: SBP < 90 mmHg; term neonate: SBP < 60 mmHg."
+    units: "mmHg"
+    applicable_age_group:
+      - { age_min_months: 0, age_max_months: 1, threshold: 60, basis: "term neonate, systolic" }
+      - { age_min_months: 2, age_max_months: 131, threshold_formula: "70 + 2*age_years", basis: "1-10 years (formula), systolic" }
+      - { age_min_months: 132, age_max_months: 216, threshold: 90, basis: "above 10 years, systolic" }
+    source: "American Heart Association - PALS hypotension definition (age-adjusted systolic thresholds); widely reproduced in pediatric emergency references"
+    publication_year: 2020
+    citation: "Aziz K, et al. Part 5: Pediatric Basic and Advanced Life Support. 2020 AHA Guidelines for CPR and ECC. Circulation. 2020;142(16_suppl_2):S469-S604."
+    url: "https://cpr.heart.org/en/guidelines-and-statements"
+    verification:
+      status: pending_full_text_transcription
+      reason: "Exact age table must be copied from the cited source (or an equally authoritative pediatric reference) before the watchdog may fire this rule numerically."
+      fail_closed: true
+
+  tachycardia_by_age:
+    rule: "Age-specific upper normal heart-rate limits for paediatric assessment (sinus tachycardia flag)."
+    units: "beats_per_minute"
+    applicable_age_group: "age-banded (neonate, infant, child, adolescent)"
+    source: "American Heart Association - PALS age-based heart rate reference"
+    publication_year: 2020
+    citation: "Aziz K, et al. Part 5: Pediatric Basic and Advanced Life Support. 2020 AHA Guidelines for CPR and ECC. Circulation. 2020;142(16_suppl_2):S469-S604."
+    url: "https://cpr.heart.org/en/guidelines-and-statements"
+    verification:
+      status: pending_full_text_transcription
+      reason: "Upper limits vary by source and age band; transcribe before use rather than recalling from memory."
+      fail_closed: true
+
+  dehydration_severe:
+    rule: "Severe dehydration = two or more of: lethargy/unconsciousness, sunken eyes, drinks poorly/unable to drink or breastfeed, skin pinch goes back very slowly (>= 2 seconds)."
+    units: "clinical_signs"
+    applicable_age_group: "0-59 months (IMCI), applicable conceptually beyond with caution"
+    source: "WHO/UNICEF - IMCI clinical signs for severe dehydration"
+    publication_year: 2005 (revised 2013)
+    citation: "WHO. Pocket Book of Hospital Care for Children. Geneva: WHO, 2013."
+    url: "https://www.who.int/publications/i/item/9789241548076"
+    verification:
+      status: confirmed_from_authoritative_summary
+      checked_on: "2026-10-02"
+
+application_policy:
+  missing_age: "If age is missing, numeric age-banded rules must NOT be evaluated; emit cannot_assess_due_to_missing_data."
+  unit_mismatch: "Values with unknown units must not be compared against thresholds."
+  model_vs_rule: "A rule alert is independent of model probability and can fire even when model probability is low; disagreement is recorded, not suppressed."

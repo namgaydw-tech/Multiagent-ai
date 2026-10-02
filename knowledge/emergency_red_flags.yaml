@@ -1,0 +1,77 @@
+# Emergency red-flag rules for the High-Acuity Watchdog (evidence-grounded, cited).
+# Fail-closed policy: entries with verification.status = pending_full_text_transcription must not
+# fire numerically until their criteria are transcribed from the cited source.
+
+version: "1.0.0"
+last_reviewed: "2026-10-02"
+
+red_flags:
+
+  petechial_or_purpuric_rash_with_fever:
+    category: "meningococcal / invasive infection"
+    rule: "Non-blanching petechial or purpuric rash with fever, or any purpura in a sick child, is an emergency requiring immediate antibiotics and escalation."
+    applicable_age_group: "0-17 years"
+    source: "NICE CG160 (feverish illness in children) - non-blanching rash, meningeal signs and general red flags for urgent referral"
+    publication_year: 2017 (updated 2019)
+    citation: "NICE CG160. Feverish illness in children: assessment and early management. https://www.nice.org.uk/guidance/cg160"
+    url: "https://www.nice.org.uk/guidance/cg160"
+    verification: { status: confirmed_from_authoritative_summary, checked_on: "2026-10-02" }
+
+  meningeal_signs:
+    category: "meningitis / encephalitis"
+    rule: "Neck stiffness, bulging fontanelle (if open), photophobia, severe headache, or altered consciousness/confusion with fever are red flags for meningitis/encephalitis."
+    applicable_age_group: "0-17 years (bulging fontanelle applies to infants with open fontanelle)"
+    source: "NICE CG160 / NICE CG149 - red flags in febrile children"
+    publication_year: 2017 (CG160, updated 2021)
+    citation: "NICE CG160. Feverish illness in children: assessment and early management. https://www.nice.org.uk/guidance/cg160"
+    url: "https://www.nice.org.uk/guidance/cg160"
+    verification: { status: confirmed_from_authoritative_summary, checked_on: "2026-10-02" }
+
+  imci_danger_signs:
+    category: "serious infection / sepsis screening"
+    rule: "Any of: unable to drink or breastfeed, vomiting everything, convulsions (previous or current), lethargy or unconsciousness, general weakness/movement only when stimulated -> immediate referral/emergency care."
+    applicable_age_group: "0-59 months (IMCI); applied with caution above 5 years"
+    source: "WHO/UNICEF IMCI - general danger signs"
+    publication_year: 2005 (revised 2013)
+    citation: "WHO. Pocket Book of Hospital Care for Children. Geneva: WHO, 2013."
+    url: "https://www.who.int/publications/i/item/9789241548076"
+    verification: { status: confirmed_from_authoritative_summary, checked_on: "2026-10-02" }
+
+  kawasaki_disease_suspicion:
+    category: "Kawasaki disease"
+    rule: "Fever >= 5 days plus at least 4 of 5 principal clinical features (bilateral non-exudative conjunctival injection; changes in oral mucosa incl. strawberry tongue/fissured lips; polymorphous rash; cervical lymphadenopathy usually >= 1.5 cm; changes in extremities incl. erythema/edema of hands and feet) = classic Kawasaki disease; fewer features with compatible labs/echocardiogram = atypical/incomplete Kawasaki disease requiring specialist evaluation."
+    applicable_age_group: "0-17 years (highest risk of coronary complications in infants < 6 months)"
+    source: "American Heart Association scientific statement on Kawasaki disease"
+    publication_year: 2017
+    citation: "McCrindle BW, Rowley AH, Newburger JW, et al. Diagnosis, Treatment, and Long-Term Management of Kawasaki Disease: A Scientific Statement for Health Professionals From the American Heart Association. Circulation. 2017;135(17):e927-e999. doi:10.1161/CIR.0000000000000484"
+    doi: "10.1161/CIR.0000000000000484"
+    verification: { status: confirmed_from_authoritative_summary, checked_on: "2026-10-02" }
+    policy: "Kawasaki may only be raised when fever plus compatible features are actually present in the record; never as a generic catastrophic guess."
+
+  appendicitis_complication_flags:
+    category: "surgical abdomen / appendiceal perforation or abscess"
+    rule: "Generalized peritonitis, signs of perforation, palpable abscess/mass, persistent vomiting with systemic illness, or clinical deterioration are urgent surgical red flags that must be escalated rather than watchfully waited on."
+    applicable_age_group: "0-17 years"
+    source: "NICE CG150 (suspected acute appendicitis) - danger signs for urgent surgical review; dataset's own ultrasound findings (Perforation, Appendicular_Abscess) serve as record-level triggers"
+    publication_year: 2019
+    citation: "NICE CG150. Suspected acute appendicitis: diagnosis and management. https://www.nice.org.uk/guidance/cg150"
+    url: "https://www.nice.org.uk/guidance/cg150"
+    verification: { status: confirmed_from_authoritative_summary, checked_on: "2026-10-02" }
+
+  severe_dehydration:
+    category: "shock / dehydration"
+    rule: "See pediatric_thresholds.yaml -> dehydration_severe (two or more of: lethargy/unconscious, sunken eyes, drinks poorly/unable to drink, skin pinch >= 2 s)."
+    applicable_age_group: "0-59 months primarily"
+    source: "WHO/UNICEF IMCI (cross-reference)"
+    publication_year: 2013
+    citation: "WHO. Pocket Book of Hospital Care for Children. Geneva: WHO, 2013."
+    url: "https://www.who.int/publications/i/item/9789241548076"
+    verification: { status: confirmed_from_authoritative_summary, checked_on: "2026-10-02" }
+
+risk_levels:
+  definition:
+    LOW: "No red flag present; missing data does not create LOW by itself."
+    MODERATE: "Some concerning but non-emergent findings, or partial evidence requiring targeted testing."
+    HIGH: "One or more red flags present, or a plausible high-acuity condition with supporting evidence."
+    CRITICAL: "Immediate life-threatening findings (e.g., petechial rash with fever, shock physiology, IMCI danger signs) present in the record."
+  rule: "Risk level is determined only by evidence present in the record; insufficient data produces 'cannot assess' rather than a lower risk level."

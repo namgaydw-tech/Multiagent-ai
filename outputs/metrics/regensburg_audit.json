@@ -1,0 +1,735 @@
+{
+  "dataset": "Regensburg Pediatric Appendicitis Dataset",
+  "sources": {
+    "uci_id": 938,
+    "uci_url": "https://archive.ics.uci.edu/dataset/938/regensburg+pediatric+appendicitis",
+    "zenodo_doi": "10.5281/zenodo.7669442",
+    "zenodo_url": "https://zenodo.org/records/7669442",
+    "license": "CC-BY-NC-4.0",
+    "audited_file": "data\\raw\\regensburg_pediatric_appendicitis\\app_data.xlsx",
+    "audited_file_bytes": 212771
+  },
+  "audit_timestamp_utc": "2026-10-02T07:07:16.667368+00:00",
+  "dimensions": {
+    "n_rows": 782,
+    "n_cols": 58,
+    "sheets": [
+      "All cases",
+      "Data Summary"
+    ]
+  },
+  "dtypes": {
+    "str": 40,
+    "float64": 18
+  },
+  "n_missing_cells_total": 14008,
+  "pct_missing_cells": 30.88,
+  "columns_with_missing": 58,
+  "missingness": [
+    {
+      "column": "Abscess_Location",
+      "n_missing": 769,
+      "pct_missing": 98.34
+    },
+    {
+      "column": "Gynecological_Findings",
+      "n_missing": 756,
+      "pct_missing": 96.68
+    },
+    {
+      "column": "Conglomerate_of_Bowel_Loops",
+      "n_missing": 739,
+      "pct_missing": 94.5
+    },
+    {
+      "column": "Segmented_Neutrophils",
+      "n_missing": 728,
+      "pct_missing": 93.09
+    },
+    {
+      "column": "Ileus",
+      "n_missing": 722,
+      "pct_missing": 92.33
+    },
+    {
+      "column": "Perfusion",
+      "n_missing": 719,
+      "pct_missing": 91.94
+    },
+    {
+      "column": "Enteritis",
+      "n_missing": 716,
+      "pct_missing": 91.56
+    },
+    {
+      "column": "Appendicolith",
+      "n_missing": 713,
+      "pct_missing": 91.18
+    },
+    {
+      "column": "Coprostasis",
+      "n_missing": 711,
+      "pct_missing": 90.92
+    },
+    {
+      "column": "Perforation",
+      "n_missing": 701,
+      "pct_missing": 89.64
+    },
+    {
+      "column": "Appendicular_Abscess",
+      "n_missing": 697,
+      "pct_missing": 89.13
+    },
+    {
+      "column": "Bowel_Wall_Thickening",
+      "n_missing": 683,
+      "pct_missing": 87.34
+    },
+    {
+      "column": "Lymph_Nodes_Location",
+      "n_missing": 661,
+      "pct_missing": 84.53
+    },
+    {
+      "column": "Target_Sign",
+      "n_missing": 644,
+      "pct_missing": 82.35
+    },
+    {
+      "column": "Meteorism",
+      "n_missing": 642,
+      "pct_missing": 82.1
+    },
+    {
+      "column": "Pathological_Lymph_Nodes",
+      "n_missing": 579,
+      "pct_missing": 74.04
+    },
+    {
+      "column": "Appendix_Wall_Layers",
+      "n_missing": 564,
+      "pct_missing": 72.12
+    },
+    {
+      "column": "Surrounding_Tissue_Reaction",
+      "n_missing": 530,
+      "pct_missing": 67.77
+    },
+    {
+      "column": "Appendix_Diameter",
+      "n_missing": 284,
+      "pct_missing": 36.32
+    },
+    {
+      "column": "RBC_in_Urine",
+      "n_missing": 206,
+      "pct_missing": 26.34
+    },
+    {
+      "column": "Ketones_in_Urine",
+      "n_missing": 200,
+      "pct_missing": 25.58
+    },
+    {
+      "column": "WBC_in_Urine",
+      "n_missing": 199,
+      "pct_missing": 25.45
+    },
+    {
+      "column": "Ipsilateral_Rebound_Tenderness",
+      "n_missing": 163,
+      "pct_missing": 20.84
+    },
+    {
+      "column": "Neutrophil_Percentage",
+      "n_missing": 103,
+      "pct_missing": 13.17
+    },
+    {
+      "column": "Free_Fluids",
+      "n_missing": 63,
+      "pct_missing": 8.06
+    },
+    {
+      "column": "Alvarado_Score",
+      "n_missing": 52,
+      "pct_missing": 6.65
+    },
+    {
+      "column": "Paedriatic_Appendicitis_Score",
+      "n_missing": 52,
+      "pct_missing": 6.65
+    },
+    {
+      "column": "Neutrophilia",
+      "n_missing": 50,
+      "pct_missing": 6.39
+    },
+    {
+      "column": "Psoas_Sign",
+      "n_missing": 37,
+      "pct_missing": 4.73
+    },
+    {
+      "column": "Dysuria",
+      "n_missing": 29,
+      "pct_missing": 3.71
+    },
+    {
+      "column": "BMI",
+      "n_missing": 27,
+      "pct_missing": 3.45
+    },
+    {
+      "column": "RDW",
+      "n_missing": 26,
+      "pct_missing": 3.32
+    },
+    {
+      "column": "Height",
+      "n_missing": 26,
+      "pct_missing": 3.32
+    },
+    {
+      "column": "US_Number",
+      "n_missing": 22,
+      "pct_missing": 2.81
+    },
+    {
+      "column": "Thrombocyte_Count",
+      "n_missing": 18,
+      "pct_missing": 2.3
+    },
+    {
+      "column": "RBC_Count",
+      "n_missing": 18,
+      "pct_missing": 2.3
+    },
+    {
+      "column": "Hemoglobin",
+      "n_missing": 18,
+      "pct_missing": 2.3
+    },
+    {
+      "column": "Stool",
+      "n_missing": 17,
+      "pct_missing": 2.17
+    },
+    {
+      "column": "Coughing_Pain",
+      "n_missing": 16,
+      "pct_missing": 2.05
+    },
+    {
+      "column": "Contralateral_Rebound_Tenderness",
+      "n_missing": 15,
+      "pct_missing": 1.92
+    },
+    {
+      "column": "CRP",
+      "n_missing": 11,
+      "pct_missing": 1.41
+    },
+    {
+      "column": "Loss_of_Appetite",
+      "n_missing": 10,
+      "pct_missing": 1.28
+    },
+    {
+      "column": "Peritonitis",
+      "n_missing": 9,
+      "pct_missing": 1.15
+    },
+    {
+      "column": "Migratory_Pain",
+      "n_missing": 9,
+      "pct_missing": 1.15
+    },
+    {
+      "column": "Lower_Right_Abd_Pain",
+      "n_missing": 8,
+      "pct_missing": 1.02
+    },
+    {
+      "column": "Nausea",
+      "n_missing": 8,
+      "pct_missing": 1.02
+    },
+    {
+      "column": "Body_Temperature",
+      "n_missing": 7,
+      "pct_missing": 0.9
+    },
+    {
+      "column": "WBC_Count",
+      "n_missing": 6,
+      "pct_missing": 0.77
+    },
+    {
+      "column": "Appendix_on_US",
+      "n_missing": 5,
+      "pct_missing": 0.64
+    },
+    {
+      "column": "Length_of_Stay",
+      "n_missing": 4,
+      "pct_missing": 0.51
+    },
+    {
+      "column": "US_Performed",
+      "n_missing": 4,
+      "pct_missing": 0.51
+    },
+    {
+      "column": "Weight",
+      "n_missing": 3,
+      "pct_missing": 0.38
+    },
+    {
+      "column": "Diagnosis",
+      "n_missing": 2,
+      "pct_missing": 0.26
+    },
+    {
+      "column": "Sex",
+      "n_missing": 2,
+      "pct_missing": 0.26
+    },
+    {
+      "column": "Diagnosis_Presumptive",
+      "n_missing": 2,
+      "pct_missing": 0.26
+    },
+    {
+      "column": "Severity",
+      "n_missing": 1,
+      "pct_missing": 0.13
+    },
+    {
+      "column": "Management",
+      "n_missing": 1,
+      "pct_missing": 0.13
+    },
+    {
+      "column": "Age",
+      "n_missing": 1,
+      "pct_missing": 0.13
+    }
+  ],
+  "duplicates": {
+    "exact_duplicate_rows": 0,
+    "duplicate_rows_on_feature_columns": 0
+  },
+  "target_distributions": {
+    "Diagnosis": {
+      "appendicitis": {
+        "n": 463,
+        "pct": 59.21
+      },
+      "no appendicitis": {
+        "n": 317,
+        "pct": 40.54
+      },
+      "nan": {
+        "n": 2,
+        "pct": 0.26
+      }
+    },
+    "Management": {
+      "conservative": {
+        "n": 483,
+        "pct": 61.76
+      },
+      "primary surgical": {
+        "n": 270,
+        "pct": 34.53
+      },
+      "secondary surgical": {
+        "n": 27,
+        "pct": 3.45
+      },
+      "nan": {
+        "n": 1,
+        "pct": 0.13
+      },
+      "simultaneous appendectomy": {
+        "n": 1,
+        "pct": 0.13
+      }
+    },
+    "Severity": {
+      "uncomplicated": {
+        "n": 662,
+        "pct": 84.65
+      },
+      "complicated": {
+        "n": 119,
+        "pct": 15.22
+      },
+      "nan": {
+        "n": 1,
+        "pct": 0.13
+      }
+    }
+  },
+  "class_balance_diagnosis": {
+    "positive_class": "appendicitis",
+    "n_positive": 463,
+    "n_negative": 317,
+    "prevalence": 0.5936,
+    "imbalance_ratio_neg_pos": 0.685
+  },
+  "age_distribution": {
+    "n": 781,
+    "mean": 11.35,
+    "std": 3.53,
+    "min": 0.0,
+    "q25": 9.2,
+    "median": 11.44,
+    "q75": 14.1,
+    "max": 18.36,
+    "n_missing": 1,
+    "age_bins": {
+      "0-1y (infant/toddler)": 5,
+      "2-5y (preschool)": 64,
+      "6-12y (school age)": 457,
+      "13-18y (adolescent)": 255
+    }
+  },
+  "anchor_variable": {
+    "column": "Diagnosis_Presumptive",
+    "n_missing": 2,
+    "top_values": {
+      "appendicitis": 682,
+      "no appendicitis": 78,
+      "chronische Appendizitis": 4,
+      "Gastroenteritis": 3,
+      "nan": 2,
+      "chronische Bauchschmerzen": 2,
+      "Appendizitis, Lymphadenitis mesenterialis": 1,
+      "Appendizitis/ Lymphadenitis mesenterialis": 1,
+      "Ovarialtorsion": 1,
+      "prolongierte Gastroenteritis": 1,
+      "diabetische Ketoazidose, Myokarditis": 1,
+      "Sepsis mit Begleitappendizitis": 1,
+      "Torsion der Adnexe": 1,
+      "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik": 1,
+      "Adhäsionen des Colon ascendens": 1,
+      "Bridenileus": 1,
+      "gedeckt perforierte Appendizitis": 1
+    },
+    "collapsed_distribution": {
+      "appendicitis": 682,
+      "no appendicitis": 78,
+      "other_free_text": 22
+    },
+    "presumptive_vs_final_diagnosis_agreement": 0.6934,
+    "incorrect_anchor_rate_pct": 30.66,
+    "usage": "NOT a baseline predictor; used as experimental preliminary-diagnosis anchor (correct/incorrect anchor conditions)"
+  },
+  "leakage_screen": {
+    "method": "univariate ROC-AUC max(AUC,1-AUC) per column vs Diagnosis + documented measurement timing",
+    "flagged_columns": {
+      "Length_of_Stay": {
+        "univariate_auc_max": 0.7742,
+        "flags": [
+          "POST_OUTCOME: recorded at discharge, after the clinical decision"
+        ]
+      },
+      "Diagnosis_Presumptive": {
+        "univariate_auc_max": 0.6182,
+        "flags": [
+          "ANCHOR_VARIABLE: presumptive diagnosis recorded at admission; intentional bias-injection candidate, excluded from baseline predictors"
+        ]
+      },
+      "Alvarado_Score": {
+        "univariate_auc_max": 0.7421,
+        "flags": [
+          "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+        ]
+      },
+      "Paedriatic_Appendicitis_Score": {
+        "univariate_auc_max": 0.701,
+        "flags": [
+          "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+        ]
+      },
+      "Appendix_Diameter": {
+        "univariate_auc_max": 0.9503,
+        "flags": [
+          "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+        ]
+      },
+      "US_Performed": {
+        "univariate_auc_max": 0.5045,
+        "flags": [
+          "PROCESS_VARIABLE: encodes clinician workflow/suspicion or is an identifier"
+        ]
+      },
+      "US_Number": {
+        "univariate_auc_max": 0.6444,
+        "flags": [
+          "PROCESS_VARIABLE: encodes clinician workflow/suspicion or is an identifier"
+        ]
+      }
+    },
+    "all_columns": {
+      "Age": {
+        "univariate_auc_max": 0.5511,
+        "flags": []
+      },
+      "BMI": {
+        "univariate_auc_max": 0.5769,
+        "flags": []
+      },
+      "Sex": {
+        "univariate_auc_max": 0.5612,
+        "flags": []
+      },
+      "Height": {
+        "univariate_auc_max": 0.5374,
+        "flags": []
+      },
+      "Weight": {
+        "univariate_auc_max": 0.5653,
+        "flags": []
+      },
+      "Length_of_Stay": {
+        "univariate_auc_max": 0.7742,
+        "flags": [
+          "POST_OUTCOME: recorded at discharge, after the clinical decision"
+        ]
+      },
+      "Diagnosis_Presumptive": {
+        "univariate_auc_max": 0.6182,
+        "flags": [
+          "ANCHOR_VARIABLE: presumptive diagnosis recorded at admission; intentional bias-injection candidate, excluded from baseline predictors"
+        ]
+      },
+      "Alvarado_Score": {
+        "univariate_auc_max": 0.7421,
+        "flags": [
+          "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+        ]
+      },
+      "Paedriatic_Appendicitis_Score": {
+        "univariate_auc_max": 0.701,
+        "flags": [
+          "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+        ]
+      },
+      "Appendix_on_US": {
+        "univariate_auc_max": 0.7121,
+        "flags": []
+      },
+      "Appendix_Diameter": {
+        "univariate_auc_max": 0.9503,
+        "flags": [
+          "LABEL_DERIVED_RISK: used in the documented definition of the Diagnosis label for conservatively managed patients"
+        ]
+      },
+      "Migratory_Pain": {
+        "univariate_auc_max": 0.5435,
+        "flags": []
+      },
+      "Lower_Right_Abd_Pain": {
+        "univariate_auc_max": 0.5248,
+        "flags": []
+      },
+      "Contralateral_Rebound_Tenderness": {
+        "univariate_auc_max": 0.5909,
+        "flags": []
+      },
+      "Coughing_Pain": {
+        "univariate_auc_max": 0.5429,
+        "flags": []
+      },
+      "Nausea": {
+        "univariate_auc_max": 0.5881,
+        "flags": []
+      },
+      "Loss_of_Appetite": {
+        "univariate_auc_max": 0.5816,
+        "flags": []
+      },
+      "Body_Temperature": {
+        "univariate_auc_max": 0.6042,
+        "flags": []
+      },
+      "WBC_Count": {
+        "univariate_auc_max": 0.7254,
+        "flags": []
+      },
+      "Neutrophil_Percentage": {
+        "univariate_auc_max": 0.7076,
+        "flags": []
+      },
+      "Segmented_Neutrophils": {
+        "univariate_auc_max": 0.8217,
+        "flags": []
+      },
+      "Neutrophilia": {
+        "univariate_auc_max": 0.6555,
+        "flags": []
+      },
+      "RBC_Count": {
+        "univariate_auc_max": 0.5021,
+        "flags": []
+      },
+      "Hemoglobin": {
+        "univariate_auc_max": 0.5136,
+        "flags": []
+      },
+      "RDW": {
+        "univariate_auc_max": 0.5265,
+        "flags": []
+      },
+      "Thrombocyte_Count": {
+        "univariate_auc_max": 0.5013,
+        "flags": []
+      },
+      "Ketones_in_Urine": {
+        "univariate_auc_max": 0.5935,
+        "flags": []
+      },
+      "RBC_in_Urine": {
+        "univariate_auc_max": 0.5166,
+        "flags": []
+      },
+      "WBC_in_Urine": {
+        "univariate_auc_max": 0.514,
+        "flags": []
+      },
+      "CRP": {
+        "univariate_auc_max": 0.7304,
+        "flags": []
+      },
+      "Dysuria": {
+        "univariate_auc_max": 0.5124,
+        "flags": []
+      },
+      "Stool": {
+        "univariate_auc_max": 0.5238,
+        "flags": []
+      },
+      "Peritonitis": {
+        "univariate_auc_max": 0.6749,
+        "flags": []
+      },
+      "Psoas_Sign": {
+        "univariate_auc_max": 0.5359,
+        "flags": []
+      },
+      "Ipsilateral_Rebound_Tenderness": {
+        "univariate_auc_max": 0.53,
+        "flags": []
+      },
+      "US_Performed": {
+        "univariate_auc_max": 0.5045,
+        "flags": [
+          "PROCESS_VARIABLE: encodes clinician workflow/suspicion or is an identifier"
+        ]
+      },
+      "US_Number": {
+        "univariate_auc_max": 0.6444,
+        "flags": [
+          "PROCESS_VARIABLE: encodes clinician workflow/suspicion or is an identifier"
+        ]
+      },
+      "Free_Fluids": {
+        "univariate_auc_max": 0.6088,
+        "flags": []
+      },
+      "Appendix_Wall_Layers": {
+        "univariate_auc_max": 0.6769,
+        "flags": []
+      },
+      "Target_Sign": {
+        "univariate_auc_max": 0.8025,
+        "flags": []
+      },
+      "Appendicolith": {
+        "univariate_auc_max": 0.7727,
+        "flags": []
+      },
+      "Perfusion": {
+        "univariate_auc_max": 0.5205,
+        "flags": []
+      },
+      "Perforation": {
+        "univariate_auc_max": 0.7211,
+        "flags": []
+      },
+      "Surrounding_Tissue_Reaction": {
+        "univariate_auc_max": 0.7232,
+        "flags": []
+      },
+      "Appendicular_Abscess": {
+        "univariate_auc_max": 0.6316,
+        "flags": []
+      },
+      "Abscess_Location": {
+        "univariate_auc_max": null,
+        "flags": []
+      },
+      "Pathological_Lymph_Nodes": {
+        "univariate_auc_max": 0.5219,
+        "flags": []
+      },
+      "Lymph_Nodes_Location": {
+        "univariate_auc_max": 0.6437,
+        "flags": []
+      },
+      "Bowel_Wall_Thickening": {
+        "univariate_auc_max": 0.7072,
+        "flags": []
+      },
+      "Conglomerate_of_Bowel_Loops": {
+        "univariate_auc_max": 0.5901,
+        "flags": []
+      },
+      "Ileus": {
+        "univariate_auc_max": 0.713,
+        "flags": []
+      },
+      "Coprostasis": {
+        "univariate_auc_max": 0.7604,
+        "flags": []
+      },
+      "Meteorism": {
+        "univariate_auc_max": 0.5786,
+        "flags": []
+      },
+      "Enteritis": {
+        "univariate_auc_max": 0.6971,
+        "flags": []
+      },
+      "Gynecological_Findings": {
+        "univariate_auc_max": null,
+        "flags": []
+      }
+    }
+  },
+  "data_dictionary_crosscheck": {
+    "n_summary_rows": 58,
+    "columns_missing_from_dictionary": [
+      "Appendicolith",
+      "Lymph_Nodes_Location",
+      "US_Number"
+    ],
+    "dictionary_rows_absent_from_data": [
+      "Apendicolith",
+      "Lymph_Node_Location"
+    ]
+  },
+  "known_limitations": [
+    "Single-centre cohort (Children's Hospital St. Hedwig, Regensburg, 2016-2021); external generalisability unknown.",
+    "Small sample size (n=782) with ~53 features; high risk of overfitting and wide confidence intervals.",
+    "Diagnosis label for conservatively managed patients is partly defined by Alvarado/PAS and appendix diameter -> circularity risk for those columns.",
+    "Many ultrasound findings are >70% missing because they were only recorded when the appendix or a complication was visualised; missingness is informative, not MCAR.",
+    "Free-text German columns (Diagnosis_Presumptive, Lymph_Nodes_Location, Abscess_Location, Gynecological_Findings) require controlled normalisation.",
+    "Ultrasound images (523 MB zip) are optional for the tabular Phase A model and are not downloaded in Phase 1.",
+    "No protected health information expected (de-identified research release), but no independent DPIA/IRB review has been performed in this project."
+  ]
+}

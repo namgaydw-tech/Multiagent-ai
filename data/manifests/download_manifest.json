@@ -1,0 +1,81 @@
+{
+  "generated_utc": "2026-10-02T07:49:45.617113+00:00",
+  "generator": "research/_scripts/make_download_manifest.py",
+  "artifacts": [
+    {
+      "path": "data/raw/regensburg_pediatric_appendicitis/app_data.xlsx",
+      "dataset": "regensburg_pediatric_appendicitis",
+      "url": "https://zenodo.org/api/records/7669442/files/app_data.xlsx/content",
+      "doi": "10.5281/zenodo.7669442",
+      "license": "CC-BY-NC-4.0",
+      "present": true,
+      "bytes": 212771,
+      "sha256": "a88a3d667215126a2b3528f94758c70918880934c8c1774c86b491060a28d5b3"
+    },
+    {
+      "path": "data/raw/regensburg_pediatric_appendicitis/ZENODO_README.md",
+      "dataset": "regensburg_pediatric_appendicitis",
+      "url": "https://zenodo.org/api/records/7669442/files/README.md/content",
+      "doi": "10.5281/zenodo.7669442",
+      "license": "CC-BY-NC-4.0",
+      "present": true,
+      "bytes": 2235,
+      "sha256": "9bfcc30e24a75f1fe9ee78c0b9566caf2d0dcebe7e8edde555d47fa64a2a9ffb"
+    },
+    {
+      "path": "data/manifests/uci_dataset_938_metadata.json",
+      "dataset": "regensburg_pediatric_appendicitis",
+      "url": "https://archive.ics.uci.edu/api/dataset?id=938",
+      "doi": "10.5281/zenodo.7669442",
+      "license": "metadata",
+      "present": true,
+      "bytes": 14986,
+      "sha256": "a164f663a47765833a3eded6c095d9c44eba0f2078eb2c0b2bf7c1662f576536"
+    },
+    {
+      "path": "data/manifests/mendeley_5vdz5cftz7_metadata.json",
+      "dataset": "neonatal_sepsis_registry",
+      "url": "https://data.mendeley.com/public-api/datasets/5vdz5cftz7",
+      "doi": "10.17632/5vdz5cftz7.1",
+      "license": "not_exposed_by_api",
+      "present": true,
+      "bytes": 3081,
+      "sha256": "0a03391a43142c72fe0471dab4ca5935a99208d51fb2bdcd346b98dbaf0ba510"
+    },
+    {
+      "path": "data/raw/neonatal_sepsis/deid-nicu-sepsis-tta.csv",
+      "dataset": "neonatal_sepsis_registry",
+      "url": "https://data.mendeley.com/public-files/datasets/5vdz5cftz7/files/cac64abf-244f-46dd-976b-dd585ca89589/file_downloaded",
+      "doi": "10.17632/5vdz5cftz7.1",
+      "license": "not_exposed_by_api",
+      "published_sha256": "54aa1dd81d40ed171282fdcca57de55bc2d8b8a3e2b3eec49d67ba1c1ba4c457",
+      "present": true,
+      "bytes": 175549,
+      "sha256": "54aa1dd81d40ed171282fdcca57de55bc2d8b8a3e2b3eec49d67ba1c1ba4c457",
+      "sha256_matches_published": true
+    },
+    {
+      "path": "data/manifests/mendeley_3tx8xymdsv_metadata.json",
+      "dataset": "child_pneumonia_dataset",
+      "url": "https://data.mendeley.com/public-api/datasets/3tx8xymdsv",
+      "doi": "10.17632/3tx8xymdsv.1",
+      "license": "cc_by_4_0_per_repository_description",
+      "present": true,
+      "bytes": 2189015,
+      "sha256": "b684d15977d05cf0853faca2fcefb0ef6c895545db8fcf6cf5172ef6affd36e6"
+    }
+  ],
+  "not_downloaded": [
+    {
+      "path": "data/raw/regensburg_pediatric_appendicitis/US_Pictures.zip",
+      "url": "https://zenodo.org/api/records/7669442/files/US_Pictures.zip/content",
+      "bytes_upstream": 523034730,
+      "reason": "imaging branch deferred; Phase 1 is tabular-only"
+    },
+    {
+      "dataset": "child_pneumonia_dataset",
+      "url": "https://data.mendeley.com/datasets/3tx8xymdsv/1",
+      "reason": "Phase C blocked pending image audit (pre-augmented files + duplicate filenames)"
+    }
+  ]
+}

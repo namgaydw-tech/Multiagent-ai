@@ -1,0 +1,67 @@
+# Model configuration - Phase A: Regensburg pediatric appendicitis tabular model.
+# STATUS: pre-registered spec. Training is blocked until docs/DATASET_AUDIT.md conditions are met.
+
+version: 1
+dataset: regensburg_pediatric_appendicitis
+target: Diagnosis                 # binary: appendicitis / no appendicitis
+secondary_targets: [Management, Severity]   # separate models, trained separately
+
+feature_policy:
+  exclude:                        # never predictors (see docs/DATASET_AUDIT.md section 7)
+    - Diagnosis_Presumptive       # experimental ANCHOR variable, reserved for bias experiments
+    - Management                  # co-target
+    - Severity                    # co-target
+    - Length_of_Stay              # recorded at discharge -> post-outcome leakage
+    - US_Number                   # identifier (patient/image linkage)
+  conditional_include:            # retained ONLY with sensitivity analysis (label circularity)
+    - Alvarado_Score
+    - Paedriatic_Appendicitis_Score
+    - Appendix_Diameter
+  missing_values: explicit_indicators   # never silent dropping
+  categorical: native_handling
+  normalization: only_where_required    # trees do not need scaling; LR does
+
+split:
+  strategy: stratified_patient_level
+  ratios: { train: 0.70, validation: 0.15, test: 0.15 }
+  fallback: repeated_stratified_cv_on_train_val_with_locked_test
+  decision_rule: "choose fallback only if test partition would contain < 40 positive or < 40 negative cases"
+  seed: 20261002
+  save_to: data/interim/splits/
+
+models:
+  primary: lightgbm
+  benchmarks: [logistic_regression, random_forest, hist_gradient_boosting, catboost]
+
+tuning:
+  method: stratified_cv_bayesian_or_random_search
+  folds: 5
+  search_on: validation_only         # test never touched
+  metric: average_precision          # plus calibration-aware selection
+
+calibration:
+  candidates: [platt, isotonic]
+  selected_by: brier_and_ece_on_validation
+  fit_on: non_test_data_only
+
+threshold:
+  selection: validation_only
+  objective: f2_or_sensitivity_floor   # high sensitivity preferred for safety-relevant screening
+  locked_before_test: true
+
+evaluation:
+  metrics: [auroc, auprc, sensitivity, specificity, ppv, npv, f1, f2, balanced_accuracy,
+            brier, ece, confusion_matrix]
+  bootstrap_ci: { n: 2000, alpha: 0.05 }
+  false_negative_review: required
+  subgroup_report: [age_band, sex]
+
+explainability:
+  method: shap
+  outputs: [global_importance, beeswarm, patient_waterfall, dependence]
+  wording_constraint: "contributed positively/negatively to this model prediction - never causal"
+
+outputs:
+  model_dir: outputs/models/
+  metrics_dir: outputs/metrics/
+  figures_dir: outputs/figures/

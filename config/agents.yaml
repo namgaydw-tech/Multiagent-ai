@@ -1,0 +1,109 @@
+# Multi-agent configuration (five agents + staged orchestration).
+# Information isolation is expressed as `visibility`, not as code branches, so ablations are
+# config-only changes (see docs/ARCHITECTURE.md).
+
+version: 1
+
+llm_provider:                     # modular: no hard-coded vendor
+  backend: ${LLM_BACKEND}         # openai_compatible | ollama | huggingface | local | cloud
+  base_url: ${LLM_BASE_URL}
+  model: ${LLM_MODEL}
+  temperature: 0.0                # where supported
+  max_tokens: 2000
+  timeout_s: 120
+  retries: 3
+  cost_logging: true
+
+global_constraints:
+  no_fabricated_evidence: true        # agents may only use values present in the record
+  json_schema_validation: true
+  provenance_required_for_safety_claims: true
+  shap_wording: "contribution to the model prediction, never causation"
+  research_only_disclaimer_required: true
+
+stages:                                # deterministic state machine, each stage persisted
+  - 1_data_cleansing
+  - 2_independent_differential
+  - 3_proponent
+  - 4_opponent
+  - 5_high_acuity_watchdog
+  - 6_evidence_retrieval
+  - 7_arbitration
+  - 8_bias_audit
+
+agents:
+
+  agent_1_data_cleanser:
+    role: objective extraction and standardization
+    diagnoses: false
+    visibility: [raw_patient_features]
+    output_schema: { demographics: {}, vitals: {}, laboratory_values: {}, symptoms: [],
+                     physical_findings: [], imaging_findings: [], missing_critical_information: [],
+                     objective_red_flags: [], data_quality_warnings: [] }
+    constraints: [no_invented_thresholds, age_banded_values_only_from_knowledge_files]
+
+  agent_2_proponent:
+    role: strongest evidence-based case FOR the classifier's top hypothesis
+    visibility: [patient_data, model_probabilities, shap_evidence, model_uncertainty]
+    output_schema: { supported_diagnosis: "", model_probability: 0.0, supporting_evidence: [],
+                     missing_expected_evidence: [], contradictions_acknowledged: [], confidence: 0.0 }
+    constraints: [must_acknowledge_contradictions, must_not_hide_negative_findings]
+
+  agent_3_opponent:
+    role: adversarial critique of the leading hypothesis
+    visibility_stage2: [patient_data_only]              # independent differential FIRST
+    visibility_stage4: [patient_data, leading_hypothesis, retrieved_evidence]   # then attack
+    output_schema: { challenged_hypothesis: "", contradictory_evidence: [], missing_criteria: [],
+                     alternative_diagnoses: [], strongest_alternative: "", disconfirmatory_tests: [],
+                     anchoring_risk: "LOW|MEDIUM|HIGH", reason_for_anchoring_risk: "" }
+    constraints: [every_challenge_must_cite_patient_or_retrieved_evidence,
+                  no_disagreement_for_its_own_sake]
+
+  agent_4_high_acuity_watchdog:
+    role: high-sensitivity, evidence-grounded safety screen
+    visibility: [patient_data, knowledge_rules]         # rule-first, prediction-blind
+    output_schema: { high_acuity_conditions_considered: [], red_flags_present: [], red_flags_absent: [],
+                     cannot_assess_due_to_missing_data: [], urgent_rule_out_conditions: [],
+                     risk_level: "LOW|MODERATE|HIGH|CRITICAL", evidence: [] }
+    constraints: [trigger_evidence_required, fail_closed_on_pending_rules, age_band_required]
+
+  agent_5_pediatric_consultant_arbitrator:
+    role: weighted synthesis of competing analyses (NOT majority voting)
+    visibility: [sanitized_patient_evidence, classifier_results, calibration_info, shap_summary,
+                 agent_1_output, independent_differential, agent_2_output, agent_3_output,
+                 agent_4_output, retrieved_guideline_evidence]
+    weighting_factors: [evidence_quality, contradiction_strength, data_completeness,
+                        classifier_calibration, guideline_support, clinical_risk, uncertainty]
+    output_schema: { primary_working_diagnosis: "", multi_agent_confidence: 0.0,
+                     confidence_interpretation: "", critical_differentials: [], urgent_rule_outs: [],
+                     recommended_information_or_tests: [], important_missing_data: [],
+                     model_vs_agents_disagreement: "", confirmation_bias_risk_before_debate: "",
+                     confirmation_bias_risk_after_debate: "", audit_trail: [],
+                     research_only_disclaimer: "" }
+    constraints: [must_not_reuse_model_probability_as_confidence,
+                  must_document_model_probability_to_confidence_transformation]
+
+ablations:                              # conditions A-G from the research brief
+  A_all_see_prediction:
+    agent_3: { sees_prediction_at_stage_2: true }
+    agent_4: { sees_prediction: true }
+  B_only_proponent:
+    agent_3: { sees_prediction_at_stage_2: false }
+    agent_4: { sees_prediction: false }
+  C_hidden_until_differential_complete:        # default
+    agent_3: { reveal_prediction_after_stage: 2 }
+    agent_4: { sees_prediction: false }
+  D_single_llm:
+    enabled_agents: [single_llm_baseline]
+  E_llm_self_reflection:
+    enabled_agents: [single_llm_with_reflection]
+  F_multi_agent_no_adversary:
+    roles: [curator, summariser, generalist, watchdog, arbitrator]
+  G_full_adversarial:
+    roles: [cleanser, proponent, opponent, watchdog, arbitrator]
+
+rag:
+  enabled: false                        # toggled in experiments/ablations (with/without RAG)
+  index_sources: [open_access_abstracts, public_guidelines, user_supplied_papers]
+  chunk_metadata: [title, authors, year, source, doi, section, license]
+  provenance_returned: true
