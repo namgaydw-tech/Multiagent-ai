@@ -26,6 +26,11 @@ outputs/audits/*
 # one complete example audit trail is committed for reviewers (docs/PHASE3_REPORT.md)
 !outputs/audits/regensburg_row_469/
 
+# Frontend build artifacts (npm install regenerates node_modules)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
 # OS / editor
 .DS_Store
 Thumbs.db

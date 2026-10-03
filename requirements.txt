@@ -24,3 +24,9 @@ scipy>=1.11
 # ollama>=0.2           # local models
 # sentence-transformers>=2.7   # local embeddings for RAG
 # langgraph>=0.1        # optional orchestrator adapter (custom state machine is the default)
+
+# UI layer (backend/ FastAPI service; frontend deps live in frontend/package.json)
+fastapi>=0.110
+uvicorn>=0.29
+httpx>=0.27
+pydantic>=2.6

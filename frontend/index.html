@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+          content="Research UI for mitigating confirmation bias in automated pediatric diagnostics — research prototype, not a medical device." />
+    <title>Pediatric DX Bias Research — Multi-Agent AI</title>
+    <script>
+      // Apply the persisted theme before first paint (no flash).
+      (function () {
+        var t = localStorage.getItem('theme')
+        if (t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
