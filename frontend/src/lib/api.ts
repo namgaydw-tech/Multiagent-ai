@@ -116,6 +116,115 @@ export const api = {
       `/api/audits/${encodeURIComponent(caseId)}/${encodeURIComponent(file)}`,
     ),
   figureUrl: (name: string) => `/api/metrics/figures/${name}`,
+  // ---- Phase 5 (multi-dataset, multi-algorithm) -------------------------
+  phase5Status: () =>
+    request<{
+      available: boolean
+      artifacts: Record<string, boolean>
+      blocker_summary: Record<string, number> | null
+      datasets_executed: string[]
+      reproduce?: string
+      disclaimer: string
+    }>('/api/phase5/status'),
+  phase5Datasets: () => request<Availability<Record<string, unknown>>>('/api/phase5/datasets'),
+  phase5Scorecard: () => request<Availability<ScorecardPayload>>('/api/phase5/scorecard'),
+  phase5CrossDataset: () => request<Availability<Record<string, unknown>>>('/api/phase5/cross-dataset'),
+  phase5Statistics: () => request<Availability<Record<string, unknown>>>('/api/phase5/statistics'),
+  phase5Figures: () => request<Availability<FiguresManifest>>('/api/phase5/figures'),
+  phase5Algorithms: () =>
+    request<{
+      available: boolean
+      algorithms: Record<string, { family: string; formula: string; why: string }>
+      metrics: Record<string, string>
+      selection_rule: string
+      disclaimer: string
+    }>('/api/phase5/algorithms'),
+  phase5DatasetMetrics: (id: string) =>
+    request<{
+      dataset_id: string
+      dir?: string
+      counts?: Record<string, Record<string, number>>
+      split_source?: string
+      sensitivity_floor?: number
+      thresholds?: { thresholds: Record<string, { threshold: number }> }
+      calibration?: Record<string, { selected: string }>
+      test?: {
+        models: Record<string, ModelEntry>
+        ensembles: Record<string, ModelEntry>
+      }
+      validation?: { metrics: Record<string, Record<string, number | null>> }
+      disclaimer: string
+    }>(`/api/phase5/dataset/${encodeURIComponent(id)}/metrics`),
+  phase5FigureMeta: (id: number, dataset?: string) =>
+    request<{ available: boolean; name: string; url: string; note?: string }>(
+      `/api/phase5/figures/${id}${dataset ? `?dataset=${encodeURIComponent(dataset)}` : ''}`,
+    ),
+}
+
+export interface ScorecardRow {
+  dataset: string
+  algorithm: string
+  model_family: string
+  status: string
+  hyperparameters: string | Record<string, unknown>
+  threshold: number | null
+  'Macro_F0.5': number | null
+  'positive_F0.5': number | null
+  accuracy: number | null
+  balanced_accuracy: number | null
+  precision: number | null
+  sensitivity: number | null
+  specificity: number | null
+  NPV: number | null
+  F1: number | null
+  F2: number | null
+  MCC: number | null
+  AUROC: number | null
+  AUPRC: number | null
+  Brier: number | null
+  ECE: number | null
+  training_time: number | null
+  inference_time: number | null
+  calibration_method: string | null
+  sensitivity_floor: number | null
+  sensitivity_floor_pass: boolean | null
+  winner: boolean
+  note?: string
+}
+
+export interface ScorecardPayload {
+  rows: ScorecardRow[]
+  winner_selection: string
+  n_rows: number
+  disclaimer: string
+}
+
+export interface ModelEntry {
+  available: boolean
+  threshold?: number
+  training_seconds?: number
+  inference_ms_per_case?: number
+  calibrator?: string
+  floor_satisfied?: boolean
+  test_metrics?: Record<string, number | null>
+  bootstrap_ci?: Record<string, { point: number; lo: number; hi: number }>
+}
+
+export interface FigureEntry {
+  id: number
+  name: string
+  status: 'GENERATED' | 'NOT_GENERATED'
+  paths: string[]
+  reproduce: string
+  note?: string
+}
+
+export interface FiguresManifest {
+  figures: FigureEntry[]
+  model_specific_analysis_extras?: string[]
+  already_existed_pre_phase5?: string[]
+  not_executed?: string[]
+  reproduce: string
 }
 
 export const ANCHOR_CONDITIONS = [

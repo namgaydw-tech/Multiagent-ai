@@ -136,7 +136,7 @@ def run_stage1(state: CaseState, provider: Any, retriever: Any = None) -> StageR
     """Agent 1 — objective extraction; never diagnoses (schema-guarded)."""
     t0 = time.perf_counter()
     sl = state.stage_slice(1)
-    result = run_cleanser(sl["record"], provider)
+    result = run_cleanser(sl["record"], provider, domain=state.domain)
     inputs = {"record": sl["record"], **_visibility_meta(state, 1)}
     return StageResult(1, *STAGE_KEYS[1], result.payload, inputs,
                        _provider_call_dict(result), time.perf_counter() - t0)
@@ -151,7 +151,7 @@ def run_stage2(state: CaseState, provider: Any, retriever: Any = None) -> StageR
         raise RuntimeError(
             "stage 2 isolation violated: differential must never receive model_output/anchor")
     cleanser = _typed(state, "data_cleanser")
-    result = run_differential(sl["record"], cleanser, provider)
+    result = run_differential(sl["record"], cleanser, provider, domain=state.domain)
     inputs = {"record": sl["record"],
               "cleanser_summary": {"missing_critical_information":
                                    cleanser.missing_critical_information},
@@ -169,7 +169,8 @@ def run_stage3(state: CaseState, provider: Any, retriever: Any = None) -> StageR
         raise RuntimeError("stage 3 requires model_output (proponent role); policy misconfigured")
     cleanser = _typed(state, "data_cleanser")
     result = run_proponent(sl["record"], cleanser, sl["model_output"],
-                           sl.get("shap_explain"), sl.get("uncertainty"), provider)
+                           sl.get("shap_explain"), sl.get("uncertainty"), provider,
+                           domain=state.domain)
     inputs = {"record": sl["record"],
               "model_output": sl["model_output"],
               "shap_explain": sl.get("shap_explain"),
@@ -218,7 +219,8 @@ def run_stage4(state: CaseState, provider: Any, retriever: Any = None) -> StageR
 
     stage_a_sees_anchor = state.ablation == "all_see_anchor"
     result = run_opponent(sl["record"], cleanser, differential, leading, retrieved,
-                          provider, stage_a_sees_anchor=stage_a_sees_anchor)
+                          provider, stage_a_sees_anchor=stage_a_sees_anchor,
+                          domain=state.domain)
     inputs = {"record": sl["record"],
               "leading_hypothesis": leading,
               "leading_hypothesis_source": (
@@ -238,7 +240,8 @@ def run_stage5(state: CaseState, provider: Any, retriever: Any = None) -> StageR
     t0 = time.perf_counter()
     sl = state.stage_slice(5)
     prediction = sl.get("model_output")  # present only when policy grants it (ablation A)
-    result = run_watchdog(sl["record"], provider, prediction=prediction)
+    result = run_watchdog(sl["record"], provider, prediction=prediction,
+                          domain=state.domain)
     inputs = {"record": sl["record"],
               "prediction_passed": prediction is not None,
               **_visibility_meta(state, 5)}
@@ -312,6 +315,7 @@ def run_stage7(state: CaseState, provider: Any, retriever: Any = None) -> StageR
         anchor=sl.get("anchor"),
         record=sl["record"],
         provider=provider,
+        domain=state.domain,
     )
     inputs = {"record": sl["record"],
               "model_output": sl["model_output"],

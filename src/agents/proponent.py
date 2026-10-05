@@ -62,8 +62,11 @@ def _model_confidence(calibrated_prob: float, uncertainty: dict[str, Any] | None
 
 def extract(record: dict[str, Any], cleanser: DataCleanserOutput,
             model: dict[str, Any], shap_explain: dict[str, Any] | None,
-            uncertainty: dict[str, Any] | None) -> dict[str, Any]:
+            uncertainty: dict[str, Any] | None,
+            domain: str = "appendicitis") -> dict[str, Any]:
     """Deterministic proponent payload from record + model + SHAP values only."""
+    if domain != "appendicitis":
+        return _extract_domain(record, cleanser, model, shap_explain, uncertainty, domain)
     predicted = str(model.get("predicted_class", ""))
     probs = model.get("class_probabilities", {}) or {}
     calibrated = model.get("calibrated_probability")
@@ -135,10 +138,62 @@ def extract(record: dict[str, Any], cleanser: DataCleanserOutput,
     }
 
 
+def _extract_domain(record: dict[str, Any], cleanser: DataCleanserOutput,
+                     model: dict[str, Any], shap_explain: dict[str, Any] | None,
+                     uncertainty: dict[str, Any] | None, domain: str) -> dict[str, Any]:
+    """Domain-pack proponent: evidence from the pack's candidates, no invented columns."""
+    from src.agents.domains import get_pack
+    pack = get_pack(domain)
+    predicted = str(model.get("predicted_class", ""))
+    probs = model.get("class_probabilities", {}) or {}
+    calibrated = model.get("calibrated_probability")
+    if calibrated is None:
+        calibrated = probs.get(predicted, 0.5)
+
+    supp_fn = next((s for name, s, _ in pack.candidates if name == predicted), None)
+    contra_fn = next((c for name, _, c in pack.candidates if name == predicted), None)
+    supporting_stmts = supp_fn(record) if supp_fn else []
+    contradictions = list(contra_fn(record)) if contra_fn else []
+
+    supporting = [EvidenceRef(kind="patient_record", citation="record-value",
+                              quote=s,
+                              relevance="present record value supporting the model's top class")
+                  for s in supporting_stmts]
+    for c in (shap_explain or {}).get("top_contributors", [])[:5]:
+        if c.get("direction") == "positive":
+            supporting.append(EvidenceRef(
+                kind="model", citation=f"{model.get('model_name')} SHAP",
+                quote=f"{c.get('feature')}={c.get('value')} — contributed positively "
+                      f"(shap={c.get('contribution')})",
+                relevance=SHAP_WORDING))
+    if not supporting:
+        supporting.append(EvidenceRef(
+            kind="model", citation=str(model.get("model_name", "model")),
+            quote="No individual record value independently supports the model's top class; "
+                  "the case rests on the model score alone",
+            relevance="weak-evidence disclosure (no cherry-picking in the opposite direction)"))
+
+    missing = [f"{c} missing — expected finding unavailable for the supported hypothesis"
+               for c in cleanser.missing_critical_information[:6]]
+    confidence = _model_confidence(float(calibrated), uncertainty,
+                                   len(cleanser.missing_critical_information))
+    return {
+        "supported_diagnosis": predicted,
+        "model_probability": round(float(calibrated), 4),
+        "supporting_evidence": [e.model_dump() for e in supporting],
+        "missing_expected_evidence": missing,
+        "contradictory_evidence_acknowledged_flag": True,
+        "contradictions_acknowledged": contradictions or
+            ["No present record value directly contradicts the supported hypothesis; "
+             "absence of expected findings is listed under missing_expected_evidence"],
+        "confidence": confidence,
+    }
+
+
 def run_proponent(record: dict[str, Any], cleanser: DataCleanserOutput,
                   model: dict[str, Any], shap_explain: dict[str, Any] | None,
                   uncertainty: dict[str, Any] | None,
-                  provider: LLMProvider) -> ProviderResult:
+                  provider: LLMProvider, domain: str = "appendicitis") -> ProviderResult:
     """Execute Agent 2 (sees patient data + model probabilities + SHAP + uncertainty)."""
     system = (
         "You are the Proponent in a pediatric appendicitis research debate. "
@@ -148,6 +203,15 @@ def run_proponent(record: dict[str, Any], cleanser: DataCleanserOutput,
         "values present in the record. SHAP wording: features contributed to "
         "the model prediction, never caused the diagnosis. Emit JSON."
     )
+    if domain != "appendicitis":
+        from src.agents.domains import get_pack
+        system = (f"You are the Proponent in a pediatric {get_pack(domain).display} "
+                  "research debate. Defend the classifier's top prediction with the "
+                  "strongest honest evidence-based case. You MUST acknowledge every "
+                  "contradictory finding and every missing expected finding — no "
+                  "cherry-picking. Cite only values present in the record. SHAP wording: "
+                  "features contributed to the model prediction, never caused the "
+                  "diagnosis. Emit JSON.")
     user = ("Inputs:\n"
             f"record={record}\n"
             f"cleansed={cleanser.model_dump()}\n"
@@ -157,5 +221,6 @@ def run_proponent(record: dict[str, Any], cleanser: DataCleanserOutput,
     return provider.complete_json(
         stage="3_proponent", system=system, user=user, schema=ProponentOutput,
         deterministic=lambda: {k: v for k, v in
-                               extract(record, cleanser, model, shap_explain, uncertainty).items()
+                               extract(record, cleanser, model, shap_explain, uncertainty,
+                                       domain=domain).items()
                                if k in ProponentOutput.model_fields})

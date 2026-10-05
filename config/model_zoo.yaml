@@ -1,0 +1,214 @@
+# PHASE 5 model zoo — multi-algorithm registry (section E).
+#
+# Every entry is a candidate for EVERY eligible tabular dataset unless noted;
+# availability is detected at runtime (missing packages disable a model with an
+# explicit note — never silently). Hyperparameter search runs only on
+# training/CV/validation data (config/phase5.yaml cross_validation).
+# Deterministic seeds everywhere.
+
+version: 1
+seed: 20261002
+
+tabular:
+  # ------------------------------------------------------------ baselines
+  logistic_regression:
+    enabled: true
+    family: linear
+    preprocess: onehot_scale
+    class_weight: balanced          # justified: imbalanced sepsis target + cheap regularisation
+    grid: { clf__C: [0.01, 0.1, 1.0, 10.0] }
+    n_iter: 4
+
+  decision_tree:
+    enabled: true
+    family: tree
+    preprocess: onehot
+    grid:
+      clf__max_depth: [3, 5, null]
+      clf__min_samples_leaf: [1, 5, 15]
+      clf__criterion: [gini, entropy]
+    n_iter: 5
+
+  gaussian_nb:
+    enabled: true
+    family: probabilistic
+    preprocess: onehot
+    grid: { clf__var_smoothing: [1.0e-9, 1.0e-8, 1.0e-7] }
+    n_iter: 3
+
+  knn:
+    enabled: true
+    family: instance_based
+    preprocess: onehot_scale        # distance-based → training-fitted scaling required
+    grid:
+      clf__n_neighbors: [3, 5, 11, 25]
+      clf__weights: [uniform, distance]
+    n_iter: 5
+
+  lda:
+    enabled: true
+    family: discriminant
+    preprocess: onehot_scale
+    grid: { clf__shrinkage: [null, auto] }   # solver fixed to lsqr (shrinkage-compatible)
+    n_iter: 2
+
+  qda:
+    enabled: true
+    family: discriminant
+    preprocess: onehot_scale
+    grid: { clf__reg_param: [0.0, 0.1, 0.5] }
+    n_iter: 3
+
+  # -------------------------------------------------------- tree ensembles
+  random_forest:
+    enabled: true
+    family: bagging
+    preprocess: onehot
+    class_weight: balanced_subsample
+    grid:
+      clf__n_estimators: [200, 400, 600]
+      clf__max_depth: [null, 12, 24]
+      clf__min_samples_leaf: [1, 3, 5]
+    n_iter: 6
+
+  extra_trees:
+    enabled: true
+    family: bagging
+    preprocess: onehot
+    class_weight: balanced_subsample
+    grid:
+      clf__n_estimators: [200, 400, 600]
+      clf__max_depth: [null, 12, 24]
+      clf__min_samples_leaf: [1, 5]
+    n_iter: 6
+
+  # ------------------------------------------------------------- boosting
+  gradient_boosting:
+    enabled: true
+    family: boosting
+    preprocess: onehot
+    grid:
+      clf__learning_rate: [0.05, 0.1]
+      clf__n_estimators: [100, 200]
+      clf__max_depth: [3, 5]
+    n_iter: 4
+
+  adaboost:
+    enabled: true
+    family: boosting
+    preprocess: onehot
+    grid:
+      clf__n_estimators: [50, 100, 200]
+      clf__learning_rate: [0.5, 1.0]
+    n_iter: 4
+
+  hist_gradient_boosting:
+    enabled: true
+    family: boosting
+    preprocess: ordinal_native      # native NaN handling + ordinal-encoded categoricals
+    grid:
+      learning_rate: [0.05, 0.1]
+      max_iter: [200, 300]
+      max_leaf_nodes: [15, 31]
+      min_samples_leaf: [10, 20]
+    n_iter: 6
+
+  lightgbm:
+    enabled: true
+    family: boosting
+    preprocess: native_categorical  # pandas category dtype (NaN handled natively)
+    grid:
+      num_leaves: [15, 31, 63]
+      learning_rate: [0.03, 0.08]
+      n_estimators: [200, 300, 400]
+      min_child_samples: [10, 30]
+      reg_lambda: [0.0, 1.0]
+    n_iter: 8
+
+  catboost:
+    enabled: true
+    family: boosting
+    preprocess: catboost_native     # native categoricals; manual CV (not cloneable in search)
+    grid:
+      iterations: [200, 300, 400]
+      depth: [4, 6]
+      learning_rate: [0.03, 0.08]
+      l2_leaf_reg: [1.0, 3.0]
+    n_iter: 4
+    cv_folds: 3
+
+  xgboost:
+    enabled: true
+    family: boosting
+    preprocess: onehot
+    grid:
+      max_depth: [4, 6]
+      n_estimators: [200, 300]
+      learning_rate: [0.05, 0.1]
+      subsample: [0.8, 1.0]
+    n_iter: 6
+
+  # ----------------------------------------------------------- margin model
+  svm_linear:
+    enabled: true
+    family: margin
+    preprocess: onehot_scale
+    class_weight: balanced
+    probability: true
+    grid: { clf__C: [0.1, 1.0, 10.0] }
+    n_iter: 3
+    note: "linear SVM (kernel='linear', w^T x + b)"
+
+  svm_rbf:
+    enabled: true
+    family: margin
+    preprocess: onehot_scale
+    class_weight: balanced
+    probability: true               # internal Platt CV inside SVC — validation still used for our calibration step
+    grid:
+      clf__C: [0.1, 1.0, 10.0]
+      clf__gamma: [scale, 0.01, 0.001]
+    n_iter: 6
+    note: "RBF kernel SVM; feasible at n<=20000 rows"
+
+  # -------------------------------------------------------- neural baseline
+  mlp:
+    enabled: true
+    family: neural
+    preprocess: onehot_scale        # training-fitted scaling required
+    architecture: [64, 32]
+    early_stopping: true
+    grid:
+      clf__alpha: [0.0001, 0.001]
+    n_iter: 2
+
+# -------------------------------------------------------------- ensembles
+# Learned ON VALIDATION only (never test): soft voting (uniform + validation-
+# weighted), hard voting over locked-threshold predictions, and stacking.
+ensembles:
+  enabled: true
+  methods: [soft_voting_uniform, validation_weighted_soft_voting, hard_voting, stacking]
+
+image:
+  input_size: 224
+  weights: imagenet                 # torchvision pretrained weights (transfer learning)
+  batch_size: 32
+  augmentation: "random_horizontal_flip + random_resized_crop (TRAIN ONLY, after split)"
+  strategies:
+    frozen: { epochs: 3, lr: 0.001, head: linear }        # frozen backbone, trained head
+    finetune: { epochs: 5, lr: 0.0002, unfreeze_from: layer3 }
+  models:
+    resnet18:     { enabled: true, strategies: [frozen, finetune] }
+    resnet50:     { enabled: true, strategies: [frozen, finetune] }
+    densenet121:  { enabled: true, strategies: [frozen, finetune] }
+    efficientnet_b0: { enabled: true, strategies: [frozen, finetune] }
+    convnext_tiny:   { enabled: true, strategies: [frozen], note: "frozen only — full fine-tune not feasible on this GPU budget" }
+  grad_cam: { enabled: true, wording: "model attribution visualization — never causal localization" }
+
+time_series:
+  status: planned_not_executed
+  note: >-
+    PhysioNet PIC is NOT_AVAILABLE in this environment (credentialed), so no
+    temporal task exists yet. Engineered-window LightGBM/XGBoost baselines and
+    GRU/LSTM/TCN comparators remain PLANNED until the data is accessible; deep
+    learning will not be added merely for appearance.

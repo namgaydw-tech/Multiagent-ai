@@ -1,0 +1,11 @@
+{
+ "dataset_id": "REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR",
+ "n_models": 16,
+ "elapsed_seconds": 222.6,
+ "lock": {
+  "first_evaluation_utc": "2026-10-04T08:24:10+00:00",
+  "n_evaluations": 1,
+  "note": "test partition evaluated once after threshold lock"
+ },
+ "blocker_status": "PASS"
+}

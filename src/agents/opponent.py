@@ -55,8 +55,12 @@ def extract(record: dict[str, Any], cleanser: DataCleanserOutput,
             differential: IndependentDifferentialOutput,
             leading_hypothesis: str | None,
             retrieved: list[dict[str, Any]],
-            stage_a_sees_anchor: bool = False) -> dict[str, Any]:
+            stage_a_sees_anchor: bool = False,
+            domain: str = "appendicitis") -> dict[str, Any]:
     """Deterministic two-stage opponent payload."""
+    if domain != "appendicitis":
+        return _extract_domain(record, cleanser, differential, leading_hypothesis,
+                               retrieved, stage_a_sees_anchor, domain)
     alternatives = [c for c in _stage_a(record, differential)
                     if leading_hypothesis is None
                     or c.split("(")[0].strip().lower() not in leading_hypothesis.lower()
@@ -139,12 +143,95 @@ def extract(record: dict[str, Any], cleanser: DataCleanserOutput,
     }
 
 
+def _extract_domain(record: dict[str, Any], cleanser: DataCleanserOutput,
+                     differential: IndependentDifferentialOutput,
+                     leading_hypothesis: str | None,
+                     retrieved: list[dict[str, Any]],
+                     stage_a_sees_anchor: bool, domain: str) -> dict[str, Any]:
+    """Domain-pack opponent: cites pack evidence only; never invents columns."""
+    from src.agents.domains import get_pack
+    pack = get_pack(domain)
+    alternatives = [c for c in differential.candidate_diagnoses
+                    if leading_hypothesis is None
+                    or c.split("(")[0].strip().lower() not in leading_hypothesis.lower()
+                    and leading_hypothesis.lower() not in c.lower()]
+    leading = leading_hypothesis or "not revealed at this stage (information isolation)"
+
+    contra_refs: list[dict[str, Any]] = []
+    if leading_hypothesis:
+        contra_fn = next((c for name, _, c in pack.candidates
+                          if name.lower() == leading_hypothesis.lower()), None)
+        if contra_fn:
+            for stmt in contra_fn(record):
+                contra_refs.append(EvidenceRef(
+                    kind="patient_record", citation="record-value", quote=stmt,
+                    relevance=f"present record value contradicting {leading_hypothesis!r}"
+                ).model_dump())
+        for src in retrieved[:2]:
+            contra_refs.append(EvidenceRef(
+                kind="retrieved_source", citation=src.get("doi") or src.get("title", ""),
+                quote=(src.get("chunk_text") or "")[:240],
+                relevance="retrieved source considered when challenging the leading hypothesis"
+            ).model_dump())
+
+    missing_criteria = [f"{c} — diagnostic criterion unavailable in the record"
+                        for c in cleanser.missing_critical_information[:5]]
+    missing_criteria += [f"{c} (known absent for this domain)" for c in pack.known_absent[:3]]
+    disconfirmatory = [f"Collect the missing datum: {c.split(' missing')[0]}"
+                       for c in cleanser.missing_critical_information[:3]]
+
+    support_leading = 0
+    for c in differential.candidate_diagnoses:
+        if leading_hypothesis and c.lower().startswith(leading_hypothesis.lower()[:12]):
+            support_leading = len(differential.supporting_evidence.get(c, []))
+    best_alt_support = max((len(differential.supporting_evidence.get(c, []))
+                            for c in alternatives), default=0)
+    if leading_hypothesis is None:
+        anchoring_risk, reason = "LOW", ("Stage A only: the leading hypothesis was not "
+                                         "revealed, so anchoring is impossible by construction")
+    elif support_leading <= 1 and best_alt_support >= 2:
+        anchoring_risk = "HIGH"
+        reason = (f"leading hypothesis has {support_leading} supporting statements while "
+                  f"strongest alternative has {best_alt_support} — challenge is required")
+    elif support_leading < best_alt_support + 2:
+        anchoring_risk = "MEDIUM"
+        reason = (f"leading hypothesis support ({support_leading}) is not clearly stronger "
+                  f"than alternatives ({best_alt_support})")
+    else:
+        anchoring_risk = "LOW"
+        reason = (f"independent record evidence ({support_leading} statements) clearly "
+                  "supports the leading hypothesis")
+
+    if not contra_refs and leading_hypothesis:
+        contra_refs.append(EvidenceRef(
+            kind="patient_record", citation="record-scan",
+            quote="No present record value directly contradicts the leading hypothesis",
+            relevance="explicit negative finding: no evidence-free challenge is manufactured"
+        ).model_dump())
+
+    return {
+        "challenged_hypothesis": leading,
+        "contradictory_evidence": contra_refs,
+        "missing_criteria": missing_criteria,
+        "alternative_diagnoses": alternatives,
+        "strongest_alternative": (alternatives[0] if alternatives
+                                  else "none supported by record evidence at Stage A"),
+        "disconfirmatory_tests": disconfirmatory or [
+            "None identified from record gaps — serial clinical review remains standard"],
+        "anchoring_risk": anchoring_risk,
+        "reason_for_anchoring_risk": reason,
+        "stage_a_completed": True,
+        "anchor_seen_in_stage_a": bool(stage_a_sees_anchor),
+    }
+
+
 def run_opponent(record: dict[str, Any], cleanser: DataCleanserOutput,
                  differential: IndependentDifferentialOutput,
                  leading_hypothesis: str | None,
                  retrieved: list[dict[str, Any]],
                  provider: LLMProvider,
-                 stage_a_sees_anchor: bool = False) -> ProviderResult:
+                 stage_a_sees_anchor: bool = False,
+                 domain: str = "appendicitis") -> ProviderResult:
     """Execute Agent 3 (Stage A anchor-blind unless ablation exposes the anchor)."""
     system = (
         "You are the Opponent in a pediatric appendicitis research debate. "
@@ -154,6 +241,13 @@ def run_opponent(record: dict[str, Any], cleanser: DataCleanserOutput,
         "retrieved sources as citations for every claim. Never disagree without "
         "evidence; never invent findings. Emit JSON."
     )
+    if domain != "appendicitis":
+        from src.agents.domains import get_pack
+        system = (f"You are the Opponent in a pediatric {get_pack(domain).display} research "
+                  "debate. Stage A: generate independent challenges from patient evidence "
+                  "only. Stage B: attack the revealed leading hypothesis using record values "
+                  "or retrieved sources as citations for every claim. Never disagree without "
+                  "evidence; never invent findings. Emit JSON.")
     user = ("Inputs:\n"
             f"record={record}\n"
             f"cleansed_missing={cleanser.missing_critical_information}\n"
@@ -165,4 +259,5 @@ def run_opponent(record: dict[str, Any], cleanser: DataCleanserOutput,
     return provider.complete_json(
         stage="4_opponent", system=system, user=user, schema=OpponentOutput,
         deterministic=lambda: extract(record, cleanser, differential,
-                                      leading_hypothesis, retrieved, stage_a_sees_anchor))
+                                      leading_hypothesis, retrieved, stage_a_sees_anchor,
+                                      domain=domain))

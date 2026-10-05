@@ -5,10 +5,13 @@ import {
   BarChart3,
   Beaker,
   BrainCircuit,
+  Calculator,
+  Database,
   FlaskConical,
   ListChecks,
   Menu,
   Moon,
+  Scale,
   Search,
   ShieldAlert,
   Sun,
@@ -29,6 +32,9 @@ const NAV = [
   { to: '/errors', label: 'Error Analysis', icon: ShieldAlert },
   { to: '/audits', label: 'Audit Viewer', icon: ListChecks },
   { to: '/repro', label: 'Reproduction', icon: TerminalSquare },
+  { to: '/datasets', label: 'Dataset Registry', icon: Database },
+  { to: '/benchmark', label: 'Cross-Dataset Benchmark', icon: Scale },
+  { to: '/lab', label: 'Algorithm Lab', icon: Calculator },
 ]
 
 /** App shell: responsive sidebar (drawer < lg), header with theme toggle + backend dot. */

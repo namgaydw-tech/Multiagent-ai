@@ -169,13 +169,70 @@ def _data_quality_warnings(record: dict[str, Any]) -> list[str]:
     return warnings
 
 
-def extract(record: dict[str, Any]) -> dict[str, Any]:
+def _extract_domain(record: dict[str, Any], pack: Any) -> dict[str, Any]:
+    """Domain-pack extraction for non-appendicitis records (Phase 5 section K).
+
+    Same schema and rules as the appendicitis path: only values present in the
+    record are grouped; missing critical fields are reported, never imputed.
+    """
+    buckets = pack.cleanser_buckets
+
+    def present(cols: list[str]) -> dict[str, Any]:
+        return {c: _standardize(record[c]) for c in cols
+                if c in record and not _is_missing(record[c])}
+
+    missing = [f for f in pack.critical_fields
+               if f not in record or _is_missing(record.get(f))]
+    findings = [f"{c}: {_standardize(record[c])}" for c in buckets.get("examination", [])
+                if c in record and not _is_missing(record.get(c))]
+    imaging = [f"{c}: {_standardize(record[c])}" for c in buckets.get("imaging", [])
+               if c in record and not _is_missing(record.get(c))]
+    symptoms = [f"{c}: {_standardize(record[c])}" for c in buckets.get("symptoms", [])
+                if c in record and not _is_missing(record.get(c))]
+
+    red_flags: list[EvidenceRef] = []
+    temp = record.get("Body_Temperature")
+    if not _is_missing(temp):
+        fever_rule = _load_yaml(THRESHOLDS_PATH)["thresholds"]["fever"]
+        if (float(temp) >= 38.0
+                and fever_rule["verification"]["status"] == "confirmed_from_authoritative_summary"):
+            red_flags.append(EvidenceRef(
+                kind="rule", citation=fever_rule["citation"],
+                quote=f"Body_Temperature={float(temp):.1f} degC ≥ 38.0",
+                relevance="fever — objective red-flag screen input"))
+
+    warnings: list[str] = []
+    if not _is_missing(temp):
+        t = float(temp)
+        if not (30.0 <= t <= 43.0):
+            warnings.append(
+                f"Body_Temperature={t} degC outside plausible human range 30.0–43.0 degC — "
+                "verify recording/units; value retained as-is, not corrected")
+
+    return {
+        "demographics": present(buckets.get("demographics", [])),
+        "vitals": present(buckets.get("vitals", [])),
+        "laboratory_values": present(buckets.get("laboratory", [])),
+        "symptoms": symptoms,
+        "physical_findings": findings,
+        "imaging_findings": imaging,
+        "missing_critical_information": missing,
+        "objective_red_flags": [ref.model_dump() for ref in red_flags],
+        "data_quality_warnings": warnings,
+        "diagnoses_made": False,
+    }
+
+
+def extract(record: dict[str, Any], domain: str = "appendicitis") -> dict[str, Any]:
     """Deterministic grouping/standardization/red-flag extraction payload.
 
     Uses only values present in ``record``; missing values are reported, never
     imputed. This is the payload used by the default ``deterministic`` backend
     and the fallback when an LLM fails schema validation.
     """
+    if domain != "appendicitis":
+        from src.agents.domains import get_pack
+        return _extract_domain(record, get_pack(domain))
 
     def present(cols: list[str]) -> dict[str, Any]:
         return {c: _standardize(record[c]) for c in cols
@@ -206,9 +263,15 @@ def extract(record: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def run_cleanser(record: dict[str, Any], provider: LLMProvider) -> ProviderResult:
+def run_cleanser(record: dict[str, Any], provider: LLMProvider,
+                  domain: str = "appendicitis") -> ProviderResult:
     """Execute Agent 1 and validate against :class:`DataCleanserOutput`."""
     system, user = _build_prompt(record)
+    if domain != "appendicitis":
+        from src.agents.domains import get_pack
+        system = (f"You are Data Cleanser in a pediatric {get_pack(domain).display} research "
+                  "pipeline. Group and standardize the supplied record ONLY. Never diagnose, "
+                  "never invent values, never impute missing data. Emit the JSON schema provided.")
     return provider.complete_json(
         stage="1_data_cleansing", system=system, user=user,
-        schema=DataCleanserOutput, deterministic=lambda: extract(record))
+        schema=DataCleanserOutput, deterministic=lambda: extract(record, domain=domain))

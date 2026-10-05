@@ -121,6 +121,7 @@ class CaseState:
 
     case_id: str
     record: dict[str, Any]                      # already stripped of reserved columns
+    domain: str = "appendicitis"               # Phase 5 knowledge pack (src/agents/domains.py)
     ground_truth: str | None = None             # stage 8 only
     anchor: dict[str, Any] | None = None        # {value, confidence, source, method}
     model_output: dict[str, Any] | None = None  # normalized prediction interface dict

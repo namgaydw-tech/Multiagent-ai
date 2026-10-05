@@ -1,0 +1,36 @@
+{
+ "generated_from": "outputs/phase5/*/metrics/*.json",
+ "note": "Each dataset is a separate experiment — never concatenated. Regensburg ultrasound shares patients with Regensburg tabular and is NOT an external population. Gaps are validation → sealed-test Macro F0.5.",
+ "datasets": [
+  {
+   "dataset": "NEONATAL_SEPSIS_REGISTRY",
+   "n_algorithms": 21,
+   "n_evaluated": 20,
+   "winner": "gradient_boosting",
+   "winner_val_macro_f0_5": 0.5001082485386448,
+   "winner_test_macro_f0_5": 0.4850764760623409,
+   "generalization_gap_val_minus_test": 0.015032,
+   "blocker_status": "CONDITIONAL",
+   "executed": true,
+   "unavailable": {
+    "qda": "training failed: LinAlgError: The covariance matrix of class 0 is not full rank. Increase the value of `reg_param` to reduce the collinearity."
+   }
+  },
+  {
+   "dataset": "REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR",
+   "n_algorithms": 21,
+   "n_evaluated": 20,
+   "winner": "gradient_boosting",
+   "winner_val_macro_f0_5": 0.9809469911337483,
+   "winner_test_macro_f0_5": 0.910907437541878,
+   "generalization_gap_val_minus_test": 0.07004,
+   "blocker_status": "PASS",
+   "executed": true,
+   "unavailable": {
+    "qda": "training failed: LinAlgError: The covariance matrix of class 0 is not full rank. When using `solver='svd'` the number of samples in each class should be more than the number of features, but class 0 has 176 samples and 212 features. Try using `solver='eigen'` and setting the parameter `shrinkage` for regularization."
+   }
+  }
+ ],
+ "external_cohort_validation": "see outputs/phase5/external_validation.json",
+ "disclaimer": "Research prototype — not a medical device."
+}

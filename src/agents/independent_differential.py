@@ -251,8 +251,51 @@ _KNOWN_ABSENT_IN_DATASET = [
 ]
 
 
-def extract(record: dict[str, Any], cleanser: DataCleanserOutput | dict[str, Any]) -> dict[str, Any]:
+def _extract_domain(record: dict[str, Any], cleanser: Any, pack: Any) -> dict[str, Any]:
+    """Domain-pack differential: candidates and evidence from the knowledge pack only."""
+    if isinstance(cleanser, DataCleanserOutput):
+        missing_critical = list(cleanser.missing_critical_information)
+    else:
+        missing_critical = list(cleanser.get("missing_critical_information", []))
+
+    supporting: dict[str, list[str]] = {}
+    contradictory: dict[str, list[str]] = {}
+    scored: list[tuple[int, int, str]] = []
+    for name, supp_fn, contra_fn in pack.candidates:
+        supp = supp_fn(record)
+        contra = contra_fn(record)
+        supporting[name] = supp
+        contradictory[name] = contra
+        scored.append((len(supp) - len(contra), len(supp), name))
+    scored.sort(reverse=True)
+    top = [name for diff, supp_n, name in scored if supp_n > 0 and diff > 0][:4]
+    if not top:  # never emit an empty differential (schema min_length=1)
+        top = [name for _, _, name in scored[:2]] or [pack.label_space[0]]
+    n_evidence = sum(len(v) for v in supporting.values())
+    uncertainty = (
+        f"Anchor-blind differential for domain '{pack.name}' from {n_evidence} "
+        f"record-derived evidence statements; {len(missing_critical)} critical fields "
+        "missing; no model prediction, probability, SHAP value or anchor was visible at "
+        "this stage. Candidates ranked by (supporting − contradictory) evidence counts, "
+        "not by model output."
+    )
+    return {
+        "candidate_diagnoses": top,
+        "supporting_evidence": {k: supporting[k] for k in top},
+        "contradictory_evidence": {k: contradictory[k] for k in top},
+        "uncertainty": uncertainty,
+        "missing_information": [f"{c} missing from record" for c in missing_critical]
+                                + list(pack.known_absent),
+        "anchor_seen": False,
+    }
+
+
+def extract(record: dict[str, Any], cleanser: DataCleanserOutput | dict[str, Any],
+            domain: str = "appendicitis") -> dict[str, Any]:
     """Deterministic anchor-blind differential built from record values only."""
+    if domain != "appendicitis":
+        from src.agents.domains import get_pack
+        return _extract_domain(record, cleanser, get_pack(domain))
     if isinstance(cleanser, DataCleanserOutput):
         missing_critical = list(cleanser.missing_critical_information)
     else:
@@ -297,7 +340,7 @@ def extract(record: dict[str, Any], cleanser: DataCleanserOutput | dict[str, Any
 
 
 def run_differential(record: dict[str, Any], cleanser: DataCleanserOutput,
-                     provider: LLMProvider) -> ProviderResult:
+                      provider: LLMProvider, domain: str = "appendicitis") -> ProviderResult:
     """Execute Stage 2 with strict information isolation.
 
     Only ``record`` (anchor/target removed upstream) and the Agent 1 output are
@@ -310,10 +353,18 @@ def run_differential(record: dict[str, Any], cleanser: DataCleanserOutput,
         "probability, SHAP explanation or anchor. Cite only values present in "
         "the record; report absent fields as missing information. Emit JSON."
     )
+    if domain != "appendicitis":
+        from src.agents.domains import get_pack
+        system = (f"You are the Independent Differential stage in a pediatric "
+                  f"{get_pack(domain).display} research pipeline. Generate a differential "
+                  "from the supplied patient evidence ONLY. You have NOT seen any model "
+                  "prediction, probability, SHAP explanation or anchor. Cite only values "
+                  "present in the record; report absent fields as missing information. "
+                  "Emit JSON.")
     user = ("Patient evidence (sanitized, anchor-blind):\n"
             + str({"record": {k: v for k, v in sorted(record.items())},
                    "cleansed": cleanser.model_dump()}))
     return provider.complete_json(
         stage="2_independent_differential", system=system, user=user,
         schema=IndependentDifferentialOutput,
-        deterministic=lambda: extract(record, cleanser))
+        deterministic=lambda: extract(record, cleanser, domain=domain))

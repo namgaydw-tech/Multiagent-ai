@@ -1,0 +1,11 @@
+{
+ "dataset_id": "NEONATAL_SEPSIS_REGISTRY",
+ "n_models": 16,
+ "elapsed_seconds": 228.5,
+ "lock": {
+  "first_evaluation_utc": "2026-10-04T08:27:58+00:00",
+  "n_evaluations": 1,
+  "note": "test partition evaluated once after threshold lock"
+ },
+ "blocker_status": "CONDITIONAL"
+}

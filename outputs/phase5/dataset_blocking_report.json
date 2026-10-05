@@ -1,0 +1,2112 @@
+{
+ "generated_utc": "2026-10-04T08:51:23+00:00",
+ "generator": "src/data/dataset_blocker.py",
+ "n_checks": 27,
+ "seed": 20261002,
+ "gate": "BLOCKED and NOT_AVAILABLE datasets must never reach the trainer",
+ "datasets": {
+  "REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR": {
+   "dataset_id": "REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR",
+   "status": "PASS",
+   "data_present": true,
+   "reasons": [],
+   "evaluated_utc": "2026-10-04T08:50:01+00:00",
+   "n_pass": 22,
+   "n_warn": 0,
+   "n_fail": 0,
+   "n_na": 5,
+   "n_not_available": 0,
+   "checks": [
+    {
+     "key": "1_provenance",
+     "name": "Provenance verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all local files match the Phase-1 download manifest",
+     "evidence": {
+      "verified": [
+       {
+        "path": "data/raw/regensburg_pediatric_appendicitis/app_data.xlsx",
+        "sha256_match": true
+       }
+      ],
+      "unlisted": []
+     }
+    },
+    {
+     "key": "2_doi_source",
+     "name": "DOI/source verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "DOI recorded and matched against local source metadata (10.5281/zenodo.7669442)",
+     "evidence": {
+      "doi": "10.5281/zenodo.7669442"
+     }
+    },
+    {
+     "key": "3_license",
+     "name": "License verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "license identified: CC-BY-NC-4.0",
+     "evidence": {
+      "license": "CC-BY-NC-4.0"
+     }
+    },
+    {
+     "key": "4_pediatric_population",
+     "name": "Pediatric population",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "population documented as pediatric (0–18y / neonatal) in the dataset record",
+     "evidence": {}
+    },
+    {
+     "key": "5_task_relevance",
+     "name": "Diagnostic-task relevance",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "proposed task 'binary_diagnosis' with target 'Diagnosis'",
+     "evidence": {
+      "task": "binary_diagnosis"
+     }
+    },
+    {
+     "key": "6_target_availability",
+     "name": "Target availability",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "target 'Diagnosis' present for 780/782 rows",
+     "evidence": {
+      "n_labelled": 780,
+      "n_rows": 782
+     }
+    },
+    {
+     "key": "7_target_validity",
+     "name": "Target validity",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "target semantics verified by the Phase-1 executed audit (docs/DATASET_AUDIT.md)",
+     "evidence": {
+      "prior_audit": "D:\\Multiagent-ai\\outputs\\metrics\\regensburg_audit.json"
+     }
+    },
+    {
+     "key": "8_sample_size",
+     "name": "Sample size",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "n=782 (min_n=200), groups=782 (min_groups=0)",
+     "evidence": {
+      "n": 782,
+      "groups": 782,
+      "min_n": 200,
+      "min_groups": 0
+     }
+    },
+    {
+     "key": "9_class_balance",
+     "name": "Class balance",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "counts={'appendicitis': 463, 'no appendicitis': 317}, min share=0.4064",
+     "evidence": {
+      "counts": {
+       "appendicitis": 463,
+       "no appendicitis": 317
+      },
+      "shares": {
+       "appendicitis": 0.5936,
+       "no appendicitis": 0.4064
+      }
+     }
+    },
+    {
+     "key": "10_patient_identifier",
+     "name": "Patient identifier",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "one row per patient (782 rows = 782 patients)",
+     "evidence": {
+      "n_rows": 782
+     }
+    },
+    {
+     "key": "11_duplicate_rows",
+     "name": "Duplicate rows",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "0 exact duplicate rows of 782",
+     "evidence": {
+      "n_duplicates": 0
+     }
+    },
+    {
+     "key": "12_duplicate_patients",
+     "name": "Duplicate patients",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "one row per patient / no patient grouping needed",
+     "evidence": {}
+    },
+    {
+     "key": "13_duplicate_files",
+     "name": "Duplicate files",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image files for this dataset",
+     "evidence": {}
+    },
+    {
+     "key": "14_file_hashes",
+     "name": "File-hash deduplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "sha256 recorded for 1 dataset files in the manifest",
+     "evidence": {
+      "n": 1
+     }
+    },
+    {
+     "key": "15_perceptual_duplicates",
+     "name": "Perceptual duplicate risk",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no images to screen",
+     "evidence": {}
+    },
+    {
+     "key": "16_pre_augmented_leakage",
+     "name": "Pre-augmented image leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image inventory",
+     "evidence": {}
+    },
+    {
+     "key": "17_post_outcome_leakage",
+     "name": "Post-outcome leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['Length_of_Stay']",
+     "evidence": {
+      "exclusions": {
+       "Length_of_Stay": "excluded by config"
+      }
+     }
+    },
+    {
+     "key": "18_identifier_leakage",
+     "name": "Identifier leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['US_Number']",
+     "evidence": {
+      "exclusions": {
+       "US_Number": "excluded by config"
+      }
+     }
+    },
+    {
+     "key": "19_treatment_leakage",
+     "name": "Treatment/management leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['Management']",
+     "evidence": {
+      "exclusions": {
+       "Management": "excluded by config"
+      }
+     }
+    },
+    {
+     "key": "20_diagnosis_code_leakage",
+     "name": "Diagnosis-code leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no diagnosis-code columns present in the feature space",
+     "evidence": {
+      "code_like_columns": []
+     }
+    },
+    {
+     "key": "21_temporal_leakage",
+     "name": "Temporal leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "cross-sectional data — no temporal ordering to exploit",
+     "evidence": {}
+    },
+    {
+     "key": "22_label_circularity",
+     "name": "Label circularity",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['Diagnosis', 'Diagnosis_Presumptive'] — excluded from predictors; Regensburg label-circular score features additionally carry a documented sensitivity analysis (config/model.yaml)",
+     "evidence": {
+      "exclusions": {
+       "Diagnosis_Presumptive": "excluded by config",
+       "Diagnosis": "excluded by config"
+      }
+     }
+    },
+    {
+     "key": "23_train_test_contamination",
+     "name": "Train/test contamination",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "persisted Phase-2 partitions are disjoint (n_train=545, n_val=118, n_test=117)",
+     "evidence": {
+      "overlap": 0
+     }
+    },
+    {
+     "key": "24_mirror_duplication",
+     "name": "Mirror-source duplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no known mirrors; single recorded source",
+     "evidence": {}
+    },
+    {
+     "key": "25_excessive_missingness",
+     "name": "Excessive missingness",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "18 feature(s) >50% missing, documented: preserved as-is with explicit missing indicators (feature_policy.missing_values=explicit_indicators); no silent drops, no imputation of outcomes",
+     "evidence": {
+      "missing_pct": {
+       "Segmented_Neutrophils": 93.09,
+       "Appendix_Wall_Layers": 72.12,
+       "Target_Sign": 82.35,
+       "Appendicolith": 91.18,
+       "Perfusion": 91.94,
+       "Perforation": 89.64,
+       "Surrounding_Tissue_Reaction": 67.77,
+       "Appendicular_Abscess": 89.13,
+       "Abscess_Location": 98.34,
+       "Pathological_Lymph_Nodes": 74.04,
+       "Lymph_Nodes_Location": 84.53,
+       "Bowel_Wall_Thickening": 87.34,
+       "Conglomerate_of_Bowel_Loops": 94.5,
+       "Ileus": 92.33,
+       "Coprostasis": 90.92,
+       "Meteorism": 82.1,
+       "Enteritis": 91.56,
+       "Gynecological_Findings": 96.68
+      },
+      "policy": "explicit_indicators"
+     }
+    },
+    {
+     "key": "26_access_restrictions",
+     "name": "Availability/access",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "open access without registration; data present locally",
+     "evidence": {}
+    },
+    {
+     "key": "27_task_compatibility",
+     "name": "Task compatibility",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "compatible with proposed task 'binary_diagnosis'",
+     "evidence": {}
+    }
+   ]
+  },
+  "REG_ENSBURG_ULTRASOUND_IMAGES": {
+   "dataset_id": "REG_ENSBURG_ULTRASOUND_IMAGES",
+   "status": "CONDITIONAL",
+   "data_present": true,
+   "reasons": [
+    "[1_provenance] present but not covered by the download manifest: ['data/raw/regensburg_pediatric_appendicitis/US_Pictures.zip'] (recorded as self-audited provenance)",
+    "[15_perceptual_duplicates] 3302 perceptually near-duplicate image pairs (dHash Hamming ≤ 6) — flagged for deterministic exclusion from evaluation partitions"
+   ],
+   "evaluated_utc": "2026-10-04T08:50:23+00:00",
+   "n_pass": 16,
+   "n_warn": 2,
+   "n_fail": 0,
+   "n_na": 9,
+   "n_not_available": 0,
+   "checks": [
+    {
+     "key": "1_provenance",
+     "name": "Provenance verification",
+     "severity": "fatal",
+     "result": "WARN",
+     "reason": "present but not covered by the download manifest: ['data/raw/regensburg_pediatric_appendicitis/US_Pictures.zip'] (recorded as self-audited provenance)",
+     "evidence": {
+      "verified": [],
+      "unlisted": [
+       "data/raw/regensburg_pediatric_appendicitis/US_Pictures.zip"
+      ]
+     }
+    },
+    {
+     "key": "2_doi_source",
+     "name": "DOI/source verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "DOI recorded and matched against local source metadata (10.5281/zenodo.7669442)",
+     "evidence": {
+      "doi": "10.5281/zenodo.7669442"
+     }
+    },
+    {
+     "key": "3_license",
+     "name": "License verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "license identified: CC-BY-NC-4.0",
+     "evidence": {
+      "license": "CC-BY-NC-4.0"
+     }
+    },
+    {
+     "key": "4_pediatric_population",
+     "name": "Pediatric population",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "population documented as pediatric (0–18y / neonatal) in the dataset record",
+     "evidence": {}
+    },
+    {
+     "key": "5_task_relevance",
+     "name": "Diagnostic-task relevance",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "proposed task 'image_classification_diagnosis' with target 'Diagnosis (linked via patient/US_Number)'",
+     "evidence": {
+      "task": "image_classification_diagnosis"
+     }
+    },
+    {
+     "key": "6_target_availability",
+     "name": "Target availability",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "2064 image entries; label counts via patient linkage={'appendicitis': 445, 'no appendicitis': 314}",
+     "evidence": {
+      "counts": {
+       "appendicitis": 445,
+       "no appendicitis": 314
+      },
+      "n": 2064
+     }
+    },
+    {
+     "key": "7_target_validity",
+     "name": "Target validity",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "image labels come from the audited tabular Diagnosis column via patient/US_Number linkage (same cohort — labels are not re-annotated in Phase 5)",
+     "evidence": {
+      "label_counts": {
+       "appendicitis": 445,
+       "no appendicitis": 314
+      }
+     }
+    },
+    {
+     "key": "8_sample_size",
+     "name": "Sample size",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "n=2064 (min_n=200), groups=699 (min_groups=0)",
+     "evidence": {
+      "n": 2064,
+      "groups": 699,
+      "min_n": 200,
+      "min_groups": 0
+     }
+    },
+    {
+     "key": "9_class_balance",
+     "name": "Class balance",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "counts={'appendicitis': 445, 'no appendicitis': 314}, min share=0.4137",
+     "evidence": {
+      "counts": {
+       "appendicitis": 445,
+       "no appendicitis": 314
+      },
+      "shares": {
+       "appendicitis": 0.5863,
+       "no appendicitis": 0.4137
+      }
+     }
+    },
+    {
+     "key": "10_patient_identifier",
+     "name": "Patient identifier",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "patient id parsed from filename/source for 100.0% of entries (699 groups); grouping overrides stratification",
+     "evidence": {
+      "parse_rate": 1.0,
+      "n_groups": 699,
+      "declared": "US_Number"
+     }
+    },
+    {
+     "key": "11_duplicate_rows",
+     "name": "Duplicate rows",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular rows to screen (image/metadata dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "12_duplicate_patients",
+     "name": "Duplicate patients",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "472 patients contribute multiple images — grouped, never split across partitions",
+     "evidence": {
+      "n_multi_image_patients": 472
+     }
+    },
+    {
+     "key": "13_duplicate_files",
+     "name": "Duplicate files",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "0 exact duplicates across 2064 files (sha256)",
+     "evidence": {
+      "n_files": 2064
+     }
+    },
+    {
+     "key": "14_file_hashes",
+     "name": "File-hash deduplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "sha256 computed for 2064 files (2064 unique)",
+     "evidence": {
+      "n_files": 2064,
+      "n_unique": 2064
+     }
+    },
+    {
+     "key": "15_perceptual_duplicates",
+     "name": "Perceptual duplicate risk",
+     "severity": "warn",
+     "result": "WARN",
+     "reason": "3302 perceptually near-duplicate image pairs (dHash Hamming ≤ 6) — flagged for deterministic exclusion from evaluation partitions",
+     "evidence": {
+      "n_pairs": 3302,
+      "examples": [
+       [
+        "US_Pictures/100.3 RLQ.bmp",
+        "US_Pictures/533.1 App.bmp"
+       ],
+       [
+        "US_Pictures/100.3 RLQ.bmp",
+        "US_Pictures/900.1 App.bmp"
+       ],
+       [
+        "US_Pictures/100.3 RLQ.bmp",
+        "US_Pictures/494.4 App.bmp"
+       ],
+       [
+        "US_Pictures/117.1 App.bmp",
+        "US_Pictures/231.2 App.bmp"
+       ],
+       [
+        "US_Pictures/494.3 App.bmp",
+        "US_Pictures/781.1 App.bmp"
+       ],
+       [
+        "US_Pictures/231.1 App.bmp",
+        "US_Pictures/494.3 App.bmp"
+       ],
+       [
+        "US_Pictures/494.1 App.bmp",
+        "US_Pictures/494.3 App.bmp"
+       ],
+       [
+        "US_Pictures/781.1 App.bmp",
+        "US_Pictures/781.3 App_M.bmp"
+       ],
+       [
+        "US_Pictures/494.1 App.bmp",
+        "US_Pictures/781.1 App.bmp"
+       ],
+       [
+        "US_Pictures/231.1 App.bmp",
+        "US_Pictures/231.2 App.bmp"
+       ]
+      ]
+     }
+    },
+    {
+     "key": "16_pre_augmented_leakage",
+     "name": "Pre-augmented image leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "0 pre-augmented filenames detected among 2064 files",
+     "evidence": {
+      "n_suspicious": 0,
+      "examples": []
+     }
+    },
+    {
+     "key": "17_post_outcome_leakage",
+     "name": "Post-outcome leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "18_identifier_leakage",
+     "name": "Identifier leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "19_treatment_leakage",
+     "name": "Treatment/management leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "20_diagnosis_code_leakage",
+     "name": "Diagnosis-code leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "21_temporal_leakage",
+     "name": "Temporal leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "22_label_circularity",
+     "name": "Label circularity",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "23_train_test_contamination",
+     "name": "Train/test contamination",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no partitions created yet — enforced by grouped splitting at train time",
+     "evidence": {}
+    },
+    {
+     "key": "24_mirror_duplication",
+     "name": "Mirror-source duplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no known mirrors; single recorded source",
+     "evidence": {}
+    },
+    {
+     "key": "25_excessive_missingness",
+     "name": "Excessive missingness",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "26_access_restrictions",
+     "name": "Availability/access",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "open access without registration; data present locally",
+     "evidence": {}
+    },
+    {
+     "key": "27_task_compatibility",
+     "name": "Task compatibility",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "compatible with proposed task 'image_classification_diagnosis' (same cohort as the tabular experiment — usable for multimodal/late fusion, NOT external validation)",
+     "evidence": {}
+    }
+   ]
+  },
+  "NEONATAL_SEPSIS_REGISTRY": {
+   "dataset_id": "NEONATAL_SEPSIS_REGISTRY",
+   "status": "CONDITIONAL",
+   "data_present": true,
+   "reasons": [
+    "[3_license] license not confirmed: 'not_exposed_by_api' — recorded as a CONDITIONAL reason; confirm on the landing page before any reuse beyond inspection"
+   ],
+   "evaluated_utc": "2026-10-04T08:50:23+00:00",
+   "n_pass": 22,
+   "n_warn": 1,
+   "n_fail": 0,
+   "n_na": 4,
+   "n_not_available": 0,
+   "checks": [
+    {
+     "key": "1_provenance",
+     "name": "Provenance verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all local files match the Phase-1 download manifest",
+     "evidence": {
+      "verified": [
+       {
+        "path": "data/raw/neonatal_sepsis/deid-nicu-sepsis-tta.csv",
+        "sha256_match": true
+       }
+      ],
+      "unlisted": []
+     }
+    },
+    {
+     "key": "2_doi_source",
+     "name": "DOI/source verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "DOI recorded and matched against local source metadata (10.17632/5vdz5cftz7.1)",
+     "evidence": {
+      "doi": "10.17632/5vdz5cftz7.1",
+      "metadata_doi": "10.17632/5vdz5cftz7.1"
+     }
+    },
+    {
+     "key": "3_license",
+     "name": "License verification",
+     "severity": "fatal",
+     "result": "WARN",
+     "reason": "license not confirmed: 'not_exposed_by_api' — recorded as a CONDITIONAL reason; confirm on the landing page before any reuse beyond inspection",
+     "evidence": {
+      "license": "not_exposed_by_api"
+     }
+    },
+    {
+     "key": "4_pediatric_population",
+     "name": "Pediatric population",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "population documented as pediatric (0–18y / neonatal) in the dataset record",
+     "evidence": {}
+    },
+    {
+     "key": "5_task_relevance",
+     "name": "Diagnostic-task relevance",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "proposed task 'binary_diagnosis' with target 'blood_culture_positive'",
+     "evidence": {
+      "task": "binary_diagnosis"
+     }
+    },
+    {
+     "key": "6_target_availability",
+     "name": "Target availability",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "target 'blood_culture_positive' present for 1946/1946 rows; counts={0: 1818, 1: 128}",
+     "evidence": {
+      "counts": {
+       "0": 1818,
+       "1": 128
+      }
+     }
+    },
+    {
+     "key": "7_target_validity",
+     "name": "Target validity",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "Blood-culture positivity is a verified diagnostic outcome recorded for every episode; the task is to predict culture positivity from information available at the time of sepsis evaluation. No target is invented.",
+     "evidence": {
+      "rationale": true
+     }
+    },
+    {
+     "key": "8_sample_size",
+     "name": "Sample size",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "n=1946 (min_n=200), groups=986 (min_groups=0)",
+     "evidence": {
+      "n": 1946,
+      "groups": 986,
+      "min_n": 200,
+      "min_groups": 0
+     }
+    },
+    {
+     "key": "9_class_balance",
+     "name": "Class balance",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "counts={'0': 1818, '1': 128}, min share=0.0658 (minority share <10%: AUPRC must be read alongside AUROC)",
+     "evidence": {
+      "counts": {
+       "0": 1818,
+       "1": 128
+      },
+      "shares": {
+       "0": 0.9342,
+       "1": 0.0658
+      }
+     }
+    },
+    {
+     "key": "10_patient_identifier",
+     "name": "Patient identifier",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "unique_patient_id present (986 patients, repeated episodes) — grouped split enforced",
+     "evidence": {
+      "n_groups": 986
+     }
+    },
+    {
+     "key": "11_duplicate_rows",
+     "name": "Duplicate rows",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "0 exact duplicate rows of 1946",
+     "evidence": {
+      "n_duplicates": 0
+     }
+    },
+    {
+     "key": "12_duplicate_patients",
+     "name": "Duplicate patients",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "1946 episodes across 986 patients — repeated episodes are grouped so no patient crosses partitions",
+     "evidence": {
+      "n_rows": 1946,
+      "n_patients": 986
+     }
+    },
+    {
+     "key": "13_duplicate_files",
+     "name": "Duplicate files",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image files for this dataset",
+     "evidence": {}
+    },
+    {
+     "key": "14_file_hashes",
+     "name": "File-hash deduplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "sha256 recorded for 1 dataset files in the manifest",
+     "evidence": {
+      "n": 1
+     }
+    },
+    {
+     "key": "15_perceptual_duplicates",
+     "name": "Perceptual duplicate risk",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no images to screen",
+     "evidence": {}
+    },
+    {
+     "key": "16_pre_augmented_leakage",
+     "name": "Pre-augmented image leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image inventory",
+     "evidence": {}
+    },
+    {
+     "key": "17_post_outcome_leakage",
+     "name": "Post-outcome leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['inotrope_free_days', 'intubated_free_days', 'length_of_stay_hours', 'overall_mortality_within_14_days', 'overall_mortality_within_30_days', 'overall_mortality_within_7_days', 'positive_days']",
+     "evidence": {
+      "exclusions": {
+       "positive_days": "post-outcome (days-to-positivity)",
+       "overall_mortality_within_7_days": "post-outcome",
+       "overall_mortality_within_14_days": "post-outcome",
+       "overall_mortality_within_30_days": "post-outcome",
+       "intubated_free_days": "post-outcome",
+       "inotrope_free_days": "post-outcome",
+       "length_of_stay_hours": "post-outcome"
+      }
+     }
+    },
+    {
+     "key": "18_identifier_leakage",
+     "name": "Identifier leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['episode_id', 'unique_patient_id']",
+     "evidence": {
+      "exclusions": {
+       "episode_id": "identifier",
+       "unique_patient_id": "identifier (used for grouping only)"
+      }
+     }
+    },
+    {
+     "key": "19_treatment_leakage",
+     "name": "Treatment/management leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['stat_abx', 'time_to_antibiotics']",
+     "evidence": {
+      "exclusions": {
+       "time_to_antibiotics": "treatment variable",
+       "stat_abx": "treatment variable"
+      }
+     }
+    },
+    {
+     "key": "20_diagnosis_code_leakage",
+     "name": "Diagnosis-code leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no diagnosis-code columns present in the feature space",
+     "evidence": {
+      "code_like_columns": []
+     }
+    },
+    {
+     "key": "21_temporal_leakage",
+     "name": "Temporal leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "prediction window defined: index time = sepsis evaluation; only values known at/before that time are features; post-index outcome and treatment columns excluded (see exclusion policy)",
+     "evidence": {
+      "prediction_window": "sepsis evaluation"
+     }
+    },
+    {
+     "key": "22_label_circularity",
+     "name": "Label circularity",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "all required columns excluded from features: ['sepsis_group'] — excluded from predictors (label-derived/anchor columns)",
+     "evidence": {
+      "exclusions": {
+       "sepsis_group": "label-derived grouping (all culture-positive episodes fall in group 1)"
+      }
+     }
+    },
+    {
+     "key": "23_train_test_contamination",
+     "name": "Train/test contamination",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no partitions created yet — enforced by grouped splitting at train time",
+     "evidence": {}
+    },
+    {
+     "key": "24_mirror_duplication",
+     "name": "Mirror-source duplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no known mirrors; single recorded source",
+     "evidence": {}
+    },
+    {
+     "key": "25_excessive_missingness",
+     "name": "Excessive missingness",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "max feature missingness 2.67%; no silent drops",
+     "evidence": {
+      "n_features": 18
+     }
+    },
+    {
+     "key": "26_access_restrictions",
+     "name": "Availability/access",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "open access without registration; data present locally",
+     "evidence": {}
+    },
+    {
+     "key": "27_task_compatibility",
+     "name": "Task compatibility",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "compatible with proposed task 'binary_diagnosis' (CONDITIONAL_NOT_SUITABLE_FOR_DIAGNOSTIC_CLASSIFICATION would apply only if no valid target existed; a verified target does exist)",
+     "evidence": {}
+    }
+   ]
+  },
+  "KERMANY_PEDIATRIC_PNEUMONIA": {
+   "dataset_id": "KERMANY_PEDIATRIC_PNEUMONIA",
+   "status": "CONDITIONAL",
+   "data_present": true,
+   "reasons": [
+    "[1_provenance] present but not covered by the download manifest: ['data/raw/kermany_pneumonia/CellData/chest_xray'] (recorded as self-audited provenance)",
+    "[3_license] source record states research-only use ('research_only_per_mendeley_record') — not a standard open license; recorded as a CONDITIONAL reason",
+    "[13_duplicate_files] 27 exact-duplicate groups (56 files) within one partition — removed deterministically by sha256 dedup before training; file list persisted in the audit",
+    "[15_perceptual_duplicates] 131482 perceptually near-duplicate image pairs (dHash Hamming ≤ 6) — flagged for deterministic exclusion from evaluation partitions"
+   ],
+   "evaluated_utc": "2026-10-04T08:51:23+00:00",
+   "n_pass": 15,
+   "n_warn": 4,
+   "n_fail": 0,
+   "n_na": 8,
+   "n_not_available": 0,
+   "checks": [
+    {
+     "key": "1_provenance",
+     "name": "Provenance verification",
+     "severity": "fatal",
+     "result": "WARN",
+     "reason": "present but not covered by the download manifest: ['data/raw/kermany_pneumonia/CellData/chest_xray'] (recorded as self-audited provenance)",
+     "evidence": {
+      "verified": [],
+      "unlisted": [
+       "data/raw/kermany_pneumonia/CellData/chest_xray"
+      ]
+     }
+    },
+    {
+     "key": "2_doi_source",
+     "name": "DOI/source verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "DOI recorded and matched against local source metadata (10.17632/rscbjbr9sj)",
+     "evidence": {
+      "doi": "10.17632/rscbjbr9sj",
+      "metadata_doi": "10.17632/rscbjbr9sj.3"
+     }
+    },
+    {
+     "key": "3_license",
+     "name": "License verification",
+     "severity": "fatal",
+     "result": "WARN",
+     "reason": "source record states research-only use ('research_only_per_mendeley_record') — not a standard open license; recorded as a CONDITIONAL reason",
+     "evidence": {
+      "license": "research_only_per_mendeley_record"
+     }
+    },
+    {
+     "key": "4_pediatric_population",
+     "name": "Pediatric population",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "population documented as pediatric (0–18y / neonatal) in the dataset record",
+     "evidence": {}
+    },
+    {
+     "key": "5_task_relevance",
+     "name": "Diagnostic-task relevance",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "proposed task 'image_classification_diagnosis' with target 'folder label (NORMAL / PNEUMONIA; bacteria/virus encoded in filename)'",
+     "evidence": {
+      "task": "image_classification_diagnosis"
+     }
+    },
+    {
+     "key": "6_target_availability",
+     "name": "Target availability",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "5856 image entries; label counts via patient linkage={'PNEUMONIA': 4273, 'NORMAL': 1583}",
+     "evidence": {
+      "counts": {
+       "PNEUMONIA": 4273,
+       "NORMAL": 1583
+      },
+      "n": 5856
+     }
+    },
+    {
+     "key": "7_target_validity",
+     "name": "Target validity",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "label schema from directory structure: ['NORMAL', 'PNEUMONIA']; source description states validated labels (Kermany et al., Cell 2018)",
+     "evidence": {
+      "labels": [
+       "NORMAL",
+       "PNEUMONIA"
+      ]
+     }
+    },
+    {
+     "key": "8_sample_size",
+     "name": "Sample size",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "n=5856 (min_n=200), groups=3081 (min_groups=0)",
+     "evidence": {
+      "n": 5856,
+      "groups": 3081,
+      "min_n": 200,
+      "min_groups": 0
+     }
+    },
+    {
+     "key": "9_class_balance",
+     "name": "Class balance",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "counts={'PNEUMONIA': 4273, 'NORMAL': 1583}, min share=0.2703",
+     "evidence": {
+      "counts": {
+       "PNEUMONIA": 4273,
+       "NORMAL": 1583
+      },
+      "shares": {
+       "PNEUMONIA": 0.7297,
+       "NORMAL": 0.2703
+      }
+     }
+    },
+    {
+     "key": "10_patient_identifier",
+     "name": "Patient identifier",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "patient id parsed from filename/source for 100.0% of entries (3081 groups); grouping overrides stratification",
+     "evidence": {
+      "parse_rate": 1.0,
+      "n_groups": 3081,
+      "declared": "parsed_from_filename"
+     }
+    },
+    {
+     "key": "11_duplicate_rows",
+     "name": "Duplicate rows",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular rows to screen (image/metadata dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "12_duplicate_patients",
+     "name": "Duplicate patients",
+     "severity": "warn",
+     "result": "PASS",
+     "reason": "1330 patients contribute multiple images — grouped, never split across partitions",
+     "evidence": {
+      "n_multi_image_patients": 1330
+     }
+    },
+    {
+     "key": "13_duplicate_files",
+     "name": "Duplicate files",
+     "severity": "fatal",
+     "result": "WARN",
+     "reason": "27 exact-duplicate groups (56 files) within one partition — removed deterministically by sha256 dedup before training; file list persisted in the audit",
+     "evidence": {
+      "n_groups": 27,
+      "n_files": 56,
+      "examples": [
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\PNEUMONIA\\BACTERIA-4059589-0002.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\PNEUMONIA\\BACTERIA-4059589-0003.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\PNEUMONIA\\BACTERIA-8285922-0004.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\PNEUMONIA\\BACTERIA-8285922-0005.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\PNEUMONIA\\VIRUS-490019-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\PNEUMONIA\\VIRUS-490019-0002.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\NORMAL\\NORMAL-3780378-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\NORMAL\\NORMAL-3780378-0002.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-266879-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-266879-0002.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-4615614-0003.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-4615614-0004.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-4647402-0003.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-4647402-0004.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-4687423-0002.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-4687423-0003.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-6295192-0003.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-6295192-0004.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-6295192-0005.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-6420973-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-6420973-0002.jpeg"
+       ]
+      ]
+     }
+    },
+    {
+     "key": "14_file_hashes",
+     "name": "File-hash deduplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "sha256 computed for 5856 files (5827 unique)",
+     "evidence": {
+      "n_files": 5856,
+      "n_unique": 5827
+     }
+    },
+    {
+     "key": "15_perceptual_duplicates",
+     "name": "Perceptual duplicate risk",
+     "severity": "warn",
+     "result": "WARN",
+     "reason": "131482 perceptually near-duplicate image pairs (dHash Hamming ≤ 6) — flagged for deterministic exclusion from evaluation partitions",
+     "evidence": {
+      "n_pairs": 131482,
+      "examples": [
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-5356114-0001.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-6667079-0001.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\NORMAL\\NORMAL-3333785-0001.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-1182905-0001.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-2394612-0002.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-2426822-0001.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-6162954-0004.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-6614470-0001.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-696513-0001.jpeg"
+       ],
+       [
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\test\\NORMAL\\NORMAL-1049278-0001.jpeg",
+        "data\\raw\\kermany_pneumonia\\CellData\\chest_xray\\train\\PNEUMONIA\\BACTERIA-7904047-0001.jpeg"
+       ]
+      ]
+     }
+    },
+    {
+     "key": "16_pre_augmented_leakage",
+     "name": "Pre-augmented image leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "0 pre-augmented filenames detected among 5856 files",
+     "evidence": {
+      "n_suspicious": 0,
+      "examples": []
+     }
+    },
+    {
+     "key": "17_post_outcome_leakage",
+     "name": "Post-outcome leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "18_identifier_leakage",
+     "name": "Identifier leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "19_treatment_leakage",
+     "name": "Treatment/management leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "20_diagnosis_code_leakage",
+     "name": "Diagnosis-code leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "21_temporal_leakage",
+     "name": "Temporal leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "22_label_circularity",
+     "name": "Label circularity",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "23_train_test_contamination",
+     "name": "Train/test contamination",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "original train/test: 0 shared file hashes, 0 shared patient ids",
+     "evidence": {
+      "shared_hashes": 0,
+      "shared_patients": 0
+     }
+    },
+    {
+     "key": "24_mirror_duplication",
+     "name": "Mirror-source duplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "declared mirrors ['kaggle_chest_xray_pneumonia'] are the SAME underlying dataset; only one local source is used (['data/raw/kermany_pneumonia/CellData/chest_xray']) — mirrors never count as cohorts",
+     "evidence": {
+      "mirrors": [
+       "kaggle_chest_xray_pneumonia"
+      ],
+      "local_sources": [
+       "data/raw/kermany_pneumonia/CellData/chest_xray"
+      ]
+     }
+    },
+    {
+     "key": "25_excessive_missingness",
+     "name": "Excessive missingness",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no tabular feature space (image dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "26_access_restrictions",
+     "name": "Availability/access",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "open access without registration; data present locally",
+     "evidence": {}
+    },
+    {
+     "key": "27_task_compatibility",
+     "name": "Task compatibility",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "compatible with proposed task 'image_classification_diagnosis'",
+     "evidence": {}
+    }
+   ]
+  },
+  "PHYSIONET_PIC": {
+   "dataset_id": "PHYSIONET_PIC",
+   "status": "NOT_AVAILABLE",
+   "data_present": false,
+   "reasons": [
+    "[4_pediatric_population] population not verifiable without dataset access",
+    "[5_task_relevance] no proposed diagnostic task recorded",
+    "[6_target_availability] data absent — target availability cannot be checked",
+    "[7_target_validity] data absent — target validity cannot be verified",
+    "[17_post_outcome_leakage] data absent — feature-space check not applicable",
+    "[18_identifier_leakage] data absent — feature-space check not applicable",
+    "[19_treatment_leakage] data absent — feature-space check not applicable",
+    "[23_train_test_contamination] data absent",
+    "[26_access_restrictions] NOT_AVAILABLE_REQUIRES_PHYSIONET_CREDENTIALING",
+    "[27_task_compatibility] cannot confirm task compatibility without dataset access"
+   ],
+   "evaluated_utc": "2026-10-04T08:51:23+00:00",
+   "n_pass": 6,
+   "n_warn": 0,
+   "n_fail": 0,
+   "n_na": 6,
+   "n_not_available": 15,
+   "checks": [
+    {
+     "key": "1_provenance",
+     "name": "Provenance verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "documented source with DOI and access mode (metadata-only dataset)",
+     "evidence": {
+      "source_documented": true
+     }
+    },
+    {
+     "key": "2_doi_source",
+     "name": "DOI/source verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "DOI recorded and matched against local source metadata (10.13026/63f7-1w61)",
+     "evidence": {
+      "doi": "10.13026/63f7-1w61"
+     }
+    },
+    {
+     "key": "3_license",
+     "name": "License verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "license identified: credentialed_physionet",
+     "evidence": {
+      "license": "credentialed_physionet"
+     }
+    },
+    {
+     "key": "4_pediatric_population",
+     "name": "Pediatric population",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "population not verifiable without dataset access",
+     "evidence": {}
+    },
+    {
+     "key": "5_task_relevance",
+     "name": "Diagnostic-task relevance",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "no proposed diagnostic task recorded",
+     "evidence": {}
+    },
+    {
+     "key": "6_target_availability",
+     "name": "Target availability",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — target availability cannot be checked",
+     "evidence": {}
+    },
+    {
+     "key": "7_target_validity",
+     "name": "Target validity",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — target validity cannot be verified",
+     "evidence": {}
+    },
+    {
+     "key": "8_sample_size",
+     "name": "Sample size",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — no sample count may be claimed",
+     "evidence": {}
+    },
+    {
+     "key": "9_class_balance",
+     "name": "Class balance",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — class balance not measurable",
+     "evidence": {}
+    },
+    {
+     "key": "10_patient_identifier",
+     "name": "Patient identifier",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — grouping cannot be verified",
+     "evidence": {}
+    },
+    {
+     "key": "11_duplicate_rows",
+     "name": "Duplicate rows",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular rows to screen (image/metadata dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "12_duplicate_patients",
+     "name": "Duplicate patients",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "one row per patient / no patient grouping needed",
+     "evidence": {}
+    },
+    {
+     "key": "13_duplicate_files",
+     "name": "Duplicate files",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image files for this dataset",
+     "evidence": {}
+    },
+    {
+     "key": "14_file_hashes",
+     "name": "File-hash deduplication",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no per-file hashes applicable (single tabular source)",
+     "evidence": {}
+    },
+    {
+     "key": "15_perceptual_duplicates",
+     "name": "Perceptual duplicate risk",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no images to screen",
+     "evidence": {}
+    },
+    {
+     "key": "16_pre_augmented_leakage",
+     "name": "Pre-augmented image leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image inventory",
+     "evidence": {}
+    },
+    {
+     "key": "17_post_outcome_leakage",
+     "name": "Post-outcome leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "18_identifier_leakage",
+     "name": "Identifier leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "19_treatment_leakage",
+     "name": "Treatment/management leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "20_diagnosis_code_leakage",
+     "name": "Diagnosis-code leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "policy recorded: ICD/discharge codes may be TARGETS only and must never appear as input features (enforced when data becomes available)",
+     "evidence": {
+      "policy": ""
+     }
+    },
+    {
+     "key": "21_temporal_leakage",
+     "name": "Temporal leakage",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "policy recorded: prediction window and cutoff must be defined before any task is built; only pre-cutoff information allowed",
+     "evidence": {
+      "policy": ""
+     }
+    },
+    {
+     "key": "22_label_circularity",
+     "name": "Label circularity",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "23_train_test_contamination",
+     "name": "Train/test contamination",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent",
+     "evidence": {}
+    },
+    {
+     "key": "24_mirror_duplication",
+     "name": "Mirror-source duplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no known mirrors; single recorded source",
+     "evidence": {}
+    },
+    {
+     "key": "25_excessive_missingness",
+     "name": "Excessive missingness",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "26_access_restrictions",
+     "name": "Availability/access",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "NOT_AVAILABLE_REQUIRES_PHYSIONET_CREDENTIALING",
+     "evidence": {
+      "access": "credentialed"
+     }
+    },
+    {
+     "key": "27_task_compatibility",
+     "name": "Task compatibility",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "cannot confirm task compatibility without dataset access",
+     "evidence": {}
+    }
+   ]
+  },
+  "PECARN": {
+   "dataset_id": "PECARN",
+   "status": "NOT_AVAILABLE",
+   "data_present": false,
+   "reasons": [
+    "[2_doi_source] source registry documented but no public DOI — access requires approval/credentials unavailable in this environment",
+    "[4_pediatric_population] population not verifiable without dataset access",
+    "[5_task_relevance] no proposed diagnostic task recorded",
+    "[6_target_availability] data absent — target availability cannot be checked",
+    "[7_target_validity] data absent — target validity cannot be verified",
+    "[17_post_outcome_leakage] data absent — feature-space check not applicable",
+    "[18_identifier_leakage] data absent — feature-space check not applicable",
+    "[19_treatment_leakage] data absent — feature-space check not applicable",
+    "[20_diagnosis_code_leakage] data absent — feature-space check not applicable",
+    "[21_temporal_leakage] data absent — feature-space check not applicable",
+    "[23_train_test_contamination] data absent",
+    "[26_access_restrictions] NOT_AVAILABLE_REQUIRES_DATA_USE_APPROVAL",
+    "[27_task_compatibility] cannot confirm task compatibility without dataset access"
+   ],
+   "evaluated_utc": "2026-10-04T08:51:23+00:00",
+   "n_pass": 3,
+   "n_warn": 0,
+   "n_fail": 0,
+   "n_na": 6,
+   "n_not_available": 18,
+   "checks": [
+    {
+     "key": "1_provenance",
+     "name": "Provenance verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "documented source with DOI and access mode (metadata-only dataset)",
+     "evidence": {
+      "source_documented": true
+     }
+    },
+    {
+     "key": "2_doi_source",
+     "name": "DOI/source verification",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "source registry documented but no public DOI — access requires approval/credentials unavailable in this environment",
+     "evidence": {
+      "access": "dua_irb_registration_required"
+     }
+    },
+    {
+     "key": "3_license",
+     "name": "License verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "license identified: requires_data_use_agreement_no_open_license",
+     "evidence": {
+      "license": "requires_data_use_agreement_no_open_license"
+     }
+    },
+    {
+     "key": "4_pediatric_population",
+     "name": "Pediatric population",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "population not verifiable without dataset access",
+     "evidence": {}
+    },
+    {
+     "key": "5_task_relevance",
+     "name": "Diagnostic-task relevance",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "no proposed diagnostic task recorded",
+     "evidence": {}
+    },
+    {
+     "key": "6_target_availability",
+     "name": "Target availability",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — target availability cannot be checked",
+     "evidence": {}
+    },
+    {
+     "key": "7_target_validity",
+     "name": "Target validity",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — target validity cannot be verified",
+     "evidence": {}
+    },
+    {
+     "key": "8_sample_size",
+     "name": "Sample size",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — no sample count may be claimed",
+     "evidence": {}
+    },
+    {
+     "key": "9_class_balance",
+     "name": "Class balance",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — class balance not measurable",
+     "evidence": {}
+    },
+    {
+     "key": "10_patient_identifier",
+     "name": "Patient identifier",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — grouping cannot be verified",
+     "evidence": {}
+    },
+    {
+     "key": "11_duplicate_rows",
+     "name": "Duplicate rows",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular rows to screen (image/metadata dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "12_duplicate_patients",
+     "name": "Duplicate patients",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "one row per patient / no patient grouping needed",
+     "evidence": {}
+    },
+    {
+     "key": "13_duplicate_files",
+     "name": "Duplicate files",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image files for this dataset",
+     "evidence": {}
+    },
+    {
+     "key": "14_file_hashes",
+     "name": "File-hash deduplication",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no per-file hashes applicable (single tabular source)",
+     "evidence": {}
+    },
+    {
+     "key": "15_perceptual_duplicates",
+     "name": "Perceptual duplicate risk",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no images to screen",
+     "evidence": {}
+    },
+    {
+     "key": "16_pre_augmented_leakage",
+     "name": "Pre-augmented image leakage",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image inventory",
+     "evidence": {}
+    },
+    {
+     "key": "17_post_outcome_leakage",
+     "name": "Post-outcome leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "18_identifier_leakage",
+     "name": "Identifier leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "19_treatment_leakage",
+     "name": "Treatment/management leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "20_diagnosis_code_leakage",
+     "name": "Diagnosis-code leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "21_temporal_leakage",
+     "name": "Temporal leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "22_label_circularity",
+     "name": "Label circularity",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "23_train_test_contamination",
+     "name": "Train/test contamination",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent",
+     "evidence": {}
+    },
+    {
+     "key": "24_mirror_duplication",
+     "name": "Mirror-source duplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no known mirrors; single recorded source",
+     "evidence": {}
+    },
+    {
+     "key": "25_excessive_missingness",
+     "name": "Excessive missingness",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "26_access_restrictions",
+     "name": "Availability/access",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "NOT_AVAILABLE_REQUIRES_DATA_USE_APPROVAL",
+     "evidence": {
+      "access": "dua_irb_registration_required"
+     }
+    },
+    {
+     "key": "27_task_compatibility",
+     "name": "Task compatibility",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "cannot confirm task compatibility without dataset access",
+     "evidence": {}
+    }
+   ]
+  },
+  "CHILD_PNEUMONIA_MENDELEY": {
+   "dataset_id": "CHILD_PNEUMONIA_MENDELEY",
+   "status": "BLOCKED",
+   "data_present": false,
+   "reasons": [
+    "[3_license] license not confirmed: 'cc_by_4_0_reverify' — recorded as a CONDITIONAL reason; confirm on the landing page before any reuse beyond inspection",
+    "[4_pediatric_population] population not verifiable without dataset access",
+    "[5_task_relevance] no proposed diagnostic task recorded",
+    "[6_target_availability] data absent — target availability cannot be checked",
+    "[7_target_validity] data absent — target validity cannot be verified",
+    "[16_pre_augmented_leakage] 2644 of 2926 files carry the aug_ prefix (pre-augmented copies) with {known.get('duplicate_filenames')} duplicate filenames and no patient grouping — random splits would leak augmented siblings across train/test",
+    "[17_post_outcome_leakage] data absent — feature-space check not applicable",
+    "[18_identifier_leakage] data absent — feature-space check not applicable",
+    "[19_treatment_leakage] data absent — feature-space check not applicable",
+    "[20_diagnosis_code_leakage] data absent — feature-space check not applicable",
+    "[21_temporal_leakage] data absent — feature-space check not applicable",
+    "[23_train_test_contamination] data absent",
+    "[26_access_restrictions] expected local data missing: []",
+    "[27_task_compatibility] data absent — compatibility unverified"
+   ],
+   "evaluated_utc": "2026-10-04T08:51:23+00:00",
+   "n_pass": 3,
+   "n_warn": 1,
+   "n_fail": 1,
+   "n_na": 5,
+   "n_not_available": 17,
+   "checks": [
+    {
+     "key": "1_provenance",
+     "name": "Provenance verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "documented source with DOI and access mode (metadata-only dataset)",
+     "evidence": {
+      "source_documented": true
+     }
+    },
+    {
+     "key": "2_doi_source",
+     "name": "DOI/source verification",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "DOI recorded and matched against local source metadata (10.17632/3tx8xymdsv.1)",
+     "evidence": {
+      "doi": "10.17632/3tx8xymdsv.1",
+      "metadata_doi": "10.17632/3tx8xymdsv.1"
+     }
+    },
+    {
+     "key": "3_license",
+     "name": "License verification",
+     "severity": "fatal",
+     "result": "WARN",
+     "reason": "license not confirmed: 'cc_by_4_0_reverify' — recorded as a CONDITIONAL reason; confirm on the landing page before any reuse beyond inspection",
+     "evidence": {
+      "license": "cc_by_4_0_reverify"
+     }
+    },
+    {
+     "key": "4_pediatric_population",
+     "name": "Pediatric population",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "population not verifiable without dataset access",
+     "evidence": {}
+    },
+    {
+     "key": "5_task_relevance",
+     "name": "Diagnostic-task relevance",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "no proposed diagnostic task recorded",
+     "evidence": {}
+    },
+    {
+     "key": "6_target_availability",
+     "name": "Target availability",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — target availability cannot be checked",
+     "evidence": {}
+    },
+    {
+     "key": "7_target_validity",
+     "name": "Target validity",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — target validity cannot be verified",
+     "evidence": {}
+    },
+    {
+     "key": "8_sample_size",
+     "name": "Sample size",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — no sample count may be claimed",
+     "evidence": {}
+    },
+    {
+     "key": "9_class_balance",
+     "name": "Class balance",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — class balance not measurable",
+     "evidence": {}
+    },
+    {
+     "key": "10_patient_identifier",
+     "name": "Patient identifier",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — grouping cannot be verified",
+     "evidence": {}
+    },
+    {
+     "key": "11_duplicate_rows",
+     "name": "Duplicate rows",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no tabular rows to screen (image/metadata dataset)",
+     "evidence": {}
+    },
+    {
+     "key": "12_duplicate_patients",
+     "name": "Duplicate patients",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "one row per patient / no patient grouping needed",
+     "evidence": {}
+    },
+    {
+     "key": "13_duplicate_files",
+     "name": "Duplicate files",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no image files for this dataset",
+     "evidence": {}
+    },
+    {
+     "key": "14_file_hashes",
+     "name": "File-hash deduplication",
+     "severity": "fatal",
+     "result": "NA",
+     "reason": "no per-file hashes applicable (single tabular source)",
+     "evidence": {}
+    },
+    {
+     "key": "15_perceptual_duplicates",
+     "name": "Perceptual duplicate risk",
+     "severity": "warn",
+     "result": "NA",
+     "reason": "no images to screen",
+     "evidence": {}
+    },
+    {
+     "key": "16_pre_augmented_leakage",
+     "name": "Pre-augmented image leakage",
+     "severity": "fatal",
+     "result": "FAIL",
+     "reason": "2644 of 2926 files carry the aug_ prefix (pre-augmented copies) with {known.get('duplicate_filenames')} duplicate filenames and no patient grouping — random splits would leak augmented siblings across train/test",
+     "evidence": {
+      "known_risks": {
+       "pre_augmented_files": 2644,
+       "duplicate_filenames": 279,
+       "patient_grouping_available": false,
+       "total_files": 2926
+      }
+     }
+    },
+    {
+     "key": "17_post_outcome_leakage",
+     "name": "Post-outcome leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "18_identifier_leakage",
+     "name": "Identifier leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "19_treatment_leakage",
+     "name": "Treatment/management leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "20_diagnosis_code_leakage",
+     "name": "Diagnosis-code leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "21_temporal_leakage",
+     "name": "Temporal leakage",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "22_label_circularity",
+     "name": "Label circularity",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "23_train_test_contamination",
+     "name": "Train/test contamination",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent",
+     "evidence": {}
+    },
+    {
+     "key": "24_mirror_duplication",
+     "name": "Mirror-source duplication",
+     "severity": "fatal",
+     "result": "PASS",
+     "reason": "no known mirrors; single recorded source",
+     "evidence": {}
+    },
+    {
+     "key": "25_excessive_missingness",
+     "name": "Excessive missingness",
+     "severity": "warn",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — feature-space check not applicable",
+     "evidence": {}
+    },
+    {
+     "key": "26_access_restrictions",
+     "name": "Availability/access",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "expected local data missing: []",
+     "evidence": {
+      "missing": []
+     }
+    },
+    {
+     "key": "27_task_compatibility",
+     "name": "Task compatibility",
+     "severity": "fatal",
+     "result": "NOT_AVAILABLE",
+     "reason": "data absent — compatibility unverified",
+     "evidence": {}
+    }
+   ]
+  }
+ },
+ "summary": {
+  "PASS": 1,
+  "CONDITIONAL": 3,
+  "BLOCKED": 1,
+  "NOT_AVAILABLE": 2
+ },
+ "disclaimer": "Research prototype — not a medical device."
+}

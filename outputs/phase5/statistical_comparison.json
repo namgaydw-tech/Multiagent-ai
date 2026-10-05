@@ -1,0 +1,1327 @@
+{
+ "generated_from": "outputs/phase5/*/predictions/*_test.csv",
+ "n_boot": 2000,
+ "seed": 20261002,
+ "methods": [
+  "paired_bootstrap_delta_macro_f0_5",
+  "mcnemar_exact",
+  "delong_auroc_ci",
+  "bootstrap_ci_ensemble",
+  "benjamini_hochberg"
+ ],
+ "test_labels_used_for": "post-hoc inference only (no selection/tuning)",
+ "disclaimer": "Post-hoc inference on the sealed test partition: test labels were used ONLY for confidence intervals and paired tests after all models, calibrators and thresholds were locked on validation. No selection or tuning used test data. Research prototype — not a medical device.",
+ "generated_utc": "2026-10-05T04:40:32Z",
+ "datasets": {
+  "NEONATAL_SEPSIS_REGISTRY": {
+   "winner_selected_on": "validation (see outputs/phase5/model_scorecard.json)",
+   "winner": "gradient_boosting",
+   "n_test": 300,
+   "probability_source_check": {
+    "adaboost": "reproduces_reported_macro_f0_5",
+    "catboost": "reproduces_reported_macro_f0_5",
+    "decision_tree": "reproduces_reported_macro_f0_5",
+    "ensemble": "unverified",
+    "extra_trees": "reproduces_reported_macro_f0_5",
+    "gaussian_nb": "reproduces_reported_macro_f0_5",
+    "gradient_boosting": "reproduces_reported_macro_f0_5",
+    "hist_gradient_boosting": "reproduces_reported_macro_f0_5",
+    "knn": "reproduces_reported_macro_f0_5",
+    "lda": "reproduces_reported_macro_f0_5",
+    "lightgbm": "reproduces_reported_macro_f0_5",
+    "logistic_regression": "reproduces_reported_macro_f0_5",
+    "mlp": "reproduces_reported_macro_f0_5",
+    "random_forest": "reproduces_reported_macro_f0_5",
+    "svm_linear": "reproduces_reported_macro_f0_5",
+    "svm_rbf": "reproduces_reported_macro_f0_5",
+    "xgboost": "reproduces_reported_macro_f0_5"
+   },
+   "comparisons": [
+    {
+     "competitor": "adaboost",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": -0.006883120935517073,
+      "ci95": [
+       -0.03151254191101742,
+       0.01709827830438697
+      ],
+      "p_value": 0.587,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 17,
+      "c": 19,
+      "p_value": 0.867939,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "catboost",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.04563986385684998,
+      "ci95": [
+       0.017426765935469428,
+       0.07705075657512217
+      ],
+      "p_value": 0.002,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 41,
+      "c": 10,
+      "p_value": 1.47377e-05,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "decision_tree",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.03268492989993815,
+      "ci95": [
+       0.006287232000274865,
+       0.05969968579472677
+      ],
+      "p_value": 0.016,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 40,
+      "c": 15,
+      "p_value": 0.00101585,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "ensemble",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.013474041985261698,
+      "ci95": [
+       -0.03130116258216193,
+       0.06244107229105158
+      ],
+      "p_value": 0.594,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 17,
+      "c": 132,
+      "p_value": 3.07291e-23,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "extra_trees",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.4331036877367648,
+      "ci95": [
+       0.3977357559396709,
+       0.4667807529719785
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 146,
+      "c": 4,
+      "p_value": 2.91791e-38,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "gaussian_nb",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.16904388524814884,
+      "ci95": [
+       0.12235758019286391,
+       0.2165350929144764
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 108,
+      "c": 17,
+      "p_value": 2.22106e-17,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "hist_gradient_boosting",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.08449379391770917,
+      "ci95": [
+       0.054925715180001354,
+       0.11662042249322836
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 61,
+      "c": 6,
+      "p_value": 1.49444e-12,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "knn",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.4420789330647979,
+      "ci95": [
+       0.4112603387736913,
+       0.4726270523671959
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 147,
+      "c": 4,
+      "p_value": 1.49838e-38,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "lda",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.05703287830449094,
+      "ci95": [
+       0.01906392895033613,
+       0.09414997441623822
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 62,
+      "c": 24,
+      "p_value": 5.08365e-05,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "lightgbm",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.29789407829027614,
+      "ci95": [
+       0.24980078074492604,
+       0.3504547601411417
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 127,
+      "c": 4,
+      "p_value": 8.88338e-33,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "logistic_regression",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.215547523661958,
+      "ci95": [
+       0.1700421761555858,
+       0.2632629680225676
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 111,
+      "c": 6,
+      "p_value": 3.97563e-26,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "mlp",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.26735654220335414,
+      "ci95": [
+       0.21318157767975573,
+       0.3249944485827512
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 130,
+      "c": 13,
+      "p_value": 1.90404e-25,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "random_forest",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.07880415378177402,
+      "ci95": [
+       0.05116461662920009,
+       0.10956531493136888
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 61,
+      "c": 6,
+      "p_value": 1.49444e-12,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "svm_linear",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.1631873276849069,
+      "ci95": [
+       0.12058256048007722,
+       0.20671100932443032
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 101,
+      "c": 11,
+      "p_value": 2.26252e-19,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "svm_rbf",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.18606953837241874,
+      "ci95": [
+       0.14272190849247554,
+       0.23235931266228377
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 104,
+      "c": 7,
+      "p_value": 2.80125e-23,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "xgboost",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.07578881179965768,
+      "ci95": [
+       0.046722460445736545,
+       0.10688349624548674
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 62,
+      "c": 10,
+      "p_value": 2.68907e-10,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    }
+   ],
+   "delong_auroc_ci": {
+    "adaboost": {
+     "auc": 0.7001194743130227,
+     "var": 0.002676487107819203,
+     "se": 0.051734776580354566,
+     "ci95": [
+      0.5987211754435062,
+      0.8015177731825391
+     ],
+     "z_vs_0.5": 3.868180893797747,
+     "p_value": 0.00010965031077270708,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "catboost": {
+     "auc": 0.642089093701997,
+     "var": 0.0029290233110824617,
+     "se": 0.05412045187433732,
+     "ci95": [
+      0.53601495717637,
+      0.7481632302276239
+     ],
+     "z_vs_0.5": 2.62542326941236,
+     "p_value": 0.00865413119441498,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "decision_tree": {
+     "auc": 0.6321897934801161,
+     "var": 0.001868000176584863,
+     "se": 0.043220367612791806,
+     "ci95": [
+      0.5474794295405837,
+      0.7169001574196484
+     ],
+     "z_vs_0.5": 3.058506921190375,
+     "p_value": 0.0022244294076390328,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "extra_trees": {
+     "auc": 0.6549752517494453,
+     "var": 0.0033469943443683895,
+     "se": 0.057853213777355444,
+     "ci95": [
+      0.5415850363293228,
+      0.7683654671695678
+     ],
+     "z_vs_0.5": 2.6787665132287732,
+     "p_value": 0.007389390053640733,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "gaussian_nb": {
+     "auc": 0.5978835978835979,
+     "var": 0.0034989961530439663,
+     "se": 0.05915231316731381,
+     "ci95": [
+      0.4819471944462216,
+      0.7138200013209742
+     ],
+     "z_vs_0.5": 1.6547721068275332,
+     "p_value": 0.09797073404590825,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "gradient_boosting": {
+     "auc": 0.6971326164874552,
+     "var": 0.002338415282515184,
+     "se": 0.048357163714543724,
+     "ci95": [
+      0.6023543171902006,
+      0.7919109157847097
+     ],
+     "z_vs_0.5": 4.076595923845845,
+     "p_value": 4.5699807724763536e-05,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "hist_gradient_boosting": {
+     "auc": 0.5954087728281277,
+     "var": 0.0029353039044121717,
+     "se": 0.054178445016557754,
+     "ci95": [
+      0.48922097183237173,
+      0.7015965738238836
+     ],
+     "z_vs_0.5": 1.7610098037876372,
+     "p_value": 0.07823674367874096,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "knn": {
+     "auc": 0.5741594128690903,
+     "var": 0.0035660051530581904,
+     "se": 0.05971603765370062,
+     "ci95": [
+      0.45711812974093324,
+      0.6912006959972474
+     ],
+     "z_vs_0.5": 1.2418676084831402,
+     "p_value": 0.2142854129304899,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "lda": {
+     "auc": 0.5952380952380952,
+     "var": 0.0024080363286150437,
+     "se": 0.04907174674509808,
+     "ci95": [
+      0.49905923893666204,
+      0.6914169515395284
+     ],
+     "z_vs_0.5": 1.940792850370847,
+     "p_value": 0.052283408583061144,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "lightgbm": {
+     "auc": 0.6788701143539854,
+     "var": 0.003129929905400664,
+     "se": 0.05594577647508938,
+     "ci95": [
+      0.56921840734995,
+      0.7885218213580207
+     ],
+     "z_vs_0.5": 3.197204965662238,
+     "p_value": 0.0013876628532705124,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "logistic_regression": {
+     "auc": 0.6234852363884622,
+     "var": 0.0020025983937813695,
+     "se": 0.04475040104603946,
+     "ci95": [
+      0.5357760620239186,
+      0.7111944107530058
+     ],
+     "z_vs_0.5": 2.7594218934802375,
+     "p_value": 0.0057903727022257144,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "mlp": {
+     "auc": 0.5245775729646698,
+     "var": 0.0006454985940106033,
+     "se": 0.025406664362143318,
+     "ci95": [
+      0.4747814258358859,
+      0.5743737200934537
+     ],
+     "z_vs_0.5": 0.9673671684855684,
+     "p_value": 0.33336051663969607,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "random_forest": {
+     "auc": 0.6644478579962451,
+     "var": 0.002649581277427724,
+     "se": 0.0514740835511204,
+     "ci95": [
+      0.5635605080751682,
+      0.7653352079173219
+     ],
+     "z_vs_0.5": 3.194770001741306,
+     "p_value": 0.0013994231614074693,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "svm_linear": {
+     "auc": 0.6561699948796723,
+     "var": 0.0026234870710026424,
+     "se": 0.05121998702657628,
+     "ci95": [
+      0.5557806649954156,
+      0.7565593247639291
+     ],
+     "z_vs_0.5": 3.0490049675069444,
+     "p_value": 0.0022960068512141497,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "svm_rbf": {
+     "auc": 0.6727257211128179,
+     "var": 0.0023364048720999177,
+     "se": 0.04833637214458609,
+     "ci95": [
+      0.577988172543872,
+      0.7674632696817638
+     ],
+     "z_vs_0.5": 3.5734109418917996,
+     "p_value": 0.0003523611196870226,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "xgboost": {
+     "auc": 0.6535244922341696,
+     "var": 0.0031111864105594985,
+     "se": 0.05577801009859978,
+     "ci95": [
+      0.5442016012859477,
+      0.7628473831823915
+     ],
+     "z_vs_0.5": 2.7524196715297244,
+     "p_value": 0.005915665733030023,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    }
+   },
+   "ensemble_bootstrap_ci": {
+    "model": "ensemble",
+    "macro_f0_5": {
+     "point": 0.4716024340770792,
+     "lo": 0.4591836734693877,
+     "hi": 0.48251513113651645,
+     "n_boot": 2000
+    },
+    "accuracy": {
+     "point": 0.93,
+     "lo": 0.9,
+     "hi": 0.9566666666666667,
+     "n_boot": 2000
+    },
+    "auroc": {
+     "point": 0.6912442396313364,
+     "lo": 0.5891457853177035,
+     "hi": 0.7856721816111724,
+     "n_boot": 2000
+    },
+    "auprc": {
+     "point": 0.2005851799351579,
+     "lo": 0.08023287235215168,
+     "hi": 0.3570708499604243,
+     "n_boot": 2000
+    },
+    "sensitivity": {
+     "point": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "n_boot": 2000
+    },
+    "specificity": {
+     "point": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "n_boot": 2000
+    },
+    "balanced_accuracy": {
+     "point": 0.5,
+     "lo": 0.5,
+     "hi": 0.5,
+     "n_boot": 2000
+    },
+    "brier": {
+     "point": 0.06328429608220666,
+     "lo": 0.04086161654801017,
+     "hi": 0.0880470893395638,
+     "n_boot": 2000
+    },
+    "ece": {
+     "point": 0.02730564666666667,
+     "lo": 0.01148410266666666,
+     "hi": 0.05654156574999996,
+     "n_boot": 2000
+    },
+    "mcc": {
+     "point": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "n_boot": 2000
+    }
+   },
+   "benjamini_hochberg": {
+    "family": "NEONATAL_SEPSIS_REGISTRY: paired bootstrap Macro F0.5 (winner vs each competitor)",
+    "n_tests_raw": 16,
+    "n_tests": 16,
+    "alpha": 0.05,
+    "q_values": [
+     0.594,
+     0.00246154,
+     0.0182857,
+     0.594,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rejected": [
+     false,
+     true,
+     true,
+     false,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "rejected_q_lt_0_05": [
+     "catboost",
+     "decision_tree",
+     "extra_trees",
+     "gaussian_nb",
+     "hist_gradient_boosting",
+     "knn",
+     "lda",
+     "lightgbm",
+     "logistic_regression",
+     "mlp",
+     "random_forest",
+     "svm_linear",
+     "svm_rbf",
+     "xgboost"
+    ]
+   }
+  },
+  "REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR": {
+   "winner_selected_on": "validation (see outputs/phase5/model_scorecard.json)",
+   "winner": "gradient_boosting",
+   "n_test": 117,
+   "probability_source_check": {
+    "adaboost": "reproduces_reported_macro_f0_5",
+    "catboost": "reproduces_reported_macro_f0_5",
+    "decision_tree": "reproduces_reported_macro_f0_5",
+    "ensemble": "unverified",
+    "extra_trees": "reproduces_reported_macro_f0_5",
+    "gaussian_nb": "reproduces_reported_macro_f0_5",
+    "gradient_boosting": "reproduces_reported_macro_f0_5",
+    "hist_gradient_boosting": "reproduces_reported_macro_f0_5",
+    "knn": "reproduces_reported_macro_f0_5",
+    "lda": "reproduces_reported_macro_f0_5",
+    "lightgbm": "reproduces_reported_macro_f0_5",
+    "logistic_regression": "reproduces_reported_macro_f0_5",
+    "mlp": "reproduces_reported_macro_f0_5",
+    "random_forest": "reproduces_reported_macro_f0_5",
+    "svm_linear": "reproduces_reported_macro_f0_5",
+    "svm_rbf": "reproduces_reported_macro_f0_5",
+    "xgboost": "reproduces_reported_macro_f0_5"
+   },
+   "comparisons": [
+    {
+     "competitor": "adaboost",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": -0.008323331688891322,
+      "ci95": [
+       -0.05251569548458788,
+       0.03619101675164662
+      ],
+      "p_value": 0.753,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 3,
+      "c": 4,
+      "p_value": 1.0,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "catboost",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": -0.02669772567142903,
+      "ci95": [
+       -0.07015500902477496,
+       0.009806848442585918
+      ],
+      "p_value": 0.263,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 1,
+      "c": 4,
+      "p_value": 0.375,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "decision_tree",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.040733091340134586,
+      "ci95": [
+       -0.013158535835201957,
+       0.09826241751883578
+      ],
+      "p_value": 0.131,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 8,
+      "c": 3,
+      "p_value": 0.226562,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "ensemble",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": -0.018440388545078568,
+      "ci95": [
+       -0.06209693219877835,
+       0.023910439188598007
+      ],
+      "p_value": 0.437,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 2,
+      "c": 4,
+      "p_value": 0.6875,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "extra_trees",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.07821512984957035,
+      "ci95": [
+       0.007746624604904592,
+       0.14791375341192164
+      ],
+      "p_value": 0.033,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 13,
+      "c": 4,
+      "p_value": 0.0490417,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "gaussian_nb",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.5896783872625484,
+      "ci95": [
+       0.5138015569590922,
+       0.6606786507515059
+      ],
+      "p_value": 0.0,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 44,
+      "c": 6,
+      "p_value": 3.24374e-08,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "hist_gradient_boosting",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": -0.017499042787403107,
+      "ci95": [
+       -0.05622467073643176,
+       0.018048196500750284
+      ],
+      "p_value": 0.426,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 1,
+      "c": 3,
+      "p_value": 0.625,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "knn",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.07715899420439354,
+      "ci95": [
+       -0.0017413301230230992,
+       0.1619361775501367
+      ],
+      "p_value": 0.063,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 16,
+      "c": 7,
+      "p_value": 0.0931396,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "lda",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.060067101407424106,
+      "ci95": [
+       1.1695785297499722e-06,
+       0.12399585788413321
+      ],
+      "p_value": 0.05,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 10,
+      "c": 3,
+      "p_value": 0.0922852,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "lightgbm",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": -0.011803752197175443,
+      "ci95": [
+       -0.059512835327504614,
+       0.033999063221009714
+      ],
+      "p_value": 0.606,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 3,
+      "c": 4,
+      "p_value": 1.0,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "logistic_regression",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.017499042787402996,
+      "ci95": [
+       -0.04411912627725087,
+       0.08416740375360175
+      ],
+      "p_value": 0.605,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 8,
+      "c": 6,
+      "p_value": 0.790527,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "mlp",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.0722512809918543,
+      "ci95": [
+       0.006083177421573988,
+       0.14300867240296927
+      ],
+      "p_value": 0.029,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 13,
+      "c": 4,
+      "p_value": 0.0490417,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "random_forest",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.059282279247238945,
+      "ci95": [
+       0.007050623434954429,
+       0.11747198025874953
+      ],
+      "p_value": 0.033,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 9,
+      "c": 2,
+      "p_value": 0.0654297,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "svm_linear",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.06941334747642913,
+      "ci95": [
+       0.00875639863718378,
+       0.1354285553862608
+      ],
+      "p_value": 0.026,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 11,
+      "c": 3,
+      "p_value": 0.057373,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "svm_rbf",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": 0.025296005362770435,
+      "ci95": [
+       -0.027289972112855422,
+       0.08308785036681371
+      ],
+      "p_value": 0.382,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 7,
+      "c": 4,
+      "p_value": 0.548828,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    },
+    {
+     "competitor": "xgboost",
+     "paired_bootstrap_delta_macro_f0_5": {
+      "delta_macro_f0_5": -0.011803752197175443,
+      "ci95": [
+       -0.05191902413496086,
+       0.025147764167773454
+      ],
+      "p_value": 0.51,
+      "n_boot": 2000,
+      "seed": 20261002,
+      "implementation": "vectorized (equal to paired_bootstrap_delta_f05)"
+     },
+     "mcnemar": {
+      "b": 2,
+      "c": 3,
+      "p_value": 1.0,
+      "test": "exact McNemar (two-sided binomial over discordant pairs)"
+     }
+    }
+   ],
+   "delong_auroc_ci": {
+    "adaboost": {
+     "auc": 0.9495772946859904,
+     "var": 0.000450930998271216,
+     "se": 0.02123513593719654,
+     "ci95": [
+      0.907957193032506,
+      0.9911973963394748
+     ],
+     "z_vs_0.5": 21.1713876480766,
+     "p_value": 1.7531883593582803e-99,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "catboost": {
+     "auc": 0.9646739130434783,
+     "var": 0.0003133686935835393,
+     "se": 0.017702222843008708,
+     "ci95": [
+      0.9299781938167369,
+      0.9993696322702197
+     ],
+     "z_vs_0.5": 26.24946692652194,
+     "p_value": 7.248496443053989e-152,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "decision_tree": {
+     "auc": 0.9325181159420289,
+     "var": 0.0006166532333708327,
+     "se": 0.02483250356631068,
+     "ci95": [
+      0.883847303294676,
+      0.9811889285893819
+     ],
+     "z_vs_0.5": 17.417418859402076,
+     "p_value": 6.086143985312868e-68,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "extra_trees": {
+     "auc": 0.9308574879227053,
+     "var": 0.0005428914451283812,
+     "se": 0.023300031011318015,
+     "ci95": [
+      0.8851902662911388,
+      0.9765247095542717
+     ],
+     "z_vs_0.5": 18.49171306739531,
+     "p_value": 2.407824302887083e-76,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "gaussian_nb": {
+     "auc": 0.7501509661835749,
+     "var": 0.001030189895853497,
+     "se": 0.0320965714033991,
+     "ci95": [
+      0.6872428421909318,
+      0.813059090176218
+     ],
+     "z_vs_0.5": 7.793697433897358,
+     "p_value": 6.507626938224727e-15,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "gradient_boosting": {
+     "auc": 0.9522946859903382,
+     "var": 0.00040799623318775273,
+     "se": 0.020198916634011656,
+     "ci95": [
+      0.9127055368516579,
+      0.9918838351290185
+     ],
+     "z_vs_0.5": 22.392026967859664,
+     "p_value": 4.706895644474711e-111,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "hist_gradient_boosting": {
+     "auc": 0.9378019323671497,
+     "var": 0.0005600556044628193,
+     "se": 0.02366549396194424,
+     "ci95": [
+      0.891418416514504,
+      0.9841854482197954
+     ],
+     "z_vs_0.5": 18.49958987000929,
+     "p_value": 2.0805110195599832e-76,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "knn": {
+     "auc": 0.9242149758454107,
+     "var": 0.000595473516790129,
+     "se": 0.0244023260528608,
+     "ci95": [
+      0.8763872956315764,
+      0.972042656059245
+     ],
+     "z_vs_0.5": 17.384202429164656,
+     "p_value": 1.0868883900415032e-67,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "lda": {
+     "auc": 0.938707729468599,
+     "var": 0.00041020964947370564,
+     "se": 0.020253632994445853,
+     "ci95": [
+      0.8990113382340774,
+      0.9784041207031207
+     ],
+     "z_vs_0.5": 21.66069315015759,
+     "p_value": 4.819282654363678e-104,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "lightgbm": {
+     "auc": 0.9645229468599034,
+     "var": 0.00029716039247290095,
+     "se": 0.017238340769137293,
+     "ci95": [
+      0.9307364197912371,
+      0.9983094739285696
+     ],
+     "z_vs_0.5": 26.947079947019215,
+     "p_value": 6.171965374019534e-160,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "logistic_regression": {
+     "auc": 0.9293478260869565,
+     "var": 0.0006883657047099586,
+     "se": 0.026236724351754708,
+     "ci95": [
+      0.8779247912731448,
+      0.9807708609007683
+     ],
+     "z_vs_0.5": 16.3643837672229,
+     "p_value": 3.434869533826265e-60,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "mlp": {
+     "auc": 0.9307065217391305,
+     "var": 0.0004615808143057505,
+     "se": 0.02148443190558574,
+     "ci95": [
+      0.8885978089659975,
+      0.9728152345122635
+     ],
+     "z_vs_0.5": 20.047377730623218,
+     "p_value": 2.12768327101936e-89,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "random_forest": {
+     "auc": 0.936141304347826,
+     "var": 0.0004416388029851298,
+     "se": 0.02101520409097018,
+     "ci95": [
+      0.8949522611920998,
+      0.9773303475035523
+     ],
+     "z_vs_0.5": 20.753607838394842,
+     "p_value": 1.137286102164194e-95,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "svm_linear": {
+     "auc": 0.9112318840579711,
+     "var": 0.0007795894585799682,
+     "se": 0.027921129249727134,
+     "ci95": [
+      0.8565074763079759,
+      0.9659562918079663
+     ],
+     "z_vs_0.5": 14.728339974357947,
+     "p_value": 4.2399332465452094e-49,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "svm_rbf": {
+     "auc": 0.9382548309178744,
+     "var": 0.0005593505732720684,
+     "se": 0.023650593507818538,
+     "ci95": [
+      0.8919005194186753,
+      0.9846091424170735
+     ],
+     "z_vs_0.5": 18.530394629335362,
+     "p_value": 1.174226296770918e-76,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    },
+    "xgboost": {
+     "auc": 0.9586352657004831,
+     "var": 0.0003420905780954503,
+     "se": 0.018495690798006174,
+     "ci95": [
+      0.9223843778586951,
+      0.9948861535422711
+     ],
+     "z_vs_0.5": 24.796871374489225,
+     "p_value": 9.689366636170653e-136,
+     "method": "DeLong (Mann-Whitney U structural components)"
+    }
+   },
+   "ensemble_bootstrap_ci": {
+    "model": "ensemble",
+    "macro_f0_5": {
+     "point": 0.9293478260869565,
+     "lo": 0.8800805568554604,
+     "hi": 0.9734230286377525,
+     "n_boot": 2000
+    },
+    "accuracy": {
+     "point": 0.9316239316239316,
+     "lo": 0.8803418803418803,
+     "hi": 0.9743589743589743,
+     "n_boot": 2000
+    },
+    "auroc": {
+     "point": 0.9731280193236715,
+     "lo": 0.9423992405725001,
+     "hi": 0.9947081617153093,
+     "n_boot": 2000
+    },
+    "auprc": {
+     "point": 0.9832061606842971,
+     "lo": 0.9619004098463125,
+     "hi": 0.9967202717213602,
+     "n_boot": 2000
+    },
+    "sensitivity": {
+     "point": 0.9420289855072463,
+     "lo": 0.8805970149253731,
+     "hi": 0.986490990990991,
+     "n_boot": 2000
+    },
+    "specificity": {
+     "point": 0.9166666666666666,
+     "lo": 0.8333333333333334,
+     "hi": 0.9803921568627451,
+     "n_boot": 2000
+    },
+    "balanced_accuracy": {
+     "point": 0.9293478260869565,
+     "lo": 0.8800197510822511,
+     "hi": 0.9745171119863741,
+     "n_boot": 2000
+    },
+    "brier": {
+     "point": 0.060434748382820515,
+     "lo": 0.036201216432715386,
+     "hi": 0.09119704450551729,
+     "n_boot": 2000
+    },
+    "ece": {
+     "point": 0.05556818803418807,
+     "lo": 0.05337127841880342,
+     "hi": 0.1143336931623932,
+     "n_boot": 2000
+    },
+    "mcc": {
+     "point": 0.8586956521739131,
+     "lo": 0.7606627779999384,
+     "hi": 0.9466294040511437,
+     "n_boot": 2000
+    }
+   },
+   "benjamini_hochberg": {
+    "family": "REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR: paired bootstrap Macro F0.5 (winner vs each competitor)",
+    "n_tests_raw": 16,
+    "n_tests": 16,
+    "alpha": 0.05,
+    "q_values": [
+     0.753,
+     0.467556,
+     0.262,
+     0.582667,
+     0.1056,
+     0.0,
+     0.582667,
+     0.144,
+     0.133333,
+     0.6464,
+     0.6464,
+     0.1056,
+     0.1056,
+     0.1056,
+     0.582667,
+     0.627692
+    ],
+    "rejected": [
+     false,
+     false,
+     false,
+     false,
+     false,
+     true,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "rejected_q_lt_0_05": [
+     "gaussian_nb"
+    ]
+   }
+  }
+ },
+ "elapsed_seconds": 26.62
+}

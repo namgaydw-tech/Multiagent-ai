@@ -12,6 +12,8 @@ Routers (all under ``/api``):
 * ``agents``      — run the real 8-stage multi-agent pipeline
 * ``experiments`` — experiment status + small synchronous bias experiments
 * ``audits``      — browse persisted per-stage audit transcripts
+* ``phase5``      — dataset registry/blocking, scorecard, statistics, figures,
+                    Algorithm Lab catalogue (multi-dataset Phase 5)
 
 Error policy: structured ``{"detail": …, "hint": …}`` responses with real
 reasons; missing artifacts yield explicit availability states, never
@@ -27,7 +29,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from backend.api import agents, audits, cases, experiments, meta, metrics
+from backend.api import agents, audits, cases, experiments, meta, metrics, phase5
 from backend.api._shared import DISCLAIMER, ApiUnavailable
 
 app = FastAPI(
@@ -57,6 +59,7 @@ app.include_router(cases.router, prefix="/api")
 app.include_router(agents.router, prefix="/api")
 app.include_router(experiments.router, prefix="/api")
 app.include_router(audits.router, prefix="/api")
+app.include_router(phase5.router, prefix="/api")
 
 
 @app.exception_handler(ApiUnavailable)
@@ -78,7 +81,10 @@ def root() -> dict:
                       "/api/metrics/figures/{name}", "/api/cases",
                       "/api/cases/{row_index}/record", "/api/predict",
                       "/api/agents/run", "/api/experiments/status",
-                      "/api/experiments/quick", "/api/audits"],
+                      "/api/experiments/quick", "/api/audits",
+                      "/api/phase5/status", "/api/phase5/datasets",
+                      "/api/phase5/scorecard", "/api/phase5/figures",
+                      "/api/phase5/algorithms"],
         "seed": 20261002,
         "disclaimer": DISCLAIMER,
     }

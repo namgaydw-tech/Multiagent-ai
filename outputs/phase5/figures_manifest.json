@@ -1,0 +1,375 @@
+{
+ "generated_utc": "2026-10-05T06:18:38Z",
+ "source": "persisted outputs/phase5 + outputs/metrics artifacts only",
+ "reproduce": "python scripts/run_phase5.py analyze",
+ "datasets_executed": [
+  "NEONATAL_SEPSIS_REGISTRY",
+  "REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR"
+ ],
+ "figures": [
+  {
+   "id": 1,
+   "name": "Macro F0.5 leaderboard",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_macro_f0_5.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_macro_f0_5.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 2,
+   "name": "accuracy comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_accuracy.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_accuracy.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 3,
+   "name": "balanced accuracy",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_balanced_accuracy.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_balanced_accuracy.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 4,
+   "name": "sensitivity comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_sensitivity.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_sensitivity.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 5,
+   "name": "specificity comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_specificity.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_specificity.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 6,
+   "name": "precision comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_precision.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_precision.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 7,
+   "name": "AUROC comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_auroc.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_auroc.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 8,
+   "name": "AUPRC comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\leaderboard_auprc.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\leaderboard_auprc.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 9,
+   "name": "ROC curves",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\roc_curves.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\roc_curves.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 10,
+   "name": "precision-recall curves",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\precision_recall_curves.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\precision_recall_curves.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 11,
+   "name": "confusion matrices",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\confusion_matrix_winner.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\confusion_matrix_winner.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 12,
+   "name": "normalized confusion matrices",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\confusion_matrix_normalized_winner.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\confusion_matrix_normalized_winner.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 13,
+   "name": "calibration/reliability curves",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\calibration_reliability.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\calibration_reliability.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 14,
+   "name": "threshold vs Macro F0.5",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\threshold_vs_macro_f0_5.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\threshold_vs_macro_f0_5.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 15,
+   "name": "threshold vs sensitivity",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\threshold_vs_sensitivity.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\threshold_vs_sensitivity.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 16,
+   "name": "threshold vs specificity",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\threshold_vs_specificity.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\threshold_vs_specificity.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 17,
+   "name": "threshold vs precision",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\threshold_vs_precision.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\threshold_vs_precision.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 18,
+   "name": "sensitivity-specificity operating point",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\operating_point_validation.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\operating_point_validation.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 19,
+   "name": "learning curves",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\learning_curves.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 20,
+   "name": "native feature importance",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\native_feature_importance.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 21,
+   "name": "permutation importance",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\permutation_importance.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 22,
+   "name": "SHAP summary",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\shap_summary.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 23,
+   "name": "SHAP waterfall",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\shap_waterfall.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 24,
+   "name": "training-time comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\training_time_comparison.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\training_time_comparison.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 25,
+   "name": "inference-time comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\inference_time_comparison.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\inference_time_comparison.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 26,
+   "name": "performance-vs-complexity",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\performance_vs_complexity.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\performance_vs_complexity.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 27,
+   "name": "Random Forest n_estimators curve",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\random_forest_n_estimators_curve.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 28,
+   "name": "KNN K curve",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\knn_k_curve.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 29,
+   "name": "boosting-model comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\boosting_models_comparison.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\boosting_models_comparison.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 30,
+   "name": "ensemble-vs-individual comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\ensemble_vs_individual.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\ensemble_vs_individual.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 31,
+   "name": "cross-dataset comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\figures\\cross_dataset_comparison.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 32,
+   "name": "CBR comparison",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\figures\\cbr_comparison_profiles.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\figures\\cross_backbone_cbr_bcr.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 33,
+   "name": "BCR vs HFR trade-off",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\figures\\bcr_vs_hfr_tradeoff.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 34,
+   "name": "external-validation generalization gap",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\generalization_gap_validation_vs_test.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\generalization_gap_validation_vs_test.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\figures\\external_validation_gap.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  },
+  {
+   "id": 35,
+   "name": "confidence intervals for leading models",
+   "status": "GENERATED",
+   "paths": [
+    "D:\\Multiagent-ai\\outputs\\phase5\\neonatal_sepsis\\figures\\confidence_intervals_leading_models.png",
+    "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\confidence_intervals_leading_models.png"
+   ],
+   "reproduce": "python scripts/run_phase5.py analyze"
+  }
+ ],
+ "model_specific_analysis_extras": [
+  "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\svm_kernel_c_curve.png",
+  "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\logreg_coefficients_odds_ratios.png",
+  "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\decision_tree_analysis.png",
+  "D:\\Multiagent-ai\\outputs\\phase5\\regensburg_appendicitis_tabular\\figures\\extra_trees_vs_random_forest.png",
+  "D:\\Multiagent-ai\\outputs\\phase5\\figures\\cross_backbone_accuracy.png"
+ ],
+ "already_existed_pre_phase5": [
+  "D:\\Multiagent-ai\\outputs\\figures\\fig_anchor_cbr_aor.png",
+  "D:\\Multiagent-ai\\outputs\\figures\\fig_bias_reduction.png",
+  "D:\\Multiagent-ai\\outputs\\figures\\shap_summary.png",
+  "D:\\Multiagent-ai\\outputs\\figures\\shap_waterfall_case_test_row_289.png"
+ ],
+ "not_executed": [
+  "Image-model training/Grad-CAM (Kermany CXR, Regensburg US): torch not installed in this environment — NOT_EXECUTED, no figures invented."
+ ],
+ "cross_backbone_bias": "EXECUTED: 6 backbones × 160 paired case-runs — outputs/phase5/bias_backbones_summary.json",
+ "errors": [
+  "NEONATAL_SEPSIS_REGISTRY: model-specific analyses skipped (blocker=CONDITIONAL — reference dataset only)"
+ ],
+ "elapsed_seconds": 106.4,
+ "disclaimer": "Research prototype — not a medical device."
+}

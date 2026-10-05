@@ -9,9 +9,12 @@ import { Ablations } from './pages/Ablations'
 import { ErrorAnalysisPage } from './pages/ErrorAnalysisPage'
 import { AuditViewer } from './pages/AuditViewer'
 import { Reproduction } from './pages/Reproduction'
+import { DatasetRegistry } from './pages/DatasetRegistry'
+import { CrossDatasetBenchmark } from './pages/CrossDatasetBenchmark'
+import { AlgorithmLab } from './pages/AlgorithmLab'
 import { NotFound } from './pages/NotFound'
 
-/** Nine-page research UI; every page handles loading, errors and missing data. */
+/** Twelve-page research UI; every page handles loading, errors and missing data. */
 export default function App() {
   return (
     <Routes>
@@ -25,6 +28,9 @@ export default function App() {
         <Route path="errors" element={<ErrorAnalysisPage />} />
         <Route path="audits" element={<AuditViewer />} />
         <Route path="repro" element={<Reproduction />} />
+        <Route path="datasets" element={<DatasetRegistry />} />
+        <Route path="benchmark" element={<CrossDatasetBenchmark />} />
+        <Route path="lab" element={<AlgorithmLab />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

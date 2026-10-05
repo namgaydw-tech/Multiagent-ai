@@ -1,0 +1,2382 @@
+{
+ "generated_from": "outputs/phase5/bias_backbones/*.json",
+ "design": "paired: same test rows, anchor conditions, profiles and engine; only the underlying classifier changes; uniform information budget",
+ "backbones": {
+  "logistic_regression": {
+   "3_lightgbm_plus_single_llm": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0263,
+      "n_num": 1,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.0789
+      ]
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.175,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 10,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis",
+       "appendicitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.925,
+      "n_num": 37,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.85,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.55,
+      "n_num": 22,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.4,
+       0.7
+      ]
+     },
+     "AOR": {
+      "value": 0.45,
+      "n_num": 18,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.3,
+       0.625
+      ]
+     },
+     "BCR": {
+      "value": 0.425,
+      "n_num": 17,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.275,
+       0.575
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.825,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 14,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Bridenileus",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Sepsis mit Begleitappendizitis",
+       "Urinary tract infection / urolithiasis",
+       "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+       "appendicitis",
+       "chronische Appendizitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.425,
+      "n_num": 17,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.275,
+       0.575
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   },
+   "9_full_with_rag": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0526,
+      "n_num": 2,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.1316
+      ]
+     },
+     "CRR": {
+      "value": 0.9,
+      "n_num": 36,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.8,
+       0.975
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.9,
+      "n_num": 36,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.8,
+       0.975
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.025,
+      "n_num": 1,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.075
+      ]
+     },
+     "AOR": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "BCR": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": 0.9487,
+      "n_num": 37,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.8718,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  "random_forest": {
+   "3_lightgbm_plus_single_llm": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 5,
+      "n_excluded": 35,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0286,
+      "n_num": 1,
+      "n_den": 35,
+      "n_excluded": 5,
+      "ci95": [
+       0.0,
+       0.0857
+      ]
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.275,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 9,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.85,
+      "n_num": 34,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.725,
+       0.95
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.875,
+      "n_num": 35,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.775,
+       0.975
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.575,
+      "n_num": 23,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.4,
+       0.725
+      ]
+     },
+     "AOR": {
+      "value": 0.425,
+      "n_num": 17,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.275,
+       0.6
+      ]
+     },
+     "BCR": {
+      "value": 0.4,
+      "n_num": 16,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.25,
+       0.575
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.95,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 14,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Bridenileus",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Sepsis mit Begleitappendizitis",
+       "Urinary tract infection / urolithiasis",
+       "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+       "appendicitis",
+       "chronische Appendizitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.4,
+      "n_num": 16,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.25,
+       0.575
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   },
+   "9_full_with_rag": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.2,
+      "n_num": 1,
+      "n_den": 5,
+      "n_excluded": 35,
+      "ci95": [
+       0.0,
+       0.6
+      ]
+     },
+     "HFR": {
+      "value": 0.0571,
+      "n_num": 2,
+      "n_den": 35,
+      "n_excluded": 5,
+      "ci95": [
+       0.0,
+       0.1429
+      ]
+     },
+     "CRR": {
+      "value": 0.85,
+      "n_num": 34,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.75,
+       0.95
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.85,
+      "n_num": 34,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.75,
+       0.95
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.875,
+      "n_num": 35,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.775,
+       0.975
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "AOR": {
+      "value": 1.0,
+      "n_num": 40,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       1.0,
+       1.0
+      ]
+     },
+     "BCR": {
+      "value": 0.875,
+      "n_num": 35,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.775,
+       0.975
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": 0.8718,
+      "n_num": 34,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.7692,
+       0.9744
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.875,
+      "n_num": 35,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.775,
+       0.975
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  "xgboost": {
+   "3_lightgbm_plus_single_llm": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0263,
+      "n_num": 1,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.0789
+      ]
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.2,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 9,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.925,
+      "n_num": 37,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.825,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.525,
+      "n_num": 21,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.35,
+       0.675
+      ]
+     },
+     "AOR": {
+      "value": 0.475,
+      "n_num": 19,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.325,
+       0.65
+      ]
+     },
+     "BCR": {
+      "value": 0.45,
+      "n_num": 18,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.3,
+       0.625
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.875,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 14,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Bridenileus",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Sepsis mit Begleitappendizitis",
+       "Urinary tract infection / urolithiasis",
+       "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+       "appendicitis",
+       "chronische Appendizitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.45,
+      "n_num": 18,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.3,
+       0.625
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   },
+   "9_full_with_rag": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0263,
+      "n_num": 1,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.0789
+      ]
+     },
+     "CRR": {
+      "value": 0.925,
+      "n_num": 37,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.85,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.925,
+      "n_num": 37,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.85,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "AOR": {
+      "value": 1.0,
+      "n_num": 40,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       1.0,
+       1.0
+      ]
+     },
+     "BCR": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": 0.9487,
+      "n_num": 37,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.8718,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  "lightgbm": {
+   "3_lightgbm_plus_single_llm": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.175,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 10,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis",
+       "appendicitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.525,
+      "n_num": 21,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.35,
+       0.675
+      ]
+     },
+     "AOR": {
+      "value": 0.475,
+      "n_num": 19,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.325,
+       0.65
+      ]
+     },
+     "BCR": {
+      "value": 0.45,
+      "n_num": 18,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.3,
+       0.625
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.825,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 14,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Bridenileus",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Sepsis mit Begleitappendizitis",
+       "Urinary tract infection / urolithiasis",
+       "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+       "appendicitis",
+       "chronische Appendizitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.45,
+      "n_num": 18,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.3,
+       0.625
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   },
+   "9_full_with_rag": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "CRR": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.025,
+      "n_num": 1,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.075
+      ]
+     },
+     "AOR": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "BCR": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": 0.9487,
+      "n_num": 37,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.8718,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  "catboost": {
+   "3_lightgbm_plus_single_llm": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 1,
+      "n_excluded": 39,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.175,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 9,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.475,
+      "n_num": 19,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.325,
+       0.625
+      ]
+     },
+     "AOR": {
+      "value": 0.525,
+      "n_num": 21,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.375,
+       0.675
+      ]
+     },
+     "BCR": {
+      "value": 0.5,
+      "n_num": 20,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.35,
+       0.65
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.85,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 14,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Bridenileus",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Sepsis mit Begleitappendizitis",
+       "Urinary tract infection / urolithiasis",
+       "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+       "appendicitis",
+       "chronische Appendizitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.5,
+      "n_num": 20,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.35,
+       0.65
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   },
+   "9_full_with_rag": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 1,
+      "n_excluded": 39,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "CRR": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "AOR": {
+      "value": 1.0,
+      "n_num": 40,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       1.0,
+       1.0
+      ]
+     },
+     "BCR": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": 0.9744,
+      "n_num": 38,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.9231,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  "ensemble": {
+   "3_lightgbm_plus_single_llm": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.175,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 10,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis",
+       "appendicitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.55,
+      "n_num": 22,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.4,
+       0.7
+      ]
+     },
+     "AOR": {
+      "value": 0.45,
+      "n_num": 18,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.3,
+       0.625
+      ]
+     },
+     "BCR": {
+      "value": 0.425,
+      "n_num": 17,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.275,
+       0.575
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CMR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 3.825,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 14,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Bridenileus",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Sepsis mit Begleitappendizitis",
+       "Urinary tract infection / urolithiasis",
+       "abdominelle Adhäsionen, chron. Unterbauchbeschwerden mit Subileussymptomatik",
+       "appendicitis",
+       "chronische Appendizitis",
+       "no appendicitis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.425,
+      "n_num": 17,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.275,
+       0.575
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   },
+   "9_full_with_rag": {
+    "control": {
+     "n_rows": 40,
+     "CBR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "AOR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "BCR": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 2,
+      "n_excluded": 38,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "HFR": {
+      "value": 0.0263,
+      "n_num": 1,
+      "n_den": 38,
+      "n_excluded": 2,
+      "ci95": [
+       0.0,
+       0.0789
+      ]
+     },
+     "CRR": {
+      "value": 0.925,
+      "n_num": 37,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.85,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.925,
+      "n_num": 37,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.85,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     }
+    },
+    "incorrect_anchor": {
+     "n_rows": 40,
+     "CBR": {
+      "value": 0.025,
+      "n_num": 1,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.075
+      ]
+     },
+     "AOR": {
+      "value": 0.975,
+      "n_num": 39,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.925,
+       1.0
+      ]
+     },
+     "BCR": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "HFR": {
+      "value": null,
+      "n_num": 0,
+      "n_den": 0,
+      "n_excluded": 40,
+      "ci95": null
+     },
+     "CRR": {
+      "value": 0.9487,
+      "n_num": 37,
+      "n_den": 39,
+      "n_excluded": 1,
+      "ci95": [
+       0.8718,
+       1.0
+      ]
+     },
+     "CMR": {
+      "value": 0.25,
+      "n_num": 2,
+      "n_den": 8,
+      "n_excluded": 32,
+      "ci95": [
+       0.0,
+       0.625
+      ]
+     },
+     "DR": {
+      "value": null,
+      "n_den": 0,
+      "note": "DR requires ≥2 repetitions per case"
+     },
+     "DDR": {
+      "mean_candidates_per_case": 2.3,
+      "n_cases": 40,
+      "unique_hypotheses_corpus": 8,
+      "corpus_hypotheses": [
+       "Acute appendicitis",
+       "Bowel obstruction / ileus process",
+       "Complicated appendicitis (perforation/abscess)",
+       "Constipation / fecal loading",
+       "Gastroenteritis / enteritis",
+       "Gynecological pathology (ovarian/uterine)",
+       "Mesenteric lymphadenitis",
+       "Urinary tract infection / urolithiasis"
+      ]
+     },
+     "final_accuracy": {
+      "value": 0.95,
+      "n_num": 38,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.875,
+       1.0
+      ]
+     },
+     "initial_accuracy": {
+      "value": 0.0,
+      "n_num": 0,
+      "n_den": 40,
+      "n_excluded": 0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  }
+ },
+ "seed": 20261002,
+ "disclaimer": "Research prototype — not a medical device.",
+ "generated_utc": "2026-10-05T06:11:51Z"
+}

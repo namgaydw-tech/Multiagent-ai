@@ -1,0 +1,117 @@
+dataset,method,model_a,model_b,metric,estimate,ci_lo,ci_hi,p_value,q_value,n,note
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,adaboost,,AUROC,0.7001194743130227,0.5987211754435062,0.8015177731825391,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,catboost,,AUROC,0.642089093701997,0.53601495717637,0.7481632302276239,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,decision_tree,,AUROC,0.6321897934801161,0.5474794295405837,0.7169001574196484,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,extra_trees,,AUROC,0.6549752517494453,0.5415850363293228,0.7683654671695678,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,gaussian_nb,,AUROC,0.5978835978835979,0.4819471944462216,0.7138200013209742,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,gradient_boosting,,AUROC,0.6971326164874552,0.6023543171902006,0.7919109157847097,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,hist_gradient_boosting,,AUROC,0.5954087728281277,0.48922097183237173,0.7015965738238836,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,knn,,AUROC,0.5741594128690903,0.45711812974093324,0.6912006959972474,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,lda,,AUROC,0.5952380952380952,0.49905923893666204,0.6914169515395284,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,lightgbm,,AUROC,0.6788701143539854,0.56921840734995,0.7885218213580207,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,logistic_regression,,AUROC,0.6234852363884622,0.5357760620239186,0.7111944107530058,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,mlp,,AUROC,0.5245775729646698,0.4747814258358859,0.5743737200934537,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,random_forest,,AUROC,0.6644478579962451,0.5635605080751682,0.7653352079173219,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,svm_linear,,AUROC,0.6561699948796723,0.5557806649954156,0.7565593247639291,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,svm_rbf,,AUROC,0.6727257211128179,0.577988172543872,0.7674632696817638,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,delong_auroc_ci,xgboost,,AUROC,0.6535244922341696,0.5442016012859477,0.7628473831823915,,,300,DeLong 95% CI (single model)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,adaboost,Macro_F0.5_delta,-0.006883120935517073,-0.03151254191101742,0.01709827830438697,0.587,0.594,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,adaboost,discordant_errors,"b=17,c=19",,,0.867939,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,catboost,Macro_F0.5_delta,0.04563986385684998,0.017426765935469428,0.07705075657512217,0.002,0.00246154,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,catboost,discordant_errors,"b=41,c=10",,,1.47377e-05,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,decision_tree,Macro_F0.5_delta,0.03268492989993815,0.006287232000274865,0.05969968579472677,0.016,0.0182857,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,decision_tree,discordant_errors,"b=40,c=15",,,0.00101585,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,ensemble,Macro_F0.5_delta,0.013474041985261698,-0.03130116258216193,0.06244107229105158,0.594,0.594,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,ensemble,discordant_errors,"b=17,c=132",,,3.07291e-23,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,extra_trees,Macro_F0.5_delta,0.4331036877367648,0.3977357559396709,0.4667807529719785,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,extra_trees,discordant_errors,"b=146,c=4",,,2.91791e-38,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,gaussian_nb,Macro_F0.5_delta,0.16904388524814884,0.12235758019286391,0.2165350929144764,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,gaussian_nb,discordant_errors,"b=108,c=17",,,2.22106e-17,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,hist_gradient_boosting,Macro_F0.5_delta,0.08449379391770917,0.054925715180001354,0.11662042249322836,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,hist_gradient_boosting,discordant_errors,"b=61,c=6",,,1.49444e-12,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,knn,Macro_F0.5_delta,0.4420789330647979,0.4112603387736913,0.4726270523671959,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,knn,discordant_errors,"b=147,c=4",,,1.49838e-38,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,lda,Macro_F0.5_delta,0.05703287830449094,0.01906392895033613,0.09414997441623822,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,lda,discordant_errors,"b=62,c=24",,,5.08365e-05,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,lightgbm,Macro_F0.5_delta,0.29789407829027614,0.24980078074492604,0.3504547601411417,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,lightgbm,discordant_errors,"b=127,c=4",,,8.88338e-33,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,logistic_regression,Macro_F0.5_delta,0.215547523661958,0.1700421761555858,0.2632629680225676,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,logistic_regression,discordant_errors,"b=111,c=6",,,3.97563e-26,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,mlp,Macro_F0.5_delta,0.26735654220335414,0.21318157767975573,0.3249944485827512,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,mlp,discordant_errors,"b=130,c=13",,,1.90404e-25,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,random_forest,Macro_F0.5_delta,0.07880415378177402,0.05116461662920009,0.10956531493136888,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,random_forest,discordant_errors,"b=61,c=6",,,1.49444e-12,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,svm_linear,Macro_F0.5_delta,0.1631873276849069,0.12058256048007722,0.20671100932443032,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,svm_linear,discordant_errors,"b=101,c=11",,,2.26252e-19,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,svm_rbf,Macro_F0.5_delta,0.18606953837241874,0.14272190849247554,0.23235931266228377,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,svm_rbf,discordant_errors,"b=104,c=7",,,2.80125e-23,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,paired_bootstrap_delta_macro_f0_5,gradient_boosting,xgboost,Macro_F0.5_delta,0.07578881179965768,0.046722460445736545,0.10688349624548674,0.0,0.0,300,"A - B, paired test cases"
+NEONATAL_SEPSIS_REGISTRY,mcnemar_exact,gradient_boosting,xgboost,discordant_errors,"b=62,c=10",,,2.68907e-10,,300,exact McNemar (two-sided binomial over discordant pairs)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,macro_f0_5,0.4716024340770792,0.4591836734693877,0.48251513113651645,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,accuracy,0.93,0.9,0.9566666666666667,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,auroc,0.6912442396313364,0.5891457853177035,0.7856721816111724,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,auprc,0.2005851799351579,0.08023287235215168,0.3570708499604243,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,sensitivity,0.0,0.0,0.0,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,specificity,1.0,1.0,1.0,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,balanced_accuracy,0.5,0.5,0.5,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,brier,0.06328429608220666,0.04086161654801017,0.0880470893395638,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,ece,0.02730564666666667,0.01148410266666666,0.05654156574999996,,,300,ensemble (validation-weighted soft voting)
+NEONATAL_SEPSIS_REGISTRY,bootstrap_ci,ensemble,,mcc,0.0,0.0,0.0,,,300,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,adaboost,,AUROC,0.9495772946859904,0.907957193032506,0.9911973963394748,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,catboost,,AUROC,0.9646739130434783,0.9299781938167369,0.9993696322702197,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,decision_tree,,AUROC,0.9325181159420289,0.883847303294676,0.9811889285893819,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,extra_trees,,AUROC,0.9308574879227053,0.8851902662911388,0.9765247095542717,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,gaussian_nb,,AUROC,0.7501509661835749,0.6872428421909318,0.813059090176218,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,gradient_boosting,,AUROC,0.9522946859903382,0.9127055368516579,0.9918838351290185,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,hist_gradient_boosting,,AUROC,0.9378019323671497,0.891418416514504,0.9841854482197954,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,knn,,AUROC,0.9242149758454107,0.8763872956315764,0.972042656059245,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,lda,,AUROC,0.938707729468599,0.8990113382340774,0.9784041207031207,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,lightgbm,,AUROC,0.9645229468599034,0.9307364197912371,0.9983094739285696,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,logistic_regression,,AUROC,0.9293478260869565,0.8779247912731448,0.9807708609007683,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,mlp,,AUROC,0.9307065217391305,0.8885978089659975,0.9728152345122635,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,random_forest,,AUROC,0.936141304347826,0.8949522611920998,0.9773303475035523,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,svm_linear,,AUROC,0.9112318840579711,0.8565074763079759,0.9659562918079663,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,svm_rbf,,AUROC,0.9382548309178744,0.8919005194186753,0.9846091424170735,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,delong_auroc_ci,xgboost,,AUROC,0.9586352657004831,0.9223843778586951,0.9948861535422711,,,117,DeLong 95% CI (single model)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,adaboost,Macro_F0.5_delta,-0.008323331688891322,-0.05251569548458788,0.03619101675164662,0.753,0.753,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,adaboost,discordant_errors,"b=3,c=4",,,1.0,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,catboost,Macro_F0.5_delta,-0.02669772567142903,-0.07015500902477496,0.009806848442585918,0.263,0.467556,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,catboost,discordant_errors,"b=1,c=4",,,0.375,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,decision_tree,Macro_F0.5_delta,0.040733091340134586,-0.013158535835201957,0.09826241751883578,0.131,0.262,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,decision_tree,discordant_errors,"b=8,c=3",,,0.226562,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,ensemble,Macro_F0.5_delta,-0.018440388545078568,-0.06209693219877835,0.023910439188598007,0.437,0.582667,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,ensemble,discordant_errors,"b=2,c=4",,,0.6875,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,extra_trees,Macro_F0.5_delta,0.07821512984957035,0.007746624604904592,0.14791375341192164,0.033,0.1056,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,extra_trees,discordant_errors,"b=13,c=4",,,0.0490417,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,gaussian_nb,Macro_F0.5_delta,0.5896783872625484,0.5138015569590922,0.6606786507515059,0.0,0.0,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,gaussian_nb,discordant_errors,"b=44,c=6",,,3.24374e-08,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,hist_gradient_boosting,Macro_F0.5_delta,-0.017499042787403107,-0.05622467073643176,0.018048196500750284,0.426,0.582667,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,hist_gradient_boosting,discordant_errors,"b=1,c=3",,,0.625,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,knn,Macro_F0.5_delta,0.07715899420439354,-0.0017413301230230992,0.1619361775501367,0.063,0.144,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,knn,discordant_errors,"b=16,c=7",,,0.0931396,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,lda,Macro_F0.5_delta,0.060067101407424106,1.1695785297499722e-06,0.12399585788413321,0.05,0.133333,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,lda,discordant_errors,"b=10,c=3",,,0.0922852,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,lightgbm,Macro_F0.5_delta,-0.011803752197175443,-0.059512835327504614,0.033999063221009714,0.606,0.6464,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,lightgbm,discordant_errors,"b=3,c=4",,,1.0,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,logistic_regression,Macro_F0.5_delta,0.017499042787402996,-0.04411912627725087,0.08416740375360175,0.605,0.6464,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,logistic_regression,discordant_errors,"b=8,c=6",,,0.790527,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,mlp,Macro_F0.5_delta,0.0722512809918543,0.006083177421573988,0.14300867240296927,0.029,0.1056,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,mlp,discordant_errors,"b=13,c=4",,,0.0490417,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,random_forest,Macro_F0.5_delta,0.059282279247238945,0.007050623434954429,0.11747198025874953,0.033,0.1056,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,random_forest,discordant_errors,"b=9,c=2",,,0.0654297,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,svm_linear,Macro_F0.5_delta,0.06941334747642913,0.00875639863718378,0.1354285553862608,0.026,0.1056,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,svm_linear,discordant_errors,"b=11,c=3",,,0.057373,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,svm_rbf,Macro_F0.5_delta,0.025296005362770435,-0.027289972112855422,0.08308785036681371,0.382,0.582667,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,svm_rbf,discordant_errors,"b=7,c=4",,,0.548828,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,paired_bootstrap_delta_macro_f0_5,gradient_boosting,xgboost,Macro_F0.5_delta,-0.011803752197175443,-0.05191902413496086,0.025147764167773454,0.51,0.627692,117,"A - B, paired test cases"
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,mcnemar_exact,gradient_boosting,xgboost,discordant_errors,"b=2,c=3",,,1.0,,117,exact McNemar (two-sided binomial over discordant pairs)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,macro_f0_5,0.9293478260869565,0.8800805568554604,0.9734230286377525,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,accuracy,0.9316239316239316,0.8803418803418803,0.9743589743589743,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,auroc,0.9731280193236715,0.9423992405725001,0.9947081617153093,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,auprc,0.9832061606842971,0.9619004098463125,0.9967202717213602,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,sensitivity,0.9420289855072463,0.8805970149253731,0.986490990990991,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,specificity,0.9166666666666666,0.8333333333333334,0.9803921568627451,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,balanced_accuracy,0.9293478260869565,0.8800197510822511,0.9745171119863741,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,brier,0.060434748382820515,0.036201216432715386,0.09119704450551729,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,ece,0.05556818803418807,0.05337127841880342,0.1143336931623932,,,117,ensemble (validation-weighted soft voting)
+REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR,bootstrap_ci,ensemble,,mcc,0.8586956521739131,0.7606627779999384,0.9466294040511437,,,117,ensemble (validation-weighted soft voting)

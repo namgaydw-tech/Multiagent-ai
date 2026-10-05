@@ -120,7 +120,8 @@ def extract(record: dict[str, Any],
             retrieval: EvidenceRetrievalOutput | None,
             model: dict[str, Any],
             uncertainty: dict[str, Any] | None,
-            anchor: dict[str, Any] | None) -> dict[str, Any]:
+            anchor: dict[str, Any] | None,
+            domain: str = "appendicitis") -> dict[str, Any]:
     """Deterministic weighted synthesis payload (see module docstring).
 
     ``opponent``/``watchdog``/``retrieval`` may be ``None`` when an ablation
@@ -136,7 +137,11 @@ def extract(record: dict[str, Any],
     model_support = p_pos if predicted.lower() == "appendicitis" else 1.0 - p_pos
 
     n_missing = len(cleanser.missing_critical_information)
-    data_completeness = max(0.0, 1.0 - n_missing / _CRITICAL_FIELDS)
+    n_critical = _CRITICAL_FIELDS
+    if domain != "appendicitis":
+        from src.agents.domains import get_pack
+        n_critical = max(len(get_pack(domain).critical_fields), 1)
+    data_completeness = max(0.0, 1.0 - n_missing / n_critical)
 
     n_contra = len(opponent.contradictory_evidence) if opponent else 0
     alt_leading = (len(differential.supporting_evidence.get(differential.candidate_diagnoses[0], []))
@@ -167,7 +172,7 @@ def extract(record: dict[str, Any],
     # decisive complication evidence (watchdog HIGH) boosts the surgical candidate
     if watchdog is not None and watchdog.risk_level in ("HIGH", "CRITICAL"):
         for key in list(scores):
-            if "appendicitis" in key.lower():
+            if domain == "appendicitis" and "appendicitis" in key.lower():
                 scores[key] += 0.15
                 break
     primary = max(scores.items(), key=lambda kv: kv[1])[0]
@@ -191,7 +196,7 @@ def extract(record: dict[str, Any],
         "* risk_mult * uncertainty_mult, 0.05, 0.95); "
         f"evidence_agreement={evidence_agreement:.3f}, model_support={model_support:.3f} "
         f"(calibrated), data_completeness={data_completeness:.3f} "
-        f"(calc={n_missing}/{_CRITICAL_FIELDS} critical fields missing), "
+        f"(calc={n_missing}/{n_critical} critical fields missing), "
         f"contradiction_strength={contradiction_strength:.3f}, "
         f"guideline_support={guideline_support:.3f}, risk_mult={risk_mult} "
         f"({watchdog.risk_level if watchdog else 'stage 5 not run in this condition'}), "
@@ -280,7 +285,8 @@ def run_arbitrator(cleanser: DataCleanserOutput,
                    uncertainty: dict[str, Any] | None,
                    anchor: dict[str, Any] | None,
                    record: dict[str, Any],
-                   provider: LLMProvider) -> ProviderResult:
+                   provider: LLMProvider,
+                   domain: str = "appendicitis") -> ProviderResult:
     """Execute Agent 5 (sees everything; weighted synthesis, no voting).
 
     ``opponent``/``watchdog``/``retrieval`` may be ``None`` when the ablation
@@ -309,4 +315,4 @@ def run_arbitrator(cleanser: DataCleanserOutput,
         stage="7_arbitration", system=system, user=user, schema=ArbitratorOutput,
         deterministic=lambda: extract(record, cleanser, differential, proponent,
                                       opponent, watchdog, retrieval, model,
-                                      uncertainty, anchor))
+                                      uncertainty, anchor, domain=domain))

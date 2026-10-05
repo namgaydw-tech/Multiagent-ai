@@ -180,8 +180,78 @@ def _eval_thresholds_and_sepsis(record: dict[str, Any]) -> tuple[list[str], list
     return refused, urgent, notes
 
 
-def extract(record: dict[str, Any], prediction: dict[str, Any] | None = None) -> dict[str, Any]:
+def _extract_domain(record: dict[str, Any], prediction: dict[str, Any] | None,
+                     domain: str) -> dict[str, Any]:
+    """Domain-pack watchdog: only verified knowledge rules; fail-closed elsewhere."""
+    from src.agents.domains import get_pack
+    pack = get_pack(domain)
+    present: list[EvidenceRef] = []
+    absent: list[str] = []
+    cannot: list[str] = []
+    refused: list[str] = []
+
+    thr = _load(THRESHOLDS_PATH)["thresholds"]
+    fever_rule = thr["fever"]
+    temp = record.get("Body_Temperature")
+    if fever_rule["verification"]["status"] != "confirmed_from_authoritative_summary":
+        refused.append("fever")
+    elif not _missing(temp):
+        if float(temp) >= 38.0:
+            present.append(EvidenceRef(kind="rule", citation=fever_rule["citation"],
+                                       quote=f"Body_Temperature={float(temp):.1f} degC ≥ 38.0",
+                                       relevance="fever (NICE CG160 threshold)"))
+        else:
+            absent.append(f"fever (Body_Temperature={float(temp):.1f} degC < 38.0)")
+            if float(temp) < 36.0:
+                cannot.append(f"hypothermia (Body_Temperature={float(temp):.1f} degC < 36.0 — "
+                              "no confirmed neonatal hypothermia threshold rule in the "
+                              "knowledge files, fail closed)")
+    else:
+        cannot.append("fever (Body_Temperature not recorded)")
+
+    sepsis = _load(SEPSIS_PATH)
+    phoenix = sepsis["rule_sets"]["phoenix_sepsis_2024"]
+    if phoenix["verification"]["status"] == "pending_full_text_transcription":
+        refused.append("phoenix_sepsis_2024 (component score tables pending transcription — "
+                       "fail closed)")
+    cannot.extend(pack.known_absent)
+
+    urgent: list[str] = []
+    notes: list[str] = []
+    if not _missing(temp) and (float(temp) >= 38.0 or float(temp) < 36.0):
+        urgent.append("sepsis — cannot be scored: Phoenix 2024 components pending "
+                      "transcription (fail closed); temperature derangement present, "
+                      "urgent clinical rule-out required")
+        notes.append("Sepsis rule-out triggered by temperature evidence only; no sepsis "
+                     "alert was computed from model output.")
+
+    conditions = list(pack.red_flag_rules) + ["fever (NICE CG160)"]
+    fever_refs = [r for r in present if "fever" in r.relevance.lower()]
+    risk = "MODERATE" if (fever_refs or urgent) else "LOW"
+    evidence = list(present) + [
+        EvidenceRef(kind="rule", citation="knowledge/pediatric_thresholds.yaml + sepsis_rules.yaml",
+                    quote=n, relevance="rule-screen note") for n in notes]
+    return {
+        "high_acuity_conditions_considered": conditions,
+        "red_flags_present": [r.model_dump() for r in present],
+        "red_flags_absent": absent,
+        "cannot_assess_due_to_missing_data": cannot,
+        "urgent_rule_out_conditions": urgent,
+        "risk_level": risk,
+        "evidence": [e.model_dump() for e in evidence],
+        "prediction_seen": prediction is not None,
+        "rules_applied": sorted({"fever",
+                                 "infection-suspicion gate (watchdog_policy."
+                                 "trigger_evidence_required)"} - set(refused)),
+        "rules_refused": sorted(set(refused)),
+    }
+
+
+def extract(record: dict[str, Any], prediction: dict[str, Any] | None = None,
+            domain: str = "appendicitis") -> dict[str, Any]:
     """Deterministic watchdog payload (rules only; prediction never consulted)."""
+    if domain != "appendicitis":
+        return _extract_domain(record, prediction, domain)
     present, absent, cannot, refused = _eval_red_flags(record)
     refused2, urgent, notes = _eval_thresholds_and_sepsis(record)
 
@@ -242,7 +312,8 @@ def extract(record: dict[str, Any], prediction: dict[str, Any] | None = None) ->
 
 def run_watchdog(record: dict[str, Any],
                  provider: LLMProvider,
-                 prediction: dict[str, Any] | None = None) -> ProviderResult:
+                 prediction: dict[str, Any] | None = None,
+                 domain: str = "appendicitis") -> ProviderResult:
     """Execute Agent 4 (prediction-blind unless an ablation passes ``prediction``)."""
     system = (
         "You are the High-Acuity Watchdog in a pediatric appendicitis research "
@@ -258,4 +329,4 @@ def run_watchdog(record: dict[str, Any],
     return provider.complete_json(
         stage="5_high_acuity_watchdog", system=system, user=user,
         schema=WatchdogOutput,
-        deterministic=lambda: extract(record, prediction))
+        deterministic=lambda: extract(record, prediction, domain=domain))

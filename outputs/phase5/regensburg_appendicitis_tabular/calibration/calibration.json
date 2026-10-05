@@ -1,0 +1,290 @@
+{
+ "logistic_regression": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.07323882895919914,
+    "ece": 0.05451942899940098
+   },
+   "platt": {
+    "brier": 0.07727342930408336,
+    "ece": 0.10440699641318564
+   },
+   "isotonic": {
+    "brier": 0.05859854561330777,
+    "ece": 5.956864003947477e-17
+   }
+  },
+  "fit_on": "validation"
+ },
+ "decision_tree": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.050153600908956146,
+    "ece": 0.04566917203301528
+   },
+   "platt": {
+    "brier": 0.054887663991560226,
+    "ece": 0.09432300314535141
+   },
+   "isotonic": {
+    "brier": 0.0444807673621233,
+    "ece": 2.1757548681743004e-18
+   }
+  },
+  "fit_on": "validation"
+ },
+ "gaussian_nb": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.27989297998940027,
+    "ece": 0.2810640854885378
+   },
+   "platt": {
+    "brier": 0.177880994229565,
+    "ece": 0.038705189064484447
+   },
+   "isotonic": {
+    "brier": 0.15967721499173,
+    "ece": 2.5911365350902005e-09
+   }
+  },
+  "fit_on": "validation"
+ },
+ "knn": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.12127940058624513,
+    "ece": 0.1461698447696399
+   },
+   "platt": {
+    "brier": 0.12247049476142419,
+    "ece": 0.16059561997040006
+   },
+   "isotonic": {
+    "brier": 0.08739124575988982,
+    "ece": 1.3642571065309128e-17
+   }
+  },
+  "fit_on": "validation"
+ },
+ "lda": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.09821441251796051,
+    "ece": 0.08573609706604199
+   },
+   "platt": {
+    "brier": 0.09854129210536697,
+    "ece": 0.10480452720078642
+   },
+   "isotonic": {
+    "brier": 0.07475166076860992,
+    "ece": 3.293034395074617e-18
+   }
+  },
+  "fit_on": "validation"
+ },
+ "random_forest": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.07699487807683117,
+    "ece": 0.12794527119130286
+   },
+   "platt": {
+    "brier": 0.07824334831596304,
+    "ece": 0.15037870246521678
+   },
+   "isotonic": {
+    "brier": 0.0458762601085632,
+    "ece": 0.0
+   }
+  },
+  "fit_on": "validation"
+ },
+ "extra_trees": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.09133047192669175,
+    "ece": 0.07761460422506856
+   },
+   "platt": {
+    "brier": 0.09847316173737457,
+    "ece": 0.12347528841235997
+   },
+   "isotonic": {
+    "brier": 0.07615555348606196,
+    "ece": 1.3172137580298468e-17
+   }
+  },
+  "fit_on": "validation"
+ },
+ "gradient_boosting": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.0215036538992759,
+    "ece": 0.029391228749916617
+   },
+   "platt": {
+    "brier": 0.026639137685714253,
+    "ece": 0.08697806629460125
+   },
+   "isotonic": {
+    "brier": 0.01386748844375963,
+    "ece": 0.0
+   }
+  },
+  "fit_on": "validation"
+ },
+ "adaboost": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.14303365513843466,
+    "ece": 0.32191224913132765
+   },
+   "platt": {
+    "brier": 0.1362821042467542,
+    "ece": 0.2915559960831855
+   },
+   "isotonic": {
+    "brier": 0.027837699024139705,
+    "ece": 2.64618835318496e-18
+   }
+  },
+  "fit_on": "validation"
+ },
+ "hist_gradient_boosting": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.023129010772250727,
+    "ece": 0.03142987463001328
+   },
+   "platt": {
+    "brier": 0.027002536883391756,
+    "ece": 0.08778534760804019
+   },
+   "isotonic": {
+    "brier": 0.01386748844375963,
+    "ece": 0.0
+   }
+  },
+  "fit_on": "validation"
+ },
+ "lightgbm": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.03486495139272229,
+    "ece": 0.048781862759942604
+   },
+   "platt": {
+    "brier": 0.04094330725271535,
+    "ece": 0.10409305164867066
+   },
+   "isotonic": {
+    "brier": 0.021791767554479417,
+    "ece": 9.87910318522385e-18
+   }
+  },
+  "fit_on": "validation"
+ },
+ "catboost": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.03528916050882872,
+    "ece": 0.042727460013065786
+   },
+   "platt": {
+    "brier": 0.04121659303208794,
+    "ece": 0.0990291930887968
+   },
+   "isotonic": {
+    "brier": 0.02683615819209039,
+    "ece": 4.233901365095936e-18
+   }
+  },
+  "fit_on": "validation"
+ },
+ "xgboost": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.03013683741906731,
+    "ece": 0.021173150586191222
+   },
+   "platt": {
+    "brier": 0.03706318367664737,
+    "ece": 0.10097962686819376
+   },
+   "isotonic": {
+    "brier": 0.024858757062146894,
+    "ece": 0.0
+   }
+  },
+  "fit_on": "validation"
+ },
+ "svm_linear": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.0756610262103399,
+    "ece": 0.03861022274231153
+   },
+   "platt": {
+    "brier": 0.08323142873319801,
+    "ece": 0.1277391081115201
+   },
+   "isotonic": {
+    "brier": 0.06393557422969187,
+    "ece": 1.7876472430405065e-17
+   }
+  },
+  "fit_on": "validation"
+ },
+ "svm_rbf": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.05487646402858174,
+    "ece": 0.07405995864564173
+   },
+   "platt": {
+    "brier": 0.06162953138437776,
+    "ece": 0.12543927951155426
+   },
+   "isotonic": {
+    "brier": 0.043220338983050846,
+    "ece": 2.163994031049034e-17
+   }
+  },
+  "fit_on": "validation"
+ },
+ "mlp": {
+  "selected": "isotonic",
+  "comparison": {
+   "raw": {
+    "brier": 0.08872075869271434,
+    "ece": 0.0628709060614207
+   },
+   "platt": {
+    "brier": 0.09562050878117369,
+    "ece": 0.08060926097609213
+   },
+   "isotonic": {
+    "brier": 0.0783091202582728,
+    "ece": 5.080681638115123e-17
+   }
+  },
+  "fit_on": "validation"
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "status": "NOT_EXECUTED",
+ "definition": "An independent cohort for the SAME task, different population, evaluated with a locked model. Mirrors are not cohorts; different diseases are different tasks, not external validation.",
+ "candidates": [
+  {
+   "candidate": "Kermany pneumonia as external cohort for appendicitis",
+   "status": "NOT_APPLICABLE",
+   "reason": "different disease/task — not an external cohort for appendicitis"
+  },
+  {
+   "candidate": "Neonatal sepsis registry as external cohort for appendicitis",
+   "status": "NOT_APPLICABLE",
+   "reason": "different disease/task — executed as its own separate experiment"
+  },
+  {
+   "candidate": "Regensburg ultrasound images",
+   "status": "NOT_EXTERNAL",
+   "reason": "shares patients with the Regensburg tabular cohort (internal extension)"
+  },
+  {
+   "candidate": "Kaggle mirror of Kermany",
+   "status": "NOT_A_COHORT",
+   "reason": "mirror of the Mendeley dataset — one underlying dataset"
+  },
+  {
+   "candidate": "PhysioNet PIC / PECARN pediatric cohorts",
+   "status": "NOT_AVAILABLE",
+   "reason": "credentialed access unavailable in this environment"
+  }
+ ],
+ "disclaimer": "No dataset is claimed externally validated. Research prototype — not a medical device."
+}

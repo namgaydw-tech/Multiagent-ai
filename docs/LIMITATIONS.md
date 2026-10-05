@@ -47,3 +47,37 @@
   actual experiment code and stored in `outputs/`.
 - No dataset, paper, file, result, metric or model exists in this repository unless it was actually
   verified or created — Phase 1 produced audits and inventories only.
+
+## Phase 5 additions (multi-dataset / multi-algorithm)
+
+- **No true external cohort was executed.** The neonatal-sepsis run is a *cross-domain
+  replication of the pipeline*, not external validation of the appendicitis model
+  (see `docs/EXTERNAL_VALIDATION.md`). The Regensburg ultrasound extension shares patients with
+  the tabular cohort and would never count as external either.
+- **Sealed test opened once per dataset, but the whole zoo saw it.** All 17 algorithms are
+  reported on the same test partition; comparisons among them are *post-hoc* (paired bootstrap /
+  McNemar / DeLong with BH correction in `outputs/phase5/statistical_comparison.json`) and must
+  not be read as pre-registered pairwise trials. Only the single winner was selected on validation.
+- **Sepsis task is severely imbalanced** (21 positives in 300 test cases): sensitivity-first
+  thresholds buy recall at the cost of precision (0.114 at the locked operating point); every
+  sepsis metric carries wide bootstrap CIs. AUROC 0.697 [0.601, 0.789] is a weak signal, not a
+  usable screen.
+- **QDA is UNAVAILABLE on Regensburg** (rank-deficient class-0 covariance, 176 < 212 features) —
+  recorded as unavailable with the exact LinAlgError reason, never scored as 0.
+- **Image experiments NOT_EXECUTED**: PyTorch is not installed in this environment, so Kermany
+  CXR / Regensburg ultrasound CNN training, Grad-CAM and late fusion did not run. No image number
+  exists anywhere in the outputs.
+- **Credentialed datasets stay unavailable**: PHYSIONet PIC requires credentialing, PECARN has no
+  local data; sample counts are not invented. CHILD_PNEUMONIA_MENDELEY remains BLOCKED
+  (pre-augmented `aug_*` files, duplicate filenames, no patient grouping).
+- **Cross-backbone bias runs are a subset**: 40 test rows × 1 repetition × 2 conditions ×
+  2 profiles per backbone (960 case-runs total), deterministic LLM backend. They test
+  backbone-dependence under a *uniform information budget* (no SHAP for any backbone); they are
+  narrower than the Phase 4 headline experiments (117 rows × 3 reps) and HFR is excluded
+  (undefined) on this subset, so HFR claims come only from Phase 4.
+- **Development-only figures are labelled**: threshold curves, learning curves, hyperparameter
+  sweeps and importance plots are computed on TRAIN/VALIDATION and watermarked
+  "DEVELOPMENT / VALIDATION"; sealed-test panels are watermarked "SEALED TEST".
+- **Windows/Git-Bash environment**: models and prediction CSVs under `outputs/phase5/*/` are
+  persisted locally; large binaries are excluded from git via `.gitignore`, so a fresh clone must
+  re-run `scripts/run_phase5.py train/evaluate` to rebuild them.

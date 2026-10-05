@@ -1,0 +1,12 @@
+{
+ "strategy": "stratified_group_shuffle (patients never cross partitions)",
+ "seed": 20261002,
+ "group_column": "unique_patient_id",
+ "n_patients": 986,
+ "counts": {
+  "train": 1337,
+  "validation": 309,
+  "test": 300
+ },
+ "created_utc": "2026-10-04T07:06:50+00:00"
+}

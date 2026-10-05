@@ -1,0 +1,165 @@
+# PHASE 5 dataset blocking configuration — the 27 mandatory pre-training checks.
+#
+# Every candidate dataset receives exactly one status:
+#   PASS           all checks satisfied
+#   CONDITIONAL    only warn-level findings, each with an explicit recorded reason
+#   BLOCKED        at least one fatal finding — training is refused by the gate
+#   NOT_AVAILABLE  data cannot be accessed/verified in this environment
+#
+# severities:
+#   fatal     -> check result FAIL forces BLOCKED (or NOT_AVAILABLE when the data
+#                itself is absent)
+#   warn      -> check result FAIL forces CONDITIONAL with a mandatory reason
+#   info      -> recorded in the report, never changes the status
+#
+# result values a check may return:
+#   PASS | FAIL | WARN | NA (not applicable) | NOT_AVAILABLE (cannot be evaluated)
+
+version: 1
+last_verified: "2026-10-04"
+
+rollup_rules:
+  any_fatal_fail: BLOCKED
+  data_absent: NOT_AVAILABLE
+  any_warn: CONDITIONAL
+  otherwise: PASS
+  gate: "BLOCKED and NOT_AVAILABLE datasets must never reach the trainer"
+
+# --------------------------------------------------------------- the 27 checks
+checks:
+  1_provenance:            { severity: fatal,   desc: "Dataset provenance reconstructable from repository/manifest" }
+  2_doi_source:            { severity: fatal,   desc: "DOI/source URL resolves and matches the recorded source" }
+  3_license:               { severity: fatal,   desc: "License identified and permits research use" }
+  4_pediatric_population:  { severity: fatal,   desc: "Pediatric population verified" }
+  5_task_relevance:        { severity: fatal,   desc: "Relevant to a pediatric diagnostic task" }
+  6_target_availability:   { severity: fatal,   desc: "A usable target column/label exists" }
+  7_target_validity:       { severity: fatal,   desc: "Target semantics verified; not invented from a convenient column" }
+  8_sample_size:           { severity: warn,    desc: "Enough samples for the proposed split/CV" }
+  9_class_balance:         { severity: warn,    desc: "Class balance documented; extreme imbalance flagged" }
+  10_patient_identifier:   { severity: warn,    desc: "Patient/group identifiers available for grouped splitting" }
+  11_duplicate_rows:       { severity: fatal,   desc: "No unresolvable exact duplicate rows" }
+  12_duplicate_patients:   { severity: warn,    desc: "Duplicate patients identified and grouped, never split across partitions" }
+  13_duplicate_files:      { severity: fatal,   desc: "Duplicate image/file entries detected and resolved" }
+  14_file_hashes:          { severity: fatal,   desc: "Exact file-hash deduplication executed where files exist" }
+  15_perceptual_duplicates: { severity: warn,   desc: "Perceptual duplicate risk assessed for images" }
+  16_pre_augmented_leakage: { severity: fatal,   desc: "No pre-augmented copies leaking across partitions" }
+  17_post_outcome_leakage: { severity: fatal,   desc: "Post-outcome variables excluded from features" }
+  18_identifier_leakage:   { severity: fatal,   desc: "Identifiers excluded from features" }
+  19_treatment_leakage:    { severity: fatal,   desc: "Treatment/management variables excluded from features" }
+  20_diagnosis_code_leakage: { severity: fatal, desc: "Diagnosis/discharge codes never used as features" }
+  21_temporal_leakage:     { severity: fatal,   desc: "No future information relative to the prediction window" }
+  22_label_circularity:    { severity: warn,    desc: "Label-circular features identified and excluded or sensitivity-tested" }
+  23_train_test_contamination: { severity: fatal, desc: "No train/test contamination (patients, hashes, derived copies)" }
+  24_mirror_duplication:   { severity: fatal,   desc: "Mirror copies of the same dataset never counted as cohorts" }
+  25_excessive_missingness: { severity: warn,   desc: "Missingness documented; no silent drops" }
+  26_access_restrictions:  { severity: fatal,   desc: "Access mode (open/credentialed/DUA) honestly recorded" }
+  27_task_compatibility:   { severity: fatal,   desc: "Dataset compatible with the proposed task and this pipeline" }
+
+# --------------------------------------------------------------- dataset profiles
+# Each profile drives which checks are evaluated and what evidence the blocker
+# looks for. `expected_status` is a pre-declared expectation used only to detect
+# drift between the config and the executed audit — the executed audit wins.
+
+datasets:
+
+  REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR:
+    data_paths: [data/raw/regensburg_pediatric_appendicitis/app_data.xlsx]
+    manifest: data/manifests/download_manifest.json
+    doi: 10.5281/zenodo.7669442
+    license: CC-BY-NC-4.0
+    pediatric: true
+    task: binary_diagnosis
+    target_column: Diagnosis
+    feature_exclusions: [Diagnosis, Diagnosis_Presumptive, Management, Severity,
+                         Length_of_Stay, US_Number]
+    patient_identifier: one_row_per_patient
+    prior_audit: outputs/metrics/regensburg_audit.json
+    natural_anchor_column: Diagnosis_Presumptive
+    expected_status: PASS
+
+  REG_ENSBURG_ULTRASOUND_IMAGES:
+    modality: image
+    data_paths: [data/raw/regensburg_pediatric_appendicitis/US_Pictures.zip]
+    doi: 10.5281/zenodo.7669442
+    license: CC-BY-NC-4.0
+    pediatric: true
+    task: image_classification_diagnosis
+    target_column: Diagnosis (linked via patient/US_Number)
+    patient_identifier: US_Number
+    same_cohort_as: REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR
+    external_population: false
+    expected_status: CONDITIONAL
+
+  NEONATAL_SEPSIS_REGISTRY:
+    data_paths: [data/raw/neonatal_sepsis/deid-nicu-sepsis-tta.csv]
+    manifest: data/manifests/download_manifest.json
+    doi: 10.17632/5vdz5cftz7.1
+    license: not_exposed_by_api
+    pediatric: true
+    task: binary_diagnosis
+    target_column: blood_culture_positive
+    target_rationale: >-
+      Blood-culture positivity is a verified diagnostic outcome recorded for every
+      episode; the task is to predict culture positivity from information available
+      at the time of sepsis evaluation. No target is invented.
+    feature_exclusions:
+      sepsis_group: label-derived grouping (all culture-positive episodes fall in group 1)
+      positive_days: post-outcome (days-to-positivity)
+      time_to_antibiotics: treatment variable
+      stat_abx: treatment variable
+      overall_mortality_within_7_days: post-outcome
+      overall_mortality_within_14_days: post-outcome
+      overall_mortality_within_30_days: post-outcome
+      intubated_free_days: post-outcome
+      inotrope_free_days: post-outcome
+      length_of_stay_hours: post-outcome
+      cx_site: 90% missing
+      episode_id: identifier
+      unique_patient_id: identifier (used for grouping only)
+    patient_identifier: unique_patient_id
+    expected_status: CONDITIONAL
+
+  KERMANY_PEDIATRIC_PNEUMONIA:
+    modality: image
+    data_paths: [data/raw/kermany_pneumonia/CellData/chest_xray]
+    doi: 10.17632/rscbjbr9sj
+    license: research_only_per_mendeley_record
+    pediatric: true
+    task: image_classification_diagnosis
+    target_column: folder label (NORMAL / PNEUMONIA; bacteria/virus encoded in filename)
+    patient_identifier: parsed_from_filename
+    original_split: train_test_independent_patients
+    mirrors: [kaggle_chest_xray_pneumonia]
+    mirror_policy: one_dataset_only
+    exclude: [OCT]
+    expected_status: CONDITIONAL
+
+  PHYSIONET_PIC:
+    modality: timeseries
+    data_paths: []
+    doi: 10.13026/63f7-1w61
+    license: credentialed_physionet
+    credentialing_required: true
+    unavailable_status: NOT_AVAILABLE_REQUIRES_PHYSIONET_CREDENTIALING
+    expected_status: NOT_AVAILABLE
+
+  PECARN:
+    modality: tabular
+    data_paths: []
+    license: requires_data_use_agreement_no_open_license
+    access: dua_irb_registration_required
+    unavailable_status: NOT_AVAILABLE_REQUIRES_DATA_USE_APPROVAL
+    expected_status: NOT_AVAILABLE
+
+  CHILD_PNEUMONIA_MENDELEY:
+    modality: image
+    data_paths: []            # metadata only — file-level audit impossible without download
+    metadata: data/manifests/mendeley_3tx8xymdsv_metadata.json
+    doi: 10.17632/3tx8xymdsv.1
+    license: cc_by_4_0_reverify
+    known_risks:
+      pre_augmented_files: 2644      # aug_ prefix
+      duplicate_filenames: 279
+      patient_grouping_available: false
+      total_files: 2926
+    expected_status: BLOCKED

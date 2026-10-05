@@ -1,0 +1,438 @@
+{
+ "dataset_id": "NEONATAL_SEPSIS_REGISTRY",
+ "seed": 20261002,
+ "stage": "train",
+ "blocker_status": "CONDITIONAL",
+ "blocker_reasons": [
+  "[3_license] license not confirmed: 'not_exposed_by_api' \u2014 recorded as a CONDITIONAL reason; confirm on the landing page before any reuse beyond inspection"
+ ],
+ "split_source": "phase5_group_split_persisted",
+ "counts": {
+  "train": {
+   "n": 1337,
+   "class_0": 1253,
+   "class_1": 84
+  },
+  "validation": {
+   "n": 309,
+   "class_0": 286,
+   "class_1": 23
+  },
+  "test": {
+   "n": 300,
+   "class_0": 279,
+   "class_1": 21
+  }
+ },
+ "multiclass": false,
+ "target_names": {
+  "0": "culture_negative",
+  "1": "culture_positive"
+ },
+ "sensitivity_floor": 0.9,
+ "models": {
+  "logistic_regression": {
+   "available": true,
+   "cv_score": 0.12379233848818934,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__C": 0.01
+   },
+   "fit_seconds": 0.95,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.30157843728208583,
+   "val_auroc": 0.7481757373061722,
+   "val_auprc": 0.17503633356169457,
+   "threshold": 0.01,
+   "floor_satisfied": true
+  },
+  "decision_tree": {
+   "available": true,
+   "cv_score": 0.10951152508986171,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__min_samples_leaf": 5,
+    "clf__max_depth": 3,
+    "clf__criterion": "entropy"
+   },
+   "fit_seconds": 0.96,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.46039133452010983,
+   "val_auroc": 0.6996807540285801,
+   "val_auprc": 0.12517491959836005,
+   "threshold": 0.03,
+   "floor_satisfied": true
+  },
+  "gaussian_nb": {
+   "available": true,
+   "cv_score": 0.10704233493010513,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__var_smoothing": 1e-08
+   },
+   "fit_seconds": 0.56,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.35145063951951866,
+   "val_auroc": 0.6838704773487382,
+   "val_auprc": 0.15544601690175808,
+   "threshold": 0.03,
+   "floor_satisfied": true
+  },
+  "knn": {
+   "available": true,
+   "cv_score": 0.08110127355898088,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__weights": "distance",
+    "clf__n_neighbors": 25
+   },
+   "fit_seconds": 1.32,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.04567116759332804,
+   "val_auroc": 0.694588020674977,
+   "val_auprc": 0.19646637837739014,
+   "threshold": 0.01,
+   "floor_satisfied": true
+  },
+  "lda": {
+   "available": true,
+   "cv_score": 0.12704580628912443,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__shrinkage": null
+   },
+   "fit_seconds": 0.44,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.4509080761456542,
+   "val_auroc": 0.7275767710550319,
+   "val_auprc": 0.17161972605193937,
+   "threshold": 0.03,
+   "floor_satisfied": true
+  },
+  "qda": {
+   "available": false,
+   "note": "training failed: LinAlgError: The covariance matrix of class 0 is not full rank. Increase the value of `reg_param` to reduce the collinearity."
+  },
+  "random_forest": {
+   "available": true,
+   "cv_score": 0.1465564879209766,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__n_estimators": 600,
+    "clf__min_samples_leaf": 3,
+    "clf__max_depth": 12
+   },
+   "fit_seconds": 34.31,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.41542395637958784,
+   "val_auroc": 0.7078899361508058,
+   "val_auprc": 0.12830886330037092,
+   "threshold": 0.02,
+   "floor_satisfied": true
+  },
+  "extra_trees": {
+   "available": true,
+   "cv_score": 0.10836238608936437,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__n_estimators": 200,
+    "clf__min_samples_leaf": 1,
+    "clf__max_depth": 12
+   },
+   "fit_seconds": 16.07,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.0793716334652864,
+   "val_auroc": 0.6344633627242323,
+   "val_auprc": 0.12436790932114065,
+   "threshold": 0.01,
+   "floor_satisfied": true
+  },
+  "gradient_boosting": {
+   "available": true,
+   "cv_score": 0.15277447415698764,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__n_estimators": 100,
+    "clf__max_depth": 5,
+    "clf__learning_rate": 0.05
+   },
+   "fit_seconds": 9.12,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.5001082485386448,
+   "val_auroc": 0.7722712070538158,
+   "val_auprc": 0.1756569811119159,
+   "threshold": 0.04,
+   "floor_satisfied": true
+  },
+  "adaboost": {
+   "available": true,
+   "cv_score": 0.14392042419592657,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__n_estimators": 100,
+    "clf__learning_rate": 0.5
+   },
+   "fit_seconds": 5.17,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.4843630977570884,
+   "val_auroc": 0.7902097902097902,
+   "val_auprc": 0.18778726238573917,
+   "threshold": 0.03,
+   "floor_satisfied": true
+  },
+  "hist_gradient_boosting": {
+   "available": true,
+   "cv_score": 0.1474202575356301,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "min_samples_leaf": 10,
+    "max_leaf_nodes": 31,
+    "max_iter": 200,
+    "learning_rate": 0.05
+   },
+   "fit_seconds": 19.64,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.432563246691569,
+   "val_auroc": 0.7079659470963819,
+   "val_auprc": 0.14357694543543628,
+   "threshold": 0.04,
+   "floor_satisfied": true
+  },
+  "lightgbm": {
+   "available": true,
+   "cv_score": 0.1507278839725615,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "reg_lambda": 1.0,
+    "num_leaves": 31,
+    "n_estimators": 400,
+    "min_child_samples": 30,
+    "learning_rate": 0.08
+   },
+   "fit_seconds": 11.98,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.2065091634291168,
+   "val_auroc": 0.6698084524171481,
+   "val_auprc": 0.13757309615478755,
+   "threshold": 0.01,
+   "floor_satisfied": true
+  },
+  "catboost": {
+   "available": true,
+   "cv_score": 0.12080136974895143,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "iterations": 400,
+    "depth": 6,
+    "learning_rate": 0.03,
+    "l2_leaf_reg": 3.0
+   },
+   "fit_seconds": 208.24,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.47302671987594946,
+   "val_auroc": 0.7534965034965035,
+   "val_auprc": 0.14944425710433615,
+   "threshold": 0.02,
+   "floor_satisfied": true
+  },
+  "xgboost": {
+   "available": true,
+   "cv_score": 0.15076770548421337,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "subsample": 0.8,
+    "n_estimators": 300,
+    "max_depth": 4,
+    "learning_rate": 0.05
+   },
+   "fit_seconds": 4.8,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.4182604357226011,
+   "val_auroc": 0.7185314685314685,
+   "val_auprc": 0.17108091577030202,
+   "threshold": 0.04,
+   "floor_satisfied": true
+  },
+  "svm_linear": {
+   "available": true,
+   "cv_score": 0.1279028684557454,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__C": 1.0
+   },
+   "fit_seconds": 4.41,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.3178676949271371,
+   "val_auroc": 0.7452113104287017,
+   "val_auprc": 0.1836931931772079,
+   "threshold": 0.01,
+   "floor_satisfied": true
+  },
+  "svm_rbf": {
+   "available": true,
+   "cv_score": 0.12808943187385266,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__gamma": 0.001,
+    "clf__C": 1.0
+   },
+   "fit_seconds": 6.22,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.33300845010888147,
+   "val_auroc": 0.7343417452113105,
+   "val_auprc": 0.17061330603530092,
+   "threshold": 0.01,
+   "floor_satisfied": true
+  },
+  "mlp": {
+   "available": true,
+   "cv_score": 0.07747072812729493,
+   "cv_scoring": "average_precision",
+   "best_params": {
+    "clf__alpha": 0.0001
+   },
+   "fit_seconds": 0.78,
+   "calibrator": "isotonic",
+   "val_macro_f0_5": 0.22127635646778127,
+   "val_auroc": 0.5472027972027972,
+   "val_auprc": 0.08156028368794327,
+   "threshold": 0.01,
+   "floor_satisfied": true
+  }
+ },
+ "started_utc": "2026-10-04T08:08:58+00:00",
+ "test_partition": "SEALED (never read in this stage)",
+ "disclaimer": "Research prototype \u2014 not a medical device.",
+ "ensemble": {
+  "fitted_on": "validation",
+  "test_used": false,
+  "models": [
+   "logistic_regression",
+   "decision_tree",
+   "gaussian_nb",
+   "knn",
+   "lda",
+   "random_forest",
+   "extra_trees",
+   "gradient_boosting",
+   "adaboost",
+   "hist_gradient_boosting",
+   "lightgbm",
+   "catboost",
+   "xgboost",
+   "svm_linear",
+   "svm_rbf",
+   "mlp"
+  ],
+  "floor_satisfied_models": [
+   "logistic_regression",
+   "decision_tree",
+   "gaussian_nb",
+   "knn",
+   "lda",
+   "random_forest",
+   "extra_trees",
+   "gradient_boosting",
+   "adaboost",
+   "hist_gradient_boosting",
+   "lightgbm",
+   "catboost",
+   "xgboost",
+   "svm_linear",
+   "svm_rbf",
+   "mlp"
+  ],
+  "weight_note": "weights \u221d validation Macro F0.5 among floor-satisfied models",
+  "method": "validation_weighted_soft_voting",
+  "weights": {
+   "logistic_regression": 0.054915,
+   "decision_tree": 0.083833,
+   "gaussian_nb": 0.063996,
+   "knn": 0.008316,
+   "lda": 0.082106,
+   "random_forest": 0.075645,
+   "extra_trees": 0.014453,
+   "gradient_boosting": 0.091065,
+   "adaboost": 0.088198,
+   "hist_gradient_boosting": 0.078766,
+   "lightgbm": 0.037603,
+   "catboost": 0.086134,
+   "xgboost": 0.076161,
+   "svm_linear": 0.057881,
+   "svm_rbf": 0.060638,
+   "mlp": 0.040292
+  },
+  "threshold": 0.06,
+  "uniform_weights": {
+   "logistic_regression": 0.0625,
+   "decision_tree": 0.0625,
+   "gaussian_nb": 0.0625,
+   "knn": 0.0625,
+   "lda": 0.0625,
+   "random_forest": 0.0625,
+   "extra_trees": 0.0625,
+   "gradient_boosting": 0.0625,
+   "adaboost": 0.0625,
+   "hist_gradient_boosting": 0.0625,
+   "lightgbm": 0.0625,
+   "catboost": 0.0625,
+   "xgboost": 0.0625,
+   "svm_linear": 0.0625,
+   "svm_rbf": 0.0625,
+   "mlp": 0.0625
+  },
+  "stacking": {
+   "method": "stacking",
+   "meta_learner": "logistic_regression",
+   "fit_on": "out-of-fold validation predictions",
+   "n_fit": 309,
+   "test_used": false
+  },
+  "thresholds": {
+   "ensemble_soft_voting": {
+    "threshold": 0.06,
+    "val_macro_f0_5": 0.476064,
+    "val_sensitivity": 0.956522,
+    "sensitivity_floor": 0.9,
+    "floor_satisfied": true,
+    "objective": "maximize validation Macro F0.5 s.t. sensitivity >= floor",
+    "note": "max validation Macro F0.5 subject to sensitivity >= 0.9",
+    "fitted_on": "validation",
+    "locked_before_test": true,
+    "disclaimer": "Research operating point, NOT a clinically validated threshold. Selected on validation predictions only; the test partition is evaluated once after locking.",
+    "beta": 0.5,
+    "grid_n": 99
+   },
+   "ensemble_soft_uniform": {
+    "threshold": 0.06,
+    "val_macro_f0_5": 0.474549,
+    "val_sensitivity": 0.956522,
+    "sensitivity_floor": 0.9,
+    "floor_satisfied": true,
+    "objective": "maximize validation Macro F0.5 s.t. sensitivity >= floor",
+    "note": "max validation Macro F0.5 subject to sensitivity >= 0.9",
+    "fitted_on": "validation",
+    "locked_before_test": true,
+    "disclaimer": "Research operating point, NOT a clinically validated threshold. Selected on validation predictions only; the test partition is evaluated once after locking.",
+    "beta": 0.5,
+    "grid_n": 99
+   },
+   "ensemble_stacking": {
+    "threshold": 0.06,
+    "val_macro_f0_5": 0.498148,
+    "val_sensitivity": 0.956522,
+    "sensitivity_floor": 0.9,
+    "floor_satisfied": true,
+    "objective": "maximize validation Macro F0.5 s.t. sensitivity >= floor",
+    "note": "max validation Macro F0.5 subject to sensitivity >= 0.9",
+    "fitted_on": "validation",
+    "locked_before_test": true,
+    "disclaimer": "Research operating point, NOT a clinically validated threshold. Selected on validation predictions only; the test partition is evaluated once after locking.",
+    "beta": 0.5,
+    "grid_n": 99
+   }
+  }
+ },
+ "elapsed_seconds": 327.0,
+ "completed_utc": "2026-10-04T08:14:24+00:00"
+}

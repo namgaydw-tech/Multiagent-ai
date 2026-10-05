@@ -1,0 +1,220 @@
+# PHASE 5 configuration — Multi-dataset, multi-algorithm external validation
+# and robustness evaluation.
+#
+# Pre-registered BEFORE any new test-set result was viewed (see
+# docs/PHASE5_PLAN.md §V). Nothing in this file produces results; results only
+# come from executed code persisted under outputs/phase5/.
+#
+# Research prototype — not a medical device.
+
+version: 1
+seed: 20261002
+
+hypothesis:
+  central_question: >-
+    Does adversarial, information-isolated multi-agent diagnostic reasoning
+    reduce confirmation bias consistently across distinct pediatric diagnostic
+    datasets, modalities, diseases and underlying machine-learning classifiers?
+  primary_effect: "CBR reduction (multi-agent vs single-agent) per domain"
+  pre_registered: true
+  pre_registered_before: "any Phase 5 test-set evaluation"
+
+# --------------------------------------------------------------------- datasets
+# IDs are stable; directories under outputs/phase5/<dir>/; NEVER concatenated.
+datasets:
+  REG_ENSBURG_PEDIATRIC_APPENDICITIS_TABULAR:
+    dir: regensburg_appendicitis_tabular
+    domain: appendicitis
+    modality: tabular
+    role: reference_benchmark
+    validation_type: internal
+    target: Diagnosis
+    co_targets: [Management, Severity]      # separate models only, never predictors
+    split_source: data/interim/splits       # EXISTING persisted Phase 2 split (never re-split)
+    resplit_allowed: false
+    group_column: null                      # one row per patient already
+  REG_ENSBURG_ULTRASOUND_IMAGES:
+    dir: regensburg_ultrasound_images
+    domain: appendicitis
+    modality: image
+    role: multimodal_extension
+    validation_type: internal_same_cohort   # NOT an external population (same patients)
+    target: Diagnosis
+    source: zenodo_10.5281/zenodo.7669442
+    group_column: US_Number                 # split by patient/US_Number, never by image
+    late_fusion:
+      enabled: true
+      weights_fit_on: validation_only
+  NEONATAL_SEPSIS_REGISTRY:
+    dir: neonatal_sepsis
+    domain: neonatal_sepsis
+    modality: tabular
+    role: external_cohort
+    validation_type: cross_domain
+    target: blood_culture_positive
+    target_friendly_name: "culture-positive sepsis evaluation"
+    group_column: unique_patient_id         # repeated episodes per patient
+    file: data/raw/neonatal_sepsis/deid-nicu-sepsis-tta.csv
+    doi: 10.17632/5vdz5cftz7.1
+  KERMANY_PEDIATRIC_PNEUMONIA:
+    dir: kermany_pneumonia
+    domain: pediatric_pneumonia
+    modality: image
+    role: external_cohort
+    validation_type: external
+    target: binary                          # Normal vs Pneumonia
+    multiclass_target: multiclass           # Normal vs Bacterial vs Viral (label-verified)
+    root: data/raw/kermany_pneumonia/CellData/chest_xray
+    source: mendeley_doi_10.17632/rscbjbr9sj   # v2/v3 are versions of ONE dataset
+    mirror_policy: >-
+      Mendeley rscbjbr9sj and its Kaggle mirror are ONE underlying dataset;
+      only the Mendeley copy is used; mirrors are never counted as cohorts.
+    group_from_filename: true               # disease-patientID-imageNo → patient groups
+    preserve_original_split: true           # train/ and test/ dirs are independent patients
+    exclude_subdatasets: [OCT]              # never mix OCT into the pneumonia experiment
+  PHYSIONET_PIC:
+    dir: physionet_pic
+    domain: picu_diagnoses
+    modality: timeseries
+    role: credentialed_cohort
+    validation_type: not_available
+    credentialing: physionet_credentialing
+    unavailable_status: NOT_AVAILABLE_REQUIRES_PHYSIONET_CREDENTIALING
+    doi: 10.13026/63f7-1w61
+    version: v1.1.0
+    prediction_window: "must be defined before any task (index time vs cutoff) — see PHASE5_PLAN"
+    label_policy: "diagnosis/discharge codes may be TARGETS only, never features"
+  PECARN:
+    dir: pecarn
+    domain: pediatric_emergency
+    modality: tabular
+    role: optional_future_cohort
+    validation_type: not_available
+    unavailable_status: NOT_AVAILABLE_REQUIRES_DATA_USE_APPROVAL
+    access_policy: "registration + DUA + IRB required; never bypassed"
+  CHILD_PNEUMONIA_MENDELEY:
+    dir: child_pneumonia_high_risk
+    domain: pediatric_pneumonia
+    modality: image
+    role: inventory_only_high_risk
+    doi: 10.17632/3tx8xymdsv.1
+    do_not_use_automatically: true
+
+concatenation_policy:
+  cross_dataset_pooling: forbidden
+  rationale: >-
+    Unrelated diseases are never merged into one training table; each dataset is
+    an independent experiment (rule A.1 of the Phase 5 brief).
+
+# --------------------------------------------------------------------- blocking
+blocking:
+  config: config/dataset_blocking.yaml
+  report_json: outputs/phase5/dataset_blocking_report.json
+  report_csv: outputs/phase5/dataset_blocking_report.csv
+  audit_md: docs/PHASE5_DATASET_AUDIT.md
+  gate: "BLOCKED or NOT_AVAILABLE datasets must never reach the trainer"
+
+# --------------------------------------------------------------------- metrics
+metrics:
+  primary: macro_f0_5
+  beta: 0.5
+  sklearn_equivalent: "fbeta_score(y_true, y_pred, beta=0.5, average='macro', zero_division=0)"
+  binary:
+    [macro_f0_5, positive_class_f0_5, macro_precision, macro_recall, macro_f1, macro_f2,
+     accuracy, balanced_accuracy, sensitivity, specificity, ppv, npv,
+     auroc, auprc, brier, ece, confusion_matrix, mcc]
+  multiclass:
+    [macro_f0_5, per_class_f0_5, macro_precision, macro_recall, macro_f1, macro_f2,
+     accuracy, balanced_accuracy, auroc_macro, auprc_macro, per_class_auroc, per_class_auprc,
+     brier, ece, confusion_matrix, mcc]
+  bootstrap_ci: { n: 2000, alpha: 0.05 }
+
+# --------------------------------------------------------------------- threshold
+threshold_policy:
+  objective: "maximize validation Macro F0.5"
+  constraint: "positive-class sensitivity >= sensitivity_floor"
+  sensitivity_floor: 0.90            # configurable per dataset
+  infeasible_rule: "max sensitivity first, then Macro F0.5 as tie-breaker"
+  selection_partition: validation_only
+  locked_before_test: true
+  disclaimer: >-
+    Research operating point, NOT a clinically validated threshold.
+
+# --------------------------------------------------------------------- CV / tuning
+cross_validation:
+  development_only: true             # test stays sealed
+  strategy: repeated_stratified_or_group_kfold
+  group_overrides_stratification: true
+  nested_when_search_contaminates: true
+  folds: 5
+  repeats: 1
+
+# --------------------------------------------------------------------- calibration
+calibration:
+  candidates: [raw, platt, isotonic]
+  select_by: "brier + ece on validation"
+  fit_on: validation_only
+  never_on_test: true
+  multiclass_method: one_vs_rest_sigmoid   # documented limitation for small n
+  reliability_diagrams: true
+
+# --------------------------------------------------------------------- ensembles
+ensembles:
+  enabled: true
+  methods: [validation_weighted_soft_voting, oof_stacking]
+  weights_fit_on: validation_only
+  no_test_in_weight_learning: true
+  declare_best_automatically: false
+  report_ci_vs_best_individual: true
+
+# --------------------------------------------------------------------- model selection
+model_selection:
+  per_dataset_rule:
+    - "threshold satisfies sensitivity floor"
+    - "highest validation Macro F0.5"
+    - "calibration quality (Brier, ECE)"
+    - "AUPRC"
+    - "prefer simpler model if statistically indistinguishable"
+  keep_full_leaderboard: true
+  assume_lightgbm_primary: false
+
+# --------------------------------------------------------------------- statistics
+statistics:
+  bootstrap_ci: { n: 2000, alpha: 0.05, seed: 20261002 }
+  paired: [paired_bootstrap_difference, mcnemar_exact]
+  delong: "where appropriate for AUROC"
+  multiple_comparison_correction: benjamini_hochberg
+  alpha: 0.05
+
+# --------------------------------------------------------------------- bias experiments
+bias_experiments:
+  conditions: [control, correct_anchor, incorrect_anchor, high_confidence_incorrect_anchor,
+               low_confidence_incorrect_anchor, model_anchor, no_model_anchor]
+  anchor_source: "natural preliminary field after audit, else deterministic synthetic from label space"
+  evidence_invariant_across_paired_conditions: true
+  metrics: [CBR, AOR, BCR, HFR, CRR, CMR, DR, DDR, accuracy, macro_f0_5]
+  eligible_domains: [appendicitis, neonatal_sepsis, pediatric_pneumonia]
+  repetitions: 1                       # deterministic backend; DR then uninformative (disclosed)
+
+# --------------------------------------------------------------------- outputs
+outputs:
+  root: outputs/phase5/
+  figures: outputs/phase5/figures/
+  subdirs: [audit, splits, models, calibration, predictions, metrics, figures, agents, bias]
+  never_pollute_phase2_to_4_dirs: true
+
+# --------------------------------------------------------------------- figures (13)
+figures:
+  - fig01_macro_f05_leaderboard
+  - fig02_accuracy_vs_macro_f05
+  - fig03_precision_vs_sensitivity_operating_point
+  - fig04_auroc_comparison
+  - fig05_auprc_comparison
+  - fig06_calibration_curves
+  - fig07_confusion_matrices
+  - fig08_dataset_blocking_waterfall
+  - fig09_performance_by_dataset
+  - fig10_cross_domain_cbr
+  - fig11_bias_reduction_effect_with_ci
+  - fig12_hfr_vs_bcr_tradeoff
+  - fig13_generalization_gap
