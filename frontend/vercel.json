@@ -3,12 +3,11 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "outputDirectory": "frontend/dist",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/_api_proxy" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/_api_proxy" }
   ],
   "headers": [
     {

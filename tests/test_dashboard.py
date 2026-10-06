@@ -101,12 +101,13 @@ class TestHonestyGuards:
 class TestVercelConfig:
     def test_vercel_json(self):
         cfg = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
-        assert cfg["outputDirectory"] == "dashboard"
-        assert cfg["framework"] is None
+        assert cfg["framework"] == "vite"
+        assert cfg["buildCommand"] == "npm run build"
+        assert cfg["outputDirectory"] == "frontend/dist"
 
     def test_bundle_is_static_only(self):
         """Deployed bundle must contain no server code needing Python at runtime."""
-        served = [p for p in DASH.rglob("*") if p.is_file()]
-        py_runtime = [p for p in served if p.suffix == ".py" and p.name != "build_data.py"]
+        served = [p for p in (ROOT / "frontend" / "dist").rglob("*") if p.is_file()]
+        py_runtime = [p for p in served if p.suffix == ".py"]
         assert not py_runtime
-        assert any(p.name == "dashboard.json" for p in served)
+        assert any(p.name == "index.html" for p in served)
